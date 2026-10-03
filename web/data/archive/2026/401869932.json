@@ -135,6 +135,15 @@
    "team": "UL",
    "line": -6
   },
-  "total": 49
+  "total": 49,
+  "projection": {
+   "winner": "UL",
+   "winProb": 0.6193067359698843,
+   "margin": 4.8585714285714285,
+   "home": 27,
+   "away": 22,
+   "modelSide": "ARST",
+   "confidence": "high"
+  }
  }
 }

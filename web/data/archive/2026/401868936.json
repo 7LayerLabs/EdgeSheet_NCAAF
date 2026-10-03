@@ -39,6 +39,15 @@
    "team": "SOU",
    "line": -2.5
   },
-  "total": 55.5
+  "total": 55.5,
+  "projection": {
+   "winner": "SOU",
+   "winProb": 0.5743656731059893,
+   "margin": 3,
+   "home": 29,
+   "away": 27,
+   "modelSide": "SOU",
+   "confidence": "low"
+  }
  }
 }

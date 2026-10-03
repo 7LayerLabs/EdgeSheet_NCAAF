@@ -48,6 +48,15 @@
    "team": "EKU",
    "line": -1.5
   },
-  "total": 49.5
+  "total": 49.5,
+  "projection": {
+   "winner": "EKU",
+   "winProb": 0.5373461853176209,
+   "margin": 1.5,
+   "home": 26,
+   "away": 24,
+   "modelSide": "EKU",
+   "confidence": "low"
+  }
  }
 }

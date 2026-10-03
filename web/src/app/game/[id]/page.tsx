@@ -143,10 +143,12 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
               );
             })}
           </div>
+          {game.projection && <ProjectionBox game={game} />}
         </Section>
       ) : (
         <Section n="Matchups" id="decided" title="Not charted for this division">
           <p className="mt-2 text-base text-chalk-3">{game.pressurePoint}</p>
+          {game.projection && <ProjectionBox game={game} />}
         </Section>
       )}
 
@@ -352,6 +354,50 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
 
 /* ---------------------------------------------------------------- bits */
 
+function ProjectionBox({ game }: { game: Game }) {
+  const p = game.projection!;
+  const winnerTeam = p.winner === game.home.abbr ? game.home : game.away;
+  const graded = game.archive?.postgame?.projectionResult;
+  const locked = game.archive?.pregame.projection;
+  return (
+    <div className="card mt-4 border-l-4 border-l-brick p-5">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="eyebrow">Projected outcome · a model, not a pick</p>
+          <p className="display mt-1 text-4xl font-bold text-chalk sm:text-5xl">
+            {game.away.short} {p.away} <span className="text-chalk-3">@</span> {game.home.short} {p.home}
+          </p>
+          <p className="mt-1 text-lg text-chalk">
+            <span className="font-semibold" style={{ color: winnerTeam.color }}>{winnerTeam.short}</span> by {p.margin.toFixed(1)} · {Math.round(p.winProb * 100)}% to win · total {p.total}
+          </p>
+        </div>
+        <div className="text-right">
+          <p className="eyebrow">Confidence</p>
+          <p className={`display text-3xl font-bold ${p.confidence === "high" ? "text-turf" : p.confidence === "medium" ? "text-chalk" : "text-chalk-3"}`}>{p.confidence}</p>
+          <p className="text-[11px] text-chalk-3">{p.confidence === "high" ? "Elo and tendencies agree on inputs" : p.confidence === "medium" ? "Elo only; no tendency data" : "thin inputs"}</p>
+        </div>
+      </div>
+      <p className="mt-3 text-base leading-relaxed text-chalk">{p.shape}</p>
+      {p.vsMarket && (
+        <p className="mt-2 rounded border border-line bg-panel-2 px-3 py-2 text-base text-chalk">
+          <span className="eyebrow mr-1">vs the number</span>
+          {p.vsMarket}
+        </p>
+      )}
+      <ul className="mono mt-3 grid gap-0.5 text-xs text-chalk-3">
+        {p.basis.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
+      </ul>
+      <p className="mt-2 text-xs text-chalk-3">
+        Margin is 60% pregame Elo, 40% unit edges, with the market total for the score line. Win probability assumes a 16-point standard deviation.
+        {locked && !graded && ` Locked ${asOf(game.archive!.pregame.capturedAt)}; graded after the final.`}
+        {graded && ` Graded: winner ${graded.winnerRight ? "right" : "wrong"}, margin off by ${graded.marginError.toFixed(0)}${graded.modelSideCovered !== undefined ? `, model side ${graded.modelSideCovered ? "covered" : "did not cover"}` : ""}.`}
+      </p>
+    </div>
+  );
+}
+
 function Accountability({ entry }: { entry: NonNullable<Game["archive"]> }) {
   const post = entry.postgame!;
   const pre = entry.pregame;
@@ -367,11 +413,18 @@ function Accountability({ entry }: { entry: NonNullable<Game["archive"]> }) {
         <h3 className="display text-3xl font-bold text-chalk">Did it play out?</h3>
         <span className="mono text-xs text-chalk-3">Call locked {asOf(pre.capturedAt)} · graded {asOf(post.capturedAt)}</span>
       </div>
-      <div className="mt-3 grid gap-2 sm:grid-cols-4">
+      <div className="mt-3 grid gap-2 sm:grid-cols-5">
         <Stat label="Matchup calls" value={graded.length ? `${hits} of ${graded.length}` : "none graded"} sub="played out" />
         <Stat label="Radar names" value={pros.length ? `${showed} of ${pros.length}` : "none"} sub="showed up" />
         <Stat label="Pressure point" value={post.pressurePointVerdict} />
         <Stat label="Market" value={post.spreadResult ?? "no line"} sub={post.totalResult ? `total went ${post.totalResult}` : undefined} />
+        {post.projectionResult && (
+          <Stat
+            label="Projection"
+            value={post.projectionResult.winnerRight ? "winner right" : "winner wrong"}
+            sub={`margin off by ${post.projectionResult.marginError.toFixed(0)}${post.projectionResult.modelSideCovered !== undefined ? ` · model side ${post.projectionResult.modelSideCovered ? "covered" : "lost"}` : ""}`}
+          />
+        )}
       </div>
       <ul className="mt-4 grid gap-2">
         {post.edges.map((e, i) => (

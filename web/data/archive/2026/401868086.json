@@ -39,6 +39,15 @@
    "team": "UCD",
    "line": -10
   },
-  "total": 61.5
+  "total": 61.5,
+  "projection": {
+   "winner": "UCD",
+   "winProb": 0.7340145270237729,
+   "margin": 10,
+   "home": 36,
+   "away": 26,
+   "modelSide": "UCD",
+   "confidence": "low"
+  }
  }
 }

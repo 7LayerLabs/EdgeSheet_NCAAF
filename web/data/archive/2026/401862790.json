@@ -66,6 +66,15 @@
    "team": "FAU",
    "line": -45.5
   },
-  "total": 62
+  "total": 62,
+  "projection": {
+   "winner": "FAU",
+   "winProb": 0.9977706353814231,
+   "margin": 45.5,
+   "home": 54,
+   "away": 8,
+   "modelSide": "FAU",
+   "confidence": "low"
+  }
  }
 }

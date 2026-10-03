@@ -126,6 +126,15 @@
    "team": "ORST",
    "line": -7
   },
-  "total": 62.5
+  "total": 62.5,
+  "projection": {
+   "winner": "ORST",
+   "winProb": 0.5017453779759198,
+   "margin": 0.07000000000000006,
+   "home": 31,
+   "away": 32,
+   "modelSide": "CSU",
+   "confidence": "high"
+  }
  }
 }

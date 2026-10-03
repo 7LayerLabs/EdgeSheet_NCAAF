@@ -135,6 +135,15 @@
    "team": "BYU",
    "line": -6
   },
-  "total": 48
+  "total": 48,
+  "projection": {
+   "winner": "BYU",
+   "winProb": 0.5081920301369098,
+   "margin": 0.3285714285714285,
+   "home": 24,
+   "away": 24,
+   "modelSide": "TCU",
+   "confidence": "high"
+  }
  }
 }

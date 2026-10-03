@@ -126,6 +126,15 @@
    "team": "UTSA",
    "line": -12.5
   },
-  "total": 56
+  "total": 56,
+  "projection": {
+   "winner": "UTSA",
+   "winProb": 0.626632024446945,
+   "margin": 5.167142857142856,
+   "home": 25,
+   "away": 31,
+   "modelSide": "RICE",
+   "confidence": "high"
+  }
  }
 }

@@ -39,6 +39,15 @@
    "team": "SDST",
    "line": -2.5
   },
-  "total": 51.5
+  "total": 51.5,
+  "projection": {
+   "winner": "SDST",
+   "winProb": 0.5620820285127623,
+   "margin": 2.5,
+   "home": 25,
+   "away": 27,
+   "modelSide": "ILST",
+   "confidence": "low"
+  }
  }
 }

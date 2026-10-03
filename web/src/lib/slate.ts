@@ -35,6 +35,7 @@ import { generatedLoaded, genMeta } from "./generated";
 import { radarForGame, radarForTeam, radarPlayer, type RadarPlayer } from "./radar";
 import { pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
 import { bandFor } from "./forecast";
+import { projectGame } from "./projection";
 import { boxScore } from "./boxscore";
 import { memo } from "./memo";
 import { gradePostgame, lockPregame, readEntry } from "./archive";
@@ -544,6 +545,19 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
     });
   const contrast = charted ? styleContrast(raw.awayTeam, raw.homeTeam) : null;
   const pp = charted ? pressurePoint(raw.awayTeam, raw.homeTeam) : undefined;
+  const projection = projectGame({
+    home,
+    away,
+    homeElo: raw.homePregameElo,
+    awayElo: raw.awayPregameElo,
+    neutral: raw.neutralSite,
+    market,
+    matchups,
+    homeSchool: raw.homeTeam,
+    awaySchool: raw.awayTeam,
+    homePassRate: styleFor(raw.homeTeam)?.raw.off.passRate,
+    awayPassRate: styleFor(raw.awayTeam)?.raw.off.passRate,
+  });
 
   // Keep an eye on: young or unproven names the radar flags that did not make the main list.
   const inMain = new Set(prospects.map((p) => p.id));
@@ -636,6 +650,7 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
     pressurePoint: pp ?? "Not charted for this division. The report does not guess a scheme.",
     scoreComponents,
     gaps,
+    projection,
     box,
     statsAsOf: genMeta()?.ingestedAt,
     reportAsOf: builtAt,

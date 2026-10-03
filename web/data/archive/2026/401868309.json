@@ -39,6 +39,15 @@
    "team": "SFA",
    "line": -18.5
   },
-  "total": 55.5
+  "total": 55.5,
+  "projection": {
+   "winner": "SFA",
+   "winProb": 0.8762104853617109,
+   "margin": 18.5,
+   "home": 37,
+   "away": 19,
+   "modelSide": "SFA",
+   "confidence": "low"
+  }
  }
 }

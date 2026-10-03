@@ -108,6 +108,15 @@
    "team": "LT",
    "line": 0
   },
-  "total": 47.5
+  "total": 47.5,
+  "projection": {
+   "winner": "ARMY",
+   "winProb": 0.5126429834316868,
+   "margin": 0.5071428571428569,
+   "home": 23,
+   "away": 25,
+   "modelSide": "ARMY",
+   "confidence": "high"
+  }
  }
 }

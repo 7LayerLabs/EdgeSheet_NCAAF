@@ -30,6 +30,15 @@
    "team": "CAM",
    "line": -13.5
   },
-  "total": 57.5
+  "total": 57.5,
+  "projection": {
+   "winner": "CAM",
+   "winProb": 0.80059548799892,
+   "margin": 13.5,
+   "home": 22,
+   "away": 36,
+   "modelSide": "NCCU",
+   "confidence": "low"
+  }
  }
 }

@@ -39,6 +39,15 @@
    "team": "BRY",
    "line": -13.5
   },
-  "total": 47.5
+  "total": 47.5,
+  "projection": {
+   "winner": "BRY",
+   "winProb": 0.80059548799892,
+   "margin": 13.5,
+   "home": 31,
+   "away": 17,
+   "modelSide": "BRY",
+   "confidence": "low"
+  }
  }
 }

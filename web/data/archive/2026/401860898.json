@@ -135,6 +135,15 @@
    "team": "BOIS",
    "line": -19.5
   },
-  "total": 51.5
+  "total": 51.5,
+  "projection": {
+   "winner": "BOIS",
+   "winProb": 0.6790022837773079,
+   "margin": 7.438571428571428,
+   "home": 29,
+   "away": 23,
+   "modelSide": "USU",
+   "confidence": "high"
+  }
  }
 }

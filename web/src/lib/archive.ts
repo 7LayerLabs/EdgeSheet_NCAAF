@@ -46,6 +46,7 @@ export interface Pregame {
   spread?: { team: string; line: number }; // abbr of favorite, negative line
   total?: number;
   abbr: { home: string; away: string };
+  projection?: { winner: string; winProb: number; margin: number; home: number; away: number; modelSide?: string; confidence: string };
 }
 
 export interface EdgeResult extends EdgeCall {
@@ -67,6 +68,7 @@ export interface Postgame {
   edges: EdgeResult[];
   prospects: ProspectResult[];
   pressurePointVerdict: Verdict;
+  projectionResult?: { winnerRight: boolean; marginError: number; modelSideCovered?: boolean };
 }
 
 export interface ArchiveEntry {
@@ -110,7 +112,14 @@ function axisOf(m: Matchup): string {
 export function lockPregame(game: Game, season: number): ArchiveEntry | undefined {
   if (game.source !== "live" || game.status !== "upcoming") return undefined;
   const existing = readEntry(season, game.id);
-  if (existing) return existing;
+  if (existing) {
+    // A lock taken before the projection existed can take one on, as long as the game has not kicked off.
+    if (!existing.postgame && !existing.pregame.projection && game.projection) {
+      existing.pregame.projection = { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence };
+      writeEntry(existing);
+    }
+    return existing;
+  }
   if (!game.matchups.length && !game.prospects.length) return undefined;
   const entry: ArchiveEntry = {
     gameId: game.id,
@@ -138,6 +147,9 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
         .map((p) => ({ id: p.id, name: p.name, team: p.radar!.team, pos: p.pos, group: p.radar!.group, tier: p.tier, score: p.radar!.score })),
       spread: game.market.spread ? { team: game.market.spread.team, line: game.market.spread.line } : undefined,
       total: game.market.total?.line,
+      projection: game.projection
+        ? { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence }
+        : undefined,
     },
   };
   writeEntry(entry);
@@ -218,8 +230,22 @@ export function gradePostgame(game: Game, season: number, box: BoxScore, excitem
     const pts = game.score.home + game.score.away;
     totalResult = pts > pre.total ? "over" : pts < pre.total ? "under" : "push";
   }
+  let projectionResult: Postgame["projectionResult"];
+  if (pre.projection) {
+    const actualHomeMargin = game.score.home - game.score.away;
+    const actualWinner = actualHomeMargin > 0 ? pre.abbr.home : actualHomeMargin < 0 ? pre.abbr.away : "tie";
+    const projHomeMargin = pre.projection.winner === pre.abbr.home ? pre.projection.margin : -pre.projection.margin;
+    let modelSideCovered: boolean | undefined;
+    if (pre.spread && pre.projection.modelSide && spreadResult && spreadResult !== "push") {
+      const favoriteSide = pre.spread.team;
+      const modelOnFavorite = pre.projection.modelSide === favoriteSide;
+      modelSideCovered = modelOnFavorite ? spreadResult === "favorite covered" : spreadResult === "underdog covered";
+    }
+    projectionResult = { winnerRight: actualWinner === pre.projection.winner, marginError: Math.abs(actualHomeMargin - projHomeMargin), modelSideCovered };
+  }
   const top = edges.find((e) => e.edge !== "even") ?? edges[0];
   entry.postgame = {
+    projectionResult,
     capturedAt: new Date().toISOString(),
     score: { home: game.score.home, away: game.score.away },
     excitement: excitement ?? null,
@@ -264,6 +290,11 @@ export interface HistoryStats {
   pressureGraded: number;
   favoriteCovered: number;
   spreadGraded: number;
+  winnerRight: number;
+  winnerGraded: number;
+  modelSideCovered: number;
+  modelSideGraded: number;
+  avgMarginError: number | null;
   byBucket: { label: string; games: number; avgExcitement: number | null }[];
 }
 
@@ -282,7 +313,14 @@ export function historyStats(entries: ArchiveEntry[]): HistoryStats {
     const gs = graded.filter((e) => e.pregame.scoutScore >= b.lo && e.pregame.scoutScore < b.hi && e.postgame!.excitement != null);
     return { label: b.label, games: gs.length, avgExcitement: gs.length ? gs.reduce((s, e) => s + (e.postgame!.excitement ?? 0), 0) / gs.length : null };
   });
+  const proj = graded.filter((e) => e.postgame!.projectionResult);
+  const sided = proj.filter((e) => e.postgame!.projectionResult!.modelSideCovered !== undefined);
   return {
+    winnerRight: proj.filter((e) => e.postgame!.projectionResult!.winnerRight).length,
+    winnerGraded: proj.length,
+    modelSideCovered: sided.filter((e) => e.postgame!.projectionResult!.modelSideCovered).length,
+    modelSideGraded: sided.length,
+    avgMarginError: proj.length ? proj.reduce((s, e) => s + e.postgame!.projectionResult!.marginError, 0) / proj.length : null,
     games: entries.length,
     graded: graded.length,
     edgeCalls: edges.length,

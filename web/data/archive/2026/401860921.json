@@ -135,6 +135,15 @@
    "team": "WSU",
    "line": -2
   },
-  "total": 45
+  "total": 45,
+  "projection": {
+   "winner": "FRES",
+   "winProb": 0.5312778001766282,
+   "margin": 1.2557142857142858,
+   "home": 22,
+   "away": 23,
+   "modelSide": "FRES",
+   "confidence": "high"
+  }
  }
 }

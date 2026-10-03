@@ -39,6 +39,15 @@
    "team": "ACU",
    "line": -4.5
   },
-  "total": 48.5
+  "total": 48.5,
+  "projection": {
+   "winner": "ACU",
+   "winProb": 0.6107406060595146,
+   "margin": 4.5,
+   "home": 27,
+   "away": 22,
+   "modelSide": "ACU",
+   "confidence": "low"
+  }
  }
 }

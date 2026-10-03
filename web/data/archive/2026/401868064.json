@@ -39,6 +39,15 @@
    "team": "APSU",
    "line": -35.5
   },
-  "total": 50.5
+  "total": 50.5,
+  "projection": {
+   "winner": "APSU",
+   "winProb": 0.9867481760372376,
+   "margin": 35.5,
+   "home": 43,
+   "away": 8,
+   "modelSide": "APSU",
+   "confidence": "low"
+  }
  }
 }

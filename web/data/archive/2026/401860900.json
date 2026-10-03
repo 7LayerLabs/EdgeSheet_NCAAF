@@ -117,6 +117,15 @@
    "team": "TXST",
    "line": -9.5
   },
-  "total": 57.5
+  "total": 57.5,
+  "projection": {
+   "winner": "TXST",
+   "winProb": 0.5614837686366208,
+   "margin": 2.4757142857142855,
+   "home": 28,
+   "away": 30,
+   "modelSide": "SDSU",
+   "confidence": "high"
+  }
  }
 }

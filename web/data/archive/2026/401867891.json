@@ -39,6 +39,15 @@
    "team": "YSU",
    "line": -4
   },
-  "total": 64.5
+  "total": 64.5,
+  "projection": {
+   "winner": "YSU",
+   "winProb": 0.5987062706841138,
+   "margin": 4,
+   "home": 30,
+   "away": 35,
+   "modelSide": "SIU",
+   "confidence": "low"
+  }
  }
 }

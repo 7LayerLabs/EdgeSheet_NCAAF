@@ -117,6 +117,15 @@
    "team": "ASU",
    "line": -3.5
   },
-  "total": 48.5
+  "total": 48.5,
+  "projection": {
+   "winner": "BAY",
+   "winProb": 0.5007480215013091,
+   "margin": 0.03000000000000025,
+   "home": 24,
+   "away": 25,
+   "modelSide": "BAY",
+   "confidence": "high"
+  }
  }
 }

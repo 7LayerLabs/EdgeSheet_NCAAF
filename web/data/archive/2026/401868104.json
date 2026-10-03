@@ -39,6 +39,15 @@
    "team": "IDST",
    "line": -7.5
   },
-  "total": 55.5
+  "total": 55.5,
+  "projection": {
+   "winner": "IDST",
+   "winProb": 0.6803758130445896,
+   "margin": 7.5,
+   "home": 32,
+   "away": 24,
+   "modelSide": "IDST",
+   "confidence": "low"
+  }
  }
 }

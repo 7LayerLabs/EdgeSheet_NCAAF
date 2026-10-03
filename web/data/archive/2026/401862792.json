@@ -126,6 +126,15 @@
    "team": "USF",
    "line": -5.5
   },
-  "total": 48.5
+  "total": 48.5,
+  "projection": {
+   "winner": "USF",
+   "winProb": 0.7216559826189363,
+   "margin": 9.404285714285715,
+   "home": 29,
+   "away": 20,
+   "modelSide": "USF",
+   "confidence": "high"
+  }
  }
 }

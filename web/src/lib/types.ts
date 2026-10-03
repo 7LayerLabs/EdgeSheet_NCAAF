@@ -172,6 +172,8 @@ export interface Game {
   box?: BoxSummary;
   /** Stats-as-of for radar and tendencies (ingest time). */
   statsAsOf?: string;
+  /** Predicted outcome from Elo, unit edges, and the market. */
+  projection?: import("./projection").Projection;
   /** Accountability archive entry, when one exists. */
   archive?: import("./archive").ArchiveEntry;
   excitement?: number | null;

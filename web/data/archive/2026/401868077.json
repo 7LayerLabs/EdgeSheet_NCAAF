@@ -39,6 +39,15 @@
    "team": "CP",
    "line": -5.5
   },
-  "total": 67.5
+  "total": 67.5,
+  "projection": {
+   "winner": "CP",
+   "winProb": 0.6461697081470771,
+   "margin": 6,
+   "home": 37,
+   "away": 31,
+   "modelSide": "CP",
+   "confidence": "low"
+  }
  }
 }

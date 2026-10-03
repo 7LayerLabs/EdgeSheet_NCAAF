@@ -39,6 +39,15 @@
    "team": "LAM",
    "line": -41.5
   },
-  "total": 54.5
+  "total": 54.5,
+  "projection": {
+   "winner": "LAM",
+   "winProb": 0.9952531926149463,
+   "margin": 41.5,
+   "home": 48,
+   "away": 7,
+   "modelSide": "LAM",
+   "confidence": "low"
+  }
  }
 }

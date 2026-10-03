@@ -30,6 +30,15 @@
    "team": "RGV",
    "line": -10.5
   },
-  "total": 50.5
+  "total": 50.5,
+  "projection": {
+   "winner": "RGV",
+   "winProb": 0.7441684222108845,
+   "margin": 10.5,
+   "home": 20,
+   "away": 31,
+   "modelSide": "ETAM",
+   "confidence": "low"
+  }
  }
 }

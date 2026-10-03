@@ -39,6 +39,15 @@
    "team": "TNTC",
    "line": -12.5
   },
-  "total": 64.5
+  "total": 64.5,
+  "projection": {
+   "winner": "TNTC",
+   "winProb": 0.782672328012844,
+   "margin": 12.5,
+   "home": 26,
+   "away": 39,
+   "modelSide": "WCU",
+   "confidence": "low"
+  }
  }
 }

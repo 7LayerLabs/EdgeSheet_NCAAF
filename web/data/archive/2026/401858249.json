@@ -153,6 +153,15 @@
    "team": "MIA",
    "line": -15.5
   },
-  "total": 48
+  "total": 48,
+  "projection": {
+   "winner": "MIA",
+   "winProb": 0.7512670458858555,
+   "margin": 10.855714285714285,
+   "home": 19,
+   "away": 29,
+   "modelSide": "CLEM",
+   "confidence": "high"
+  }
  }
 }

@@ -117,6 +117,15 @@
    "team": "ARIZ",
    "line": -6.5
   },
-  "total": 55.5
+  "total": 55.5,
+  "projection": {
+   "winner": "ARIZ",
+   "winProb": 0.6463025047574684,
+   "margin": 6.005714285714285,
+   "home": 31,
+   "away": 25,
+   "modelSide": "CIN",
+   "confidence": "high"
+  }
  }
 }

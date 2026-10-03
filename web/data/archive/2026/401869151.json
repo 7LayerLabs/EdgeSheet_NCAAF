@@ -39,6 +39,15 @@
    "team": "HCU",
    "line": -1.5
   },
-  "total": 51.5
+  "total": 51.5,
+  "projection": {
+   "winner": "HCU",
+   "winProb": 0.5373461853176209,
+   "margin": 1.5,
+   "home": 27,
+   "away": 25,
+   "modelSide": "HCU",
+   "confidence": "low"
+  }
  }
 }

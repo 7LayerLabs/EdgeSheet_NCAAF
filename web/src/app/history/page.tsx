@@ -29,8 +29,10 @@ export default function HistoryPage() {
       )}
 
       {entries.length > 0 && (
-        <section className="mt-6 grid gap-2 sm:grid-cols-5">
+        <section className="mt-6 grid gap-2 sm:grid-cols-4 lg:grid-cols-7">
           <Tile label="Games locked" value={String(stats.games)} sub={`${stats.graded} graded`} />
+          <Tile label="Model winner" value={pct(stats.winnerRight, stats.winnerGraded)} sub={`${stats.winnerRight} of ${stats.winnerGraded}${stats.avgMarginError != null ? ` · margin off by ${stats.avgMarginError.toFixed(1)} avg` : ""}`} />
+          <Tile label="Model vs number" value={pct(stats.modelSideCovered, stats.modelSideGraded)} sub={`${stats.modelSideCovered} of ${stats.modelSideGraded} model sides covered`} />
           <Tile label="Matchup calls" value={pct(stats.edgePlayedOut, stats.edgeCalls)} sub={`${stats.edgePlayedOut} played out, ${stats.edgeMissed} missed, of ${stats.edgeCalls}`} />
           <Tile label="Pressure point" value={pct(stats.pressurePlayedOut, stats.pressureGraded)} sub={`${stats.pressurePlayedOut} of ${stats.pressureGraded}`} />
           <Tile label="Radar names" value={pct(stats.prospectShowedUp, stats.prospectCalls)} sub={`${stats.prospectShowedUp} of ${stats.prospectCalls} showed up`} />

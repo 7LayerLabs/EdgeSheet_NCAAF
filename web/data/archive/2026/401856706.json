@@ -75,6 +75,15 @@
    "team": "LSU",
    "line": -53
   },
-  "total": 62
+  "total": 62,
+  "projection": {
+   "winner": "LSU",
+   "winProb": 0.999537611765142,
+   "margin": 53,
+   "home": 58,
+   "away": 4,
+   "modelSide": "LSU",
+   "confidence": "low"
+  }
  }
 }

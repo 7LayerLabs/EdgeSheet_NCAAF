@@ -126,6 +126,15 @@
    "team": "GASO",
    "line": -2.5
   },
-  "total": 53
+  "total": 53,
+  "projection": {
+   "winner": "CCU",
+   "winProb": 0.5080139669825855,
+   "margin": 0.32142857142857145,
+   "home": 27,
+   "away": 27,
+   "modelSide": "CCU",
+   "confidence": "high"
+  }
  }
 }

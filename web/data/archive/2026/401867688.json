@@ -30,6 +30,15 @@
    "team": "TAR",
    "line": -50.5
   },
-  "total": 64.5
+  "total": 64.5,
+  "projection": {
+   "winner": "TAR",
+   "winProb": 0.9992008747464388,
+   "margin": 50.5,
+   "home": 58,
+   "away": 7,
+   "modelSide": "TAR",
+   "confidence": "low"
+  }
  }
 }

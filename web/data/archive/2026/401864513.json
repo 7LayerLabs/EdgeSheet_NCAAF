@@ -126,6 +126,15 @@
    "team": "HAW",
    "line": -2.5
   },
-  "total": 51
+  "total": 51,
+  "projection": {
+   "winner": "HAW",
+   "winProb": 0.5095096441126281,
+   "margin": 0.38142857142857134,
+   "home": 26,
+   "away": 25,
+   "modelSide": "SJSU",
+   "confidence": "high"
+  }
  }
 }

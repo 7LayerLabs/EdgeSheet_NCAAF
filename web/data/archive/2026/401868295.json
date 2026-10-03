@@ -39,6 +39,15 @@
    "team": "JKST",
    "line": -10
   },
-  "total": 53.5
+  "total": 53.5,
+  "projection": {
+   "winner": "JKST",
+   "winProb": 0.7340145270237729,
+   "margin": 10,
+   "home": 32,
+   "away": 23,
+   "modelSide": "JKST",
+   "confidence": "low"
+  }
  }
 }

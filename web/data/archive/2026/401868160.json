@@ -39,6 +39,15 @@
    "team": "SUU",
    "line": -12.5
   },
-  "total": 55.5
+  "total": 55.5,
+  "projection": {
+   "winner": "SUU",
+   "winProb": 0.782672328012844,
+   "margin": 12.5,
+   "home": 22,
+   "away": 34,
+   "modelSide": "UTU",
+   "confidence": "low"
+  }
  }
 }

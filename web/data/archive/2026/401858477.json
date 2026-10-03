@@ -126,6 +126,15 @@
    "team": "IU",
    "line": -24.5
   },
-  "total": 57
+  "total": 57,
+  "projection": {
+   "winner": "IU",
+   "winProb": 0.825243872141216,
+   "margin": 14.96857142857143,
+   "home": 21,
+   "away": 36,
+   "modelSide": "RUTG",
+   "confidence": "high"
+  }
  }
 }

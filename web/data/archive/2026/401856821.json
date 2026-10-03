@@ -126,6 +126,15 @@
    "team": "TTU",
    "line": -13.5
   },
-  "total": 49.5
+  "total": 49.5,
+  "projection": {
+   "winner": "TTU",
+   "winProb": 0.7735340066899569,
+   "margin": 12.008571428571429,
+   "home": 19,
+   "away": 31,
+   "modelSide": "COLO",
+   "confidence": "high"
+  }
  }
 }

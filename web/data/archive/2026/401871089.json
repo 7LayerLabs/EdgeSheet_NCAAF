@@ -99,6 +99,15 @@
    "team": "USA",
    "line": -13.5
   },
-  "total": 57
+  "total": 57,
+  "projection": {
+   "winner": "USA",
+   "winProb": 0.7235707805214346,
+   "margin": 9.495714285714286,
+   "home": 33,
+   "away": 24,
+   "modelSide": "ULM",
+   "confidence": "high"
+  }
  }
 }

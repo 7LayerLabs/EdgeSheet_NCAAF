@@ -39,6 +39,15 @@
    "team": "HARV",
    "line": -4.5
   },
-  "total": 40.5
+  "total": 40.5,
+  "projection": {
+   "winner": "HARV",
+   "winProb": 0.6107406060595146,
+   "margin": 4.5,
+   "home": 23,
+   "away": 18,
+   "modelSide": "HARV",
+   "confidence": "low"
+  }
  }
 }

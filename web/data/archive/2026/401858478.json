@@ -144,6 +144,15 @@
    "team": "USC",
    "line": -8
   },
-  "total": 58.5
+  "total": 58.5,
+  "projection": {
+   "winner": "USC",
+   "winProb": 0.582259994366623,
+   "margin": 3.322857142857143,
+   "home": 31,
+   "away": 28,
+   "modelSide": "WASH",
+   "confidence": "high"
+  }
  }
 }

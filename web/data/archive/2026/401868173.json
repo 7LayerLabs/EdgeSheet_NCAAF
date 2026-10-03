@@ -30,6 +30,15 @@
    "team": "GWEB",
    "line": -7
   },
-  "total": 44.5
+  "total": 44.5,
+  "projection": {
+   "winner": "GWEB",
+   "winProb": 0.66912558011915,
+   "margin": 7,
+   "home": 19,
+   "away": 26,
+   "modelSide": "CHSO",
+   "confidence": "low"
+  }
  }
 }
