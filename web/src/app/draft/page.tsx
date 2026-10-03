@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { genDraft, generatedLoaded } from "@/lib/generated";
-import { forecastNextDraft, type Band, type ForecastEntry } from "@/lib/forecast";
+import { forecastNextDraft, pickText, type Band, type ForecastEntry } from "@/lib/forecast";
 import { GROUP_LABEL, type PosGroup } from "@/lib/radar";
 import { Avatar } from "@/components/Avatar";
 import { gameIndexForWeek } from "@/lib/slate";
@@ -133,7 +133,7 @@ export default async function DraftPage({ searchParams }: { searchParams: Promis
             <div className="card p-4">
               <p className="eyebrow">How the forecast works</p>
               <p className="mt-1 leading-relaxed">
-                Each position gets as many Round 1, Day 2, and Day 3 slots as the last five drafts averaged for that position. Players fill the slots in radar order after a demand adjustment: positions the league pays up for early (edge, tackle, corner, receiver, quarterback) get a bump of up to 8 points; positions it waits on (running back, linebacker, safety) get a haircut. Juniors are included because they can declare; many will stay in school.
+                Each position gets as many Round 1, Day 2, and Day 3 slots as the last five drafts averaged for that position. Players fill the slots in radar order after a demand adjustment: positions the league pays up for early (edge, tackle, corner, receiver, quarterback) get a bump of up to 8 points; positions it waits on (running back, linebacker, safety) get a haircut. The estimated pick is the board position, with a spread of 6 in round one, 15 on day two, and 40 on day three. Seniors are eligible. Juniors stay on the board until they announce they are returning; mark that on the player page and the board re-forms.
               </p>
             </div>
             <div className="card p-4">
@@ -254,6 +254,11 @@ function ForecastRow({ e, games, showPos = false }: { e: ForecastEntry; games: M
           {p.pos} · {p.team} · {p.cls}{p.height ? ` · ${Math.floor(p.height / 12)}-${p.height % 12}, ${p.weight}` : ""} · {GROUP_LABEL[p.group]} No. {e.posRank}
         </span>
         <span className="block truncate text-xs text-chalk-2">{p.stat}</span>
+        <span className="mt-0.5 flex flex-wrap items-center gap-1.5">
+          <span className="mono text-[11px] font-semibold text-navy">{pickText(e)}</span>
+          {e.decision === "declared" && <span className="rounded bg-turf px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Declared</span>}
+          {e.decision === "undecided" && p.classYear === 3 && <span className="rounded border border-line bg-white px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-chalk-3">Jr, undecided</span>}
+        </span>
       </span>
       <span className="flex shrink-0 flex-col items-end gap-1">
         <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${BAND_TONE[e.band]}`}>{e.band.replace(" range", "")}</span>

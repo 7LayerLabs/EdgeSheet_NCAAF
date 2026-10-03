@@ -9,6 +9,7 @@
 import { genDraft, genMeta } from "./generated";
 import { memoSync } from "./memo";
 import { radarIndex, type PosGroup, type RadarPlayer } from "./radar";
+import { readDeclarations, type Decision } from "./declarations";
 
 export type Band = "Round 1 range" | "Day 2 range" | "Day 3 range" | "Priority free agent";
 
@@ -18,6 +19,10 @@ export interface ForecastEntry {
   posRank: number;
   band: Band;
   adjusted: number; // score after position-demand adjustment
+  decision: Decision; // juniors: declared / returning / undecided; seniors: undecided means eligible
+  estPick: number; // point estimate of the pick, from the board position
+  estLow: number;
+  estHigh: number;
 }
 
 export interface Demand {
@@ -72,13 +77,22 @@ export interface Forecast {
 export function forecastNextDraft(): Forecast {
   const idx = radarIndex();
   const meta = genMeta();
-  return memoSync(`forecast:${meta?.ingestedAt ?? "none"}`, 3600, () => {
+  const decl = readDeclarations();
+  const declStamp = Object.keys(decl).length + ":" + Object.values(decl).map((d) => d.at).sort().pop();
+  return memoSync(`forecast:${meta?.ingestedAt ?? "none"}:${declStamp}`, 3600, () => {
     const demand = demandByGroup();
     const years = [...new Set(genDraft().map((p) => p.year))].sort();
     const dmap = new Map(demand.map((d) => [d.group, d]));
 
     // Supply: draft-eligible radar players for the next class, Division I only.
-    const pool = idx.all.filter((p) => p.draftClass === idx.nextDraft && (p.classification === "fbs" || p.classification === "fcs") && (p.tier === "Eligible" || p.tier === "Sleeper"));
+    // Juniors stay on the board until they say they are returning. Seniors marked returning (extra year) also drop.
+    const pool = idx.all.filter(
+      (p) =>
+        p.draftClass === idx.nextDraft &&
+        (p.classification === "fbs" || p.classification === "fcs") &&
+        (p.tier === "Eligible" || p.tier === "Sleeper") &&
+        (decl[p.id]?.decision ?? "undecided") !== "returning",
+    );
 
     // Position-demand adjustment: premium positions get a bump, discounted ones a haircut, capped at +-8.
     const adjusted = pool.map((p) => {
@@ -100,6 +114,10 @@ export function forecastNextDraft(): Forecast {
         posRank: i + 1,
         band: i < r1 ? "Round 1 range" : i < day2 ? "Day 2 range" : i < all ? "Day 3 range" : "Priority free agent",
         adjusted: Math.round(x.adj),
+        decision: decl[x.p.id]?.decision ?? "undecided",
+        estPick: 0,
+        estLow: 0,
+        estHigh: 0,
       }));
       byGroup.set(group, entries);
     }
@@ -107,13 +125,30 @@ export function forecastNextDraft(): Forecast {
     // Overall board: band first, then adjusted score.
     const rank: Record<Band, number> = { "Round 1 range": 0, "Day 2 range": 1, "Day 3 range": 2, "Priority free agent": 3 };
     const board = [...byGroup.values()].flat().sort((a, b) => rank[a.band] - rank[b.band] || b.adjusted - a.adjusted);
-    board.forEach((e, i) => (e.overall = i + 1));
+    // Estimated pick: the board position is the point estimate; the spread widens down the board.
+    // Round one +-6, day two +-15, day three +-40. Undrafted range stays open-ended.
+    board.forEach((e, i) => {
+      e.overall = i + 1;
+      const spread = e.band === "Round 1 range" ? 6 : e.band === "Day 2 range" ? 15 : e.band === "Day 3 range" ? 40 : 60;
+      e.estPick = Math.min(257, e.overall);
+      e.estLow = Math.max(1, e.overall - spread);
+      e.estHigh = Math.min(257, e.overall + spread);
+    });
     return { draftYear: idx.nextDraft, years, board, byGroup, demand };
   });
 }
 
 /** Quick lookup for cards: the band for one player, if forecast. */
 export function bandFor(id: string): Band | undefined {
+  return entryFor(id)?.band;
+}
+
+export function entryFor(id: string): ForecastEntry | undefined {
   const f = forecastNextDraft();
-  return f.board.find((e) => e.player.id === id)?.band;
+  return f.board.find((e) => e.player.id === id);
+}
+
+export function pickText(e: ForecastEntry): string {
+  if (e.band === "Priority free agent") return "Outside the 257";
+  return `Est. pick ${e.estPick} (${e.estLow} to ${e.estHigh})`;
 }

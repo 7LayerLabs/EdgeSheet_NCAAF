@@ -8,6 +8,9 @@ import { Confidence, Tier } from "@/components/badges";
 import { FollowButton } from "@/components/FollowButton";
 import { Avatar } from "@/components/Avatar";
 import { RadarScore } from "@/components/ProspectCard";
+import { DecisionButtons } from "@/components/DecisionButtons";
+import { entryFor, pickText } from "@/lib/forecast";
+import { decisionFor } from "@/lib/declarations";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +22,9 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
   const team = game ? (p.team === game.home.abbr ? game.home : game.away) : undefined;
   const r = p.radar;
   const meta = genMeta();
+  const upper = r?.classYear === 3 || r?.classYear === 4;
+  const fc = r && upper ? entryFor(r.id) : undefined;
+  const decision = r ? decisionFor(r.id) : "undecided";
 
   return (
     <article className="rise">
@@ -79,6 +85,35 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
           )}
         </Box>
       </section>
+
+      {r && upper && (
+        <section className="card mt-8 border-l-4 border-l-navy p-4">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <p className="eyebrow">{r.draftClass} draft forecast</p>
+              {fc ? (
+                <>
+                  <p className="display mt-1 text-3xl font-bold text-chalk">{fc.band}</p>
+                  <p className="mono text-sm text-navy">{pickText(fc)} · {r.group} No. {fc.posRank} · overall No. {fc.overall}</p>
+                </>
+              ) : (
+                <p className="mt-1 text-base text-chalk-2">
+                  {decision === "returning" ? "Off the board: marked as returning to school." : "Not on the forecast board. Below the radar threshold for the next class."}
+                </p>
+              )}
+            </div>
+            <div className="text-right">
+              <p className="eyebrow">{r.classYear === 4 ? "Senior" : "Junior"} decision</p>
+              <div className="mt-1">
+                <DecisionButtons id={r.id} current={decision} senior={r.classYear === 4} />
+              </div>
+              <p className="mt-1 max-w-xs text-[11px] text-chalk-3">
+                {r.classYear === 4 ? "Seniors are eligible by default." : "Juniors stay on the board until they announce they are returning."}
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
 
       {r && (
         <section className="mt-8 grid gap-2 sm:grid-cols-4">
