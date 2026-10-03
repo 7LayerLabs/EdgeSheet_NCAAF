@@ -1,18 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow_Condensed, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Poppins, Inter, IBM_Plex_Mono } from "next/font/google";
 import Link from "next/link";
+import { NavLinks } from "@/components/NavLinks";
 import "./globals.css";
 
-const barlow = Barlow_Condensed({
-  variable: "--font-barlow",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
-const plex = IBM_Plex_Sans({
-  variable: "--font-plex",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
 const plexMono = IBM_Plex_Mono({
@@ -48,31 +48,21 @@ const NAV = [
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${barlow.variable} ${plex.variable} ${plexMono.variable} h-full`}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable} ${plexMono.variable} h-full`}>
       <body className="min-h-full flex flex-col field">
         <header className="sticky top-0 z-30 border-b border-line bg-ink/90 backdrop-blur">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-            <Link href="/" className="display text-xl font-bold tracking-wide text-chalk">
-              Scout<span className="text-flag"> the </span>Slate
+            <Link href="/" className="display flex items-center gap-2 text-lg font-bold text-chalk">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-flag text-ink" aria-hidden>
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /><path d="M12 4v8l5 3" /></svg>
+              </span>
+              Scout the Slate
             </Link>
-            <nav className="hidden items-center gap-1 text-sm sm:flex">
-              {NAV.map((n) => (
-                <Link key={n.href} href={n.href} className="rounded-md px-3 py-1.5 text-chalk-2 hover:bg-panel hover:text-chalk">
-                  {n.label}
-                </Link>
-              ))}
-            </nav>
+            <NavLinks items={NAV} variant="top" />
           </div>
         </header>
         <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-28 pt-5 sm:pb-24">{children}</main>
-        <nav className="tabbar sm:hidden" aria-label="Primary">
-          {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="tab">
-              <span className="tab-icon" dangerouslySetInnerHTML={{ __html: n.icon }} />
-              {n.label}
-            </Link>
-          ))}
-        </nav>
+        <NavLinks items={NAV} variant="tabs" />
         <footer className="border-t border-line px-4 py-6 text-center text-xs text-chalk-3">
           Schedules, scores, records, and lines from CollegeFootballData. Forecasts from the National Weather Service. Prospects from a curated file. Nothing is invented; gaps are labeled.
         </footer>

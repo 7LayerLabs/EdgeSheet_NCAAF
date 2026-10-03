@@ -62,7 +62,7 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
             )}
             {game.styleLine && <span className="text-chalk-3">{game.styleLine}</span>}
             {topFlag && (
-              <span className={risk === "high" ? "text-brick" : "text-flag-2"}>
+              <span className={risk === "high" ? "text-brick" : "text-warn"}>
                 {risk === "high" ? "▲" : "△"} {topFlag.title}
               </span>
             )}

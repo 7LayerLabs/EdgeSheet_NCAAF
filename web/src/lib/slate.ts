@@ -35,6 +35,7 @@ import { generatedLoaded, genMeta } from "./generated";
 import { radarForGame, radarForTeam, radarPlayer, type RadarPlayer } from "./radar";
 import { pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
 import { boxScore } from "./boxscore";
+import { memo } from "./memo";
 import { evaluateWeather } from "./weather";
 import { games as sampleGames, getGame as sampleGame, getPlayer as samplePlayer, SLATE_DATE } from "./data";
 import type { Coverage, DefenseProfile, Division, Game, Market, Matchup, OffenseProfile, Prospect, ScoreComponents, Team, WeatherInput } from "./types";
@@ -478,9 +479,9 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
   const network = mkNetwork(b.media.get(raw.id));
   const venue = raw.venueId != null ? b.venues.get(raw.venueId) : undefined;
 
-  let weather: WeatherInput | undefined;
-  if (withWeather && status !== "final" && venue?.latitude != null && venue?.longitude != null) {
-    weather = await forecastAtKickoff(
+  const weatherP: Promise<WeatherInput | undefined> =
+    withWeather && status !== "final" && venue?.latitude != null && venue?.longitude != null
+      ? forecastAtKickoff(
       {
         latitude: venue.latitude,
         longitude: venue.longitude,
@@ -489,8 +490,10 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
         elevationMeters: venue.elevation != null ? Number(venue.elevation) : null,
       },
       raw.startDate,
-    );
-  }
+    )
+      : Promise.resolve(undefined);
+  const boxP = withBox && status !== "upcoming" ? boxScore(String(raw.id), raw.season, raw.week, raw.seasonType, cls).catch(() => undefined) : Promise.resolve(undefined);
+  const [weather, bs] = await Promise.all([weatherP, boxP]);
 
   // Prospects: curated board entries first (if any), then the production-based radar.
   const curated = [
@@ -570,8 +573,7 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
 
   // Box score once the game has started (game page only).
   let box: Game["box"];
-  if (withBox && status !== "upcoming") {
-    const bs = await boxScore(String(raw.id), raw.season, raw.week, raw.seasonType, cls).catch(() => undefined);
+  {
     if (bs) {
       box = {
         teams: bs.teams.map((t) => ({
@@ -656,6 +658,11 @@ export async function getSlate(dateParam?: string): Promise<Slate> {
   if (!hasCfbdKey()) return sampleSlate();
   const today = etDate();
   const requested = dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam) ? dateParam : today;
+  // The assembled slate is memoized briefly so navigating between pages does not rebuild 300 games each time.
+  return memo(`slate:${requested}`, 60, () => buildSlate(requested));
+}
+
+async function buildSlate(requested: string): Promise<Slate> {
   const season = seasonFor(requested);
   const cal = await getCalendar(season);
   const week = pickWeek(cal, requested);
@@ -723,6 +730,10 @@ function buildPolls(b: Bundle, weekGames: Game[]): Poll[] {
 export async function getGame(id: string): Promise<Game | undefined> {
   if (!hasCfbdKey()) return sampleGame(id);
   if (!/^\d+$/.test(id)) return undefined;
+  return memo(`game:${id}`, 30, () => buildGameById(id));
+}
+
+async function buildGameById(id: string): Promise<Game | undefined> {
   const rows = await cfbdGameById(id).catch(() => [] as CfbdGame[]);
   const raw = rows[0];
   if (!raw) return undefined;

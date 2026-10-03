@@ -51,14 +51,14 @@ export default function DraftPage() {
   return (
     <div>
       <p className="eyebrow">What scouts went after</p>
-      <h1 className="display mt-1 text-5xl font-extrabold text-chalk sm:text-6xl">{loaded ? `${latest} NFL Draft` : "NFL Draft"}</h1>
+      <h1 className="display mt-1 text-4xl font-extrabold text-chalk sm:text-5xl">{loaded ? `${latest} NFL Draft` : "NFL Draft"}</h1>
       <p className="mt-2 max-w-3xl text-sm text-chalk-3">
         The last three drafts, by position and by school. This is the demand side of the radar: where NFL teams actually spent picks, so you know which positions and which pipelines to watch on Saturdays.
       </p>
 
       {!loaded && (
         <div className="card mt-6 p-8 text-center">
-          <p className="display text-2xl text-chalk">Draft history needs ingested data</p>
+          <p className="display text-xl text-chalk">Draft history needs ingested data</p>
           <p className="mt-1 text-sm text-chalk-3">Run <code className="mono">npm run ingest</code> inside web/.</p>
         </div>
       )}
@@ -67,7 +67,7 @@ export default function DraftPage() {
         <>
           <section className="mt-8">
             <div className="flex items-baseline gap-3">
-              <h2 className="display text-2xl font-bold text-chalk">Positions in the top 50</h2>
+              <h2 className="display text-xl font-bold text-chalk">Positions in the top 50</h2>
               <span className="mono text-xs text-chalk-3">{latest} vs {years[1]}</span>
               <span className="h-px flex-1 bg-line" />
             </div>
@@ -91,7 +91,7 @@ export default function DraftPage() {
 
           <section className="mt-10 grid gap-6 md:grid-cols-2">
             <div>
-              <h2 className="display text-2xl font-bold text-chalk">Pipeline schools, {latest}</h2>
+              <h2 className="display text-xl font-bold text-chalk">Pipeline schools, {latest}</h2>
               <ol className="mt-3 grid gap-1">
                 {topColleges.map(([school, e], i) => (
                   <li key={school} className="flex items-center gap-3 text-sm">
@@ -104,7 +104,7 @@ export default function DraftPage() {
               <p className="mt-2 text-xs text-chalk-3">Tap a school to see who is on its radar this season.</p>
             </div>
             <div>
-              <h2 className="display text-2xl font-bold text-chalk">By conference, {latest}</h2>
+              <h2 className="display text-xl font-bold text-chalk">By conference, {latest}</h2>
               <ol className="mt-3 grid gap-1">
                 {topConfs.map(([conf, n], i) => (
                   <li key={conf} className="flex items-center gap-3 text-sm">
@@ -119,13 +119,13 @@ export default function DraftPage() {
 
           <section className="mt-10">
             <div className="flex items-baseline gap-3">
-              <h2 className="display text-2xl font-bold text-chalk">Round 1, {latest}</h2>
+              <h2 className="display text-xl font-bold text-chalk">Round 1, {latest}</h2>
               <span className="h-px flex-1 bg-line" />
             </div>
             <ol className="mt-3 grid gap-1 sm:grid-cols-2">
               {round1.map((p) => (
                 <li key={p.overall} className="card flex items-center gap-3 px-3 py-2 text-sm">
-                  <span className="display w-8 text-2xl font-extrabold text-flag">{p.overall}</span>
+                  <span className="display w-8 text-xl font-extrabold text-flag">{p.overall}</span>
                   <span className="min-w-0">
                     <span className="display block truncate text-lg font-semibold text-chalk">{p.name}</span>
                     <span className="mono text-[11px] text-chalk-3">{GROUP[p.pos] ?? p.pos} · {p.college} · to {p.nfl}</span>

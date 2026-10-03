@@ -21,11 +21,11 @@ export function WatchlistClient({ games }: { games: Game[] }) {
   return (
     <div>
       <p className="eyebrow">Watchlist</p>
-      <h1 className="display mt-1 text-5xl font-extrabold text-chalk">Your Saturday</h1>
+      <h1 className="display mt-1 text-4xl font-extrabold text-chalk">Your Saturday</h1>
 
       {ready && followedGames.length + followedPlayers.length + list.teams.length === 0 && (
         <div className="card mt-6 p-8 text-center">
-          <p className="display text-2xl text-chalk">Nothing followed yet</p>
+          <p className="display text-xl text-chalk">Nothing followed yet</p>
           <p className="mt-1 text-sm text-chalk-3">Follow teams from the Top 25, watch a game from its report, or follow a prospect.</p>
           <div className="mt-4 flex justify-center gap-2">
             <Link href="/rankings" className="inline-block rounded-md bg-flag px-4 py-2 text-sm font-medium text-ink">Top 25</Link>
@@ -36,7 +36,7 @@ export function WatchlistClient({ games }: { games: Game[] }) {
 
       {ready && list.teams.length > 0 && (
         <section className="mt-6">
-          <h2 className="display text-2xl font-bold text-chalk">Teams you follow</h2>
+          <h2 className="display text-xl font-bold text-chalk">Teams you follow</h2>
           <div className="mt-2 flex flex-wrap gap-2">
             {list.teams.map((t) => {
               const g = teamGames.find((x) => x.home.short === t || x.away.short === t);
@@ -59,7 +59,7 @@ export function WatchlistClient({ games }: { games: Game[] }) {
 
       {followedPlayers.length > 0 && (
         <section className="mt-6">
-          <h2 className="display text-2xl font-bold text-chalk">Players you follow</h2>
+          <h2 className="display text-xl font-bold text-chalk">Players you follow</h2>
           <div className="mt-2 grid gap-2 sm:grid-cols-2">
             {followedPlayers.map(({ player: p, game }) => (
               <div key={p.id} className="card flex items-center justify-between gap-3 p-4">
@@ -81,7 +81,7 @@ export function WatchlistClient({ games }: { games: Game[] }) {
 
       {(followedGames.length > 0 || alsoGames.length > 0) && (
         <section className="mt-6">
-          <h2 className="display text-2xl font-bold text-chalk">Games</h2>
+          <h2 className="display text-xl font-bold text-chalk">Games</h2>
           <div className="mt-2 grid gap-2.5">
             {followedGames.map((g, i) => <GameCard key={g.id} game={g} index={i} />)}
             {alsoGames.length > 0 && <p className="eyebrow mt-2">Because of teams and players you follow</p>}

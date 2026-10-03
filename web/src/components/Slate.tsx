@@ -122,7 +122,7 @@ export function Slate({ games }: { games: Game[] }) {
           type="button"
           aria-pressed={weatherOnly}
           onClick={() => setWeatherOnly((v) => !v)}
-          className="mono rounded border border-line px-2 py-1 text-[11px] tracking-wider text-chalk-3 aria-pressed:border-brick aria-pressed:text-brick"
+          className="mono rounded border border-line px-2 py-1 text-[11px] tracking-wider text-chalk-3 aria-pressed:border-warn aria-pressed:text-warn"
         >
           △ Weather risk
         </button>
@@ -137,7 +137,7 @@ export function Slate({ games }: { games: Game[] }) {
       {/* Groups */}
       {grouped.length === 0 && (
         <div className="card mt-6 p-8 text-center">
-          <p className="display text-2xl text-chalk">Nothing matches</p>
+          <p className="display text-xl text-chalk">Nothing matches</p>
           <p className="mt-1 text-sm text-chalk-3">
             {quick === "Watchlist"
               ? "Follow a team, a game, or a player and it shows up here."
@@ -150,7 +150,7 @@ export function Slate({ games }: { games: Game[] }) {
       {grouped.map(([label, gs]) => (
         <section key={label} className="mt-6">
           <div className="mb-2 flex items-baseline gap-3">
-            <h2 className="display text-2xl font-bold text-chalk">{label}</h2>
+            <h2 className="display text-xl font-bold text-chalk">{label}</h2>
             <span className="mono text-xs text-chalk-3">{gs.length} {gs.length === 1 ? "game" : "games"}</span>
             <span className="h-px flex-1 bg-line" />
           </div>

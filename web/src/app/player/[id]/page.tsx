@@ -37,7 +37,7 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
             <span className="text-sm text-chalk-2">{team?.name ?? r?.team ?? p.team}</span>
             <Tier tier={p.tier} />
           </div>
-          <h1 className="display mt-1 text-5xl font-extrabold leading-none text-chalk sm:text-6xl">{p.name}</h1>
+          <h1 className="display mt-1 text-4xl font-extrabold leading-none text-chalk sm:text-5xl">{p.name}</h1>
           <p className="mono mt-2 text-sm text-chalk-3">
             {p.pos}{r ? ` (${GROUP_LABEL[r.group]})` : ""} · {p.cls}{p.ht ? ` · ${p.ht}, ${p.wt} lb` : ""}{r?.hometown ? ` · ${r.hometown}` : ""}
           </p>
@@ -56,7 +56,7 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
 
       <section className="mt-8 grid gap-2 sm:grid-cols-3">
         <Box label="Draft class">
-          <span className="display text-4xl font-bold text-chalk">{p.draftYear}</span>
+          <span className="display text-3xl font-bold text-chalk">{p.draftYear}</span>
           <Confidence level={p.eligibilityConfidence} />
           {r && <span className="text-xs text-chalk-3">{r.eligibilityNote}</span>}
         </Box>
@@ -68,12 +68,12 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
         <Box label="Pedigree">
           {r?.stars ? (
             <>
-              <span className="display text-4xl font-bold text-flag-2">{"★".repeat(r.stars)}</span>
+              <span className="display text-3xl font-bold text-warn">{"★".repeat(r.stars)}</span>
               <span className="text-xs text-chalk-3">{r.recruitRank ? `No. ${r.recruitRank} recruit nationally` : "Rated recruit"}</span>
             </>
           ) : (
             <>
-              <span className="display text-4xl font-bold text-chalk-3">–</span>
+              <span className="display text-3xl font-bold text-chalk-3">–</span>
               <span className="text-xs text-chalk-3">No recruiting rating on file</span>
             </>
           )}
@@ -133,7 +133,7 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
         <p className="eyebrow">This week</p>
         {game ? (
           <Link href={`/game/${game.id}`} className="card mt-2 flex items-center justify-between gap-3 p-4 hover:bg-panel-2">
-            <span className="display text-2xl font-bold text-chalk">
+            <span className="display text-xl font-bold text-chalk">
               {game.away.rank ? <span className="mr-1 text-lg text-flag">{game.away.rank}</span> : null}{game.away.short} @ {game.home.rank ? <span className="mr-1 text-lg text-flag">{game.home.rank}</span> : null}{game.home.short}
             </span>
             <span className="mono text-right text-xs text-chalk-3">{kickoffTime(game.kickoff)} ET · {game.network}</span>
