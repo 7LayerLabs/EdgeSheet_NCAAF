@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Press box at night.
+   Dark slate ground, chalk text, penalty-flag yellow for the one
+   number that matters (Scout Score), turf green for live, brick for
+   weather warnings, sky blue for market/info.
+------------------------------------------------------------------- */
+:root {
+  --ink: #0d1218;
+  --ink-2: #131a22;
+  --panel: #1a232d;
+  --panel-2: #212c38;
+  --line: #2b3844;
+  --line-2: #3a4957;
+  --chalk: #efe8d8;
+  --chalk-2: #c8c1b3;
+  --chalk-3: #8b95a0;
+  --flag: #f5c518;
+  --flag-2: #b8900d;
+  --turf: #4fa876;
+  --brick: #d9583c;
+  --sky: #77aee0;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-chalk: var(--chalk);
+  --color-chalk-2: var(--chalk-2);
+  --color-chalk-3: var(--chalk-3);
+  --color-flag: var(--flag);
+  --color-flag-2: var(--flag-2);
+  --color-turf: var(--turf);
+  --color-brick: var(--brick);
+  --color-sky: var(--sky);
+  --font-display: var(--font-barlow), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-plex), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+html {
+  color-scheme: dark;
+  background: var(--ink);
+}
+
+body {
+  background: var(--ink);
+  color: var(--chalk);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Yard-line texture behind the page: faint hash marks every 40px. */
+.field {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 39px,
+      color-mix(in srgb, var(--chalk) 4%, transparent) 39px 40px
+    );
+}
+
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--chalk-3);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.card:hover {
+  border-color: var(--line-2);
+}
+
+/* Scout Score meter: ten hash marks like yard lines. */
+.meter {
+  position: relative;
+  height: 6px;
+  background: var(--ink-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.meter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0 calc(10% - 1px),
+    var(--ink) calc(10% - 1px) 10%
+  );
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  background: var(--flag);
+  transition: width 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--turf);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--turf) 60%, transparent);
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--turf) 60%, transparent); }
+  70% { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.rise {
+  animation: rise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--chalk-2);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms, color 120ms;
+}
+.chip:hover { border-color: var(--line-2); color: var(--chalk); }
+.chip[aria-pressed="true"] {
+  background: var(--chalk);
+  border-color: var(--chalk);
+  color: var(--ink);
+}
+
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.scroll-x::-webkit-scrollbar { display: none; }
+
+:focus-visible {
+  outline: 2px solid var(--flag);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .live-dot { animation: none; }
+  .meter > span { transition: none; }
+}
