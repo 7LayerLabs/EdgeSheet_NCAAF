@@ -75,14 +75,8 @@ const classYears = [season - 4, season - 3, season - 2, season - 1, season];
 const recruiting = (await Promise.all(classYears.map((y) => get(`/recruiting/players?year=${y}&classification=HighSchool`, { optional: true })))).flat();
 log("recruits", recruiting.length);
 
-// FCS advanced stats are only served per team. Sequential, with a small pause, to stay under the rate limit.
-const fcsTeams = teams.filter((t) => t.classification === "fcs").map((t) => t.school);
+// Advanced tendencies are FBS-only on the free tier (FCS calls return empty). Keep the hook so a paid key can extend it.
 const advFcs = [];
-for (const team of fcsTeams) {
-  advFcs.push(...(await get(`/stats/season/advanced?year=${season}&team=${encodeURIComponent(team)}`, { optional: true })));
-  await sleep(120);
-}
-log("adv FCS", advFcs.length, "of", fcsTeams.length, "teams");
 
 const draftYears = [season, season - 1, season - 2];
 const draft = (await Promise.all(draftYears.map((y) => get(`/draft/picks?year=${y}`, { optional: true })))).flat();

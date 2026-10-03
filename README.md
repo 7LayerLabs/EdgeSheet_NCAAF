@@ -40,7 +40,7 @@ Mobile gets a five-tab bar; desktop gets the top nav.
 | Box scores | CollegeFootballData `games/players` | 15 min |
 | Rosters, season stats, usage, recruiting ratings, team advanced stats, draft picks | `scripts/ingest.mjs` writes `web/data/generated/*.json` | run `npm run ingest` (daily is plenty) |
 
-Not available on the free tier: live clock and score during a game (status is schedule-based), NAIA schedules.
+Not available on the free tier: live clock and score during a game (status is schedule-based), NAIA schedules, advanced tendencies for FCS and below (Team Style is FBS-only; the report says so).
 
 ## The scouting radar
 
