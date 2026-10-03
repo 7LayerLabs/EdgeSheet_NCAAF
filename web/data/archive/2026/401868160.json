@@ -48,6 +48,13 @@
    "away": 34,
    "modelSide": "UTU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": -12.5,
+   "favorite": "SUU",
+   "side": "UTU",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

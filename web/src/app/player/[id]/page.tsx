@@ -11,6 +11,9 @@ import { RadarScore } from "@/components/ProspectCard";
 import { DecisionButtons } from "@/components/DecisionButtons";
 import { entryFor, pickText } from "@/lib/forecast";
 import { decisionFor } from "@/lib/declarations";
+import { Suspense } from "react";
+import { PlayerNews } from "@/components/PlayerNews";
+import { BeatFeedFallback } from "@/components/BeatFeed";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +40,7 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
       )}
 
       <header className="mt-3 flex items-start gap-4">
-        <Avatar jersey={p.jersey} color={team?.color ?? "#3a4957"} logo={team?.logo} size="lg" />
+        <Avatar jersey={p.jersey} color={team?.color ?? "#3a4957"} logo={team?.logo} size="lg" playerId={p.id} name={p.name} />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-sm text-chalk-2">{team?.name ?? r?.team ?? p.team}</span>
@@ -176,6 +179,14 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
         ) : (
           <p className="mt-2 text-sm text-chalk-3">No game on this week&apos;s schedule for {r?.team ?? p.team}.</p>
         )}
+      </section>
+
+      {/* Beat feed items that name this player, plus a highlights link. Context only. */}
+      <section className="mt-8">
+        <p className="eyebrow">In the news</p>
+        <Suspense fallback={<BeatFeedFallback />}>
+          <PlayerNews player={{ id: p.id, name: p.name, team: team?.short ?? r?.team ?? p.team }} />
+        </Suspense>
       </section>
     </article>
   );

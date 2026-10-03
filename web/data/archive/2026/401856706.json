@@ -84,6 +84,13 @@
    "away": 4,
    "modelSide": "LSU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 53,
+   "favorite": "LSU",
+   "side": "LSU",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

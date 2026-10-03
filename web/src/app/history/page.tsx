@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { historyStats, listEntries } from "@/lib/archive";
 import { asOf, kickoffTime } from "@/lib/format";
+import { LedgerSection } from "@/components/Ledger";
+import { SendToTelegram } from "@/components/SendToTelegram";
+import { telegramReady } from "@/lib/telegram";
 
 export const dynamic = "force-dynamic";
 
@@ -15,11 +18,15 @@ export default function HistoryPage() {
   return (
     <div>
       <p className="eyebrow">The record</p>
-      <h1 className="display mt-1 text-5xl font-extrabold text-chalk sm:text-6xl">Did it play out?</h1>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <h1 className="display mt-1 text-5xl font-extrabold text-chalk sm:text-6xl">Did it play out?</h1>
+        <SendToTelegram type="grades" enabled={telegramReady()} />
+      </div>
       <p className="mt-2 max-w-3xl text-base text-chalk-3">
         Every Division I game gets its pregame call locked before kickoff: the matchup edges, the pressure point, the radar names, the Scout Score, the line.
         After the final, the box score grades it. Nothing is edited after the fact. This is the archive the thresholds get tuned against.
       </p>
+      <p className="mt-1 text-sm"><Link href="/backtest" className="text-sky">See the historical track record</Link>: the models replayed on four past seasons.</p>
 
       {entries.length === 0 && (
         <div className="card mt-6 p-8 text-center">
@@ -34,6 +41,7 @@ export default function HistoryPage() {
           <Tile label="Model winner" value={pct(stats.winnerRight, stats.winnerGraded)} sub={`${stats.winnerRight} of ${stats.winnerGraded}${stats.avgMarginError != null ? ` · margin off by ${stats.avgMarginError.toFixed(1)} avg` : ""}`} />
           <Tile label="Model vs number" value={pct(stats.modelSideCovered, stats.modelSideGraded)} sub={`${stats.modelSideCovered} of ${stats.modelSideGraded} model sides covered`} />
           <Tile label="Model total lean" value={pct(stats.totalLeanRight, stats.totalLeanGraded)} sub={`${stats.totalLeanRight} of ${stats.totalLeanGraded} over/under leans right`} />
+          <Tile label="Consensus vs number" value={pct(stats.consensusSideCovered, stats.consensusSideGraded)} sub={`${stats.consensusSideCovered} of ${stats.consensusSideGraded} consensus sides covered · winner ${stats.consensusWinnerRight} of ${stats.consensusWinnerGraded}`} />
           <Tile label="Matchup calls" value={pct(stats.edgePlayedOut, stats.edgeCalls)} sub={`${stats.edgePlayedOut} played out, ${stats.edgeMissed} missed, of ${stats.edgeCalls}`} />
           <Tile label="Pressure point" value={pct(stats.pressurePlayedOut, stats.pressureGraded)} sub={`${stats.pressurePlayedOut} of ${stats.pressureGraded}`} />
           <Tile label="Radar names" value={pct(stats.prospectShowedUp, stats.prospectCalls)} sub={`${stats.prospectShowedUp} of ${stats.prospectCalls} showed up`} />
@@ -92,6 +100,8 @@ export default function HistoryPage() {
           </ol>
         </section>
       )}
+
+      {graded.length > 0 && <LedgerSection entries={graded} />}
 
       {pending.length > 0 && (
         <section className="mt-8">

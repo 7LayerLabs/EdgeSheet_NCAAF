@@ -48,6 +48,13 @@
    "away": 25,
    "modelSide": "HCU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 1.5,
+   "favorite": "HCU",
+   "side": "HCU",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

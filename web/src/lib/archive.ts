@@ -9,6 +9,8 @@ import path from "node:path";
 import type { BoxScore } from "./boxscore";
 import type { Game, Matchup } from "./types";
 import { scoutScore } from "./score";
+import { closingValue, type ClvRecord } from "./odds";
+import { gradePassingDowns } from "./situational";
 
 const DIR = path.join(process.cwd(), "data", "archive");
 
@@ -47,6 +49,8 @@ export interface Pregame {
   total?: number;
   abbr: { home: string; away: string };
   projection?: { winner: string; winProb: number; margin: number; home: number; away: number; modelSide?: string; confidence: string; modelTotal?: number; totalLean?: "over" | "under" | "none" };
+  /** Consensus of outside systems (SP+, FPI, SRS, Elo, CFBD pregame) plus ours: median home margin and the side most lean to against the number. */
+  consensus?: { median: number; favorite: string; side?: string; sideCount?: number; of: number };
 }
 
 export interface EdgeResult extends EdgeCall {
@@ -69,6 +73,9 @@ export interface Postgame {
   prospects: ProspectResult[];
   pressurePointVerdict: Verdict;
   projectionResult?: { winnerRight: boolean; marginError: number; modelSideCovered?: boolean; totalLeanRight?: boolean };
+  /** Closing line from Odds API snapshots and closing-line value for the model side and total lean. */
+  clv?: ClvRecord;
+  consensusResult?: { winnerRight: boolean; marginError: number; sideCovered?: boolean };
 }
 
 export interface ArchiveEntry {
@@ -122,6 +129,10 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
       existing.pregame.projection.totalLean = game.projection.totalLean;
       writeEntry(existing);
     }
+    if (!existing.postgame && !existing.pregame.consensus && game.consensus?.median !== undefined) {
+      existing.pregame.consensus = consensusLock(game);
+      writeEntry(existing);
+    }
     return existing;
   }
   if (!game.matchups.length && !game.prospects.length) return undefined;
@@ -154,10 +165,17 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
       projection: game.projection
         ? { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence, modelTotal: game.projection.modelTotal, totalLean: game.projection.totalLean }
         : undefined,
+      consensus: consensusLock(game),
     },
   };
   writeEntry(entry);
   return entry;
+}
+
+function consensusLock(game: Game): Pregame["consensus"] {
+  const c = game.consensus;
+  if (!c || c.median === undefined || !c.favorite) return undefined;
+  return { median: c.median, favorite: c.favorite, side: c.side, sideCount: c.sideCount, of: c.available };
 }
 
 /* ------------------------------------------------------------ grading */
@@ -178,7 +196,12 @@ function teamBox(box: BoxScore, school: string): TeamBox | undefined {
   return { rushYds: sum("rushing", "YDS"), rushCar: sum("rushing", "CAR"), passYds: sum("passing", "YDS"), longPlay: Math.max(max("receiving", "LONG"), max("rushing", "LONG")) };
 }
 
-function gradeEdge(e: EdgeCall, off: TeamBox | undefined): { verdict: Verdict; actual: string } {
+function gradeEdge(e: EdgeCall, off: TeamBox | undefined, gameId?: string): { verdict: Verdict; actual: string } {
+  // Passing downs are graded from play-by-play (situational digest), not the box score.
+  if (e.axis === "passing-downs" && gameId) {
+    const g = gradePassingDowns(gameId, e.offTeam, e.b.replace(/ pressure$/i, ""), e.edge);
+    if (g) return g;
+  }
   if (!off) return { verdict: "unmeasured", actual: "No box score for the offense." };
   const ypc = off.rushCar ? off.rushYds / off.rushCar : 0;
   const rushLine = `${off.rushYds} rush yds on ${off.rushCar} carries (${ypc.toFixed(1)} per)`;
@@ -195,7 +218,7 @@ function gradeEdge(e: EdgeCall, off: TeamBox | undefined): { verdict: Verdict; a
       return { verdict: off.passYds <= 180 && off.longPlay < 35 ? "played out" : off.passYds >= 260 || off.longPlay >= 45 ? "did not play out" : "mixed", actual: passLine };
     }
     default:
-      return { verdict: "unmeasured", actual: "Third-down detail is not in the box score." };
+      return { verdict: "unmeasured", actual: "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)." };
   }
 }
 
@@ -217,9 +240,23 @@ function gradeProspect(p: ProspectCall, box: BoxScore): { verdict: ProspectResul
 export function gradePostgame(game: Game, season: number, box: BoxScore, excitement?: number | null): ArchiveEntry | undefined {
   if (game.status !== "final" || !game.score || !Number.isFinite(game.score.home)) return undefined;
   const entry = readEntry(season, game.id);
+  if (entry?.postgame) {
+    // A passing-downs edge graded before play-by-play was ingested gets filled in once the digest has the game.
+    let changed = false;
+    for (const x of entry.postgame.edges) {
+      if (x.axis !== "passing-downs" || x.verdict !== "unmeasured" || x.edge === "even") continue;
+      const g = gradePassingDowns(game.id, x.offTeam, x.b.replace(/ pressure$/i, ""), x.edge);
+      if (g && g.verdict !== "unmeasured") {
+        x.verdict = g.verdict;
+        x.actual = g.actual;
+        changed = true;
+      }
+    }
+    if (changed) writeEntry(entry);
+  }
   if (!entry || entry.postgame) return entry;
   const pre = entry.pregame;
-  const edges: EdgeResult[] = pre.edges.map((e) => ({ ...e, ...gradeEdge(e, teamBox(box, e.offTeam)) }));
+  const edges: EdgeResult[] = pre.edges.map((e) => ({ ...e, ...gradeEdge(e, teamBox(box, e.offTeam), game.id) }));
   const prospects: ProspectResult[] = pre.prospects.map((p) => ({ ...p, ...gradeProspect(p, box) }));
 
   let spreadResult: Postgame["spreadResult"];
@@ -249,9 +286,23 @@ export function gradePostgame(game: Game, season: number, box: BoxScore, excitem
     if (pre.projection.totalLean && pre.projection.totalLean !== "none" && totalResult && totalResult !== "push") totalLeanRight = pre.projection.totalLean === totalResult;
     projectionResult = { winnerRight: actualWinner === pre.projection.winner, marginError: Math.abs(actualHomeMargin - projHomeMargin), modelSideCovered, totalLeanRight };
   }
+  let consensusResult: Postgame["consensusResult"];
+  if (pre.consensus) {
+    const actualHomeMargin = game.score.home - game.score.away;
+    const actualWinner = actualHomeMargin > 0 ? pre.abbr.home : actualHomeMargin < 0 ? pre.abbr.away : "tie";
+    let sideCovered: boolean | undefined;
+    if (pre.spread && pre.consensus.side && spreadResult && spreadResult !== "push") {
+      const onFavorite = pre.consensus.side === pre.spread.team;
+      sideCovered = onFavorite ? spreadResult === "favorite covered" : spreadResult === "underdog covered";
+    }
+    consensusResult = { winnerRight: actualWinner === pre.consensus.favorite, marginError: Math.abs(actualHomeMargin - pre.consensus.median), sideCovered };
+  }
   const top = edges.find((e) => e.edge !== "even") ?? edges[0];
+  const clv = closingValue(season, game.id, pre.kickoff, pre);
   entry.postgame = {
     projectionResult,
+    clv,
+    consensusResult,
     capturedAt: new Date().toISOString(),
     score: { home: game.score.home, away: game.score.away },
     excitement: excitement ?? null,
@@ -303,6 +354,10 @@ export interface HistoryStats {
   avgMarginError: number | null;
   totalLeanRight: number;
   totalLeanGraded: number;
+  consensusWinnerRight: number;
+  consensusWinnerGraded: number;
+  consensusSideCovered: number;
+  consensusSideGraded: number;
   byBucket: { label: string; games: number; avgExcitement: number | null }[];
 }
 
@@ -324,7 +379,13 @@ export function historyStats(entries: ArchiveEntry[]): HistoryStats {
   const proj = graded.filter((e) => e.postgame!.projectionResult);
   const sided = proj.filter((e) => e.postgame!.projectionResult!.modelSideCovered !== undefined);
   const totaled = proj.filter((e) => e.postgame!.projectionResult!.totalLeanRight !== undefined);
+  const cons = graded.filter((e) => e.postgame!.consensusResult);
+  const consSided = cons.filter((e) => e.postgame!.consensusResult!.sideCovered !== undefined);
   return {
+    consensusWinnerRight: cons.filter((e) => e.postgame!.consensusResult!.winnerRight).length,
+    consensusWinnerGraded: cons.length,
+    consensusSideCovered: consSided.filter((e) => e.postgame!.consensusResult!.sideCovered).length,
+    consensusSideGraded: consSided.length,
     totalLeanRight: totaled.filter((e) => e.postgame!.projectionResult!.totalLeanRight).length,
     totalLeanGraded: totaled.length,
     winnerRight: proj.filter((e) => e.postgame!.projectionResult!.winnerRight).length,

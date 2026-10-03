@@ -48,6 +48,13 @@
    "away": 31,
    "modelSide": "CP",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 6,
+   "favorite": "CP",
+   "side": "WEB",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

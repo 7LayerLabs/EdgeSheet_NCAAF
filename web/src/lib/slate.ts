@@ -34,12 +34,19 @@ import { prospectFileLoaded, prospectRowById, prospectsForTeam } from "./prospec
 import { generatedLoaded, genMeta } from "./generated";
 import { radarForGame, radarForTeam, radarPlayer, type RadarPlayer } from "./radar";
 import { leagueMeans, pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
+import { gameCues, situationsFor } from "./situational";
 import { bandFor } from "./forecast";
 import { projectGame } from "./projection";
+import { buildConsensus } from "./consensus";
 import { boxScore } from "./boxscore";
 import { memo } from "./memo";
+import { liveGame, liveSummary } from "./espn";
 import { gradePostgame, lockPregame, readEntry } from "./archive";
+import { gameOdds } from "./odds";
 import { evaluateWeather } from "./weather";
+import { arrivalNote, portalStorylines } from "./portal";
+import { fieldBearing } from "./stadiums";
+import { baseline as climateBaseline } from "./climate";
 import { games as sampleGames, getGame as sampleGame, getPlayer as samplePlayer, SLATE_DATE } from "./data";
 import type { Coverage, DefenseProfile, Division, Game, Market, Matchup, OffenseProfile, Prospect, ScoreComponents, Team, WeatherInput } from "./types";
 
@@ -472,13 +479,27 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
   const away = mkTeam(raw.awayTeam, raw.awayId, raw.awayConference, b);
   const now = Date.now();
   const started = new Date(raw.startDate).getTime() <= now;
-  const status: Game["status"] = raw.completed ? "final" : started ? "live" : "upcoming";
+  let status: Game["status"] = raw.completed ? "final" : started ? "live" : "upcoming";
   const hasScore = raw.homePoints != null && raw.awayPoints != null;
-  const score = hasScore
+  let score = hasScore
     ? { home: raw.homePoints as number, away: raw.awayPoints as number, clock: raw.completed ? "Final" : "in progress" }
     : status === "live"
       ? { home: NaN, away: NaN, clock: "in progress" }
       : undefined;
+
+  // ESPN live overlay (Division I only): real clock, score, situation, win probability for games that
+  // kicked off in the last 30 hours. CFBD stays the source for everything else.
+  const espnLive =
+    (cls === "fbs" || cls === "fcs") && status !== "upcoming" && now - new Date(raw.startDate).getTime() < 30 * 3600 * 1000
+      ? await liveGame(String(raw.id), etDate(new Date(raw.startDate))).catch(() => undefined)
+      : undefined;
+  if (espnLive && espnLive.state !== "pre") {
+    status = espnLive.state === "in" ? "live" : "final";
+    if (espnLive.home.score != null && espnLive.away.score != null) score = { home: espnLive.home.score, away: espnLive.away.score, clock: espnLive.detail };
+  } else if (espnLive && !raw.completed) {
+    status = "upcoming"; // CFBD says the clock has passed kickoff; ESPN says it has not started (delay or late kick).
+    score = undefined;
+  }
 
   const builtAt = new Date().toISOString();
   const market = mkMarket(b.lines.get(raw.id), home, away, builtAt);
@@ -494,12 +515,15 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
         dome: venue.dome,
         grass: venue.grass,
         elevationMeters: venue.elevation != null ? Number(venue.elevation) : null,
+        fieldBearing: fieldBearing(venue.id)?.bearing,
+        fieldBearingConfidence: fieldBearing(venue.id)?.confidence,
       },
       raw.startDate,
     )
       : Promise.resolve(undefined);
   const boxP = withBox && status !== "upcoming" ? boxScore(String(raw.id), raw.season, raw.week, raw.seasonType, cls).catch(() => undefined) : Promise.resolve(undefined);
-  const [weather, bs] = await Promise.all([weatherP, boxP]);
+  const liveP = withBox && espnLive && espnLive.state !== "pre" ? liveSummary(String(raw.id)).catch(() => undefined) : Promise.resolve(undefined);
+  const [weather, bs, espnDetail] = await Promise.all([weatherP, boxP, liveP]);
 
   // Prospects: curated board entries first (if any), then the production-based radar.
   const curated = [
@@ -562,6 +586,11 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
     means: charted ? leagueMeans(cls) : undefined,
     weather,
   });
+  // Outside projection systems next to ours (SP+, FPI, SRS, Elo, CFBD pregame). Division I only; never throws.
+  const consensus =
+    division === "FBS" || division === "FCS"
+      ? await buildConsensus({ gameId: String(raw.id), season: raw.season, week: raw.week, seasonType: raw.seasonType, home, away, homeSchool: raw.homeTeam, awaySchool: raw.awayTeam, neutral: raw.neutralSite, homeElo: raw.homePregameElo, awayElo: raw.awayPregameElo, market, projection }).catch(() => undefined)
+      : undefined;
 
   // Keep an eye on: young or unproven names the radar flags that did not make the main list.
   const inMain = new Set(prospects.map((p) => p.id));
@@ -571,7 +600,10 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
   ].map(({ r, abbr }) => ({
     name: r.name,
     team: abbr,
-    note: `${r.pos}, ${r.cls}. ${r.evidence[0]?.label ?? "No production yet"}${r.evidence[1] ? `. ${r.evidence[1].label}` : ""}. ${r.eligibilityNote}`,
+    note: `${r.pos}, ${r.cls}. ${r.evidence[0]?.label ?? "No production yet"}${r.evidence[1] ? `. ${r.evidence[1].label}` : ""}. ${r.eligibilityNote}${(() => {
+      const a = division === "FBS" || division === "FCS" ? arrivalNote(r.id) : undefined;
+      return a ? ` Transfer: ${a}.` : "";
+    })()}`,
   }));
 
   const ctx = {
@@ -610,12 +642,33 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
         const lines = bs.byPlayer.get(p.id);
         if (lines?.length) p.lines = lines.map((l) => ({ category: l.category, headline: l.headline }));
       }
+      box.source = "cfbd";
+    } else if (espnDetail && espnDetail.box.some((t) => t.leaders.length)) {
+      // In-game box from ESPN until CFBD publishes the settled one.
+      box = {
+        source: "espn",
+        teams: espnDetail.box.map((t) => ({
+          team: t.homeAway === "home" ? home.short : away.short,
+          abbr: t.homeAway === "home" ? home.abbr : away.abbr,
+          points: t.homeAway === "home" ? espnDetail.home.score : espnDetail.away.score,
+          leaders: t.leaders.map((l) => ({ id: l.id, name: l.name, category: l.category, headline: l.headline })),
+        })),
+      };
+      for (const p of prospects) {
+        const lines = espnDetail.byPlayer[p.id];
+        if (lines?.length) p.lines = lines;
+      }
     }
   }
 
+  // Play-by-play situational splits (Division I only), when the digest exists for both schools.
+  const sitHome = cls === "fbs" || cls === "fcs" ? situationsFor(raw.homeTeam) : undefined;
+  const sitAway = cls === "fbs" || cls === "fcs" ? situationsFor(raw.awayTeam) : undefined;
+  const situations = sitHome && sitAway ? { home: sitHome, away: sitAway, cues: gameCues(raw.awayTeam, raw.homeTeam) } : undefined;
+
   const coverage: Coverage = cls === "fbs" || cls === "fcs" ? (charted ? "Full" : "Standard") : "Limited";
   const gaps: string[] = [];
-  if (status !== "final") gaps.push("Live score and clock are not on the current data plan. Status is schedule-based.");
+  if (status !== "final" && !espnLive) gaps.push(cls === "fbs" || cls === "fcs" ? "Live score and clock come from ESPN once the game kicks off. Status is schedule-based until then." : "Live score and clock are not on the current data plan. Status is schedule-based.");
   if (!generatedLoaded()) gaps.push("Rosters, stats, and tendencies are not ingested. Run npm run ingest.");
   else if (!charted) gaps.push("Advanced tendencies are not published for this division. Style and matchup scores are excluded.");
   if (generatedLoaded() && !prospects.length) gaps.push("No player from either team clears the radar threshold yet.");
@@ -648,14 +701,38 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
       ...(raw.notes ? [raw.notes] : []),
       ...(raw.conferenceGame && home.conference ? [`${home.conference} conference game.`] : []),
       ...(raw.neutralSite ? ["Neutral site."] : []),
+      ...(division === "FBS" || division === "FCS" ? portalStorylines(raw.homeTeam, raw.awayTeam) : []),
     ],
+    climate: division === "FBS" || division === "FCS" ? climateBaseline(venue?.id, raw.startDate) : undefined,
     offense: { [home.abbr]: profHome.off, [away.abbr]: profAway.off },
     defense: { [home.abbr]: profHome.def, [away.abbr]: profAway.def },
     pressurePoint: pp ?? "Not charted for this division. The report does not guess a scheme.",
     scoreComponents,
     gaps,
     projection,
+    consensus,
     box,
+    live: espnLive && espnLive.state !== "pre"
+      ? {
+          period: espnLive.period,
+          clock: espnLive.detail,
+          possession: espnLive.possession,
+          down: espnLive.down,
+          distance: espnLive.distance,
+          yardLine: espnLive.yardLine,
+          downDistance: espnLive.downDistance,
+          lastPlay: espnLive.lastPlay,
+          homeWinProb: espnLive.homeWinProb,
+          awayWinProb: espnLive.awayWinProb,
+          swing: espnLive.swing,
+          swingMinutes: espnLive.swingMinutes,
+          closeness: espnLive.closeness,
+          broadcast: espnLive.broadcast,
+          asOf: espnLive.asOf,
+        }
+      : undefined,
+    liveDetail: espnDetail,
+    situations,
     statsAsOf: genMeta()?.ingestedAt,
     reportAsOf: builtAt,
     source: "live",
@@ -789,6 +866,7 @@ async function buildGameById(id: string): Promise<Game | undefined> {
       game.archive = bs ? gradePostgame(game, raw.season, bs, raw.excitementIndex) : readEntry(raw.season, game.id);
     } else game.archive = readEntry(raw.season, game.id);
   } catch {}
+  game.odds = await gameOdds(game, raw.season).catch(() => undefined);
   return game;
 }
 

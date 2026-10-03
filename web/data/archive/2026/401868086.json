@@ -48,6 +48,13 @@
    "away": 26,
    "modelSide": "UCD",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 10,
+   "favorite": "UCD",
+   "side": "EWU",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

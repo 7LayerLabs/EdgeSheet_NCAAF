@@ -146,6 +146,13 @@
    "confidence": "high",
    "modelTotal": 47,
    "totalLean": "none"
+  },
+  "consensus": {
+   "median": -2.6,
+   "favorite": "FRES",
+   "side": "FRES",
+   "sideCount": 5,
+   "of": 6
   }
  }
 }

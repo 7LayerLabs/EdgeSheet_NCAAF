@@ -23,7 +23,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Scout the Slate",
+  title: "EdgeSheet",
   description: "Pick any college football game and know why it is worth watching.",
 };
 
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-white" aria-hidden>
                 <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /><path d="M12 4v8l5 3" /></svg>
               </span>
-              Scout the Slate
+              EdgeSheet
             </Link>
             <NavLinks items={NAV} variant="top" />
           </div>

@@ -146,6 +146,13 @@
    "confidence": "high",
    "modelTotal": 51,
    "totalLean": "none"
+  },
+  "consensus": {
+   "median": 19.5,
+   "favorite": "BOIS",
+   "side": "BOIS",
+   "sideCount": 2,
+   "of": 6
   }
  }
 }

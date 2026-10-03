@@ -137,6 +137,13 @@
    "confidence": "high",
    "modelTotal": 62.5,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": -24.2,
+   "favorite": "IU",
+   "side": "RUTG",
+   "sideCount": 3,
+   "of": 6
   }
  }
 }

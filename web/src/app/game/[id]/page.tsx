@@ -4,12 +4,23 @@ import Image from "next/image";
 import { getGame } from "@/lib/slate";
 import { COMPONENT_KEYS, COMPONENT_LABELS, WEIGHTS, availableWeight, prospectCounts, scoreTag, scoutScore } from "@/lib/score";
 import { evaluateWeather } from "@/lib/weather";
+import { axisLabel, componentPhrase } from "@/lib/stadiums";
+import { baselineLine } from "@/lib/climate";
 import { asOf, etDateOf, kickoffTime, mlText, moveText, spreadText } from "@/lib/format";
 import type { DefenseProfile, Game, OffenseProfile, Prospect, Team } from "@/lib/types";
 import { CoverageBadge, DivisionTag, StatusPill } from "@/components/badges";
 import { ScoutScore } from "@/components/ScoutScore";
 import { FollowButton } from "@/components/FollowButton";
 import { ProspectCard } from "@/components/ProspectCard";
+import { LineMovement } from "@/components/LineMovement";
+import { PropsForRadar } from "@/components/PropsForRadar";
+import { LivePanel } from "@/components/LivePanel";
+import { LivePoller } from "@/components/LivePoller";
+import { WrittenReport } from "@/components/WrittenReport";
+import { ConsensusLine, ConsensusTable } from "@/components/ConsensusTable";
+import { Suspense } from "react";
+import { BeatFeed, BeatFeedFallback } from "@/components/BeatFeed";
+import { SituationalCues, SituationsTable } from "@/components/Situations";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +50,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
             <span className="mono text-xs text-chalk-2">{kickoffTime(game.kickoff)} ET</span>
             <span className="text-xs text-chalk-3">{game.network}</span>
             <StatusPill status={game.status} clock={game.score?.clock} />
+            <LivePoller active={game.status === "live"} />
             <CoverageBadge level={game.coverage} />
           </div>
           <h1 className="display mt-2 text-5xl font-extrabold leading-none text-chalk sm:text-6xl">
@@ -86,6 +98,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
       <nav className="jumpbar" aria-label="Sections">
         {[
           ["why", "Why watch"],
+          ["report", "Report"],
           ["decided", "Decided by"],
           ["radar", "Draft radar"],
           ["eye", "Eye on"],
@@ -94,6 +107,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
           ["conditions", "Conditions"],
           ["market", "Market"],
           ["storylines", "Storylines"],
+          ["feed", "Feed"],
           ["score", "Score"],
         ].map(([id, label]) => (
           <a key={id} href={`#${id}`}>{label}</a>
@@ -111,6 +125,9 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
           ))}
         </ol>
       </Section>
+
+      {/* Written report (AI layer, cached on disk, never generated on page load) */}
+      <WrittenReport game={game} />
 
       {/* 7. Matchups */}
       {game.matchups.length > 0 ? (
@@ -160,6 +177,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
               );
             })}
           </div>
+          {game.situations && <SituationalCues cues={game.situations.cues} />}
           {game.projection && <ProjectionBox game={game} />}
         </Section>
       ) : (
@@ -191,6 +209,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
             </div>
           </div>
         ))}
+        {game.odds && game.prospects.length > 0 && <PropsForRadar gameId={game.id} odds={game.odds} prospects={game.prospects} upcoming={game.status === "upcoming"} />}
         {game.prospects.length === 0 && (
           <p className="mt-2 text-sm text-chalk-3">No player on either roster clears the production, pedigree, or size thresholds. See Keep an eye on below.</p>
         )}
@@ -215,8 +234,9 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
       <Section
         id="showed"
         n={game.status === "final" ? "Postgame" : "Live"}
-        title={game.box ? "Who showed up" : game.status === "final" ? "Box score not published yet" : game.status === "live" ? "Box score arrives when the game settles" : "Opens at kickoff"}
+        title={game.box ? (game.box.source === "espn" && game.status === "live" ? "Who is showing up" : "Who showed up") : game.status === "final" ? "Box score not published yet" : game.status === "live" ? (game.live ? "Live from the feed" : "Box score arrives when the game settles") : "Opens at kickoff"}
       >
+        <LivePanel game={game} />
         {game.box ? (
           <>
             <div className="mt-3 grid gap-2.5 md:grid-cols-2">
@@ -238,7 +258,10 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-xs text-chalk-3">Radar players above show their line from this game. Stock does not move automatically; one game is one data point.</p>
+            <p className="mt-2 text-xs text-chalk-3">
+              {game.box.source === "espn" ? "In-game box from the ESPN feed; the settled CollegeFootballData box replaces it after the final. " : ""}
+              Radar players above show their line from this game. Stock does not move automatically; one game is one data point.
+            </p>
             {game.archive?.postgame && <Accountability entry={game.archive} />}
           </>
         ) : (
@@ -270,6 +293,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
             </div>
           ))}
         </div>
+        {game.situations && <SituationsTable away={game.away} home={game.home} s={game.situations} />}
       </Section>
 
       {/* 4. Weather */}
@@ -285,6 +309,23 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
               <span>{game.weather.elevationFt.toLocaleString()} ft</span>
               <span className="text-chalk-3">as of {asOf(game.weather.asOf)}</span>
             </div>
+            {game.weather.roof === "open" && (
+              <p className="mt-2 text-sm text-chalk-2">
+                {game.weather.windMph > 0
+                  ? `Wind ${game.weather.windDir} ${game.weather.windMph} mph`
+                  : "Calm"}
+                {game.weather.windComponent && game.weather.fieldBearing != null
+                  ? `, ${componentPhrase(game.weather.windComponent)} (field runs ${axisLabel(game.weather.fieldBearing)}${game.weather.fieldBearingConfidence !== "high" ? ", from the stadium outline" : ""}).`
+                  : game.weather.fieldBearing != null
+                    ? `. Field runs ${axisLabel(game.weather.fieldBearing)}.`
+                    : ". Field orientation is not on file for this venue, so the crosswind call is unmeasured."}
+              </p>
+            )}
+            {game.climate ? (
+              <p className="mt-1 text-sm text-chalk-2">{baselineLine(game.climate, game.weather)}</p>
+            ) : (
+              (game.division === "FBS" || game.division === "FCS") && <p className="mt-1 text-sm text-chalk-3">No weather baseline on file for this venue.</p>
+            )}
             <div className="mt-3 grid gap-2 sm:grid-cols-2">
               {flags.length === 0 && (
                 <p className="card p-4 text-sm text-chalk-2">No weather flag. Conditions are not expected to change play calling.</p>
@@ -304,6 +345,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
             </div>
           </>
         )}
+        {!game.weather && game.climate && <p className="mt-2 text-sm text-chalk-2">{baselineLine(game.climate)}</p>}
       </Section>
 
       {/* 5. Market */}
@@ -325,6 +367,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
           <p className="mt-2 text-sm text-chalk-3">No book we track lists this game. The report does not estimate a line.</p>
         )}
         {game.projection && (game.projection.vsMarket || game.projection.totalNote) && <ModelVsMarket game={game} />}
+        {game.odds && <LineMovement odds={game.odds} home={game.home} away={game.away} />}
       </Section>
 
       {/* 9. Storylines */}
@@ -338,6 +381,16 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
             </li>
           ))}
         </ul>
+      </Section>
+
+      {/* Beat feed: posts and headlines about both teams, tagged to radar players. Context only, never a source for the report. */}
+      <Section n="Beat feed" id="feed" title={`What people are saying about ${game.away.short} and ${game.home.short}`}>
+        <Suspense fallback={<BeatFeedFallback />}>
+          <BeatFeed
+            schools={[game.away.short, game.home.short]}
+            players={game.prospects.map((p) => ({ id: p.id, name: p.name, team: p.team === game.home.abbr ? game.home.short : game.away.short }))}
+          />
+        </Suspense>
       </Section>
 
       {/* Score breakdown */}
@@ -396,6 +449,7 @@ function ModelVsMarket({ game }: { game: Game }) {
                 <span className="mono text-base font-normal text-chalk-3">{spreadText(game.market.spread.team, game.market.spread.line)}</span>
               </p>
               <p className="mt-1 text-base text-chalk">{p.vsMarket}</p>
+              <ConsensusLine game={game} />
             </>
           ) : (
             <p className="mt-1 text-base text-chalk-3">No posted spread to compare.</p>
@@ -484,8 +538,9 @@ function ProjectionBox({ game }: { game: Game }) {
           <li key={b}>{b}</li>
         ))}
       </ul>
+      <ConsensusTable game={game} />
       <p className="mt-2 text-xs text-chalk-3">
-        Margin is 60% pregame Elo, 40% unit edges, with the market total for the score line. Win probability assumes a 16-point standard deviation.
+        Margin is pregame Elo plus 40% of the unit-edge adjustment, with the market total for the score line. Win probability assumes a 16-point standard deviation.
         {locked && !graded && ` Locked ${asOf(game.archive!.pregame.capturedAt)}; graded after the final.`}
         {graded && ` Graded: winner ${graded.winnerRight ? "right" : "wrong"}, margin off by ${graded.marginError.toFixed(0)}${graded.modelSideCovered !== undefined ? `, model side ${graded.modelSideCovered ? "covered" : "did not cover"}` : ""}.`}
       </p>

@@ -137,6 +137,13 @@
    "confidence": "high",
    "modelTotal": 63,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": 8.1,
+   "favorite": "USF",
+   "side": "USF",
+   "sideCount": 5,
+   "of": 6
   }
  }
 }

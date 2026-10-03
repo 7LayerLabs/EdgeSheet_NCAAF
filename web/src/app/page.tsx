@@ -2,7 +2,10 @@ import Link from "next/link";
 import { getSlate, shiftDate, type Slate as SlateData } from "@/lib/slate";
 import { scoutScore, scoreTag } from "@/lib/score";
 import { Slate } from "@/components/Slate";
+import { LiveTicker } from "@/components/LiveTicker";
 import type { Game } from "@/lib/types";
+import { SendToTelegram } from "@/components/SendToTelegram";
+import { telegramReady } from "@/lib/telegram";
 
 export const dynamic = "force-dynamic";
 
@@ -37,10 +40,19 @@ export default async function Today({ searchParams }: PageProps<"/">) {
         <div className="mono text-right text-xs text-chalk-3">
           <div>{games.length} games on the slate</div>
           <div>{live ? `${live} in progress` : upcoming ? `${upcoming} still to kick off` : "all final"}</div>
+          <div className="mt-1"><Link href="/ask" className="text-sky hover:underline">Ask the slate</Link></div>
+          {slate.source === "live" && (
+            <div className="mt-1.5 flex justify-end gap-1.5">
+              <SendToTelegram type="slate" date={slate.date} enabled={telegramReady()} />
+              <SendToTelegram type="leans" date={slate.date} enabled={telegramReady()} />
+            </div>
+          )}
         </div>
       </div>
 
       <DayStrip slate={slate} />
+
+      <LiveTicker games={games} />
 
       {games.length > 0 && (
         <div className="mt-5 grid gap-2.5 sm:grid-cols-2">

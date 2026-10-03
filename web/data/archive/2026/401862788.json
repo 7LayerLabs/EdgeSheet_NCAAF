@@ -137,6 +137,13 @@
    "confidence": "high",
    "modelTotal": 59,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": -11.4,
+   "favorite": "UTSA",
+   "side": "RICE",
+   "sideCount": 3,
+   "of": 6
   }
  }
 }

@@ -5,6 +5,7 @@
  */
 import type { WeatherInput } from "./types";
 import { heatIndex } from "./weather";
+import { compassToDegrees, windComponent as windComponentFor } from "./stadiums";
 
 const UA = process.env.NWS_USER_AGENT ?? "ScoutTheSlate/0.1 (prototype)";
 
@@ -40,6 +41,9 @@ export interface VenueForWeather {
   dome: boolean | null;
   grass: boolean | null;
   elevationMeters: number | null;
+  /** Field axis bearing 0..180 from stadiums.json, when known. Enables the crosswind call. */
+  fieldBearing?: number;
+  fieldBearingConfidence?: "high" | "medium" | "low";
 }
 
 export async function forecastAtKickoff(v: VenueForWeather, kickoffIso: string): Promise<WeatherInput | undefined> {
@@ -72,12 +76,18 @@ export async function forecastAtKickoff(v: VenueForWeather, kickoffIso: string):
   const wind = mph(at.windSpeed);
   const gust = Math.max(wind, ...during.map((p) => mph(p.windSpeed)));
   const storm = during.some((p) => /thunder/i.test(p.shortForecast)) ? "watch" : "none";
+  // Crosswind needs the field axis (OpenStreetMap, stadiums.json) and a wind direction. Calm or unknown stays undefined.
+  const windFrom = compassToDegrees(at.windDirection);
+  const component = v.fieldBearing != null && windFrom != null && wind > 0 ? windComponentFor(windFrom, v.fieldBearing) : undefined;
 
   return {
     windMph: wind,
     gustMph: gust,
     windDir: at.windDirection,
-    crosswind: false, // stadium orientation is not in the data yet
+    crosswind: component === "crosswind",
+    fieldBearing: v.fieldBearing,
+    fieldBearingConfidence: v.fieldBearingConfidence,
+    windComponent: component,
     precipChance: maxPop,
     precipWindow,
     tempF: temp,

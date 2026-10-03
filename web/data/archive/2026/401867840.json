@@ -48,6 +48,13 @@
    "away": 18,
    "modelSide": "HARV",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 4.5,
+   "favorite": "HARV",
+   "side": "COLG",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

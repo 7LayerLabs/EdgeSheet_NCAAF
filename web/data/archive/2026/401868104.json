@@ -48,6 +48,13 @@
    "away": 24,
    "modelSide": "IDST",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 7.5,
+   "favorite": "IDST",
+   "side": "IDST",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

@@ -48,6 +48,13 @@
    "away": 27,
    "modelSide": "ILST",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": -2.5,
+   "favorite": "SDST",
+   "side": "ILST",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

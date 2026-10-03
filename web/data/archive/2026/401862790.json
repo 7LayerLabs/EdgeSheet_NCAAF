@@ -75,6 +75,13 @@
    "away": 8,
    "modelSide": "FAU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 45.5,
+   "favorite": "FAU",
+   "side": "FAU",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

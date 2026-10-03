@@ -137,6 +137,13 @@
    "confidence": "high",
    "modelTotal": 67.5,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": -3.7,
+   "favorite": "ORST",
+   "side": "CSU",
+   "sideCount": 5,
+   "of": 6
   }
  }
 }

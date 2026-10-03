@@ -1,0 +1,7 @@
+[2.7s] season 2026: 288 Division I venue ids, 288 with coordinates, 0 skipped (no coordinates). Years 2021 to 2025
+[91.7s] 25/288 (25 fetched, 0 cached)
+[180.6s] 50/288 (50 fetched, 0 cached)
+[285.6s] 75/288 (75 fetched, 0 cached)
+[374.1s] 100/288 (100 fetched, 0 cached)
+[462.6s] 125/288 (125 fetched, 0 cached)
+[699.1s] fail 3838 Memorial Stadium open-meteo -> 429 {"error":true,"reason":"Hourly API request limit exceeded. Please try again in the next hour."}

@@ -1,4 +1,4 @@
-# Scout the Slate (College Game Scout)
+# EdgeSheet (College Game Scout)
 
 Pick any college football game and know why it is worth watching, who NFL scouts are looking at and in which draft class, how the teams play, and what conditions could change the matchup.
 

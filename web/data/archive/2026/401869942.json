@@ -137,6 +137,13 @@
    "confidence": "high",
    "modelTotal": 56.5,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": -0.2,
+   "favorite": "GASO",
+   "side": "CCU",
+   "sideCount": 6,
+   "of": 6
   }
  }
 }

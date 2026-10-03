@@ -247,7 +247,7 @@ function ForecastRow({ e, games, showPos = false }: { e: ForecastEntry; games: M
   return (
     <li className="card flex items-center gap-3 px-3 py-2.5">
       <span className="display w-8 shrink-0 text-right text-2xl font-extrabold text-navy">{showPos ? e.posRank : e.overall}</span>
-      <Avatar jersey={p.jersey} color={team?.color ?? "#3b4658"} logo={team?.logo} size="sm" />
+      <Avatar jersey={p.jersey} color={team?.color ?? "#3b4658"} logo={team?.logo} size="sm" playerId={p.id} name={p.name} />
       <span className="min-w-0 flex-1">
         <Link href={`/player/${p.id}`} className="display block truncate text-xl font-bold text-chalk hover:text-sky">{p.name}</Link>
         <span className="mono text-[11px] text-chalk-3">

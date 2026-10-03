@@ -31,6 +31,35 @@ const HOME_ELO = 65; // typical college home-field edge in Elo points
 const ELO_PER_POINT = 28; // Elo difference per point of spread, college scale
 const SIGMA = 16; // standard deviation of college margins
 
+/**
+ * Blend weights. The constants below are the live model. scripts/backtest.mjs writes fitted
+ * values to data/weights.json; they are only applied when USE_FITTED_WEIGHTS=1 is set, so
+ * running the backtest never changes the live projection on its own. See /backtest.
+ */
+const DEFAULT_BLEND = { eloWeight: 0.6, edgeDivisor: 40 };
+let blendCache: { at: number; value: { eloWeight: number; edgeDivisor: number } } | undefined;
+function blendWeights(): { eloWeight: number; edgeDivisor: number } {
+  if (process.env.USE_FITTED_WEIGHTS !== "1") return DEFAULT_BLEND;
+  const now = Date.now();
+  if (blendCache && now - blendCache.at < 300_000) return blendCache.value;
+  let value = DEFAULT_BLEND;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const fs = require("node:fs") as typeof import("node:fs");
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const path = require("node:path") as typeof import("node:path");
+    const raw = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "weights.json"), "utf8")) as { projection?: { eloWeight?: number; edgeDivisor?: number } };
+    const w = raw.projection ?? {};
+    if (typeof w.eloWeight === "number" && w.eloWeight >= 0 && w.eloWeight <= 1 && typeof w.edgeDivisor === "number" && w.edgeDivisor > 0) {
+      value = { eloWeight: w.eloWeight, edgeDivisor: w.edgeDivisor };
+    }
+  } catch {
+    value = DEFAULT_BLEND;
+  }
+  blendCache = { at: now, value };
+  return value;
+}
+
 function erf(x: number): number {
   const s = Math.sign(x);
   const a = Math.abs(x);
@@ -58,7 +87,8 @@ interface Input {
   weather?: WeatherInput;
 }
 
-const AVG_PPG = 28.5;
+// Calibrated 2026-10-03 against 51 FBS market totals: 28.5 ran 5.9 points high per game.
+const AVG_PPG = 25.6;
 
 /** Expected points for one offense against one defense: league average plus EPA deviations over the game's pace. */
 function expectedPoints(off: GenTeam, def: GenTeam, means: { offPpa: number; defPpa: number }, plays: number): number {
@@ -88,7 +118,7 @@ export function projectGame(i: Input): Projection | undefined {
       const g = gapOf(m); // positive favors the offense in that matchup
       net += homeOffense ? g : -g;
     }
-    tendMargin = net / 40;
+    tendMargin = net / blendWeights().edgeDivisor;
     basis.push(`Unit edges: net ${net >= 0 ? "+" : ""}${net} percentile points to ${net >= 0 ? i.home.abbr : i.away.abbr} across ${i.matchups.length} matchups → ${net >= 0 ? i.home.abbr : i.away.abbr} by ${Math.abs(tendMargin).toFixed(1)}`);
   }
 
@@ -98,7 +128,9 @@ export function projectGame(i: Input): Projection | undefined {
   let margin: number;
   let confidence: Projection["confidence"];
   if (eloMargin !== undefined && tendMargin !== undefined) {
-    margin = 0.6 * eloMargin + 0.4 * tendMargin;
+    // Elo carries the full margin and the unit edges adjust it. A weighted average compressed big favorites
+    // and piled the leans onto underdogs (seen on the 2026-10-03 slate), so the edge term is additive.
+    margin = eloMargin + (1 - blendWeights().eloWeight) * tendMargin;
     confidence = "high";
   } else if (eloMargin !== undefined) {
     margin = eloMargin;

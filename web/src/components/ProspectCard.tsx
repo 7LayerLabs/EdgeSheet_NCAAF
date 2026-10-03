@@ -14,7 +14,7 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
   return (
     <div className="card flex flex-col gap-3 p-4">
       <div className="flex items-start gap-3">
-        <Avatar jersey={p.jersey} color={team.color} logo={team.logo} size={compact ? "sm" : "md"} />
+        <Avatar jersey={p.jersey} color={team.color} logo={team.logo} size={compact ? "sm" : "md"} playerId={p.id} name={p.name} />
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
             <Link href={`/player/${p.id}`} className="display truncate text-2xl font-bold leading-none text-chalk hover:text-flag">

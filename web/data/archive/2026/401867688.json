@@ -39,6 +39,13 @@
    "away": 7,
    "modelSide": "TAR",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 50.5,
+   "favorite": "TAR",
+   "side": "CS",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

@@ -48,6 +48,13 @@
    "away": 27,
    "modelSide": "SOU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 3,
+   "favorite": "SOU",
+   "side": "UAPB",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

@@ -6,6 +6,7 @@ import { weatherRisk, evaluateWeather } from "@/lib/weather";
 import { kickoffTime, spreadText } from "@/lib/format";
 import { CoverageBadge, DivisionTag, StatusPill } from "./badges";
 import { ScoutScore } from "./ScoutScore";
+import { LiveLine } from "./LiveLine";
 
 export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
   const score = scoutScore(game.scoreComponents);
@@ -43,6 +44,8 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
             <span className="text-chalk-3">@</span>
             <TeamLine team={game.home} score={game.score?.home} />
           </div>
+
+          <LiveLine game={game} />
 
           <p className="mt-2 line-clamp-2 text-sm leading-snug text-chalk-2">{game.whyWatch}</p>
 

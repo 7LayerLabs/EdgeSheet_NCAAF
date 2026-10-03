@@ -7,9 +7,10 @@ import { weatherRisk } from "@/lib/weather";
 import { kickoffWindow, type Window } from "@/lib/format";
 import { useWatchlist } from "@/lib/watchlist";
 import { GameCard } from "./GameCard";
+import { flipScore } from "@/lib/live";
 
-type Quick = "All" | "Live" | "Upcoming" | "Finished" | "Top 25" | "Top Prospects" | "Hidden Gems" | "Watchlist" | "Late Night Radar";
-const QUICK: Quick[] = ["All", "Live", "Upcoming", "Finished", "Top 25", "Top Prospects", "Hidden Gems", "Late Night Radar", "Watchlist"];
+type Quick = "All" | "Live" | "Flip to" | "Upcoming" | "Finished" | "Top 25" | "Top Prospects" | "Hidden Gems" | "Watchlist" | "Late Night Radar";
+const QUICK: Quick[] = ["All", "Live", "Flip to", "Upcoming", "Finished", "Top 25", "Top Prospects", "Hidden Gems", "Late Night Radar", "Watchlist"];
 
 const bestRank = (g: Game) => Math.min(g.home.rank ?? 99, g.away.rank ?? 99);
 const DIVS: Division[] = ["FBS", "FCS", "DII", "DIII", "NAIA"];
@@ -27,6 +28,7 @@ export function Slate({ games }: { games: Game[] }) {
     let out = games.filter((g) => divs.has(g.division));
     switch (quick) {
       case "Live": out = out.filter((g) => g.status === "live"); break;
+      case "Flip to": out = out.filter((g) => g.status === "live"); break;
       case "Upcoming": out = out.filter((g) => g.status === "upcoming"); break;
       case "Finished": out = out.filter((g) => g.status === "final"); break;
       case "Top 25": out = out.filter((g) => g.home.rank || g.away.rank); break;
@@ -55,6 +57,7 @@ export function Slate({ games }: { games: Game[] }) {
           .includes(needle),
       );
     }
+    if (quick === "Flip to") return [...out].sort((a, b) => flipScore(b) - flipScore(a) || a.kickoff.localeCompare(b.kickoff));
     out = [...out].sort((a, b) =>
       sort === "score"
         ? scoutScore(b.scoreComponents) - scoutScore(a.scoreComponents)
@@ -66,10 +69,11 @@ export function Slate({ games }: { games: Game[] }) {
   }, [games, quick, divs, weatherOnly, sort, list, q]);
 
   const grouped = useMemo(() => {
+    if (quick === "Flip to") return [["Flip to, best first", filtered] as const];
     if (sort === "score") return [["By Scout Score", filtered] as const];
     if (sort === "rank") return [["By rank", filtered] as const];
     return WINDOWS.map((w) => [w, filtered.filter((g) => kickoffWindow(g.kickoff) === w)] as const).filter(([, gs]) => gs.length);
-  }, [filtered, sort]);
+  }, [filtered, sort, quick]);
 
   const toggleDiv = (d: Division) =>
     setDivs((prev) => {

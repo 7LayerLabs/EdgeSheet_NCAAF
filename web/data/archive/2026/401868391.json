@@ -48,6 +48,13 @@
    "away": 39,
    "modelSide": "WCU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": -12.5,
+   "favorite": "TNTC",
+   "side": "TNTC",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

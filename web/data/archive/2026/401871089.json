@@ -110,6 +110,13 @@
    "confidence": "high",
    "modelTotal": 65,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": 15.1,
+   "favorite": "USA",
+   "side": "USA",
+   "sideCount": 4,
+   "of": 6
   }
  }
 }

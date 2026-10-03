@@ -39,6 +39,13 @@
    "away": 31,
    "modelSide": "ETAM",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": -10.5,
+   "favorite": "RGV",
+   "side": "ETAM",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

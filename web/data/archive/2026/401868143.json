@@ -57,6 +57,13 @@
    "away": 24,
    "modelSide": "EKU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 1.5,
+   "favorite": "EKU",
+   "side": "UNA",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

@@ -119,6 +119,13 @@
    "confidence": "high",
    "modelTotal": 61,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": -2.4,
+   "favorite": "ARMY",
+   "side": "ARMY",
+   "sideCount": 6,
+   "of": 6
   }
  }
 }

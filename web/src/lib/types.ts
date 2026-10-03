@@ -23,6 +23,11 @@ export interface WeatherInput {
   gustMph: number;
   windDir: string;
   crosswind: boolean;
+  /** Field axis bearing 0..180 from OpenStreetMap (stadiums.json), when known. */
+  fieldBearing?: number;
+  fieldBearingConfidence?: "high" | "medium" | "low";
+  /** Wind against the field axis. Undefined when the bearing or wind direction is unknown. */
+  windComponent?: "crosswind" | "down the field" | "quartering";
   precipChance: number;
   precipWindow?: string;
   tempF: number;
@@ -88,6 +93,8 @@ export interface BoxLeader {
 
 export interface BoxSummary {
   teams: { team: string; abbr: string; points: number | null; leaders: BoxLeader[] }[];
+  /** "cfbd" is the settled box; "espn" is the in-game box used until CFBD publishes. */
+  source?: "cfbd" | "espn";
 }
 
 export interface StyleMetric {
@@ -153,6 +160,26 @@ export interface Game {
   network: string;
   status: GameStatus;
   score?: { home: number; away: number; clock: string };
+  /** ESPN live overlay (Division I only): clock, situation, win probability. Present once the game has kicked off. */
+  live?: {
+    period: number;
+    clock: string;
+    possession?: string;
+    down?: number;
+    distance?: number;
+    yardLine?: number;
+    downDistance?: string;
+    lastPlay?: string;
+    homeWinProb?: number;
+    awayWinProb?: number;
+    swing?: number;
+    swingMinutes?: number;
+    closeness?: number;
+    broadcast?: string;
+    asOf: string;
+  };
+  /** ESPN drives, scoring plays, win probability series, box players (game page only). */
+  liveDetail?: import("./espn").LiveSummary;
   coverage: Coverage;
   whyWatch: string;
   whyWatchReasons: string[];
@@ -174,9 +201,17 @@ export interface Game {
   statsAsOf?: string;
   /** Predicted outcome from Elo, unit edges, and the market. */
   projection?: import("./projection").Projection;
+  /** Outside projection systems (SP+, FPI, SRS, Elo, CFBD pregame) next to our model. Division I only. */
+  consensus?: import("./consensus").Consensus;
   /** Accountability archive entry, when one exists. */
   archive?: import("./archive").ArchiveEntry;
+  /** Play-by-play situational splits and game cues (FBS and FCS, once scripts/ingest-plays.mjs has run). */
+  situations?: { home: import("./situational").TeamSituations; away: import("./situational").TeamSituations; cues: import("./situational").SituationCue[] };
+  /** Five-year weather baseline for this venue, week, and kickoff hour (climate.json). Division I only. */
+  climate?: import("./climate").ClimateBaseline;
   excitement?: number | null;
+  /** Line movement, closing line, and props from The Odds API (game page only). */
+  odds?: import("./odds").GameOdds;
   reportAsOf: string;
   /** "live" = CollegeFootballData, "sample" = hand-written prototype data */
   source: "live" | "sample";

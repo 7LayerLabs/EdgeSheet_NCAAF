@@ -39,6 +39,13 @@
    "away": 36,
    "modelSide": "NCCU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": -13.5,
+   "favorite": "CAM",
+   "side": "CAM",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

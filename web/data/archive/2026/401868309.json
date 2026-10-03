@@ -48,6 +48,13 @@
    "away": 19,
    "modelSide": "SFA",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 18.5,
+   "favorite": "SFA",
+   "side": "SFA",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

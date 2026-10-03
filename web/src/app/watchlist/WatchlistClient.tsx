@@ -54,6 +54,12 @@ export function WatchlistClient({ games }: { games: Game[] }) {
           {idle.length > 0 && idle.length === list.teams.length && (
             <p className="mt-2 text-xs text-chalk-3">None of your teams play this week.</p>
           )}
+          <Link
+            href={`/feed?${list.teams.map((t) => `team=${encodeURIComponent(t)}`).join("&")}`}
+            className="mt-3 inline-block rounded border border-line-2 bg-white px-3 py-1.5 text-sm font-semibold text-chalk hover:bg-panel-2"
+          >
+            Beat feed for your teams
+          </Link>
         </section>
       )}
 

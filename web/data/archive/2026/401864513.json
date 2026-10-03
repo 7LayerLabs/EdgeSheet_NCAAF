@@ -137,6 +137,13 @@
    "confidence": "high",
    "modelTotal": 56,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": 2.4,
+   "favorite": "HAW",
+   "side": "HAW",
+   "sideCount": 3,
+   "of": 6
   }
  }
 }

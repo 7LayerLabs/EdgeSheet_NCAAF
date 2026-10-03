@@ -39,6 +39,13 @@
    "away": 26,
    "modelSide": "CHSO",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": -7,
+   "favorite": "GWEB",
+   "side": "GWEB",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

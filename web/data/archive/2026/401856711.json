@@ -137,6 +137,13 @@
    "confidence": "high",
    "modelTotal": 51.5,
    "totalLean": "none"
+  },
+  "consensus": {
+   "median": 11.6,
+   "favorite": "TA&M",
+   "side": "ARK",
+   "sideCount": 4,
+   "of": 6
   }
  }
 }

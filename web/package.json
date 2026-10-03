@@ -8,10 +8,20 @@
     "prebuild": "node scripts/ingest.mjs",
     "start": "next start",
     "lint": "eslint",
-    "ingest": "node scripts/ingest.mjs"
+    "ingest": "node scripts/ingest.mjs",
+    "telegram:bot": "node scripts/telegram-bot.mjs",
+    "telegram:preview": "node scripts/telegram-preview.mjs",
+    "telegram:chat-id": "node scripts/telegram-chat-id.mjs",
+    "ingest:portal": "node scripts/ingest-portal.mjs",
+    "ingest:stadiums": "node scripts/ingest-stadiums.mjs",
+    "ingest:climate": "node scripts/ingest-climate.mjs",
+    "odds:snapshot": "node scripts/odds-snapshot.mjs",
+    "ingest:plays": "node scripts/ingest-plays.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
     "next": "16.3.5",
+    "openai": "^7.27.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
@@ -23,6 +33,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

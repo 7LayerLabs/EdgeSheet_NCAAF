@@ -51,6 +51,10 @@ export function useWatchlist() {
       localStorage.setItem(KEY, JSON.stringify(next));
     } catch {}
     for (const l of listeners) l();
+    // Mirror to the server (data/follows.json) so the Telegram bot can see followed teams and players. Fire-and-forget.
+    try {
+      void fetch("/api/follows", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(next), keepalive: true }).catch(() => {});
+    } catch {}
   }, []);
 
   return { list, toggle, ready };

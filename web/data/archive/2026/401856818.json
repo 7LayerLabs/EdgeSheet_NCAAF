@@ -146,6 +146,13 @@
    "confidence": "high",
    "modelTotal": 57.5,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": -4,
+   "favorite": "BYU",
+   "side": "TCU",
+   "sideCount": 3,
+   "of": 6
   }
  }
 }

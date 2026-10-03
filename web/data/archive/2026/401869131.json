@@ -48,6 +48,13 @@
    "away": 7,
    "modelSide": "LAM",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 40.5,
+   "favorite": "LAM",
+   "side": "NWST",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

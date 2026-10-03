@@ -164,6 +164,13 @@
    "confidence": "high",
    "modelTotal": 54.5,
    "totalLean": "over"
+  },
+  "consensus": {
+   "median": -13.9,
+   "favorite": "MIA",
+   "side": "CLEM",
+   "sideCount": 3,
+   "of": 6
   }
  }
 }

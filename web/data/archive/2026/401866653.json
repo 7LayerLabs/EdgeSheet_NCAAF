@@ -48,6 +48,13 @@
    "away": 17,
    "modelSide": "BRY",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 13.5,
+   "favorite": "BRY",
+   "side": "BRY",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

@@ -48,6 +48,13 @@
    "away": 22,
    "modelSide": "ACU",
    "confidence": "low"
+  },
+  "consensus": {
+   "median": 4.5,
+   "favorite": "ACU",
+   "side": "WFL",
+   "sideCount": 1,
+   "of": 3
   }
  }
 }

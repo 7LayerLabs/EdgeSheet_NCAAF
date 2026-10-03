@@ -1,0 +1,14 @@
+{
+  "projection": {
+    "eloWeight": 0.8,
+    "edgeDivisor": 20
+  },
+  "radar": {
+    "prod": 0.55,
+    "pedigree": 0.22,
+    "usage": 0.13,
+    "size": 0.1
+  },
+  "comment": "Walk-forward backtest 2022, 2023, 2024, 2025 on 2361 FBS games from week 4 on, stats through the prior week only. Live blend (eloWeight 0.6, edgeDivisor 40): winner 0.716, margin error 12.804, cover 0.519. Best by margin error: eloWeight 0.8, edgeDivisor 20: winner 0.712, margin error 12.493, cover 0.516. Elo only: winner 0.708, margin error 12.498. Closing line on the same games: winner 0.724, margin error 11.982. Note eloWeight scales the Elo margin and (1 - eloWeight) / edgeDivisor is the points per percentile of unit edge, so they are two separate dials, not one slider. Radar weights are the current constants; the draft backtest did not fit them (see data/backtest/README.md). projection.ts reads this file when present; the orchestrator decides whether to adopt it.",
+  "generatedAt": "2026-10-03T21:39:52.321Z"
+}
