@@ -97,8 +97,11 @@ export function forecastNextDraft(): Forecast {
     // Position-demand adjustment: premium positions get a bump, discounted ones a haircut, capped at +-8.
     const adjusted = pool.map((p) => {
       const d = dmap.get(p.group);
-      const bump = d ? Math.max(-8, Math.min(8, (d.premium - 1) * 12)) : 0;
-      return { p, adj: p.score + bump };
+      const demandBump = d ? Math.max(-8, Math.min(8, (d.premium - 1) * 12)) : 0;
+      // Pedigree bump: the league pays for a five-star with starter reps even in an average month of box scores.
+      // Production still decides the order; this keeps a top-50 recruit who starts from falling off the board.
+      const pedigreeBump = p.stars === 5 && p.usage >= 25 ? 12 : p.stars === 5 ? 6 : (p.recruitRank ?? 9999) <= 50 && p.usage >= 25 ? 6 : 0;
+      return { p, adj: p.score + demandBump + pedigreeBump };
     });
 
     // Within each position, fill the five-year average number of slots: r1, then day 2 (top 100), then day 3 (all picks).

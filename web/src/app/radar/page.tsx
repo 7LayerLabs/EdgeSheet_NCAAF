@@ -35,9 +35,13 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   const group = GROUPS.includes(str("pos") as PosGroup) ? (str("pos") as PosGroup) : undefined;
   const div = (DIVS.find((d) => d.key === str("div"))?.key ?? "fbs") as "fbs" | "fcs" | "ii" | "iii";
   const q = str("q");
-  const base = { class: String(cls), pos: group, div, q };
+  const sort = (["score", "pedigree", "production"].includes(str("sort") ?? "") ? str("sort") : "score") as "score" | "pedigree" | "production";
+  const showAll = str("all") === "1";
+  const base = { class: String(cls), pos: group, div, q, sort: sort === "score" ? undefined : sort, all: showAll ? "1" : undefined };
 
-  const players = loaded ? radarBoard({ draftClass: cls, group, classification: div, q, limit: 60 }) : [];
+  const pool = loaded ? radarBoard({ draftClass: cls, group, classification: div, q, limit: 5000 }) : [];
+  const sorted = sort === "score" ? pool : [...pool].sort((a, b) => (sort === "pedigree" ? b.pedigree - a.pedigree || b.score - a.score : b.production - a.production || b.score - a.score));
+  const players = showAll ? sorted : sorted.slice(0, 60);
   const games = loaded ? await gameIndexForWeek() : new Map();
 
   const classLabel = cls === nextDraft ? "this year" : cls === nextDraft + 1 ? "next year" : "the year after";
@@ -72,8 +76,14 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
             <Link key={d.key} href={href({ ...base, div: d.key })} aria-current={d.key === div}>{d.label}</Link>
           ))}
         </span>
+        <span className="seg" title="Sort">
+          {(["score", "pedigree", "production"] as const).map((k) => (
+            <Link key={k} href={href({ ...base, sort: k === "score" ? undefined : k })} aria-current={k === sort}>{k === "score" ? "Radar score" : k === "pedigree" ? "Pedigree" : "Production"}</Link>
+          ))}
+        </span>
         <form action="/radar" className="ml-auto flex items-center gap-2">
           <input type="hidden" name="class" value={cls} />
+          {sort !== "score" && <input type="hidden" name="sort" value={sort} />}
           {group && <input type="hidden" name="pos" value={group} />}
           <input type="hidden" name="div" value={div} />
           <input
@@ -114,6 +124,18 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
           );
         })}
       </ol>
+
+      {loaded && pool.length > players.length && (
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <span className="text-sm text-chalk-3">Showing {players.length} of {pool.length} on the radar for this class, division, and position. Every name is in here; search finds anyone.</span>
+          <Link href={href({ ...base, all: "1" })} className="chip">Show all {pool.length}</Link>
+        </div>
+      )}
+      {loaded && showAll && (
+        <div className="mt-4">
+          <Link href={href({ ...base, all: undefined })} className="chip">Show top 60</Link>
+        </div>
+      )}
 
       {loaded && (
         <section className="mt-10 grid gap-2 text-xs text-chalk-3 sm:grid-cols-2">

@@ -66,7 +66,7 @@ export default async function DraftPage({ searchParams }: { searchParams: Promis
   const r1Board = fc?.board.filter((e) => e.band === "Round 1 range") ?? [];
   const day2 = fc?.board.filter((e) => e.band === "Day 2 range") ?? [];
   const posFilter = (typeof sp.pos === "string" ? sp.pos : undefined) as PosGroup | undefined;
-  const groupList = fc && posFilter && fc.byGroup.has(posFilter) ? fc.byGroup.get(posFilter)!.slice(0, 20) : [];
+  const groupList = fc && posFilter && fc.byGroup.has(posFilter) ? fc.byGroup.get(posFilter)! : [];
 
   return (
     <div>
@@ -133,7 +133,7 @@ export default async function DraftPage({ searchParams }: { searchParams: Promis
             <div className="card p-4">
               <p className="eyebrow">How the forecast works</p>
               <p className="mt-1 leading-relaxed">
-                Each position gets as many Round 1, Day 2, and Day 3 slots as the last five drafts averaged for that position. Players fill the slots in radar order after a demand adjustment: positions the league pays up for early (edge, tackle, corner, receiver, quarterback) get a bump of up to 8 points; positions it waits on (running back, linebacker, safety) get a haircut. The estimated pick is the board position, with a spread of 6 in round one, 15 on day two, and 40 on day three. Seniors are eligible. Juniors stay on the board until they announce they are returning; mark that on the player page and the board re-forms.
+                Each position gets as many Round 1, Day 2, and Day 3 slots as the last five drafts averaged for that position. Players fill the slots in radar order after a demand adjustment: positions the league pays up for early (edge, tackle, corner, receiver, quarterback) get a bump of up to 8 points; positions it waits on (running back, linebacker, safety) get a haircut. Five-star recruits with starter usage get a 12-point pedigree bump, because the league pays for pedigree through an average month. The estimated pick is the board position, with a spread of 6 in round one, 15 on day two, and 40 on day three. Seniors are eligible. Juniors stay on the board until they announce they are returning; mark that on the player page and the board re-forms.
               </p>
             </div>
             <div className="card p-4">
