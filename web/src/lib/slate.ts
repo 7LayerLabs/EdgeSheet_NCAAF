@@ -36,6 +36,7 @@ import { radarForGame, radarForTeam, radarPlayer, type RadarPlayer } from "./rad
 import { pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
 import { boxScore } from "./boxscore";
 import { memo } from "./memo";
+import { gradePostgame, lockPregame, readEntry } from "./archive";
 import { evaluateWeather } from "./weather";
 import { games as sampleGames, getGame as sampleGame, getPlayer as samplePlayer, SLATE_DATE } from "./data";
 import type { Coverage, DefenseProfile, Division, Game, Market, Matchup, OffenseProfile, Prospect, ScoreComponents, Team, WeatherInput } from "./types";
@@ -535,7 +536,7 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
     .slice(0, 4)
     .map((e) => {
       const [a, bb] = e.title.split(" vs ");
-      return { a, b: bb, why: e.text, evidence: e.evidence, edge: e.edge };
+      return { a, b: bb, why: e.text, evidence: e.evidence, edge: e.edge, strength: e.strength, watch: e.watch };
     });
   const contrast = charted ? styleContrast(raw.awayTeam, raw.homeTeam) : null;
   const pp = charted ? pressurePoint(raw.awayTeam, raw.homeTeam) : undefined;
@@ -697,6 +698,21 @@ async function buildSlate(requested: string): Promise<Slate> {
   );
   const rest = await Promise.all(others.map((g) => buildGame(g, b, false)));
 
+  // Accountability: lock every upcoming Division I call, grade every final that has one. Never blocks the page on failure.
+  try {
+    for (let i = 0; i < todays.length; i++) {
+      const raw = todays[i];
+      const g = built[i];
+      const cls = raw.homeClassification ?? "fbs";
+      if (cls !== "fbs" && cls !== "fcs") continue;
+      if (g.status === "upcoming") lockPregame(g, raw.season);
+      else if (g.status === "final" && readEntry(raw.season, g.id) && !readEntry(raw.season, g.id)?.postgame) {
+        const bs = await boxScore(g.id, raw.season, raw.week, raw.seasonType, cls);
+        if (bs) gradePostgame(g, raw.season, bs, raw.excitementIndex);
+      }
+    }
+  } catch {}
+
   const notes: string[] = [];
   notes.push("NAIA schedules are not in CollegeFootballData. That division is missing until a second source is wired.");
   if (!generatedLoaded()) notes.push("Rosters, stats, and tendencies are not ingested yet. Run npm run ingest in web/ to light up the radar.");
@@ -741,7 +757,16 @@ async function buildGameById(id: string): Promise<Game | undefined> {
   const week = cal.find((w) => w.week === raw.week && w.seasonType === raw.seasonType) ?? pickWeek(cal, etDate(new Date(raw.startDate)));
   if (!week) return undefined;
   const b = await loadWeek(raw.season, week, [raw]);
-  return buildGame(raw, b, true, true);
+  const game = await buildGame(raw, b, true, true);
+  game.excitement = raw.excitementIndex;
+  try {
+    if (game.status === "upcoming") game.archive = lockPregame(game, raw.season);
+    else if (game.status === "final" && game.box) {
+      const bs = await boxScore(game.id, raw.season, raw.week, raw.seasonType, raw.homeClassification ?? "fbs");
+      game.archive = bs ? gradePostgame(game, raw.season, bs, raw.excitementIndex) : readEntry(raw.season, game.id);
+    } else game.archive = readEntry(raw.season, game.id);
+  } catch {}
+  return game;
 }
 
 export async function getPlayer(id: string): Promise<{ player: Prospect; game?: Game } | undefined> {

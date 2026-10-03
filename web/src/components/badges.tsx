@@ -18,7 +18,7 @@ export function StatusPill({ status, clock }: { status: GameStatus; clock?: stri
         <span className="live-dot" /> Live · {clock}
       </span>
     );
-  if (status === "final") return <span className="mono text-xs uppercase tracking-wider text-chalk-3">Final</span>;
+  if (status === "final") return <span className="rounded bg-brick px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-white">Final</span>;
   return null;
 }
 

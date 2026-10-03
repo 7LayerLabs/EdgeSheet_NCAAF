@@ -32,7 +32,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
       <Link href={game.source === "live" ? `/?date=${etDateOf(game.kickoff)}` : "/"} className="mono text-xs text-chalk-3 hover:text-chalk">← Slate</Link>
 
       {/* 1. Header */}
-      <header className="mt-3 grid gap-5 sm:grid-cols-[1fr_auto] sm:items-start">
+      <header className={`mt-3 grid gap-5 sm:grid-cols-[1fr_auto] sm:items-start ${game.status === "final" ? "rounded border-l-4 border-brick pl-4" : ""}`}>
         <div>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <DivisionTag d={game.division} />
@@ -87,7 +87,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
       <Section n="Why watch" title={game.whyWatch}>
         <ol className="mt-3 grid gap-2 sm:grid-cols-3">
           {game.whyWatchReasons.map((r, i) => (
-            <li key={i} className="card p-4 text-sm leading-snug text-chalk-2">
+            <li key={i} className="card p-4 text-base leading-snug text-chalk-2">
               <span className="display block text-3xl font-bold text-flag">{i + 1}</span>
               <span className="mt-1 block">{r}</span>
             </li>
@@ -112,7 +112,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
         </div>
         <div className="card mt-2.5 border-flag/30 p-4">
           <p className="eyebrow text-flag">Pressure point</p>
-          <p className="mt-1 text-sm leading-relaxed text-chalk">{game.pressurePoint}</p>
+          <p className="mt-1 text-lg leading-relaxed text-chalk">{game.pressurePoint}</p>
         </div>
       </Section>
 
@@ -199,17 +199,30 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
 
       {/* 7. Matchups */}
       {game.matchups.length > 0 && (
-        <Section n="Matchups" title="Who tests whom">
-          <div className="mt-3 grid gap-2">
-            {game.matchups.map((m, i) => (
-              <div key={i} className={`card grid gap-2 p-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center ${m.edge === "offense" ? "border-flag/40" : m.edge === "defense" ? "border-sky/40" : ""}`}>
-                <span className={`display text-2xl font-semibold ${m.edge === "offense" ? "text-flag" : "text-chalk"}`}>{m.a}</span>
-                <span className="mono text-center text-xs text-chalk-3">{m.edge === "even" ? "EVEN" : "VS"}</span>
-                <span className={`display text-2xl font-semibold sm:text-right ${m.edge === "defense" ? "text-sky" : "text-chalk"}`}>{m.b}</span>
-                <p className="text-sm text-chalk-2 sm:col-span-3">{m.why}</p>
-                <p className="mono text-xs text-chalk-3 sm:col-span-3">Evidence: {m.evidence}</p>
-              </div>
-            ))}
+        <Section n="Matchups" title="Where the game gets decided">
+          <p className="mt-1 max-w-3xl text-base text-chalk-3">
+            Each offense against the opposing defense on the four axes that decide games. Ranks are inside the division. The gap is in percentile points; 40 or more is a clear edge, 55 or more is a mismatch.
+          </p>
+          <div className="mt-3 grid gap-3">
+            {game.matchups.map((m, i) => {
+              const tone = m.edge === "offense" ? "border-l-4 border-l-turf" : m.edge === "defense" ? "border-l-4 border-l-sky" : "border-l-4 border-l-line-2";
+              const label = m.strength === "dominant" ? "Mismatch" : m.strength === "clear" ? "Clear edge" : m.strength === "real" ? "Edge" : "Even";
+              const labelTone = m.strength === "dominant" ? "bg-brick text-white" : m.strength === "clear" ? "bg-navy text-white" : m.strength === "real" ? "bg-ink-2 text-chalk" : "bg-ink-2 text-chalk-3";
+              return (
+                <div key={i} className={`card p-5 ${tone}`}>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className={`rounded px-2 py-0.5 text-xs font-bold uppercase tracking-wider ${labelTone}`}>{label}</span>
+                    <span className="display text-2xl font-bold text-chalk">{m.a}</span>
+                    <span className="text-chalk-3">vs</span>
+                    <span className="display text-2xl font-bold text-chalk">{m.b}</span>
+                    {m.edge !== "even" && <span className={`ml-auto text-sm font-semibold ${m.edge === "offense" ? "text-turf" : "text-sky"}`}>Advantage {m.edge}</span>}
+                  </div>
+                  <p className="mt-3 text-lg leading-relaxed text-chalk">{m.why}</p>
+                  {m.watch && <p className="mt-2 text-base text-chalk-2"><span className="eyebrow mr-1">Watch for</span>{m.watch}</p>}
+                  <p className="mono mt-2 text-xs text-chalk-3">Evidence: {m.evidence}</p>
+                </div>
+              );
+            })}
           </div>
         </Section>
       )}
@@ -222,7 +235,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
               <li key={k.name} className="card p-4">
                 <span className="display text-2xl font-semibold text-chalk">{k.name}</span>
                 <span className="mono ml-2 text-xs text-chalk-3">{k.team}</span>
-                <p className="mt-1 text-sm text-chalk-2">{k.note}</p>
+                <p className="mt-1 text-base text-chalk-2">{k.note}</p>
               </li>
             ))}
           </ul>
@@ -269,12 +282,18 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
               ))}
             </div>
             <p className="mt-2 text-xs text-chalk-3">Radar players above show their line from this game. Stock does not move automatically; one game is one data point.</p>
+            {game.archive?.postgame && <Accountability entry={game.archive} />}
           </>
         ) : (
-          <p className="mt-2 text-sm text-chalk-3">
+          <p className="mt-2 text-base text-chalk-3">
             {game.status === "upcoming"
               ? "Box score leaders and each radar player's line appear here once the game starts."
               : "The data feed posts player stats after the game settles. Check back in a few minutes."}
+          </p>
+        )}
+        {game.status === "upcoming" && game.archive && (
+          <p className="mono mt-3 text-xs text-chalk-3">
+            Pregame call locked {asOf(game.archive.pregame.capturedAt)}: {game.archive.pregame.edges.length} matchup calls, {game.archive.pregame.prospects.length} radar names, Scout Score {game.archive.pregame.scoutScore}. It gets graded against the box score after the final. <Link href="/history" className="text-sky">See the record</Link>.
           </p>
         )}
       </Section>
@@ -309,6 +328,55 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
 }
 
 /* ---------------------------------------------------------------- bits */
+
+function Accountability({ entry }: { entry: NonNullable<Game["archive"]> }) {
+  const post = entry.postgame!;
+  const pre = entry.pregame;
+  const tone = (v: string) =>
+    v === "played out" || v === "showed up" ? "bg-turf text-white" : v === "did not play out" || v === "quiet" ? "bg-brick text-white" : v === "mixed" ? "bg-warn text-chalk" : "bg-ink-2 text-chalk-3";
+  const graded = post.edges.filter((e) => e.edge !== "even" && e.verdict !== "unmeasured");
+  const hits = graded.filter((e) => e.verdict === "played out").length;
+  const pros = post.prospects.filter((p) => p.verdict !== "unmeasured");
+  const showed = pros.filter((p) => p.verdict === "showed up").length;
+  return (
+    <div className="card mt-4 border-l-4 border-l-navy p-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="display text-3xl font-bold text-chalk">Did it play out?</h3>
+        <span className="mono text-xs text-chalk-3">Call locked {asOf(pre.capturedAt)} · graded {asOf(post.capturedAt)}</span>
+      </div>
+      <div className="mt-3 grid gap-2 sm:grid-cols-4">
+        <Stat label="Matchup calls" value={graded.length ? `${hits} of ${graded.length}` : "none graded"} sub="played out" />
+        <Stat label="Radar names" value={pros.length ? `${showed} of ${pros.length}` : "none"} sub="showed up" />
+        <Stat label="Pressure point" value={post.pressurePointVerdict} />
+        <Stat label="Market" value={post.spreadResult ?? "no line"} sub={post.totalResult ? `total went ${post.totalResult}` : undefined} />
+      </div>
+      <ul className="mt-4 grid gap-2">
+        {post.edges.map((e, i) => (
+          <li key={i} className="grid gap-1 rounded border border-line bg-panel-2 p-3 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-3">
+            <span className={`inline-block w-fit rounded px-2 py-0.5 text-xs font-bold uppercase tracking-wider ${tone(e.verdict)}`}>{e.verdict}</span>
+            <span>
+              <span className="text-base font-semibold text-chalk">{e.a} vs {e.b}</span>
+              <span className="block text-sm text-chalk-2">Called: advantage {e.edge}. Actual: {e.actual}.</span>
+            </span>
+          </li>
+        ))}
+        {post.prospects.map((p) => (
+          <li key={p.id} className="grid gap-1 rounded border border-line bg-panel-2 p-3 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-3">
+            <span className={`inline-block w-fit rounded px-2 py-0.5 text-xs font-bold uppercase tracking-wider ${tone(p.verdict)}`}>{p.verdict}</span>
+            <span>
+              <Link href={`/player/${p.id}`} className="text-base font-semibold text-chalk hover:text-sky">{p.name}</Link>
+              <span className="text-sm text-chalk-3"> {p.pos} · radar {p.score}</span>
+              <span className="block text-sm text-chalk-2">{p.line}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-sm text-chalk-3">
+        Scout Score was {pre.scoutScore}{post.excitement != null ? `; the feed's excitement index for the game was ${post.excitement.toFixed(1)}` : ""}. Every graded game goes into <Link href="/history" className="text-sky">the record</Link>, so the thresholds can be tuned against real results instead of opinion.
+      </p>
+    </div>
+  );
+}
 
 function TeamName({ t, score }: { t: Team; score?: number }) {
   const hasScore = score !== undefined && Number.isFinite(score);
@@ -355,9 +423,9 @@ function StyleCard({ side, o, d }: { side: string; o?: OffenseProfile; d?: Defen
         {sample === "unavailable" && <span className="mono text-[10px] text-chalk-3">no charting</span>}
       </div>
       <p className="mt-0.5 text-base font-semibold text-chalk">{label}</p>
-      {prof?.summary && <p className="mt-1 text-xs leading-snug text-chalk-2">{prof.summary}</p>}
+      {prof?.summary && <p className="mt-1 text-sm leading-snug text-chalk-2">{prof.summary}</p>}
       {metrics && metrics.length > 0 && (
-        <dl className="mono mt-2 grid grid-cols-[1fr_auto_auto] items-center gap-x-3 gap-y-1 text-[11px]">
+        <dl className="mono mt-2 grid grid-cols-[1fr_auto_auto] items-center gap-x-3 gap-y-1.5 text-[13px]">
           {metrics.filter((m) => ["passRate", "sr", "ex", "rushSr", "passEx", "ly", "havoc", "pdSr"].includes(m.key)).map((m) => (
             <MetricRow key={m.key} m={m} />
           ))}

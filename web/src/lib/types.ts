@@ -75,6 +75,8 @@ export interface Matchup {
   evidence: string;
   /** Unit matchups from tendencies carry which side has the edge. */
   edge?: "offense" | "defense" | "even";
+  strength?: "dominant" | "clear" | "real" | "slight" | "even";
+  watch?: string;
 }
 
 export interface BoxLeader {
@@ -170,6 +172,9 @@ export interface Game {
   box?: BoxSummary;
   /** Stats-as-of for radar and tendencies (ingest time). */
   statsAsOf?: string;
+  /** Accountability archive entry, when one exists. */
+  archive?: import("./archive").ArchiveEntry;
+  excitement?: number | null;
   reportAsOf: string;
   /** "live" = CollegeFootballData, "sample" = hand-written prototype data */
   source: "live" | "sample";

@@ -131,12 +131,80 @@ export function styleFor(school: string): TeamStyle | undefined {
 
 /* ------------------------------------------------- matchup derivations */
 
+type Axis = "rush" | "pass" | "line" | "pd";
+
+function meaning(axis: Axis, edge: UnitEdge["edge"], mag: number, offTeam: string, defTeam: string): { verdict: string; meaning: string; watch: string } {
+  const tier = mag >= 55 ? "dominant" : mag >= 40 ? "clear" : mag >= 20 ? "real" : "slight";
+  const lead =
+    edge === "even"
+      ? "Strength on strength."
+      : tier === "dominant"
+        ? "This is not a lean. It is a mismatch, and a prominent one."
+        : tier === "clear"
+          ? "A clear edge, the kind that shapes a game plan."
+          : "A real edge, not a lock.";
+  const o = offTeam;
+  const d = defTeam;
+  if (edge === "even") {
+    const m: Record<Axis, string> = {
+      rush: `Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.`,
+      pass: `${o} takes shots and ${d} gives up few. Whoever wins the first deep ball changes the other side's call sheet.`,
+      line: `The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.`,
+      pd: `Both sides are average on long downs. Early-down efficiency decides who sees more of them.`,
+    };
+    return { verdict: lead, meaning: m[axis], watch: `First quarter: who wins ${axis === "pass" ? "the first deep shot" : "first contact"}.` };
+  }
+  if (edge === "offense") {
+    const m: Record<Axis, string> = {
+      rush: tier === "dominant"
+        ? `Expect ${o} to lean on the run early and often, and to keep leaning. Once ${d} loads the box, play-action is the second punch.`
+        : `${o} should stay on schedule on the ground, which keeps third downs short and the clock moving.`,
+      pass: tier === "dominant"
+        ? `${d} does not keep the lid on. ${o} will take shots, and the market total may be underpriced if they land.`
+        : `${o} has the deep ball available. Watch whether ${d} rolls a safety over after the first one.`,
+      line: tier === "dominant"
+        ? `The line of scrimmage belongs to ${o}. Second-level runs and play-action are live all afternoon.`
+        : `${o} should win first contact more often than not, which makes every down shorter.`,
+      pd: `${o} converts the long downs ${d} needs to win. A third-and-8 is not a stop here.`,
+    };
+    const w: Record<Axis, string> = {
+      rush: `Watch ${o}'s rushing attempts by halftime. North of 20 means the plan is working.`,
+      pass: `Watch the first deep shot. If it connects, ${d} changes shells and the run game opens.`,
+      line: `Watch yards before contact on ${o}'s first ten carries.`,
+      pd: `Watch ${o}'s third-and-long conversions. Two in the first half breaks ${d}'s plan.`,
+    };
+    return { verdict: lead, meaning: m[axis], watch: w[axis] };
+  }
+  const m: Record<Axis, string> = {
+    rush: tier === "dominant"
+      ? `${d} erases the run. ${o} gets pushed into passing downs, and that is where this defense makes its money.`
+      : `${o} will find the run hard going. Expect more second-and-long than usual.`,
+    pass: tier === "dominant"
+      ? `Deep balls are the lowest-percentage play in this game. ${o} needs the underneath game and yards after catch.`
+      : `${d} keeps the lid on. ${o} should expect to drive the long way.`,
+    line: tier === "dominant"
+      ? `${d} wins first contact. Backs get met in the backfield; screens and the quick game are the counter.`
+      : `${d} should hold the line of scrimmage. ${o}'s runs will need the second level to break.`,
+    pd: `${d} gets off the field on long downs. Early-down efficiency is everything for ${o}.`,
+  };
+  const w: Record<Axis, string> = {
+    rush: `Watch ${o}'s yards per carry through the first quarter. Under 3 and the game plan has to change.`,
+    pass: `Watch ${o}'s longest completion. If it is under 25 yards at the half, ${d} has won the matchup.`,
+    line: `Watch tackles for loss. ${d} living in the backfield early is the tell.`,
+    pd: `Watch ${o} on third-and-7 or longer. Punts there mean the defense is winning.`,
+  };
+  return { verdict: lead, meaning: m[axis], watch: w[axis] };
+}
+
 export interface UnitEdge {
   title: string; // "Georgia run game vs Alabama front"
   text: string;
   edge: "offense" | "defense" | "even";
   gap: number; // percentile gap
   evidence: string;
+  meaning: string;
+  watch: string;
+  strength: "dominant" | "clear" | "real" | "slight" | "even";
 }
 
 /** Compare one offense against one defense on the four axes that decide games. */
@@ -146,27 +214,38 @@ export function unitEdges(offTeam: string, defTeam: string): UnitEdge[] {
   if (!o || !d) return [];
   const om = (k: string) => o.offense.metrics.find((m) => m.key === k);
   const dm = (k: string) => d.defense.metrics.find((m) => m.key === k);
-  const axes: { key: string; title: string; what: string }[] = [
-    { key: "rushSr", title: `${offTeam} run game vs ${defTeam} run defense`, what: "rush success" },
-    { key: "passEx", title: `${offTeam} deep passing vs ${defTeam} secondary`, what: "pass explosiveness" },
-    { key: "ly", title: `${offTeam} offensive line vs ${defTeam} front`, what: "line yards" },
-    { key: "pdSr", title: `${offTeam} on passing downs vs ${defTeam} pressure`, what: "passing-downs success" },
+  const axes: { key: string; axis: Axis; title: string; what: string; against: string }[] = [
+    { key: "rushSr", axis: "rush", title: `${offTeam} run game vs ${defTeam} run defense`, what: "rush success rate", against: "against the run" },
+    { key: "passEx", axis: "pass", title: `${offTeam} deep passing vs ${defTeam} secondary`, what: "pass explosiveness", against: "at limiting explosive passes" },
+    { key: "ly", axis: "line", title: `${offTeam} offensive line vs ${defTeam} front`, what: "line yards per carry", against: "at the line of scrimmage" },
+    { key: "pdSr", axis: "pd", title: `${offTeam} on passing downs vs ${defTeam} pressure`, what: "passing-downs success", against: "on passing downs" },
   ];
   const out: UnitEdge[] = [];
   for (const a of axes) {
     const x = om(a.key);
     const y = dm(a.key);
-    if (!x?.pct && x?.pct !== 0) continue;
-    if (!y?.pct && y?.pct !== 0) continue;
-    const gap = (x.pct ?? 50) - (y.pct ?? 50);
+    if (x?.pct === undefined || y?.pct === undefined) continue;
+    const gap = x.pct - y.pct;
+    const mag = Math.abs(gap);
     const edge: UnitEdge["edge"] = gap >= 20 ? "offense" : gap <= -20 ? "defense" : "even";
+    const strength: UnitEdge["strength"] = edge === "even" ? "even" : mag >= 55 ? "dominant" : mag >= 40 ? "clear" : mag >= 20 ? "real" : "slight";
+    const mn = meaning(a.axis, edge, mag, offTeam, defTeam);
     const text =
       edge === "offense"
-        ? `${offTeam} is No. ${x.rank} of ${x.of} in ${a.what} (${x.value}); ${defTeam} ranks No. ${y.rank} against it (${y.value}). Advantage offense.`
+        ? `${offTeam} is No. ${x.rank} of ${x.of} in ${a.what} (${x.value}). ${defTeam} ranks No. ${y.rank} ${a.against} (${y.value}). ${mn.verdict} ${mn.meaning}`
         : edge === "defense"
-          ? `${defTeam} is No. ${y.rank} of ${y.of} at stopping ${a.what} (${y.value}); ${offTeam} ranks No. ${x.rank} (${x.value}). Advantage defense.`
-          : `${offTeam} No. ${x.rank} in ${a.what} (${x.value}) against a ${defTeam} unit at No. ${y.rank} (${y.value}). Strength on strength.`;
-    out.push({ title: a.title, text, edge, gap, evidence: `${a.what}: offense ${x.value} (No. ${x.rank}/${x.of}), defense ${y.value} (No. ${y.rank}/${y.of})` });
+          ? `${defTeam} is No. ${y.rank} of ${y.of} ${a.against} (${y.value}). ${offTeam} ranks No. ${x.rank} in ${a.what} (${x.value}). ${mn.verdict} ${mn.meaning}`
+          : `${offTeam} is No. ${x.rank} in ${a.what} (${x.value}) and ${defTeam} is No. ${y.rank} ${a.against} (${y.value}). ${mn.verdict} ${mn.meaning}`;
+    out.push({
+      title: a.title,
+      text,
+      edge,
+      gap,
+      evidence: `${a.what}: offense ${x.value} (No. ${x.rank}/${x.of}), defense ${y.value} (No. ${y.rank}/${y.of}), gap ${mag} percentile points`,
+      meaning: mn.meaning,
+      watch: mn.watch,
+      strength,
+    });
   }
   return out.sort((p, q) => Math.abs(q.gap) - Math.abs(p.gap));
 }
@@ -178,9 +257,9 @@ export function pressurePoint(away: string, home: string): string | undefined {
   const top = edges[0];
   const even = edges.filter((e) => e.edge === "even");
   if (Math.abs(top.gap) < 20 && even.length) {
-    return `No unit has a clear edge. The closest thing to a swing: ${even[0].title.toLowerCase()}. ${even[0].text}`;
+    return `No unit has a clear edge. The closest thing to a swing: ${even[0].title.toLowerCase()}. ${even[0].text} ${even[0].watch}`;
   }
-  return `${top.title}. ${top.text}`;
+  return `${top.title}. ${top.text} ${top.watch}`;
 }
 
 /** 0..100 how different the two offenses are in how they play. */

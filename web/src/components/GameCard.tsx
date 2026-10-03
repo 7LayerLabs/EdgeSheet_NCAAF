@@ -19,7 +19,7 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
   return (
     <Link
       href={`/game/${game.id}`}
-      className="card rise group block min-w-0 overflow-hidden p-4 transition-colors hover:bg-panel-2"
+      className={`card rise group block min-w-0 overflow-hidden p-4 transition-colors hover:bg-panel-2 ${game.status === "final" ? "final-card" : ""}`}
       style={{ animationDelay: `${Math.min(index, 8) * 40}ms` }}
     >
       <div className="flex gap-4">
