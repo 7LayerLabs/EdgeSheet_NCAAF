@@ -116,8 +116,12 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
       {game.matchups.length > 0 ? (
         <Section n="Matchups" id="decided" title="Where the game gets decided">
           <div className="card mt-3 border-l-4 border-l-navy p-5">
-            <p className="eyebrow">Pressure point</p>
-            <p className="mt-1 text-lg leading-relaxed text-chalk">{game.pressurePoint}</p>
+            <div className="flex items-center gap-3">
+              <TeamMark team={game.away} state={game.matchups[0]?.edge === "even" ? "even" : (game.matchups[0]?.a.startsWith(game.away.short) ? game.matchups[0]?.edge === "offense" : game.matchups[0]?.edge === "defense") ? "win" : "lose"} />
+              <TeamMark team={game.home} state={game.matchups[0]?.edge === "even" ? "even" : (game.matchups[0]?.a.startsWith(game.home.short) ? game.matchups[0]?.edge === "offense" : game.matchups[0]?.edge === "defense") ? "win" : "lose"} />
+              <p className="eyebrow">Pressure point</p>
+            </div>
+            <p className="mt-2 text-lg leading-relaxed text-chalk">{game.pressurePoint}</p>
           </div>
           <p className="mt-4 max-w-3xl text-base text-chalk-3">
             Each offense against the opposing defense on the four axes that decide games. Ranks are inside the division. The gap is in percentile points; 40 or more is a clear edge, 55 or more is a mismatch.
@@ -129,13 +133,26 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
               const labelTone = m.strength === "dominant" ? "bg-brick text-white" : m.strength === "clear" ? "bg-navy text-white" : m.strength === "real" ? "bg-ink-2 text-chalk" : "bg-ink-2 text-chalk-3";
               return (
                 <div key={i} className={`card p-5 ${tone}`}>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span className={`rounded px-2 py-0.5 text-xs font-bold uppercase tracking-wider ${labelTone}`}>{label}</span>
-                    <span className="display text-2xl font-bold text-chalk">{m.a}</span>
-                    <span className="text-chalk-3">vs</span>
-                    <span className="display text-2xl font-bold text-chalk">{m.b}</span>
-                    {m.edge !== "even" && <span className={`ml-auto text-sm font-semibold ${m.edge === "offense" ? "text-turf" : "text-sky"}`}>Advantage {m.edge}</span>}
-                  </div>
+                  {(() => {
+                    const offTeam = m.a.startsWith(game.home.short) ? game.home : game.away;
+                    const defTeam = offTeam === game.home ? game.away : game.home;
+                    const winner = m.edge === "offense" ? offTeam : m.edge === "defense" ? defTeam : undefined;
+                    return (
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                        <span className={`rounded px-2 py-0.5 text-xs font-bold uppercase tracking-wider ${labelTone}`}>{label}</span>
+                        <TeamMark team={offTeam} state={winner ? (winner === offTeam ? "win" : "lose") : "even"} />
+                        <span className="display text-2xl font-bold text-chalk">{m.a}</span>
+                        <span className="text-chalk-3">vs</span>
+                        <TeamMark team={defTeam} state={winner ? (winner === defTeam ? "win" : "lose") : "even"} />
+                        <span className="display text-2xl font-bold text-chalk">{m.b}</span>
+                        {winner && (
+                          <span className={`ml-auto flex items-center gap-2 text-sm font-semibold ${m.edge === "offense" ? "text-turf" : "text-sky"}`}>
+                            Advantage {winner.short}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })()}
                   <p className="mt-3 text-lg leading-relaxed text-chalk">{m.why}</p>
                   {m.watch && <p className="mt-2 text-base text-chalk-2"><span className="eyebrow mr-1">Watch for</span>{m.watch}</p>}
                   <p className="mono mt-2 text-xs text-chalk-3">Evidence: {m.evidence}</p>
@@ -354,6 +371,21 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
 
 /* ---------------------------------------------------------------- bits */
 
+/** Team logo chip. The side with the advantage is full color with a ring; the other side is shaded. */
+function TeamMark({ team, state, size = "md" }: { team: Team; state: "win" | "lose" | "even"; size?: "md" | "lg" }) {
+  const dim = size === "lg" ? "h-12 w-12" : "h-9 w-9";
+  const ring = state === "win" ? "ring-2 ring-turf ring-offset-2 ring-offset-white" : state === "lose" ? "opacity-30 grayscale" : "";
+  return (
+    <span className={`inline-flex shrink-0 items-center justify-center rounded-full bg-white ${dim} ${ring}`} title={team.name}>
+      {team.logo ? (
+        <Image src={team.logo} alt={team.short} width={48} height={48} className="h-[82%] w-[82%] object-contain" unoptimized />
+      ) : (
+        <span className="display text-sm font-bold" style={{ color: team.color }}>{team.abbr}</span>
+      )}
+    </span>
+  );
+}
+
 function ProjectionBox({ game }: { game: Game }) {
   const p = game.projection!;
   const winnerTeam = p.winner === game.home.abbr ? game.home : game.away;
@@ -364,8 +396,12 @@ function ProjectionBox({ game }: { game: Game }) {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="eyebrow">Projected outcome · a model, not a pick</p>
-          <p className="display mt-1 text-4xl font-bold text-chalk sm:text-5xl">
-            {game.away.short} {p.away} <span className="text-chalk-3">@</span> {game.home.short} {p.home}
+          <p className="display mt-1 flex flex-wrap items-center gap-x-3 text-4xl font-bold text-chalk sm:text-5xl">
+            <TeamMark team={game.away} state={p.winner === game.away.abbr ? "win" : "lose"} size="lg" />
+            <span>{game.away.short} {p.away}</span>
+            <span className="text-chalk-3">@</span>
+            <TeamMark team={game.home} state={p.winner === game.home.abbr ? "win" : "lose"} size="lg" />
+            <span>{game.home.short} {p.home}</span>
           </p>
           <p className="mt-1 text-lg text-chalk">
             <span className="font-semibold" style={{ color: winnerTeam.color }}>{winnerTeam.short}</span> by {p.margin.toFixed(1)} · {Math.round(p.winProb * 100)}% to win · total {p.total}
