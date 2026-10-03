@@ -87,8 +87,9 @@ interface Input {
   weather?: WeatherInput;
 }
 
-// Calibrated 2026-10-03 against 51 FBS market totals: 28.5 ran 5.9 points high per game.
-const AVG_PPG = 25.6;
+// Calibrated 2026-10-03: 28.5 ran 3.5 points hot over four backtest seasons and 5.9 hot against today's market;
+// the four-season zero-bias value is 26.8 and scoring is trending down, so 26.2 splits the difference.
+const AVG_PPG = 26.2;
 
 /** Expected points for one offense against one defense: league average plus EPA deviations over the game's pace. */
 function expectedPoints(off: GenTeam, def: GenTeam, means: { offPpa: number; defPpa: number }, plays: number): number {

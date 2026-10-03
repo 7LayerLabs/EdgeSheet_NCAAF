@@ -91,3 +91,24 @@ Edited:
 - Declarations are not replayed; returning juniors stay in the pool, which lowers band precision but not recall.
 - The radar replay uses full-season stats; in-season radar tiers are noisier than the draft hit rates suggest.
 - Four seasons is a small sample. Treat any rate within two points of another as a tie.
+
+## Addendum: additive form and the 25.6 total constant (orchestrator request)
+
+The live formula changed mid-run to `margin = eloMargin + (1 - eloWeight) * net / edgeDivisor` and the total's league average dropped from 28.5 to 25.6. I regraded everything on the same 2,361 walk-forward games. Both forms are in results.json and on the page, labeled by `form`.
+
+Additive form, walk-forward, live setting (0.6, 40): winner 71.1%, margin error 12.41, model side 50.4%, four-point leans 52.4% on 829. The additive form fixed what was wrong with the weighted one: margin error fell from 12.80 to 12.41, right alongside Elo-only at 12.50, and the lean count dropped by a quarter because the model no longer manufactures underdog leans by shrinking big favorites.
+
+The whole additive grid sits between 12.40 and 12.52 margin error. Note that in the additive form only `(1 - eloWeight) / edgeDivisor` matters, so 0.6/40, 0.8/20 and 0.7/30 are the same model (0.01 points per percentile), and 0.6/30, 0.4/40 and 0.7/20 are near-identical (0.013 to 0.015). The grid really has about ten distinct settings:
+
+| Points per edge percentile | Example settings | Winner | Margin error | 4 pt lean cover |
+| --- | --- | --- | --- | --- |
+| 0 (Elo only) | 1.0 / any | 70.8% | 12.50 | 51.7% on 859 |
+| 0.010 (live) | 0.6/40, 0.8/20, 0.7/30 | 71.1% | 12.41 | 52.4% on 829 |
+| 0.013 | 0.6/30, 0.5/40 | 71.3% | 12.41 | 52.7% on 843 |
+| 0.015 | 0.4/40, 0.7/20 | 71.5% | 12.41 | 52.9% on 845 |
+| 0.020 | 0.6/20, 0.4/30 | 71.6% | 12.42 | 52.0% on 917 |
+| 0.030 | 0.4/20 | 71.8% | 12.52 | 51.6% on 1,066 |
+
+Best by margin error: 0.6 / 30 (12.406). Best against the closing line on four-point leans: 0.7 / 40 at 53.0% on 838. Neither beats the live setting by more than noise. Written to data/weights.json with `"form": "additive"`. My honest recommendation is that the live 0.6 / 40 is fine; 0.6 / 30 is a defensible nudge toward the edges and costs nothing on margin error.
+
+Total constant: at 28.5 the model total ran +3.5 points hot per game over four seasons (1,506 over leans to 306 under). At 25.6 it runs -2.3 cold (632 over to 1,014 under), error 13.28 against 13.63 before and 12.46 for the posted total. The 25.6 fit came from 51 games this season, and 2025 was the lowest-scoring of the four (bias -1.5 at 25.6). Zero bias across all four seasons is about 26.8. Lean accuracy is 51 to 52 percent either way, so the constant changes the error, not the edge.
