@@ -256,3 +256,34 @@ body {
   border-color: var(--brick);
   box-shadow: inset 3px 0 0 var(--brick), 0 1px 2px rgba(15, 31, 61, 0.04);
 }
+
+/* Sticky section jump bar on the game report. Sits just under the top bar. */
+.jumpbar {
+  position: sticky;
+  top: 57px;
+  z-index: 20;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin: 12px -16px 0;
+  padding: 8px 16px;
+  background: color-mix(in srgb, var(--ink) 94%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.jumpbar::-webkit-scrollbar { display: none; }
+.jumpbar a {
+  flex: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--chalk);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.jumpbar a:hover { border-color: var(--navy); }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

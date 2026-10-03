@@ -27,7 +27,7 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
           </p>
           <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
             <Tier tier={p.tier} />
-            <span className="text-chalk">{p.draftYear} draft</span>
+            <span className="text-chalk">{p.projected.includes("forecast") ? p.projected.replace(" (forecast)", "") : `${p.draftYear} draft`}</span>
             {r?.stars ? <span className="text-warn">{"★".repeat(r.stars)}</span> : null}
           </div>
         </div>

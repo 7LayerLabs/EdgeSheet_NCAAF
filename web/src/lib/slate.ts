@@ -34,6 +34,7 @@ import { prospectFileLoaded, prospectRowById, prospectsForTeam } from "./prospec
 import { generatedLoaded, genMeta } from "./generated";
 import { radarForGame, radarForTeam, radarPlayer, type RadarPlayer } from "./radar";
 import { pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
+import { bandFor } from "./forecast";
 import { boxScore } from "./boxscore";
 import { memo } from "./memo";
 import { gradePostgame, lockPregame, readEntry } from "./archive";
@@ -276,7 +277,10 @@ export function radarToProspect(r: RadarPlayer, abbr: string): Prospect {
     draftYear: r.draftClass,
     eligibilityConfidence: upper ? "High" : "Medium",
     tier: r.tier,
-    projected: `${r.draftClass} class`,
+    projected: (() => {
+      const band = upper ? bandFor(r.id) : undefined;
+      return band ? `${band} (forecast)` : `${r.draftClass} class`;
+    })(),
     sourceCount: 0,
     projectionConfidence: r.score >= 70 ? "High" : r.score >= 50 ? "Medium" : "Low",
     traits: r.evidence.map((e) => e.label),

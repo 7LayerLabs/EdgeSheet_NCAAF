@@ -78,7 +78,7 @@ log("recruits", recruiting.length);
 // Advanced tendencies are FBS-only on the free tier (FCS calls return empty). Keep the hook so a paid key can extend it.
 const advFcs = [];
 
-const draftYears = [season, season - 1, season - 2];
+const draftYears = [season, season - 1, season - 2, season - 3, season - 4];
 const draft = (await Promise.all(draftYears.map((y) => get(`/draft/picks?year=${y}`, { optional: true })))).flat();
 log("draft picks", draft.length);
 
