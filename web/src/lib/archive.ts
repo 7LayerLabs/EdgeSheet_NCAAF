@@ -46,7 +46,7 @@ export interface Pregame {
   spread?: { team: string; line: number }; // abbr of favorite, negative line
   total?: number;
   abbr: { home: string; away: string };
-  projection?: { winner: string; winProb: number; margin: number; home: number; away: number; modelSide?: string; confidence: string };
+  projection?: { winner: string; winProb: number; margin: number; home: number; away: number; modelSide?: string; confidence: string; modelTotal?: number; totalLean?: "over" | "under" | "none" };
 }
 
 export interface EdgeResult extends EdgeCall {
@@ -68,7 +68,7 @@ export interface Postgame {
   edges: EdgeResult[];
   prospects: ProspectResult[];
   pressurePointVerdict: Verdict;
-  projectionResult?: { winnerRight: boolean; marginError: number; modelSideCovered?: boolean };
+  projectionResult?: { winnerRight: boolean; marginError: number; modelSideCovered?: boolean; totalLeanRight?: boolean };
 }
 
 export interface ArchiveEntry {
@@ -115,7 +115,11 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
   if (existing) {
     // A lock taken before the projection existed can take one on, as long as the game has not kicked off.
     if (!existing.postgame && !existing.pregame.projection && game.projection) {
-      existing.pregame.projection = { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence };
+      existing.pregame.projection = { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence, modelTotal: game.projection.modelTotal, totalLean: game.projection.totalLean };
+      writeEntry(existing);
+    } else if (!existing.postgame && existing.pregame.projection && existing.pregame.projection.totalLean === undefined && game.projection?.totalLean) {
+      existing.pregame.projection.modelTotal = game.projection.modelTotal;
+      existing.pregame.projection.totalLean = game.projection.totalLean;
       writeEntry(existing);
     }
     return existing;
@@ -148,7 +152,7 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
       spread: game.market.spread ? { team: game.market.spread.team, line: game.market.spread.line } : undefined,
       total: game.market.total?.line,
       projection: game.projection
-        ? { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence }
+        ? { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence, modelTotal: game.projection.modelTotal, totalLean: game.projection.totalLean }
         : undefined,
     },
   };
@@ -241,7 +245,9 @@ export function gradePostgame(game: Game, season: number, box: BoxScore, excitem
       const modelOnFavorite = pre.projection.modelSide === favoriteSide;
       modelSideCovered = modelOnFavorite ? spreadResult === "favorite covered" : spreadResult === "underdog covered";
     }
-    projectionResult = { winnerRight: actualWinner === pre.projection.winner, marginError: Math.abs(actualHomeMargin - projHomeMargin), modelSideCovered };
+    let totalLeanRight: boolean | undefined;
+    if (pre.projection.totalLean && pre.projection.totalLean !== "none" && totalResult && totalResult !== "push") totalLeanRight = pre.projection.totalLean === totalResult;
+    projectionResult = { winnerRight: actualWinner === pre.projection.winner, marginError: Math.abs(actualHomeMargin - projHomeMargin), modelSideCovered, totalLeanRight };
   }
   const top = edges.find((e) => e.edge !== "even") ?? edges[0];
   entry.postgame = {
@@ -295,6 +301,8 @@ export interface HistoryStats {
   modelSideCovered: number;
   modelSideGraded: number;
   avgMarginError: number | null;
+  totalLeanRight: number;
+  totalLeanGraded: number;
   byBucket: { label: string; games: number; avgExcitement: number | null }[];
 }
 
@@ -315,7 +323,10 @@ export function historyStats(entries: ArchiveEntry[]): HistoryStats {
   });
   const proj = graded.filter((e) => e.postgame!.projectionResult);
   const sided = proj.filter((e) => e.postgame!.projectionResult!.modelSideCovered !== undefined);
+  const totaled = proj.filter((e) => e.postgame!.projectionResult!.totalLeanRight !== undefined);
   return {
+    totalLeanRight: totaled.filter((e) => e.postgame!.projectionResult!.totalLeanRight).length,
+    totalLeanGraded: totaled.length,
     winnerRight: proj.filter((e) => e.postgame!.projectionResult!.winnerRight).length,
     winnerGraded: proj.length,
     modelSideCovered: sided.filter((e) => e.postgame!.projectionResult!.modelSideCovered).length,

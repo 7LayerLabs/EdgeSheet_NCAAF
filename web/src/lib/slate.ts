@@ -33,7 +33,7 @@ import { forecastAtKickoff, forecastMany } from "./nws";
 import { prospectFileLoaded, prospectRowById, prospectsForTeam } from "./prospects";
 import { generatedLoaded, genMeta } from "./generated";
 import { radarForGame, radarForTeam, radarPlayer, type RadarPlayer } from "./radar";
-import { pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
+import { leagueMeans, pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
 import { bandFor } from "./forecast";
 import { projectGame } from "./projection";
 import { boxScore } from "./boxscore";
@@ -557,6 +557,10 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
     awaySchool: raw.awayTeam,
     homePassRate: styleFor(raw.homeTeam)?.raw.off.passRate,
     awayPassRate: styleFor(raw.awayTeam)?.raw.off.passRate,
+    homeAdv: styleFor(raw.homeTeam)?.raw,
+    awayAdv: styleFor(raw.awayTeam)?.raw,
+    means: charted ? leagueMeans(cls) : undefined,
+    weather,
   });
 
   // Keep an eye on: young or unproven names the radar flags that did not make the main list.

@@ -274,3 +274,13 @@ export function styleContrast(a: string, b: string): number | null {
   const havoc = Math.abs((x.raw.def.havoc ?? 0.15) - (y.raw.def.havoc ?? 0.15)) * 200; // 0..~20
   return Math.round(Math.min(100, pr * 1.8 + pace + havoc));
 }
+
+/** League averages inside a classification, used to anchor the model total. */
+export function leagueMeans(cls: string): { offPpa: number; defPpa: number; plays: number; teams: number } {
+  return memoSync(`tend:means:${cls}`, 3600, () => {
+    const t = genTeams().filter((x) => (x.c ?? "fbs") === cls);
+    if (!t.length) return { offPpa: 0.16, defPpa: 0.06, plays: 67, teams: 0 };
+    const m = (f: (x: GenTeam) => number) => t.reduce((s, x) => s + f(x), 0) / t.length;
+    return { offPpa: m((x) => x.off.ppa), defPpa: m((x) => x.def.ppa), plays: m((x) => x.off.plays / Math.max(1, x.games ?? 1)), teams: t.length };
+  });
+}

@@ -116,7 +116,9 @@
    "home": 23,
    "away": 25,
    "modelSide": "ARMY",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 61,
+   "totalLean": "over"
   }
  }
 }

@@ -161,7 +161,9 @@
    "home": 19,
    "away": 29,
    "modelSide": "CLEM",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 54.5,
+   "totalLean": "over"
   }
  }
 }

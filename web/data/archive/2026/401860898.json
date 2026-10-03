@@ -143,7 +143,9 @@
    "home": 29,
    "away": 23,
    "modelSide": "USU",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 51,
+   "totalLean": "none"
   }
  }
 }

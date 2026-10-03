@@ -143,7 +143,9 @@
    "home": 24,
    "away": 24,
    "modelSide": "TCU",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 57.5,
+   "totalLean": "over"
   }
  }
 }

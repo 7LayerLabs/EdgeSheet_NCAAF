@@ -134,7 +134,9 @@
    "home": 29,
    "away": 22,
    "modelSide": "ARK",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 51.5,
+   "totalLean": "none"
   }
  }
 }

@@ -3,7 +3,9 @@
  * and the market. It is a model, not a pick, and the page says so. Every
  * projection is locked pregame and graded after the final on the Record page.
  */
-import type { Market, Matchup, Team } from "./types";
+import type { Market, Matchup, Team, WeatherInput } from "./types";
+import type { GenTeam } from "./generated";
+import { evaluateWeather } from "./weather";
 
 export interface Projection {
   winner: string; // abbr
@@ -15,6 +17,12 @@ export interface Projection {
   shape: string; // one sentence on how the game plays
   vsMarket?: string; // where the model disagrees with the number
   modelSide?: string; // abbr the model leans toward against the spread
+  sideGap?: number; // points between model margin and market margin
+  modelTotal?: number; // from efficiency and pace; undefined when not charted
+  totalLean?: "over" | "under" | "none";
+  totalGap?: number;
+  totalNote?: string;
+  weatherTilt?: string;
   basis: string[];
   confidence: "high" | "medium" | "low";
 }
@@ -44,6 +52,18 @@ interface Input {
   awaySchool: string;
   homePassRate?: number | null;
   awayPassRate?: number | null;
+  homeAdv?: GenTeam;
+  awayAdv?: GenTeam;
+  means?: { offPpa: number; defPpa: number; plays: number };
+  weather?: WeatherInput;
+}
+
+const AVG_PPG = 28.5;
+
+/** Expected points for one offense against one defense: league average plus EPA deviations over the game's pace. */
+function expectedPoints(off: GenTeam, def: GenTeam, means: { offPpa: number; defPpa: number }, plays: number): number {
+  const dev = (off.off.ppa - means.offPpa + (def.def.ppa - means.defPpa)) / 2;
+  return Math.max(3, AVG_PPG + plays * dev);
 }
 
 export function projectGame(i: Input): Projection | undefined {
@@ -94,8 +114,46 @@ export function projectGame(i: Input): Projection | undefined {
     return undefined;
   }
 
-  const total = i.market.total?.line ?? 50;
-  if (!i.market.total) basis.push("No market total; 50 assumed for the score line.");
+  // Model total from efficiency and pace, when both teams are charted.
+  let modelTotal: number | undefined;
+  let modelHomePts: number | undefined;
+  let modelAwayPts: number | undefined;
+  if (i.homeAdv && i.awayAdv && i.means) {
+    const pace = ((i.homeAdv.off.plays / Math.max(1, i.homeAdv.games ?? 1)) + (i.awayAdv.off.plays / Math.max(1, i.awayAdv.games ?? 1))) / 2;
+    modelHomePts = expectedPoints(i.homeAdv, i.awayAdv, i.means, pace);
+    modelAwayPts = expectedPoints(i.awayAdv, i.homeAdv, i.means, pace);
+    modelTotal = Math.round((modelHomePts + modelAwayPts) * 2) / 2;
+    basis.push(`Efficiency and pace: ${i.home.abbr} ${modelHomePts.toFixed(1)} + ${i.away.abbr} ${modelAwayPts.toFixed(1)} at ${pace.toFixed(0)} plays each → model total ${modelTotal}`);
+  }
+
+  // Weather tilt: only a flagged forecast moves the total, and only toward the under.
+  let weatherTilt: string | undefined;
+  let weatherAdj = 0;
+  if (i.weather) {
+    const flags = evaluateWeather(i.weather);
+    const wind = flags.find((f) => f.key === "wind");
+    const rain = flags.find((f) => f.key === "rain");
+    if (wind?.level === "elevated") { weatherAdj -= 3; weatherTilt = `${wind.title}: deep passing and field goals get harder. Tilts under by about 3.`; }
+    else if (wind) { weatherAdj -= 1.5; weatherTilt = `${wind.title}: long kicks and deep shots lose some value. Tilts under by about 1.5.`; }
+    if (rain?.level === "elevated") { weatherAdj -= 2; weatherTilt = `${weatherTilt ? weatherTilt + " " : ""}${rain.title}: ball security and footing. Tilts under by about 2.`; }
+    else if (rain) { weatherAdj -= 1; weatherTilt = `${weatherTilt ? weatherTilt + " " : ""}${rain.title}: tilts under by about 1.`; }
+  }
+  if (modelTotal !== undefined && weatherAdj) modelTotal = Math.round((modelTotal + weatherAdj) * 2) / 2;
+
+  const total = i.market.total?.line ?? modelTotal ?? 50;
+  if (!i.market.total && modelTotal === undefined) basis.push("No market total and no tendency data; 50 assumed for the score line.");
+
+  let totalLean: Projection["totalLean"];
+  let totalGap: number | undefined;
+  let totalNote: string | undefined;
+  if (modelTotal !== undefined && i.market.total) {
+    totalGap = Math.round((modelTotal - i.market.total.line) * 10) / 10;
+    totalLean = totalGap >= 2.5 ? "over" : totalGap <= -2.5 ? "under" : "none";
+    totalNote =
+      totalLean === "none"
+        ? `Model total ${modelTotal} against a posted ${i.market.total.line}. No lean.`
+        : `Model total ${modelTotal} against a posted ${i.market.total.line}. The model leans ${totalLean} by ${Math.abs(totalGap)}.`;
+  }
   const homePts = Math.max(0, Math.round((total + margin) / 2));
   const awayPts = Math.max(0, Math.round(total - homePts));
   const homeWins = margin >= 0;
@@ -116,9 +174,11 @@ export function projectGame(i: Input): Projection | undefined {
   // Where the model disagrees with the number.
   let vsMarket: string | undefined;
   let modelSide: string | undefined;
+  let sideGap: number | undefined;
   if (marketMargin !== undefined) {
     const diff = margin - marketMargin; // positive = model likes home more than the market does
     modelSide = diff >= 0 ? i.home.abbr : i.away.abbr;
+    sideGap = Math.round(Math.abs(diff) * 10) / 10;
     const favAbbr = marketMargin >= 0 ? i.home.abbr : i.away.abbr;
     const modelFavMargin = marketMargin >= 0 ? margin : -margin;
     const mktFavMargin = Math.abs(marketMargin);
@@ -133,5 +193,5 @@ export function projectGame(i: Input): Projection | undefined {
             : `Model has ${modelSide} winning outright; the market has ${favAbbr} by ${mktFavMargin.toFixed(1)}. The model leans ${modelSide} against the number by ${gap.toFixed(1)}.`;
   }
 
-  return { winner, winProb, margin: Math.abs(margin), total, home: homePts, away: awayPts, shape, vsMarket, modelSide, basis, confidence };
+  return { winner, winProb, margin: Math.abs(margin), total, home: homePts, away: awayPts, shape, vsMarket, modelSide, sideGap, modelTotal, totalLean, totalGap, totalNote, weatherTilt, basis, confidence };
 }

@@ -134,7 +134,9 @@
    "home": 21,
    "away": 36,
    "modelSide": "RUTG",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 62.5,
+   "totalLean": "over"
   }
  }
 }

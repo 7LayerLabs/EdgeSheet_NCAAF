@@ -134,7 +134,9 @@
    "home": 31,
    "away": 32,
    "modelSide": "CSU",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 67.5,
+   "totalLean": "over"
   }
  }
 }

@@ -125,7 +125,9 @@
    "home": 28,
    "away": 30,
    "modelSide": "SDSU",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 58,
+   "totalLean": "none"
   }
  }
 }

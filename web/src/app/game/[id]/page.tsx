@@ -324,6 +324,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
         ) : (
           <p className="mt-2 text-sm text-chalk-3">No book we track lists this game. The report does not estimate a line.</p>
         )}
+        {game.projection && (game.projection.vsMarket || game.projection.totalNote) && <ModelVsMarket game={game} />}
       </Section>
 
       {/* 9. Storylines */}
@@ -370,6 +371,64 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
 }
 
 /* ---------------------------------------------------------------- bits */
+
+function ModelVsMarket({ game }: { game: Game }) {
+  const p = game.projection!;
+  const sideTeam = p.modelSide ? (p.modelSide === game.home.abbr ? game.home : game.away) : undefined;
+  const sideStrength = (p.sideGap ?? 0) >= 6 ? "strong" : (p.sideGap ?? 0) >= 3 ? "moderate" : (p.sideGap ?? 0) >= 2 ? "slight" : "none";
+  const totalStrength = Math.abs(p.totalGap ?? 0) >= 6 ? "strong" : Math.abs(p.totalGap ?? 0) >= 4 ? "moderate" : Math.abs(p.totalGap ?? 0) >= 2.5 ? "slight" : "none";
+  const tone = (s: string) => (s === "strong" ? "bg-brick text-white" : s === "moderate" ? "bg-navy text-white" : s === "slight" ? "bg-ink-2 text-chalk" : "bg-ink-2 text-chalk-3");
+  const graded = game.archive?.postgame?.projectionResult;
+  return (
+    <div className="card mt-4 border-l-4 border-l-brick p-5">
+      <p className="eyebrow">What the stats say against the posted numbers · a model, not a pick</p>
+      <div className="mt-3 grid gap-3 md:grid-cols-2">
+        <div className="rounded border border-line bg-panel-2 p-4">
+          <div className="flex items-center justify-between gap-2">
+            <span className="eyebrow">Side</span>
+            <span className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${tone(sideStrength)}`}>{sideStrength === "none" ? "no lean" : `${sideStrength} lean`}</span>
+          </div>
+          {sideTeam && game.market.spread ? (
+            <>
+              <p className="display mt-1 flex items-center gap-2 text-3xl font-bold text-chalk">
+                <TeamMark team={sideTeam} state={sideStrength === "none" ? "even" : "win"} />
+                {sideTeam.short}
+                <span className="mono text-base font-normal text-chalk-3">{spreadText(game.market.spread.team, game.market.spread.line)}</span>
+              </p>
+              <p className="mt-1 text-base text-chalk">{p.vsMarket}</p>
+            </>
+          ) : (
+            <p className="mt-1 text-base text-chalk-3">No posted spread to compare.</p>
+          )}
+        </div>
+        <div className="rounded border border-line bg-panel-2 p-4">
+          <div className="flex items-center justify-between gap-2">
+            <span className="eyebrow">Total</span>
+            <span className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${tone(totalStrength)}`}>{p.totalLean && p.totalLean !== "none" ? `${totalStrength} ${p.totalLean}` : "no lean"}</span>
+          </div>
+          {p.modelTotal !== undefined && game.market.total ? (
+            <>
+              <p className="display mt-1 text-3xl font-bold text-chalk">
+                {p.totalLean && p.totalLean !== "none" ? p.totalLean.toUpperCase() : "Even"} <span className="mono text-base font-normal text-chalk-3">model {p.modelTotal} · posted {game.market.total.line}</span>
+              </p>
+              <p className="mt-1 text-base text-chalk">{p.totalNote}</p>
+              {p.weatherTilt && <p className="mt-1 text-sm text-chalk-2"><span className="eyebrow mr-1">Weather</span>{p.weatherTilt}</p>}
+            </>
+          ) : p.modelTotal !== undefined ? (
+            <p className="mt-1 text-base text-chalk">Model total {p.modelTotal}. No posted total to compare.</p>
+          ) : (
+            <p className="mt-1 text-base text-chalk-3">Total needs tendency data for both teams.</p>
+          )}
+        </div>
+      </div>
+      <p className="mt-3 text-xs text-chalk-3">
+        Side comes from the projected margin (Elo and unit edges) against the spread. Total comes from each offense&apos;s EPA per play against the other defense, over both teams&apos; pace, plus a weather tilt when the forecast is flagged. A lean under 2 points is noise. Both are locked pregame and graded on the Record page.
+        {graded?.totalLeanRight !== undefined && ` Graded: total lean ${graded.totalLeanRight ? "right" : "wrong"}.`}
+        {graded?.modelSideCovered !== undefined && ` Side ${graded.modelSideCovered ? "covered" : "did not cover"}.`}
+      </p>
+    </div>
+  );
+}
 
 /** Team logo chip. The side with the advantage is full color with a ring; the other side is shaded. */
 function TeamMark({ team, state, size = "md" }: { team: Team; state: "win" | "lose" | "even"; size?: "md" | "lg" }) {

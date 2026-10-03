@@ -143,7 +143,9 @@
    "home": 27,
    "away": 22,
    "modelSide": "ARST",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 50,
+   "totalLean": "none"
   }
  }
 }

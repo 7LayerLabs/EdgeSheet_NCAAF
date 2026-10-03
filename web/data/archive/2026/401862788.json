@@ -134,7 +134,9 @@
    "home": 25,
    "away": 31,
    "modelSide": "RICE",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 59,
+   "totalLean": "over"
   }
  }
 }

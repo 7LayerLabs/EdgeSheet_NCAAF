@@ -125,7 +125,9 @@
    "home": 31,
    "away": 25,
    "modelSide": "CIN",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 65.5,
+   "totalLean": "over"
   }
  }
 }

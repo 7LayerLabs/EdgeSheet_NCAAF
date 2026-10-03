@@ -152,7 +152,9 @@
    "home": 31,
    "away": 28,
    "modelSide": "WASH",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 59.5,
+   "totalLean": "none"
   }
  }
 }

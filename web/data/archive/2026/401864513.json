@@ -134,7 +134,9 @@
    "home": 26,
    "away": 25,
    "modelSide": "SJSU",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 56,
+   "totalLean": "over"
   }
  }
 }

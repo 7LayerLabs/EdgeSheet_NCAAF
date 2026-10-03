@@ -143,7 +143,9 @@
    "home": 22,
    "away": 23,
    "modelSide": "FRES",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 47,
+   "totalLean": "none"
   }
  }
 }

@@ -125,7 +125,9 @@
    "home": 24,
    "away": 25,
    "modelSide": "BAY",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 43,
+   "totalLean": "under"
   }
  }
 }

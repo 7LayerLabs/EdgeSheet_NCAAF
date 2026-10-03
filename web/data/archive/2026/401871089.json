@@ -107,7 +107,9 @@
    "home": 33,
    "away": 24,
    "modelSide": "ULM",
-   "confidence": "high"
+   "confidence": "high",
+   "modelTotal": 65,
+   "totalLean": "over"
   }
  }
 }
