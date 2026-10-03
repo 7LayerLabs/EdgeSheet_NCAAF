@@ -17,7 +17,7 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
         <Avatar jersey={p.jersey} color={team.color} logo={team.logo} size={compact ? "sm" : "md"} />
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
-            <Link href={`/player/${p.id}`} className="display truncate text-xl font-bold leading-none text-chalk hover:text-flag">
+            <Link href={`/player/${p.id}`} className="display truncate text-2xl font-bold leading-none text-chalk hover:text-flag">
               {p.name}
             </Link>
             {r && <RadarScore score={r.score} />}
@@ -48,7 +48,7 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
       ) : (
         <div className="flex flex-wrap gap-1.5">
           {p.traits.map((t) => (
-            <span key={t} className="rounded bg-ink-2 px-2 py-0.5 text-xs text-chalk-2">{t}</span>
+            <span key={t} className="rounded border border-line bg-ink-2 px-2 py-0.5 text-xs text-chalk-2">{t}</span>
           ))}
         </div>
       )}
@@ -86,7 +86,7 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
 export function RadarScore({ score, size = "sm" }: { score: number; size?: "sm" | "lg" }) {
   const tone = score >= 75 ? "text-flag" : score >= 55 ? "text-chalk" : "text-chalk-3";
   return (
-    <span className={`display shrink-0 font-extrabold leading-none ${tone} ${size === "lg" ? "text-5xl" : "text-xl"}`} title="Radar score: ranks evidence, not a draft grade">
+    <span className={`display shrink-0 font-extrabold leading-none ${tone} ${size === "lg" ? "text-6xl" : "text-2xl"}`} title="Radar score: ranks evidence, not a draft grade">
       {score}
     </span>
   );

@@ -204,7 +204,7 @@ function mkTeam(name: string, id: number, conf: string | null, b: Bundle): Team 
     record: rec,
     conference: conf ?? t?.conference ?? "",
     color: t?.color ?? "#8b95a0",
-    logo: t?.logos?.[1] ?? t?.logos?.[0] ?? undefined,
+    logo: t?.logos?.[0] ?? undefined,
   };
 }
 

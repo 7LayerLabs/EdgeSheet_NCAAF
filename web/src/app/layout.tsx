@@ -1,18 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Barlow_Semi_Condensed, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 import Link from "next/link";
 import { NavLinks } from "@/components/NavLinks";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const barlow = Barlow_Semi_Condensed({
+  variable: "--font-barlow",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const source = Source_Sans_3({
+  variable: "--font-source",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 const plexMono = IBM_Plex_Mono({
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d1218",
+  themeColor: "#0d1f3c",
 };
 
 const I = {
@@ -48,12 +49,12 @@ const NAV = [
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable} ${plexMono.variable} h-full`}>
+    <html lang="en" className={`${barlow.variable} ${source.variable} ${plexMono.variable} h-full`}>
       <body className="min-h-full flex flex-col field">
-        <header className="sticky top-0 z-30 border-b border-line bg-ink/90 backdrop-blur">
+        <header className="topbar sticky top-0 z-30">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-            <Link href="/" className="display flex items-center gap-2 text-lg font-bold text-chalk">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-flag text-ink" aria-hidden>
+            <Link href="/" className="display flex items-center gap-2 text-3xl font-bold text-white">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-white" aria-hidden>
                 <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /><path d="M12 4v8l5 3" /></svg>
               </span>
               Scout the Slate

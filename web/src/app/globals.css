@@ -7,24 +7,25 @@
    weather warnings, sky blue for market/info.
 ------------------------------------------------------------------- */
 :root {
-  /* Sleeper palette, lifted from sleeper.app's stylesheet: deep navy ground,
-     slate-blue cards, aqua as the brand accent, lime for live and good,
-     coral for bad, yellow for warnings, lavender for market and info. */
-  --ink: #05091d;
-  --ink-2: #030712;
-  --panel: #0e1430;
-  --panel-2: #131b38;
-  --line: #1d2747;
-  --line-2: #344677;
-  --chalk: #eef2f7;
-  --chalk-2: #c7d0dc;
-  --chalk-3: #8996aa;
-  --flag: #00d7ff;
-  --flag-2: #04abb0;
-  --turf: #7cff71;
-  --brick: #ff6482;
-  --sky: #b8bfff;
-  --warn: #ffdc00;
+  /* sleepers.app look: light gray page, white cards with hairline borders,
+     navy header and headings, link blue, green for good, red for bad,
+     yellow tag chips. Token names are kept from the dark build. */
+  --ink: #f3f4f6;        /* page background */
+  --ink-2: #e8eaee;      /* sunken surfaces */
+  --panel: #ffffff;      /* cards */
+  --panel-2: #f7f8fa;    /* card hover, segmented control track */
+  --line: #dfe3e8;
+  --line-2: #b8c0cb;
+  --chalk: #0f1f3d;      /* navy text */
+  --chalk-2: #3b4658;
+  --chalk-3: #6b7482;
+  --flag: #0f1f3d;       /* primary accent: navy (scores, active controls) */
+  --flag-2: #3d5a8a;
+  --turf: #1a7f3c;       /* green: live, good, usage bars */
+  --brick: #d23a3a;      /* red: bad, warnings elevated */
+  --sky: #1f6fcf;        /* link blue, market */
+  --warn: #f7d83b;       /* yellow tags */
+  --navy: #0d1f3c;       /* header bar */
 }
 
 @theme inline {
@@ -43,13 +44,14 @@
   --color-brick: var(--brick);
   --color-sky: var(--sky);
   --color-warn: var(--warn);
-  --font-display: var(--font-poppins), "Segoe UI", sans-serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --color-navy: var(--navy);
+  --font-display: var(--font-barlow), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-source), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   background: var(--ink);
 }
 
@@ -60,22 +62,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Flat navy ground with a faint aqua glow at the top, like Sleeper's app shell. */
-.field {
-  background-image: radial-gradient(900px 320px at 50% -120px, color-mix(in srgb, var(--flag) 10%, transparent), transparent 70%);
-}
+.field { background: var(--ink); }
 
 .display {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.02;
+}
+
+.topbar {
+  background: var(--navy);
+  color: #fff;
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--chalk-3);
 }
@@ -88,7 +93,8 @@ body {
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(15, 31, 61, 0.04);
 }
 
 .card:hover {
@@ -98,9 +104,9 @@ body {
 /* Scout Score meter: ten hash marks like yard lines. */
 .meter {
   position: relative;
-  height: 6px;
+  height: 8px;
   background: var(--ink-2);
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
 }
 .meter::after {
@@ -110,13 +116,13 @@ body {
   background-image: repeating-linear-gradient(
     to right,
     transparent 0 calc(10% - 1px),
-    var(--ink) calc(10% - 1px) 10%
+    #fff calc(10% - 1px) 10%
   );
 }
 .meter > span {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, var(--flag-2), var(--flag));
+  background: #2f7a3a;
   transition: width 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -143,25 +149,25 @@ body {
 }
 
 .chip {
-  background: var(--panel);
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 4px;
   border: 1px solid var(--line);
-  background: transparent;
-  color: var(--chalk-2);
-  font-size: 0.8rem;
+  background: var(--panel);
+  color: var(--chalk);
+  font-size: 0.85rem;
+  font-weight: 600;
   white-space: nowrap;
   cursor: pointer;
   transition: background 120ms, border-color 120ms, color 120ms;
 }
-.chip:hover { border-color: var(--line-2); color: var(--chalk); }
+.chip:hover { border-color: var(--line-2); }
 .chip[aria-pressed="true"] {
-  background: color-mix(in srgb, var(--flag) 16%, var(--panel));
-  border-color: color-mix(in srgb, var(--flag) 60%, transparent);
-  color: var(--flag);
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
 }
 
 .scroll-x {
@@ -189,8 +195,7 @@ body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   border-top: 1px solid var(--line);
-  background: color-mix(in srgb, var(--ink) 92%, transparent);
-  backdrop-filter: blur(10px);
+  background: #fff;
   padding-bottom: env(safe-area-inset-bottom);
 }
 .tab {
@@ -199,14 +204,15 @@ body {
   align-items: center;
   gap: 2px;
   padding: 8px 0 6px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 10px;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--chalk-3);
 }
 .tab:hover, .tab:focus-visible { color: var(--chalk); }
-.tab[aria-current="page"] { color: var(--flag); }
+.tab[aria-current="page"] { color: var(--navy); }
 .tab-icon { display: block; width: 22px; height: 22px; }
 .tab-icon svg { width: 100%; height: 100%; }
 
@@ -214,27 +220,27 @@ body {
 .seg {
   display: inline-flex;
   gap: 2px;
-  padding: 2px;
+  padding: 3px;
   border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--ink-2);
+  border-radius: 4px;
+  background: #fff;
 }
 .seg a, .seg button {
   padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  color: var(--chalk-2);
+  border-radius: 3px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--chalk);
   white-space: nowrap;
 }
 .seg a[aria-current="true"], .seg button[aria-pressed="true"] {
-  background: color-mix(in srgb, var(--flag) 16%, var(--panel-2));
-  color: var(--flag);
-  font-weight: 600;
+  background: var(--navy);
+  color: #fff;
 }
 
 /* Loading skeletons */
 .skel {
-  background: linear-gradient(90deg, var(--panel) 0%, var(--panel-2) 50%, var(--panel) 100%);
+  background: linear-gradient(90deg, #fff 0%, var(--ink-2) 50%, #fff 100%);
   background-size: 200% 100%;
   animation: shimmer 1.4s ease-in-out infinite;
   border: 1px solid var(--line);

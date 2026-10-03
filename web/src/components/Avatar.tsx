@@ -23,7 +23,7 @@ export function Avatar({
         {jersey ? `#${jersey}` : "–"}
       </span>
       {logo && (
-        <span className={`absolute flex items-center justify-center rounded-full bg-ink ring-2 ring-ink ${badge}`}>
+        <span className={`absolute flex items-center justify-center rounded-full bg-white ring-2 ring-white ${badge}`}>
           <Image src={logo} alt="" width={28} height={28} className="h-[80%] w-[80%] object-contain" unoptimized />
         </span>
       )}

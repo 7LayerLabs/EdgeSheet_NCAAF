@@ -41,7 +41,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
             <StatusPill status={game.status} clock={game.score?.clock} />
             <CoverageBadge level={game.coverage} />
           </div>
-          <h1 className="display mt-2 text-4xl font-extrabold leading-none text-chalk sm:text-5xl">
+          <h1 className="display mt-2 text-5xl font-extrabold leading-none text-chalk sm:text-6xl">
             <TeamName t={game.away} score={game.score?.away} />
             <span className="mx-2 text-chalk-3 sm:mx-3">@</span>
             <TeamName t={game.home} score={game.score?.home} />
@@ -88,7 +88,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
         <ol className="mt-3 grid gap-2 sm:grid-cols-3">
           {game.whyWatchReasons.map((r, i) => (
             <li key={i} className="card p-4 text-sm leading-snug text-chalk-2">
-              <span className="display block text-2xl font-bold text-flag">{i + 1}</span>
+              <span className="display block text-3xl font-bold text-flag">{i + 1}</span>
               <span className="mt-1 block">{r}</span>
             </li>
           ))}
@@ -103,7 +103,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
             <div key={t.id} className="card p-4">
               <div className="flex items-center gap-2">
                 <span className="inline-block h-4 w-1 rounded-sm" style={{ background: t.color }} />
-                <span className="display text-xl font-bold">{t.short}</span>
+                <span className="display text-2xl font-bold">{t.short}</span>
               </div>
               <StyleCard side="Offense" o={game.offense[t.abbr]} />
               <StyleCard side="Defense" d={game.defense[t.abbr]} />
@@ -181,7 +181,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
         {years.map((y) => (
           <div key={y} className="mt-5">
             <div className="flex items-baseline gap-3">
-              <span className="display text-2xl font-bold text-chalk">{y} draft</span>
+              <span className="display text-3xl font-bold text-chalk">{y} draft</span>
               <span className="mono text-xs text-chalk-3">{y === years[0] ? "this year" : y === years[0] + 1 ? "next year" : "the year after"}</span>
               <span className="h-px flex-1 bg-line" />
             </div>
@@ -203,9 +203,9 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
           <div className="mt-3 grid gap-2">
             {game.matchups.map((m, i) => (
               <div key={i} className={`card grid gap-2 p-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center ${m.edge === "offense" ? "border-flag/40" : m.edge === "defense" ? "border-sky/40" : ""}`}>
-                <span className={`display text-xl font-semibold ${m.edge === "offense" ? "text-flag" : "text-chalk"}`}>{m.a}</span>
+                <span className={`display text-2xl font-semibold ${m.edge === "offense" ? "text-flag" : "text-chalk"}`}>{m.a}</span>
                 <span className="mono text-center text-xs text-chalk-3">{m.edge === "even" ? "EVEN" : "VS"}</span>
-                <span className={`display text-xl font-semibold sm:text-right ${m.edge === "defense" ? "text-sky" : "text-chalk"}`}>{m.b}</span>
+                <span className={`display text-2xl font-semibold sm:text-right ${m.edge === "defense" ? "text-sky" : "text-chalk"}`}>{m.b}</span>
                 <p className="text-sm text-chalk-2 sm:col-span-3">{m.why}</p>
                 <p className="mono text-xs text-chalk-3 sm:col-span-3">Evidence: {m.evidence}</p>
               </div>
@@ -220,7 +220,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {game.keepAnEyeOn.map((k) => (
               <li key={k.name} className="card p-4">
-                <span className="display text-xl font-semibold text-chalk">{k.name}</span>
+                <span className="display text-2xl font-semibold text-chalk">{k.name}</span>
                 <span className="mono ml-2 text-xs text-chalk-3">{k.team}</span>
                 <p className="mt-1 text-sm text-chalk-2">{k.note}</p>
               </li>
@@ -253,8 +253,8 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
               {game.box.teams.map((t) => (
                 <div key={t.team} className="card p-4">
                   <div className="flex items-baseline justify-between">
-                    <span className="display text-xl font-bold text-chalk">{t.team}</span>
-                    {t.points !== null && <span className="display text-2xl font-extrabold text-flag">{t.points}</span>}
+                    <span className="display text-2xl font-bold text-chalk">{t.team}</span>
+                    {t.points !== null && <span className="display text-3xl font-extrabold text-flag">{t.points}</span>}
                   </div>
                   <ul className="mt-2 grid gap-1.5">
                     {t.leaders.map((l) => (
@@ -326,7 +326,7 @@ function Section({ n, title, children }: { n: string; title: string; children: R
   return (
     <section className="mt-10">
       <p className="eyebrow">{n}</p>
-      <h2 className="display mt-1 text-2xl font-bold leading-tight text-chalk sm:text-3xl">{title}</h2>
+      <h2 className="display mt-1 text-3xl font-bold leading-tight text-chalk sm:text-4xl">{title}</h2>
       {children}
     </section>
   );

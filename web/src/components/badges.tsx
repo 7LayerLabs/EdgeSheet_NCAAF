@@ -2,7 +2,7 @@ import type { Coverage, GameStatus } from "@/lib/types";
 
 export function CoverageBadge({ level }: { level: Coverage }) {
   const tone =
-    level === "Full" ? "border-turf/50 text-turf" : level === "Standard" ? "border-sky/50 text-sky" : "border-chalk-3/50 text-chalk-3";
+    level === "Full" ? "border-turf/40 bg-turf/10 text-turf" : level === "Standard" ? "border-sky/40 bg-sky/10 text-sky" : "border-line bg-ink-2 text-chalk-3";
   return (
     <span className={`mono inline-flex items-center gap-1 rounded border px-1.5 py-0.5 text-[10px] uppercase tracking-wider ${tone}`}>
       <span aria-hidden>{level === "Full" ? "●●●" : level === "Standard" ? "●●○" : "●○○"}</span>
@@ -23,18 +23,18 @@ export function StatusPill({ status, clock }: { status: GameStatus; clock?: stri
 }
 
 export function DivisionTag({ d }: { d: string }) {
-  return <span className="mono rounded bg-ink-2 px-1.5 py-0.5 text-[10px] tracking-wider text-chalk-3">{d}</span>;
+  return <span className="mono rounded border border-line bg-ink-2 px-1.5 py-0.5 text-[10px] tracking-wider text-chalk-2">{d}</span>;
 }
 
 export function Tier({ tier }: { tier: string }) {
   const tone: Record<string, string> = {
-    Established: "bg-flag text-ink",
-    Emerging: "bg-sky/20 text-sky",
-    Eligible: "bg-flag/20 text-flag",
-    Future: "bg-turf/20 text-turf",
-    Sleeper: "bg-brick/20 text-brick",
-    "Watch only": "bg-panel-2 text-chalk-3",
-    Watch: "bg-panel-2 text-chalk-3",
+    Established: "bg-navy text-white",
+    Emerging: "bg-sky text-white",
+    Eligible: "bg-[#e8415b] text-white",
+    Future: "bg-sky text-white",
+    Sleeper: "bg-turf text-white",
+    "Watch only": "bg-ink-2 text-chalk-2",
+    Watch: "bg-ink-2 text-chalk-2",
   };
   const label: Record<string, string> = { Eligible: "Draft eligible", Watch: "Watch" };
   return <span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${tone[tier] ?? "bg-panel-2 text-chalk-3"}`}>{label[tier] ?? tier}</span>;

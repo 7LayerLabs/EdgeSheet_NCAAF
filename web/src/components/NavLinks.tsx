@@ -21,7 +21,7 @@ export function NavLinks({ items, variant }: { items: NavItem[]; variant: "top" 
             key={n.href}
             href={n.href}
             aria-current={active(n.href) ? "page" : undefined}
-            className={`rounded-full px-3.5 py-1.5 font-medium transition-colors ${active(n.href) ? "bg-flag/15 text-flag" : "text-chalk-2 hover:bg-panel hover:text-chalk"}`}
+            className={`rounded px-3 py-1.5 text-base font-semibold transition-colors ${active(n.href) ? "bg-white/15 text-white" : "text-white/75 hover:bg-white/10 hover:text-white"}`}
           >
             {n.label}
           </Link>

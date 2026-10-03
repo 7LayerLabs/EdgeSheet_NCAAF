@@ -45,7 +45,7 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   return (
     <div>
       <p className="eyebrow">Scouting radar{meta ? ` · stats as of ${asOf(meta.ingestedAt)}` : ""}</p>
-      <h1 className="display mt-1 text-4xl font-extrabold text-chalk sm:text-5xl">
+      <h1 className="display mt-1 text-5xl font-extrabold text-chalk sm:text-6xl">
         {cls} draft <span className="text-chalk-3">· {classLabel}</span>
       </h1>
       <p className="mt-2 max-w-3xl text-sm text-chalk-3">
@@ -55,7 +55,7 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
 
       {!loaded && (
         <div className="card mt-6 p-8 text-center">
-          <p className="display text-xl text-chalk">Radar needs ingested data</p>
+          <p className="display text-2xl text-chalk">Radar needs ingested data</p>
           <p className="mt-1 text-sm text-chalk-3">Run <code className="mono">npm run ingest</code> inside web/ to pull rosters, stats, and recruiting.</p>
         </div>
       )}
@@ -80,7 +80,7 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
             name="q"
             defaultValue={q}
             placeholder="Search name, school, conference"
-            className="w-56 rounded-md border border-line bg-panel px-3 py-1.5 text-sm text-chalk placeholder:text-chalk-3 focus:border-chalk-2 focus:outline-none"
+            className="w-56 rounded border border-line bg-white px-3 py-1.5 text-sm text-chalk placeholder:text-chalk-3 focus:border-navy focus:outline-none"
           />
         </form>
       </div>
@@ -93,7 +93,7 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
 
       {loaded && players.length === 0 && (
         <div className="card mt-6 p-8 text-center">
-          <p className="display text-xl text-chalk">Nothing on the radar here</p>
+          <p className="display text-2xl text-chalk">Nothing on the radar here</p>
           <p className="mt-1 text-sm text-chalk-3">Try another class, division, or position.</p>
         </div>
       )}

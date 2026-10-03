@@ -30,7 +30,7 @@ export default async function Today({ searchParams }: PageProps<"/">) {
             {slate.week ? `${slate.season} · Week ${slate.week.week}` : "Sample slate"}
             {slate.source === "live" && <span className="ml-2 text-turf">● live data</span>}
           </p>
-          <h1 className="display mt-1 text-4xl font-extrabold text-chalk sm:text-5xl">
+          <h1 className="display mt-1 text-5xl font-extrabold text-chalk sm:text-6xl">
             {fmtDate(slate.date, { weekday: "long", month: "long", day: "numeric" })}
           </h1>
         </div>
@@ -93,10 +93,10 @@ function Callout({ label, game, tone }: { label: string; game: Game; tone: "flag
   const s = scoutScore(game.scoreComponents);
   return (
     <Link href={`/game/${game.id}`} className="card flex items-center gap-4 p-4 hover:bg-panel-2">
-      <span className={`display text-4xl font-extrabold ${tone === "flag" ? "text-flag" : "text-turf"}`}>{s}</span>
+      <span className={`display text-5xl font-extrabold ${tone === "flag" ? "text-flag" : "text-turf"}`}>{s}</span>
       <span className="min-w-0">
         <span className={`eyebrow ${tone === "turf" ? "text-turf" : ""}`}>{label}</span>
-        <span className="display mt-0.5 block truncate text-xl font-semibold text-chalk">
+        <span className="display mt-0.5 block truncate text-2xl font-semibold text-chalk">
           {game.away.short} @ {game.home.short}
         </span>
         <span className="line-clamp-1 text-xs text-chalk-3">{game.whyWatch}</span>

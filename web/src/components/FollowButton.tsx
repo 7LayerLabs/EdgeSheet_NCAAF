@@ -13,8 +13,8 @@ export function FollowButton({ kind, id, label, size = "md" }: { kind: keyof Wat
       type="button"
       aria-pressed={on}
       onClick={() => toggle(kind, id)}
-      className={`inline-flex items-center gap-1.5 rounded-md border font-medium transition-colors ${pad} ${
-        on ? "border-flag bg-flag text-ink" : "border-line-2 text-chalk hover:border-chalk-2"
+      className={`inline-flex items-center gap-1.5 rounded border font-semibold transition-colors ${pad} ${
+        on ? "border-navy bg-navy text-white" : "border-line-2 bg-white text-chalk hover:border-chalk-2"
       }`}
     >
       <span aria-hidden>{on ? "★" : "☆"}</span>
