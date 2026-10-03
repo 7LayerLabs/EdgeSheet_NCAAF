@@ -52,7 +52,7 @@ export function projectGame(i: Input): Projection | undefined {
   if (i.homeElo != null && i.awayElo != null) {
     const diff = i.homeElo + (i.neutral ? 0 : HOME_ELO) - i.awayElo;
     eloMargin = diff / ELO_PER_POINT;
-    basis.push(`Pregame Elo: ${i.home.abbr} ${i.homeElo}, ${i.away.abbr} ${i.awayElo}${i.neutral ? ", neutral site" : `, +${HOME_ELO} home field`} → ${i.home.abbr} by ${eloMargin.toFixed(1)}`);
+    basis.push(`Pregame Elo: ${i.home.abbr} ${i.homeElo}, ${i.away.abbr} ${i.awayElo}${i.neutral ? ", neutral site" : `, +${HOME_ELO} home field`} → ${eloMargin >= 0 ? i.home.abbr : i.away.abbr} by ${Math.abs(eloMargin).toFixed(1)}`);
   }
 
   // Tendencies: net percentile gap across the unit edges, scaled to points. Four axes, each up to 100, so +-400 → +-10.
