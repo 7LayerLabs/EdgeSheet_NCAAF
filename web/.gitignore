@@ -43,3 +43,6 @@ next-env.d.ts
 
 # generated data digests (run: npm run ingest)
 /data/generated/
+
+# caches and logs from ingest scripts
+/data/cache/

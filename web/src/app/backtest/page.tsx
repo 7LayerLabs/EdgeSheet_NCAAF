@@ -33,12 +33,10 @@ export default function BacktestPage() {
 
   const wf = r.walkForward;
   const full = r.projection;
-  const liveRow = (s: ProjectionSection | null) => s?.overall.grid.find((g) => g.net === "live" && g.eloWeight === s.live.eloWeight && g.edgeDivisor === s.live.edgeDivisor);
-  const eloRow = (s: ProjectionSection | null) => s?.overall.grid.find((g) => g.net === "live" && g.eloWeight === 1);
-  const edgesRow = (s: ProjectionSection | null) => s?.overall.grid.find((g) => g.net === "live" && g.eloWeight === 0 && g.edgeDivisor === s.live.edgeDivisor);
+  const liveRow = (s: ProjectionSection | null) => s?.overall.grid.find((g) => g.form === s.live.form && g.net === "live" && g.eloWeight === s.live.eloWeight && g.edgeDivisor === s.live.edgeDivisor);
+  const eloRow = (s: ProjectionSection | null) => s?.overall.grid.find((g) => g.form === "additive" && g.net === "live" && g.eloWeight === 1);
   const wfLive = liveRow(wf);
   const wfElo = eloRow(wf);
-  const wfEdges = edgesRow(wf);
   const draft = r.draft;
   const groups = Object.keys(GROUP_LABEL);
 
@@ -77,7 +75,8 @@ export default function BacktestPage() {
           </div>
           <p className="mt-2 text-sm text-chalk-3">
             Favorites covered the closing number {pct(wf.overall.market.favoriteCoverRate)} of the time on these games, which is the baseline a side lean has to beat.
-            Model total error {num(wf.overall.total.modelMae)} points against {num(wf.overall.total.marketMae)} for the posted total.
+            Model total at {wf.overall.total.avgPpg} average points: error {num(wf.overall.total.modelMae)} against {num(wf.overall.total.marketMae)} for the posted total, running {sign(wf.overall.total.bias)} points per game against the real total.
+            At the old {wf.overall.totalOld.avgPpg}: error {num(wf.overall.totalOld.modelMae)}, {sign(wf.overall.totalOld.bias)} per game, {wf.overall.totalOld.overLeans} over leans to {wf.overall.totalOld.underLeans} under.
           </p>
 
           <h3 className="display mt-6 text-2xl font-bold text-chalk">By season</h3>
@@ -85,10 +84,11 @@ export default function BacktestPage() {
 
           <h3 className="display mt-6 text-2xl font-bold text-chalk">Which blend graded best</h3>
           <p className="mt-1 text-sm text-chalk-3">
-            Margin = eloWeight times the Elo margin, plus net unit-edge percentile points divided by edgeDivisor. The live setting is {wf.live.eloWeight} and {wf.live.edgeDivisor}.
-            Highlighted: lowest margin error. Rows marked all eight use every signed edge gap instead of the four largest with small gaps zeroed.
+            Two forms. Additive (live now): margin = Elo margin + (1 - eloWeight) times net edge percentile points / edgeDivisor. Weighted (live until October 2026): margin = eloWeight times Elo margin + (1 - eloWeight) times the edge term.
+            The live setting is {wf.live.form}, {wf.live.eloWeight} and {wf.live.edgeDivisor}. Highlighted green: lowest margin error in the additive form. Highlighted yellow: best cover rate on four-point leans with at least 500 of them.
+            Rows marked all eight use every signed edge gap instead of the four largest with small gaps zeroed.
           </p>
-          <GridTable grid={wf.overall.grid} best={wf.best} live={wf.live} />
+          <GridTable grid={wf.overall.grid} best={wf.best} bestCover={wf.bestCover ?? null} live={wf.live} />
 
           <h3 className="display mt-6 text-2xl font-bold text-chalk">Is the win probability honest?</h3>
           <p className="mt-1 text-sm text-chalk-3">Games bucketed by the live blend&apos;s stated win probability for its pick, against how often that pick won.</p>
@@ -113,7 +113,7 @@ export default function BacktestPage() {
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
             <Tile label="Winner right (live blend)" value={pct(liveRow(full)?.winnerRate)} sub={`Closing line ${pct(full.overall.market.winnerRate)}`} />
             <Tile label="Margin error (live blend)" value={num(liveRow(full)?.mae)} sub={`Closing line ${num(full.overall.market.mae)}`} />
-            <Tile label="Best row" value={full.best ? `${full.best.eloWeight} / ${full.best.edgeDivisor}` : "n/a"} sub={full.best ? `margin error ${num(full.best.mae)}, winner ${pct(full.best.winnerRate)}` : undefined} />
+            <Tile label="Best additive row" value={full.best ? `${full.best.eloWeight} / ${full.best.edgeDivisor}` : "n/a"} sub={full.best ? `margin error ${num(full.best.mae)}, winner ${pct(full.best.winnerRate)}` : undefined} />
           </div>
         </section>
       )}
@@ -262,7 +262,8 @@ export default function BacktestPage() {
         <section className="card mt-8 p-4">
           <p className="eyebrow">Recommended weights (not applied)</p>
           <p className="mt-1 text-sm text-chalk-2">
-            eloWeight {w.projection.eloWeight}, edgeDivisor {w.projection.edgeDivisor}. Written to data/weights.json by the backtest. The live projection keeps its constants until USE_FITTED_WEIGHTS=1 is set.
+            {w.projection.form ?? "additive"} form, eloWeight {w.projection.eloWeight}, edgeDivisor {w.projection.edgeDivisor}. Written to data/weights.json by the backtest. The live projection keeps its constants until USE_FITTED_WEIGHTS=1 is set.
+            {w.projectionBestVsClosingLine && ` Best against the closing line: eloWeight ${w.projectionBestVsClosingLine.eloWeight}, edgeDivisor ${w.projectionBestVsClosingLine.edgeDivisor} (${pct(w.projectionBestVsClosingLine.lean4CoverRate)} on ${w.projectionBestVsClosingLine.lean4Graded} four-point leans).`}
           </p>
           {w.comment && <p className="mt-2 text-xs text-chalk-3">{w.comment}</p>}
         </section>
@@ -289,7 +290,7 @@ function Tile({ label, value, sub }: { label: string; value: string; sub?: strin
   );
 }
 
-function SeasonTable({ rows, live }: { rows: ProjectionGrade[]; live: { eloWeight: number; edgeDivisor: number } }) {
+function SeasonTable({ rows, live }: { rows: ProjectionGrade[]; live: { form: string; eloWeight: number; edgeDivisor: number } }) {
   return (
     <div className="card mt-2 overflow-x-auto">
       <table className="w-full text-sm">
@@ -308,7 +309,7 @@ function SeasonTable({ rows, live }: { rows: ProjectionGrade[]; live: { eloWeigh
         </thead>
         <tbody>
           {rows.map((s) => {
-            const g = s.grid.find((x) => x.net === "live" && x.eloWeight === live.eloWeight && x.edgeDivisor === live.edgeDivisor);
+            const g = s.grid.find((x) => x.form === live.form && x.net === "live" && x.eloWeight === live.eloWeight && x.edgeDivisor === live.edgeDivisor);
             return (
               <tr key={s.season} className="border-t border-line">
                 <td className="px-3 py-2 font-semibold text-chalk">{s.season}</td>
@@ -329,14 +330,17 @@ function SeasonTable({ rows, live }: { rows: ProjectionGrade[]; live: { eloWeigh
   );
 }
 
-function GridTable({ grid, best, live }: { grid: GridRow[]; best: GridRow | null; live: { eloWeight: number; edgeDivisor: number } }) {
-  const isBest = (g: GridRow) => !!best && g.net === best.net && g.eloWeight === best.eloWeight && g.edgeDivisor === best.edgeDivisor;
-  const isLive = (g: GridRow) => g.net === "live" && g.eloWeight === live.eloWeight && g.edgeDivisor === live.edgeDivisor;
+function GridTable({ grid, best, bestCover, live }: { grid: GridRow[]; best: GridRow | null; bestCover: GridRow | null; live: { form: string; eloWeight: number; edgeDivisor: number } }) {
+  const same = (a: GridRow | null, g: GridRow) => !!a && g.form === a.form && g.net === a.net && g.eloWeight === a.eloWeight && g.edgeDivisor === a.edgeDivisor;
+  const isBest = (g: GridRow) => same(best, g);
+  const isCover = (g: GridRow) => same(bestCover, g);
+  const isLive = (g: GridRow) => g.form === live.form && g.net === "live" && g.eloWeight === live.eloWeight && g.edgeDivisor === live.edgeDivisor;
   return (
     <div className="card mt-2 overflow-x-auto">
       <table className="w-full text-sm">
         <thead className="text-left text-xs uppercase tracking-wider text-chalk-3">
           <tr>
+            <th className="px-3 py-2">Form</th>
             <th className="px-3 py-2">Elo weight</th>
             <th className="px-3 py-2">Edge divisor</th>
             <th className="px-3 py-2">Edges used</th>
@@ -349,8 +353,9 @@ function GridTable({ grid, best, live }: { grid: GridRow[]; best: GridRow | null
         </thead>
         <tbody>
           {grid.map((g) => (
-            <tr key={`${g.net}-${g.eloWeight}-${g.edgeDivisor}`} className={`border-t border-line ${isBest(g) ? "bg-turf/10 font-semibold" : isLive(g) ? "bg-ink-2" : ""}`}>
-              <td className="mono px-3 py-2">{g.eloWeight === 1 ? "1 (Elo only)" : g.eloWeight === 0 ? "0 (edges only)" : g.eloWeight}{isLive(g) ? " (live)" : ""}{isBest(g) ? " (best)" : ""}</td>
+            <tr key={`${g.form}-${g.net}-${g.eloWeight}-${g.edgeDivisor}`} className={`border-t border-line ${isBest(g) ? "bg-turf/10 font-semibold" : isCover(g) ? "bg-warn/15 font-semibold" : isLive(g) ? "bg-ink-2" : ""}`}>
+              <td className="px-3 py-2 text-chalk-2">{g.form}</td>
+              <td className="mono px-3 py-2">{g.eloWeight === 1 ? "1 (Elo only)" : g.eloWeight === 0 ? "0 (edges only)" : g.eloWeight}{isLive(g) ? " (live)" : ""}{isBest(g) ? " (best error)" : ""}{isCover(g) ? " (best cover)" : ""}</td>
               <td className="mono px-3 py-2">{g.eloWeight === 1 ? "n/a" : g.edgeDivisor}</td>
               <td className="px-3 py-2 text-chalk-2">{g.net === "raw" ? "all eight" : "top four"}</td>
               <td className="mono px-3 py-2 text-right">{pct(g.winnerRate)}</td>

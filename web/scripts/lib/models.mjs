@@ -334,7 +334,9 @@ export function buildTendencies(teams) {
 export const HOME_ELO = 65;
 export const ELO_PER_POINT = 28;
 export const SIGMA = 16;
-const AVG_PPG = 28.5;
+/** League-average points per team per game. The live site used 28.5 until October 2026 and now uses 25.6; both are graded. */
+export const AVG_PPG_OLD = 28.5;
+export const AVG_PPG = 25.6;
 
 function erf(x) {
   const s = Math.sign(x);
@@ -371,26 +373,34 @@ export function edgeNet(tend, homeSchool, awaySchool) {
   return { live, raw, matchups: top4.length, edges: rows.length };
 }
 
-function expectedPoints(off, def, means, plays) {
+function expectedPoints(off, def, means, plays, avgPpg) {
   const dev = (off.off.ppa - means.offPpa + (def.def.ppa - means.defPpa)) / 2;
-  return Math.max(3, AVG_PPG + plays * dev);
+  return Math.max(3, avgPpg + plays * dev);
 }
 
 /** Model total from efficiency and pace, rounded to a half point. No weather. */
-export function modelTotal(tend, homeSchool, awaySchool, cls = "fbs") {
+export function modelTotal(tend, homeSchool, awaySchool, cls = "fbs", avgPpg = AVG_PPG) {
   const h = tend.byTeam.get(homeSchool);
   const a = tend.byTeam.get(awaySchool);
   if (!h || !a) return undefined;
   const means = tend.leagueMeans(cls);
   const pace = ((h.off.plays / Math.max(1, h.games ?? 1)) + (a.off.plays / Math.max(1, a.games ?? 1))) / 2;
-  const hp = expectedPoints(h, a, means, pace);
-  const ap = expectedPoints(a, h, means, pace);
+  const hp = expectedPoints(h, a, means, pace, avgPpg);
+  const ap = expectedPoints(a, h, means, pace, avgPpg);
   return { total: Math.round((hp + ap) * 2) / 2, home: hp, away: ap, pace };
 }
 
-/** The live blend: 60% Elo, 40% net/40. */
-export const LIVE = { eloWeight: 0.6, edgeDivisor: 40 };
-export const blendMargin = (elo, net, w = LIVE.eloWeight, divisor = LIVE.edgeDivisor) => w * elo + (1 - w) * (net / divisor);
+/**
+ * Two blend forms.
+ *   weighted (live until October 2026): margin = w * elo + (1 - w) * net / divisor
+ *   additive (live now):                margin = elo + (1 - w) * net / divisor
+ * The additive form keeps the full Elo margin and adds a scaled edge term; w only sets how much edge is added.
+ */
+export const LIVE = { form: "additive", eloWeight: 0.6, edgeDivisor: 40 };
+export const weightedMargin = (elo, net, w = 0.6, divisor = 40) => w * elo + (1 - w) * (net / divisor);
+export const additiveMargin = (elo, net, w = LIVE.eloWeight, divisor = LIVE.edgeDivisor) => elo + (1 - w) * (net / divisor);
+export const blendMargin = (elo, net, w = LIVE.eloWeight, divisor = LIVE.edgeDivisor, form = LIVE.form) =>
+  form === "additive" ? additiveMargin(elo, net, w, divisor) : weightedMargin(elo, net, w, divisor);
 
 /* ============================================================ stats */
 

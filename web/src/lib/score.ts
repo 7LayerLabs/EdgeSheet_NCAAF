@@ -4,8 +4,9 @@ export const WEIGHTS: Record<keyof ScoreComponents, number> = {
   draftTalent: 0.35,
   directMatchups: 0.2,
   futureTalent: 0.15,
-  competitive: 0.1,
-  styleContrast: 0.1,
+  // 2022-2025 backtest: competitive expectation tracks the excitement index (+0.35); style contrast runs the wrong way (-0.10).
+  competitive: 0.2,
+  styleContrast: 0.0,
   storylines: 0.05,
   availability: 0.05,
 };

@@ -9,7 +9,10 @@ import { memoSync } from "./memo";
 const FILE = path.join(process.cwd(), "data", "backtest", "results.json");
 const WEIGHTS = path.join(process.cwd(), "data", "weights.json");
 
+export type BlendForm = "additive" | "weighted";
+
 export interface GridRow {
+  form: BlendForm;
   eloWeight: number;
   edgeDivisor: number;
   net: "live" | "raw";
@@ -34,6 +37,8 @@ export interface MarketRow extends GridRow {
 }
 
 export interface TotalGrade {
+  avgPpg: number;
+  bias: number | null;
   graded: number;
   leans: number;
   leanRate: number | null;
@@ -55,13 +60,16 @@ export interface ProjectionGrade {
   market: MarketRow;
   grid: GridRow[];
   total: TotalGrade;
+  totalOld: TotalGrade;
   calibration: { bucket: string; games: number; winRate: number | null }[];
 }
 
 export interface ProjectionSection {
   overall: ProjectionGrade;
   best: GridRow | null;
-  live: { eloWeight: number; edgeDivisor: number };
+  bestWeighted?: GridRow | null;
+  bestCover?: GridRow | null;
+  live: { form: BlendForm; eloWeight: number; edgeDivisor: number };
   minWeek?: number;
   leaky?: boolean;
   perSeason: ProjectionGrade[];
@@ -164,7 +172,10 @@ export interface BacktestResults {
 }
 
 export interface Weights {
-  projection?: { eloWeight?: number; edgeDivisor?: number };
+  projection?: { form?: BlendForm; eloWeight?: number; edgeDivisor?: number };
+  projectionBestVsClosingLine?: { form?: BlendForm; eloWeight: number; edgeDivisor: number; lean4CoverRate: number | null; lean4Graded: number; mae: number | null } | null;
+  projectionWeightedForm?: { form?: BlendForm; eloWeight: number; edgeDivisor: number; mae: number | null; winnerRate: number | null } | null;
+  total?: { avgPpg: number; bias: number | null; biasAtOld: number | null };
   radar?: Record<string, number>;
   comment?: string;
   generatedAt?: string;

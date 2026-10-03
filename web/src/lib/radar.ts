@@ -237,9 +237,13 @@ function buildIndex(): RadarIndex {
       y === 2 ? "Sophomore. Earliest eligible the draft after next unless redshirted." :
       y === 1 ? "Freshman. Earliest eligible in two drafts; redshirt status unknown." : "Class unknown.";
 
-    // Linemen: no stats, so production comes from pedigree, size, and class. Unit evidence is added by the game report.
-    const prodWeight = group === "OL" ? 0 : 0.55;
-    const base = prodWeight * prodPct + 0.22 * pedigree + 0.13 * usage + 0.10 * (size ? 100 : size === null ? 40 : 0);
+    // Position weights from the 2022-2025 backtest against NFL outcomes (nflverse value per season):
+    // production is the better signal at RB, QB, TE, and interior DL; pedigree wins at WR, CB, S, LB, EDGE.
+    // Linemen have no box-score stats, so production is zero and unit evidence is added by the game report.
+    const PROD_FIRST = new Set<PosGroup>(["RB", "QB", "TE", "DL"]);
+    const prodWeight = group === "OL" ? 0 : PROD_FIRST.has(group) ? 0.55 : 0.35;
+    const pedWeight = group === "OL" ? 0.22 : PROD_FIRST.has(group) ? 0.22 : 0.42;
+    const base = prodWeight * prodPct + pedWeight * pedigree + 0.13 * usage + 0.10 * (size ? 100 : size === null ? 40 : 0);
     const olBonus = group === "OL" ? (y && y >= 3 ? 25 : 10) + (size ? 20 : 0) : 0;
     const score = Math.round(Math.min(100, (base + olBonus) * level));
 

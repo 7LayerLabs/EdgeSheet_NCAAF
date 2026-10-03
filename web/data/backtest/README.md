@@ -34,7 +34,14 @@ The models are ported one for one into `scripts/lib/models.mjs` from `src/lib/ra
 
 `projection` (comparison only, flagged `leaky: true`). Same grid using end-of-season stats for every game. Each game's own result is inside its inputs, so edge-heavy blends look better than they are. Do not quote these numbers.
 
-Both modes grade a grid of blends: `margin = eloWeight * eloMargin + (1 - eloWeight) * net / edgeDivisor`, with `eloWeight` in 0, 0.2, 0.4, 0.6, 0.8, 1 and `edgeDivisor` in 20, 30, 40, 60. `eloWeight = 1` is Elo only, `eloWeight = 0` is edges only. The live site runs 0.6 and 40. Note the two numbers are separate dials: `eloWeight` scales the Elo point estimate, and `(1 - eloWeight) / edgeDivisor` is points per percentile point of net edge. Rows with `net: "raw"` use all eight signed edge gaps instead of the live rule (four largest, gaps under 20 count as zero).
+Both modes grade a grid of blends in two forms (`form` on every grid row):
+
+- `additive` (live since October 2026): `margin = eloMargin + (1 - eloWeight) * net / edgeDivisor`, with `eloWeight` in 0.4, 0.5, 0.6, 0.7, 0.8, 1 and `edgeDivisor` in 20, 30, 40, 60. The full Elo margin is always kept; `eloWeight = 1` adds no edge term and is Elo only.
+- `weighted` (live before that): `margin = eloWeight * eloMargin + (1 - eloWeight) * net / edgeDivisor`, with `eloWeight` in 0, 0.2, 0.4, 0.6, 0.8, 1. This form shrinks the Elo estimate, which compressed big favorites. Kept for comparison.
+
+The live site runs the additive form at 0.6 and 40. `(1 - eloWeight) / edgeDivisor` is points per percentile point of net edge in both forms. Rows with `net: "raw"` use all eight signed edge gaps instead of the live rule (four largest, gaps under 20 count as zero). `best` is the additive row with the lowest margin error; `bestCover` is the additive row with the best four-point-lean cover rate among rows with at least 500 such leans; `bestWeighted` is the best weighted row.
+
+The model total is graded twice: `total` at the live league average of 25.6 points per team, `totalOld` at the previous 28.5. `bias` is the mean of model total minus real total, so a positive number means it runs hot.
 
 ### Projection metrics
 

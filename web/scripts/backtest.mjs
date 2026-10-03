@@ -20,7 +20,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadKey, makeGet, digestPlayers, digestTeams, digestDraft } from "./lib/digest.mjs";
 import {
-  DRIFT, buildRadar, forecastBoard, DRAFT_GROUP_OF, buildTendencies, eloMargin, edgeNet, modelTotal, blendMargin, LIVE, probFromMargin,
+  DRIFT, buildRadar, forecastBoard, DRAFT_GROUP_OF, buildTendencies, eloMargin, edgeNet, modelTotal, blendMargin, LIVE, probFromMargin, AVG_PPG, AVG_PPG_OLD,
   spearman, pearson, mean,
 } from "./lib/models.mjs";
 
@@ -160,7 +160,8 @@ async function loadSeason(season) {
 
 /* ----------------------------------------------------- projection grade */
 
-const ELO_WEIGHTS = [0, 0.2, 0.4, 0.6, 0.8, 1];
+const ELO_WEIGHTS = [0, 0.2, 0.4, 0.6, 0.8, 1]; // weighted form
+const ADD_WEIGHTS = [0.4, 0.5, 0.6, 0.7, 0.8, 1]; // additive form, per the orchestrator
 const DIVISORS = [20, 30, 40, 60];
 
 function newAcc() {
@@ -206,6 +207,16 @@ function finishAcc(a) {
  * mode "walk": stats through the week before the game, games from MIN_WALK_WEEK on. The honest number.
  */
 const MIN_WALK_WEEK = 4;
+function finishTotal(t, avgPpg) {
+  return {
+    avgPpg,
+    graded: t.graded, leans: t.leans, leanRate: rate(t.leanRight, t.leans), leanRight: t.leanRight,
+    overLeans: t.over, overRate: rate(t.overRight, t.over), underLeans: t.under, underRate: rate(t.underRight, t.under),
+    modelMae: t.graded ? r3(t.modelAbsErr / t.graded) : null, marketMae: t.graded ? r3(t.marketAbsErr / t.graded) : null,
+    bias: t.graded ? r3(t.bias / t.graded) : null, pushes: t.pushes,
+  };
+}
+
 function gradeProjection(season, data, mode = "full") {
   const fullTend = buildTendencies(data.teams);
   const weekTend = new Map();
@@ -218,14 +229,21 @@ function gradeProjection(season, data, mode = "full") {
   };
   const linesById = new Map(data.lines.map((l) => [l.id, l]));
   const configs = [];
-  for (const w of ELO_WEIGHTS) for (const d of DIVISORS) {
-    if (w === 1 && d !== DIVISORS[0]) continue; // Elo-only does not depend on the divisor
-    configs.push({ eloWeight: w, edgeDivisor: d, net: "live", acc: newAcc() });
+  for (const w of ADD_WEIGHTS) for (const d of DIVISORS) {
+    if (w === 1 && d !== DIVISORS[0]) continue; // eloWeight 1 adds no edge term at all, so it is Elo only
+    configs.push({ form: "additive", eloWeight: w, edgeDivisor: d, net: "live", acc: newAcc() });
   }
-  for (const d of DIVISORS) configs.push({ eloWeight: LIVE.eloWeight, edgeDivisor: d, net: "raw", acc: newAcc() });
+  for (const d of DIVISORS) configs.push({ form: "additive", eloWeight: LIVE.eloWeight, edgeDivisor: d, net: "raw", acc: newAcc() });
+  for (const w of ELO_WEIGHTS) for (const d of DIVISORS) {
+    if (w === 1 && d !== DIVISORS[0]) continue;
+    configs.push({ form: "weighted", eloWeight: w, edgeDivisor: d, net: "live", acc: newAcc() });
+  }
+  for (const d of DIVISORS) configs.push({ form: "weighted", eloWeight: 0.6, edgeDivisor: d, net: "raw", acc: newAcc() });
   const market = newAcc();
   const favorite = { graded: 0, covered: 0 };
-  const total = { graded: 0, leans: 0, leanRight: 0, over: 0, overRight: 0, under: 0, underRight: 0, modelAbsErr: 0, marketAbsErr: 0, both: 0, pushes: 0 };
+  const newTotal = () => ({ graded: 0, leans: 0, leanRight: 0, over: 0, overRight: 0, under: 0, underRight: 0, modelAbsErr: 0, marketAbsErr: 0, bias: 0, pushes: 0 });
+  const total = newTotal(); // AVG_PPG 25.6, live now
+  const totalOld = newTotal(); // AVG_PPG 28.5, live until October 2026
   const calib = Array.from({ length: 5 }, (_, i) => ({ lo: 0.5 + i * 0.1, hi: 0.6 + i * 0.1, games: 0, wins: 0 }));
   let eligible = 0, noLine = 0, noElo = 0, notCharted = 0;
 
@@ -243,7 +261,7 @@ function gradeProjection(season, data, mode = "full") {
     const marketMargin = line ? -line.spread : null;
     if (marketMargin == null) noLine++;
 
-    for (const c of configs) grade(c.acc, blendMargin(elo, c.net === "raw" ? net.raw : net.live, c.eloWeight, c.edgeDivisor), actual, marketMargin);
+    for (const c of configs) grade(c.acc, blendMargin(elo, c.net === "raw" ? net.raw : net.live, c.eloWeight, c.edgeDivisor, c.form), actual, marketMargin);
 
     if (marketMargin != null) {
       grade(market, marketMargin, actual, null);
@@ -260,23 +278,25 @@ function gradeProjection(season, data, mode = "full") {
       if (b && actual !== 0) { b.games++; if (won) b.wins++; }
     }
 
-    // Totals: model total from efficiency and pace against the closing total.
-    const mt = modelTotal(tend, g.home, g.away, "fbs");
-    if (mt && line?.total != null) {
+    // Totals: model total from efficiency and pace against the closing total, at both league-average constants.
+    for (const [acc, avg] of [[total, AVG_PPG], [totalOld, AVG_PPG_OLD]]) {
+      const mt = modelTotal(tend, g.home, g.away, "fbs", avg);
+      if (!mt || line?.total == null) continue;
       const actualTotal = g.hp + g.ap;
-      total.graded++;
-      total.modelAbsErr += Math.abs(mt.total - actualTotal);
-      total.marketAbsErr += Math.abs(line.total - actualTotal);
+      acc.graded++;
+      acc.modelAbsErr += Math.abs(mt.total - actualTotal);
+      acc.marketAbsErr += Math.abs(line.total - actualTotal);
+      acc.bias += mt.total - actualTotal;
       const gap = mt.total - line.total;
       const lean = gap >= 2.5 ? "over" : gap <= -2.5 ? "under" : "none";
       if (lean !== "none") {
-        if (actualTotal === line.total) total.pushes++;
+        if (actualTotal === line.total) acc.pushes++;
         else {
-          total.leans++;
+          acc.leans++;
           const right = lean === "over" ? actualTotal > line.total : actualTotal < line.total;
-          if (right) total.leanRight++;
-          if (lean === "over") { total.over++; if (right) total.overRight++; }
-          else { total.under++; if (right) total.underRight++; }
+          if (right) acc.leanRight++;
+          if (lean === "over") { acc.over++; if (right) acc.overRight++; }
+          else { acc.under++; if (right) acc.underRight++; }
         }
       }
     }
@@ -287,14 +307,11 @@ function gradeProjection(season, data, mode = "full") {
     mode,
     counts: { fbsCompleted: eligible, graded: configs[0].acc.games, noElo, notCharted, noClosingLine: noLine },
     market: { ...finishAcc(market), favoriteCoverRate: rate(favorite.covered, favorite.graded), favoriteGraded: favorite.graded },
-    grid: configs.map((c) => ({ eloWeight: c.eloWeight, edgeDivisor: c.edgeDivisor, net: c.net, ...finishAcc(c.acc) })),
-    total: {
-      graded: total.graded, leans: total.leans, leanRate: rate(total.leanRight, total.leans), leanRight: total.leanRight,
-      overLeans: total.over, overRate: rate(total.overRight, total.over), underLeans: total.under, underRate: rate(total.underRight, total.under),
-      modelMae: total.graded ? r3(total.modelAbsErr / total.graded) : null, marketMae: total.graded ? r3(total.marketAbsErr / total.graded) : null, pushes: total.pushes,
-    },
+    grid: configs.map((c) => ({ form: c.form, eloWeight: c.eloWeight, edgeDivisor: c.edgeDivisor, net: c.net, ...finishAcc(c.acc) })),
+    total: finishTotal(total, AVG_PPG),
+    totalOld: finishTotal(totalOld, AVG_PPG_OLD),
     calibration: calib.map((b) => ({ bucket: `${Math.round(b.lo * 100)} to ${Math.round(b.hi * 100)}%`, games: b.games, winRate: rate(b.wins, b.games) })),
-    _raw: { configs: configs.map((c) => c.acc), market, favorite, total, calib },
+    _raw: { configs: configs.map((c) => c.acc), market, favorite, total, totalOld, calib },
   };
 }
 
@@ -510,7 +527,7 @@ for (const season of SEASONS) {
     continue;
   }
   seasonsDone.push(season);
-  const liveRow = (p) => p.grid.find((c) => c.eloWeight === LIVE.eloWeight && c.edgeDivisor === LIVE.edgeDivisor && c.net === "live");
+  const liveRow = (p) => p.grid.find((c) => c.form === LIVE.form && c.eloWeight === LIVE.eloWeight && c.edgeDivisor === LIVE.edgeDivisor && c.net === "live");
   const pj = gradeProjection(season, data, "full");
   projection.push(pj);
   log(season, "full-season replay", pj.counts.graded, "games; live blend winner", liveRow(pj)?.winnerRate, "mae", liveRow(pj)?.mae);
@@ -532,7 +549,8 @@ function aggregateProjection(projection) {
   const configs = Array.from({ length: n }, () => newAcc());
   const market = newAcc();
   const favorite = { graded: 0, covered: 0 };
-  const total = { graded: 0, leans: 0, leanRight: 0, over: 0, overRight: 0, under: 0, underRight: 0, modelAbsErr: 0, marketAbsErr: 0, both: 0, pushes: 0 };
+  const total = { graded: 0, leans: 0, leanRight: 0, over: 0, overRight: 0, under: 0, underRight: 0, modelAbsErr: 0, marketAbsErr: 0, bias: 0, pushes: 0 };
+  const totalOld = { ...total };
   const calib = projection[0]._raw.calib.map((b) => ({ ...b, games: 0, wins: 0 }));
   const counts = { fbsCompleted: 0, graded: 0, noElo: 0, notCharted: 0, noClosingLine: 0 };
   for (const p of projection) {
@@ -540,21 +558,19 @@ function aggregateProjection(projection) {
     mergeAcc(market, p._raw.market);
     favorite.graded += p._raw.favorite.graded; favorite.covered += p._raw.favorite.covered;
     mergeAcc(total, p._raw.total);
+    mergeAcc(totalOld, p._raw.totalOld);
     p._raw.calib.forEach((b, i) => { calib[i].games += b.games; calib[i].wins += b.wins; });
     for (const k of Object.keys(counts)) counts[k] += p.counts[k];
   }
-  const grid = projection[0].grid.map((c, i) => ({ eloWeight: c.eloWeight, edgeDivisor: c.edgeDivisor, net: c.net, ...finishAcc(configs[i]) }));
+  const grid = projection[0].grid.map((c, i) => ({ form: c.form, eloWeight: c.eloWeight, edgeDivisor: c.edgeDivisor, net: c.net, ...finishAcc(configs[i]) }));
   return {
     seasons: seasonsDone,
     mode: projection[0].mode,
     counts,
     market: { ...finishAcc(market), favoriteCoverRate: rate(favorite.covered, favorite.graded), favoriteGraded: favorite.graded },
     grid,
-    total: {
-      graded: total.graded, leans: total.leans, leanRate: rate(total.leanRight, total.leans), leanRight: total.leanRight,
-      overLeans: total.over, overRate: rate(total.overRight, total.over), underLeans: total.under, underRate: rate(total.underRight, total.under),
-      modelMae: total.graded ? r3(total.modelAbsErr / total.graded) : null, marketMae: total.graded ? r3(total.marketAbsErr / total.graded) : null, pushes: total.pushes,
-    },
+    total: finishTotal(total, AVG_PPG),
+    totalOld: finishTotal(totalOld, AVG_PPG_OLD),
     calibration: calib.map((b) => ({ bucket: `${Math.round(b.lo * 100)} to ${Math.round(b.hi * 100)}%`, games: b.games, winRate: rate(b.wins, b.games) })),
   };
 }
@@ -602,9 +618,13 @@ if (!process.env.SKIP_NFL && matchedAll.length) {
 
 // Best blend: lowest margin error on the WALK-FORWARD grid (no leakage), live net definition, ties broken by winner rate.
 // Cover rate is reported, not optimized: it is the noisiest number here.
-const pickBest = (o) => (o ? [...o.grid.filter((c) => c.net === "live" && c.mae != null)].sort((a, b) => a.mae - b.mae || b.winnerRate - a.winnerRate)[0] ?? null : null);
-const best = pickBest(walkOverall);
-const bestFull = pickBest(projOverall);
+const pickBest = (o, form) => (o ? [...o.grid.filter((c) => c.form === form && c.net === "live" && c.mae != null)].sort((a, b) => a.mae - b.mae || b.winnerRate - a.winnerRate)[0] ?? null : null);
+// Best against the closing line: highest cover rate on four-point leans with at least 500 graded leans, additive form only.
+const pickBestCover = (o) => (o ? [...o.grid.filter((c) => c.form === "additive" && c.net === "live" && c.lean4Graded >= 500)].sort((a, b) => b.lean4CoverRate - a.lean4CoverRate || a.mae - b.mae)[0] ?? null : null);
+const best = pickBest(walkOverall, "additive");
+const bestWeighted = pickBest(walkOverall, "weighted");
+const bestCover = pickBestCover(walkOverall);
+const bestFull = pickBest(projOverall, "additive");
 
 const strip = (o) => { const { _raw, ...rest } = o; return rest; };
 const results = {
@@ -619,7 +639,7 @@ const results = {
     "Closing line = median across books of the final spread and total that CFBD lists, rounded to the half point, same as the live slate.",
     "Draft hit rates are recall: of the players actually taken, how many did the forecast have in that range. The band table is precision: of the names the forecast put in a band, how many were drafted.",
   ],
-  walkForward: walkOverall ? { overall: walkOverall, best, live: LIVE, minWeek: MIN_WALK_WEEK, perSeason: walk.map(strip) } : null,
+  walkForward: walkOverall ? { overall: walkOverall, best, bestWeighted, bestCover, live: LIVE, minWeek: MIN_WALK_WEEK, perSeason: walk.map(strip) } : null,
   projection: projOverall ? { overall: projOverall, best: bestFull, live: LIVE, leaky: true, perSeason: projection.map(strip) } : null,
   excitement: excitement.length ? { perSeason: excitement } : null,
   draft: draftOverall ? { overall: draftOverall, perSeason: draft.map(strip) } : null,
@@ -630,17 +650,22 @@ await writeJson(path.join(OUT, "results.json"), results, true);
 log("wrote", path.join(OUT, "results.json"));
 
 if (best) {
-  const liveRow = walkOverall.grid.find((c) => c.net === "live" && c.eloWeight === LIVE.eloWeight && c.edgeDivisor === LIVE.edgeDivisor);
-  const eloRow = walkOverall.grid.find((c) => c.net === "live" && c.eloWeight === 1);
+  const liveRow = walkOverall.grid.find((c) => c.form === LIVE.form && c.net === "live" && c.eloWeight === LIVE.eloWeight && c.edgeDivisor === LIVE.edgeDivisor);
+  const eloRow = walkOverall.grid.find((c) => c.form === "additive" && c.net === "live" && c.eloWeight === 1);
   const weights = {
-    projection: { eloWeight: best.eloWeight, edgeDivisor: best.edgeDivisor },
+    projection: { form: "additive", eloWeight: best.eloWeight, edgeDivisor: best.edgeDivisor },
+    projectionBestVsClosingLine: bestCover ? { form: "additive", eloWeight: bestCover.eloWeight, edgeDivisor: bestCover.edgeDivisor, lean4CoverRate: bestCover.lean4CoverRate, lean4Graded: bestCover.lean4Graded, mae: bestCover.mae } : null,
+    projectionWeightedForm: bestWeighted ? { form: "weighted", eloWeight: bestWeighted.eloWeight, edgeDivisor: bestWeighted.edgeDivisor, mae: bestWeighted.mae, winnerRate: bestWeighted.winnerRate } : null,
+    total: { avgPpg: AVG_PPG, bias: walkOverall.total.bias, biasAtOld: walkOverall.totalOld.bias },
     radar: { prod: 0.55, pedigree: 0.22, usage: 0.13, size: 0.1 },
     comment:
       `Walk-forward backtest ${seasonsDone.join(", ")} on ${walkOverall.counts.graded} FBS games from week ${MIN_WALK_WEEK} on, stats through the prior week only. ` +
-      `Live blend (eloWeight ${LIVE.eloWeight}, edgeDivisor ${LIVE.edgeDivisor}): winner ${liveRow?.winnerRate}, margin error ${liveRow?.mae}, cover ${liveRow?.coverRate}. ` +
-      `Best by margin error: eloWeight ${best.eloWeight}, edgeDivisor ${best.edgeDivisor}: winner ${best.winnerRate}, margin error ${best.mae}, cover ${best.coverRate}. ` +
+      `Additive form (margin = elo + (1 - eloWeight) * net / edgeDivisor). Live (eloWeight ${LIVE.eloWeight}, edgeDivisor ${LIVE.edgeDivisor}): winner ${liveRow?.winnerRate}, margin error ${liveRow?.mae}, cover ${liveRow?.coverRate}, four-point leans ${liveRow?.lean4CoverRate} on ${liveRow?.lean4Graded}. ` +
+      `Best by margin error: eloWeight ${best.eloWeight}, edgeDivisor ${best.edgeDivisor}: winner ${best.winnerRate}, margin error ${best.mae}, cover ${best.coverRate}, four-point leans ${best.lean4CoverRate} on ${best.lean4Graded}. ` +
+      (bestCover ? `Best against the closing line (four-point leans, at least 500 graded): eloWeight ${bestCover.eloWeight}, edgeDivisor ${bestCover.edgeDivisor}: ${bestCover.lean4CoverRate} on ${bestCover.lean4Graded}, margin error ${bestCover.mae}. ` : "") +
       `Elo only: winner ${eloRow?.winnerRate}, margin error ${eloRow?.mae}. Closing line on the same games: winner ${walkOverall.market.winnerRate}, margin error ${walkOverall.market.mae}. ` +
-      `Note eloWeight scales the Elo margin and (1 - eloWeight) / edgeDivisor is the points per percentile of unit edge, so they are two separate dials, not one slider. ` +
+      (bestWeighted ? `Weighted-average form, kept for comparison, best row eloWeight ${bestWeighted.eloWeight}, edgeDivisor ${bestWeighted.edgeDivisor}: margin error ${bestWeighted.mae}. ` : "") +
+      `Model total at AVG_PPG ${AVG_PPG}: bias ${walkOverall.total.bias} points per game (${walkOverall.totalOld.bias} at the old 28.5), error ${walkOverall.total.modelMae} vs posted ${walkOverall.total.marketMae}. ` +
       `Radar weights are the current constants; the draft backtest did not fit them (see data/backtest/README.md). ` +
       `projection.ts reads this file when present; the orchestrator decides whether to adopt it.`,
     generatedAt: new Date().toISOString(),

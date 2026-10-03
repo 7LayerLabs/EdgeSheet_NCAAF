@@ -142,7 +142,7 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
           <div className="card p-4">
             <p className="eyebrow">How the radar score works</p>
             <p className="mt-1 leading-relaxed">
-              Production is a percentile against every player at the same position in the same division, using per-game rates where volume matters. Pedigree uses the public recruiting rating. Usage is the share of team plays. Size compares height and weight to NFL norms by position. The score is 55% production, 22% pedigree, 13% usage, 10% size, then scaled by level of play (FCS, DII, DIII). Linemen have no box-score stats, so their score leans on pedigree, size, and class.
+              Production is a percentile against every player at the same position in the same division, using per-game rates where volume matters. Pedigree uses the public recruiting rating. Usage is the share of team plays. Size compares height and weight to NFL norms by position. At running back, quarterback, tight end, and interior defensive line the score is 55% production, 22% pedigree, 13% usage, 10% size. Everywhere else it is 35% production, 42% pedigree, 13% usage, 10% size, because four seasons of NFL outcomes show scouts draft traits at receiver, corner, safety, linebacker, and edge. Then it is scaled by level of play (FCS, DII, DIII). Linemen have no box-score stats, so their score leans on pedigree, size, and class.
             </p>
           </div>
           <div className="card p-4">
