@@ -30,11 +30,14 @@ export function Tier({ tier }: { tier: string }) {
   const tone: Record<string, string> = {
     Established: "bg-flag text-ink",
     Emerging: "bg-sky/20 text-sky",
+    Eligible: "bg-flag/20 text-flag",
     Future: "bg-turf/20 text-turf",
     Sleeper: "bg-brick/20 text-brick",
     "Watch only": "bg-panel-2 text-chalk-3",
+    Watch: "bg-panel-2 text-chalk-3",
   };
-  return <span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${tone[tier]}`}>{tier}</span>;
+  const label: Record<string, string> = { Eligible: "Draft eligible", Watch: "Watch" };
+  return <span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${tone[tier] ?? "bg-panel-2 text-chalk-3"}`}>{label[tier] ?? tier}</span>;
 }
 
 export function Confidence({ level }: { level: "High" | "Medium" | "Low" }) {

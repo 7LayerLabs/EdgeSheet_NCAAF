@@ -14,6 +14,7 @@ import {
   getGames,
   getLines,
   getMedia,
+  getRankings,
   getRecords,
   getTeams,
   getVenues,
@@ -21,6 +22,7 @@ import {
   type CfbdGame,
   type CfbdLineRow,
   type CfbdMedia,
+  type CfbdRankingWeek,
   type CfbdRecord,
   type CfbdTeam,
   type CfbdVenue,
@@ -29,9 +31,13 @@ import {
 } from "./cfbd";
 import { forecastAtKickoff, forecastMany } from "./nws";
 import { prospectFileLoaded, prospectRowById, prospectsForTeam } from "./prospects";
+import { generatedLoaded, genMeta } from "./generated";
+import { radarForGame, radarForTeam, radarPlayer, type RadarPlayer } from "./radar";
+import { pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
+import { boxScore } from "./boxscore";
 import { evaluateWeather } from "./weather";
 import { games as sampleGames, getGame as sampleGame, getPlayer as samplePlayer, SLATE_DATE } from "./data";
-import type { Coverage, Division, Game, Market, Prospect, ScoreComponents, Team, WeatherInput } from "./types";
+import type { Coverage, DefenseProfile, Division, Game, Market, Matchup, OffenseProfile, Prospect, ScoreComponents, Team, WeatherInput } from "./types";
 
 const ET = "America/New_York";
 
@@ -50,8 +56,24 @@ export interface SlateDay {
   count: number;
 }
 
+export interface RankedTeam {
+  rank: number;
+  team: Team;
+  /** This week's game for the team, if any. */
+  gameId?: string;
+  movement?: "first-place-votes";
+  firstPlaceVotes?: number;
+}
+
+export interface Poll {
+  name: string;
+  division: Division;
+  teams: RankedTeam[];
+}
+
 export interface Slate {
   source: "live" | "sample";
+  polls: Poll[];
   season: number;
   week?: CfbdWeek;
   date: string;
@@ -89,18 +111,44 @@ interface Bundle {
   teams: Map<string, CfbdTeam>;
   venues: Map<number, CfbdVenue>;
   records: Map<string, CfbdRecord>;
+  /** school name -> { rank, poll } for that school's division poll */
+  ranks: Map<string, { rank: number; poll: string }>;
+  rankings: CfbdRankingWeek | undefined;
+}
+
+/** One poll per division. AP for FBS; coaches polls for the rest. */
+const POLL_FOR_DIVISION: Record<Division, RegExp> = {
+  FBS: /^AP Top 25$/i,
+  FCS: /FCS Coaches/i,
+  DII: /Division II Coaches/i,
+  DIII: /Division III Coaches/i,
+  NAIA: /NAIA/i,
+};
+
+function rankMap(r: CfbdRankingWeek | undefined): Map<string, { rank: number; poll: string }> {
+  const m = new Map<string, { rank: number; poll: string }>();
+  if (!r) return m;
+  for (const div of Object.keys(POLL_FOR_DIVISION) as Division[]) {
+    const poll = r.polls.find((p) => POLL_FOR_DIVISION[div].test(p.poll));
+    if (!poll) continue;
+    for (const row of poll.ranks) if (!m.has(row.school)) m.set(row.school, { rank: row.rank, poll: poll.poll });
+  }
+  return m;
 }
 
 async function loadWeek(season: number, week: CfbdWeek, gamesOverride?: CfbdGame[]): Promise<Bundle> {
   const st = week.seasonType;
-  const [gameLists, lines, media, teams, venues, records] = await Promise.all([
+  const [gameLists, lines, media, teams, venues, records, rankings] = await Promise.all([
     gamesOverride ? Promise.resolve([gamesOverride]) : Promise.all(CLASSIFICATIONS.map((c) => getGames(season, week.week, st, c))),
     getLines(season, week.week, st).catch(() => [] as CfbdLineRow[]),
     getMedia(season, week.week, st).catch(() => [] as CfbdMedia[]),
     getTeams(season),
     getVenues(),
     getRecords(season).catch(() => [] as CfbdRecord[]),
+    getRankings(season, week.week, st).catch(() => [] as CfbdRankingWeek[]),
   ]);
+  // Rankings are published for the week they apply to; fall back to the latest week available.
+  const rankingWeek = rankings.find((r) => r.week === week.week) ?? [...rankings].sort((a, b) => b.week - a.week)[0];
   const games = gameLists.flat().filter((g) => !g.startTimeTBD || true);
   const mediaMap = new Map<number, CfbdMedia[]>();
   for (const m of media) mediaMap.set(m.id, [...(mediaMap.get(m.id) ?? []), m]);
@@ -113,6 +161,8 @@ async function loadWeek(season: number, week: CfbdWeek, gamesOverride?: CfbdGame
     teams: new Map(teams.map((t) => [t.school, t])),
     venues: new Map(venues.map((v) => [v.id, v])),
     records: new Map(records.map((r) => [r.team, r])),
+    ranks: rankMap(rankingWeek),
+    rankings: rankingWeek,
   };
 }
 
@@ -142,7 +192,10 @@ function mkTeam(name: string, id: number, conf: string | null, b: Bundle): Team 
   const t = b.teams.get(name);
   const r = b.records.get(name);
   const rec = r ? `${r.total.wins}-${r.total.losses}${r.total.ties ? `-${r.total.ties}` : ""}` : "";
+  const rk = b.ranks.get(name);
   return {
+    rank: rk?.rank,
+    rankPoll: rk?.poll,
     id: String(id),
     name: t?.mascot ? `${t.school} ${t.mascot}` : name,
     short: name,
@@ -203,6 +256,54 @@ function gamesPlayed(t: Team): number {
   return m ? Number(m[1]) + Number(m[2]) : 0;
 }
 
+/* ------------------------------------------------------- radar bridge */
+
+const ft = (inches: number | null) => (inches ? `${Math.floor(inches / 12)}-${inches % 12}` : "");
+
+export function radarToProspect(r: RadarPlayer, abbr: string): Prospect {
+  const upper = r.classYear === 3 || r.classYear === 4;
+  return {
+    id: r.id,
+    name: r.name,
+    team: abbr,
+    jersey: r.jersey ?? 0,
+    pos: r.pos,
+    cls: r.cls,
+    ht: ft(r.height),
+    wt: r.weight ?? 0,
+    draftYear: r.draftClass,
+    eligibilityConfidence: upper ? "High" : "Medium",
+    tier: r.tier,
+    projected: `${r.draftClass} class`,
+    sourceCount: 0,
+    projectionConfidence: r.score >= 70 ? "High" : r.score >= 50 ? "Medium" : "Low",
+    traits: r.evidence.map((e) => e.label),
+    weakness: r.size === false ? "Under NFL size norms for the position" : undefined,
+    watchFor: r.watch,
+    stat: r.stat,
+    radar: r,
+  };
+}
+
+function toProfiles(school: string, abbr: string): { off: OffenseProfile; def: DefenseProfile } {
+  const st = styleFor(school);
+  if (!st) {
+    return {
+      off: { label: "Unavailable", sample: "unavailable" },
+      def: { label: "Unavailable", sample: "unavailable" },
+    };
+  }
+  void abbr;
+  return {
+    off: { label: st.offense.label, sample: st.offense.sample, summary: st.offense.summary, metrics: st.offense.metrics },
+    def: { label: st.defense.label, sample: st.defense.sample, summary: st.defense.summary, metrics: st.defense.metrics },
+  };
+}
+
+function shortStyle(label: string) {
+  return label.split(",")[0].trim();
+}
+
 /* ------------------------------------------------------- derived fields */
 
 function deriveComponents(g: {
@@ -217,20 +318,31 @@ function deriveComponents(g: {
   away: Team;
   network: string;
   status: Game["status"];
+  edges?: Matchup[];
+  contrast: number | null;
 }): ScoreComponents {
-  // Draft talent: only once a prospect file exists. Otherwise excluded, not zero.
+  // Draft talent and future talent come from the radar (production, pedigree, usage, size) or a curated board.
   let draftTalent: number | null = null;
   let futureTalent: number | null = null;
-  if (prospectFileLoaded) {
-    const pts = g.prospects.reduce((s, p) => {
+  if (generatedLoaded() || prospectFileLoaded) {
+    const eligible = g.prospects.filter((p) => p.tier === "Eligible" || p.tier === "Established" || p.tier === "Emerging");
+    const pts = eligible.reduce((s, p) => {
       if (p.tier === "Established") return s + (/round 1\b/i.test(p.projected) ? 40 : 25);
       if (p.tier === "Emerging") return s + 12;
+      return s + Math.max(0, (p.radar?.score ?? 0) - 58) * 1.7;
+    }, 0);
+    draftTalent = Math.round(Math.min(100, pts));
+    const fut = g.prospects.reduce((s, p) => {
+      if (p.tier === "Future") return s + Math.max(0, (p.radar?.score ?? 50) - 50) * 1.8;
+      if (p.tier === "Sleeper") return s + 10;
+      if (p.tier === "Watch" || p.tier === "Watch only") return s + 6;
       return s;
     }, 0);
-    draftTalent = Math.min(100, pts);
-    const fut = g.prospects.reduce((s, p) => s + (p.tier === "Future" ? 25 : p.tier === "Sleeper" ? 15 : p.tier === "Watch only" ? 8 : 0), 0);
-    futureTalent = Math.min(100, fut);
+    futureTalent = Math.round(Math.min(100, fut));
   }
+  const edges = g.edges ?? [];
+  const directMatchups = edges.length ? Math.min(100, edges.filter((e) => e.edge !== "even").length * 28 + edges.filter((e) => e.edge === "even").length * 12) : null;
+  const contrast = g.contrast;
 
   // Competitive expectation: spread first, rating gap second.
   let competitive: number;
@@ -253,6 +365,8 @@ function deriveComponents(g: {
     else if (hp >= 0.75 && ap >= 0.75) storylines += 15;
   }
   if (g.notes) storylines += 10;
+  if (g.home.rank && g.away.rank) storylines += 35;
+  else if (g.home.rank || g.away.rank) storylines += 15;
   storylines = Math.min(100, storylines);
 
   // Availability: can you actually watch it right now.
@@ -261,10 +375,10 @@ function deriveComponents(g: {
 
   return {
     draftTalent,
-    directMatchups: null, // needs charted matchups
+    directMatchups,
     futureTalent,
     competitive,
-    styleContrast: null, // needs play-by-play tendencies
+    styleContrast: contrast,
     storylines,
     availability,
   };
@@ -280,13 +394,26 @@ function deriveWhyWatch(g: {
   homeElo: number | null;
   awayElo: number | null;
   division: Division;
+  edges?: Matchup[];
 }): { headline: string; reasons: string[] } {
   const r: string[] = [];
-  const likely = g.prospects.filter((p) => p.tier === "Established" || p.tier === "Emerging");
-  if (likely.length) {
-    const names = likely.slice(0, 3).map((p) => `${p.name} (${p.team} ${p.pos})`).join(", ");
-    r.push(`${likely.length} draft-eligible ${likely.length === 1 ? "name" : "names"} on file: ${names}.`);
+  const rankedLabel = (t: Team) => (t.rank ? `No. ${t.rank} ${t.short}` : t.short);
+  if (g.home.rank && g.away.rank) {
+    r.push(`Ranked matchup: ${rankedLabel(g.away)} at ${rankedLabel(g.home)}.`);
+  } else if (g.home.rank || g.away.rank) {
+    const ranked = g.home.rank ? g.home : g.away;
+    const other = g.home.rank ? g.away : g.home;
+    r.push(`${rankedLabel(ranked)} ${g.home.rank ? "hosts" : "visits"} ${other.short}${other.record ? ` (${other.record})` : ""}.`);
   }
+  const likely = g.prospects.filter((p) => p.tier === "Established" || p.tier === "Emerging" || p.tier === "Eligible");
+  const star = likely[0];
+  const starScore = star?.radar?.score ?? (star ? 80 : 0);
+  const radarLine = star
+    ? starScore >= 80
+      ? `${star.name} (${star.team} ${star.pos}, ${star.cls}) is a top-of-the-radar name: ${star.stat ?? star.traits[0]}.`
+      : `${likely.length} draft-eligible ${likely.length === 1 ? "name" : "names"} on the radar, led by ${star.name} (${star.team} ${star.pos}).`
+    : undefined;
+  if (radarLine && starScore >= 80) r.push(radarLine);
   const s = g.market.spread;
   if (s) {
     const a = Math.abs(s.line);
@@ -300,6 +427,9 @@ function deriveWhyWatch(g: {
     if (t.line >= 62) r.push(`Total of ${t.line}. The market expects points.`);
     else if (t.line <= 42) r.push(`Total of ${t.line}. The market expects a field-position grind.`);
   }
+  if (radarLine && starScore < 80) r.push(radarLine);
+  const topEdge = g.edges?.find((e) => e.edge !== "even");
+  if (topEdge) r.push(`${topEdge.a} against ${topEdge.b.toLowerCase()}: advantage ${topEdge.edge}. ${topEdge.evidence}.`);
   if (g.weather) {
     const top = evaluateWeather(g.weather).find((f) => f.level === "elevated") ?? evaluateWeather(g.weather).find((f) => f.level === "flag");
     if (top) r.push(`${top.title}. ${top.effect}`);
@@ -328,7 +458,7 @@ function deriveWhyWatch(g: {
 
 /* ------------------------------------------------------------ build one */
 
-async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean): Promise<Game> {
+async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox = false): Promise<Game> {
   const cls = raw.homeClassification ?? raw.awayClassification ?? "fbs";
   const division = DIVISION[cls] ?? "FBS";
   const home = mkTeam(raw.homeTeam, raw.homeId, raw.homeConference, b);
@@ -362,12 +492,65 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean): Promis
     );
   }
 
-  const prospects = [
+  // Prospects: curated board entries first (if any), then the production-based radar.
+  const curated = [
     ...prospectsForTeam(raw.awayTeam).map((p) => toProspect(p, away.abbr)),
     ...prospectsForTeam(raw.homeTeam).map((p) => toProspect(p, home.abbr)),
   ];
+  const unitNote = (school: string) => {
+    const st = styleFor(school);
+    const ly = st?.offense.metrics.find((m) => m.key === "ly");
+    const sr = st?.offense.metrics.find((m) => m.key === "sr");
+    return ly ? `Unit: ${ly.value} line yards per carry (No. ${ly.rank} of ${ly.of})${sr ? `, offense success ${sr.value} (No. ${sr.rank})` : ""}` : undefined;
+  };
+  const withUnit = (r: RadarPlayer, abbr: string, school: string): Prospect => {
+    const pr = radarToProspect(r, abbr);
+    if (r.group === "OL") {
+      const note = unitNote(school);
+      if (note) {
+        pr.stat = note;
+        pr.traits = [note, ...pr.traits];
+        pr.radar = { ...r, stat: note, evidence: [{ kind: "unit", label: note }, ...r.evidence] };
+      }
+    }
+    return pr;
+  };
+  const radarAway = radarForGame(raw.awayTeam).map((r) => withUnit(r, away.abbr, raw.awayTeam));
+  const radarHome = radarForGame(raw.homeTeam).map((r) => withUnit(r, home.abbr, raw.homeTeam));
+  const seenP = new Set(curated.map((p) => p.id));
+  const prospects = [...curated, ...[...radarAway, ...radarHome].filter((p) => (seenP.has(p.id) ? false : seenP.add(p.id)))].sort(
+    (x, y) => (y.radar?.score ?? 100) - (x.radar?.score ?? 100),
+  );
+
+  // Team style and unit matchups from advanced season stats.
+  const profAway = toProfiles(raw.awayTeam, away.abbr);
+  const profHome = toProfiles(raw.homeTeam, home.abbr);
+  const charted = profAway.off.sample !== "unavailable" && profHome.off.sample !== "unavailable";
+  const edgeRows = charted ? [...unitEdges(raw.awayTeam, raw.homeTeam), ...unitEdges(raw.homeTeam, raw.awayTeam)] : [];
+  const matchups: Matchup[] = edgeRows
+    .sort((x, y) => Math.abs(y.gap) - Math.abs(x.gap))
+    .slice(0, 4)
+    .map((e) => {
+      const [a, bb] = e.title.split(" vs ");
+      return { a, b: bb, why: e.text, evidence: e.evidence, edge: e.edge };
+    });
+  const contrast = charted ? styleContrast(raw.awayTeam, raw.homeTeam) : null;
+  const pp = charted ? pressurePoint(raw.awayTeam, raw.homeTeam) : undefined;
+
+  // Keep an eye on: young or unproven names the radar flags that did not make the main list.
+  const inMain = new Set(prospects.map((p) => p.id));
+  const eye = [
+    ...radarForTeam(raw.awayTeam).filter((r) => !inMain.has(r.id) && (r.tier === "Future" || r.tier === "Watch")).slice(0, 2).map((r) => ({ r, abbr: away.abbr })),
+    ...radarForTeam(raw.homeTeam).filter((r) => !inMain.has(r.id) && (r.tier === "Future" || r.tier === "Watch")).slice(0, 2).map((r) => ({ r, abbr: home.abbr })),
+  ].map(({ r, abbr }) => ({
+    name: r.name,
+    team: abbr,
+    note: `${r.pos}, ${r.cls}. ${r.evidence[0]?.label ?? "No production yet"}${r.evidence[1] ? `. ${r.evidence[1].label}` : ""}. ${r.eligibilityNote}`,
+  }));
 
   const ctx = {
+    edges: matchups,
+    contrast,
     prospects,
     market,
     weather,
@@ -385,17 +568,37 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean): Promis
   const why = deriveWhyWatch(ctx);
   const scoreComponents = deriveComponents(ctx);
 
-  const coverage: Coverage = cls === "fbs" || cls === "fcs" ? "Standard" : "Limited";
+  // Box score once the game has started (game page only).
+  let box: Game["box"];
+  if (withBox && status !== "upcoming") {
+    const bs = await boxScore(String(raw.id), raw.season, raw.week, raw.seasonType, cls).catch(() => undefined);
+    if (bs) {
+      box = {
+        teams: bs.teams.map((t) => ({
+          team: t.team,
+          abbr: t.team === raw.homeTeam ? home.abbr : away.abbr,
+          points: t.points,
+          leaders: t.leaders.map((l) => ({ id: l.id, name: l.name, category: l.category, headline: l.headline })),
+        })),
+      };
+      for (const p of prospects) {
+        const lines = bs.byPlayer.get(p.id);
+        if (lines?.length) p.lines = lines.map((l) => ({ category: l.category, headline: l.headline }));
+      }
+    }
+  }
+
+  const coverage: Coverage = cls === "fbs" || cls === "fcs" ? (charted ? "Full" : "Standard") : "Limited";
   const gaps: string[] = [];
   if (status !== "final") gaps.push("Live score and clock are not on the current data plan. Status is schedule-based.");
-  gaps.push("Team tendencies are not charted yet. Scheme labels and the style score are excluded.");
-  if (!prospectFileLoaded) gaps.push("No prospect file loaded. Draft talent and future talent are excluded from the score.");
-  else if (!prospects.length) gaps.push("No evaluator we track lists a player from either team.");
+  if (!generatedLoaded()) gaps.push("Rosters, stats, and tendencies are not ingested. Run npm run ingest.");
+  else if (!charted) gaps.push("Advanced tendencies are not published for this division. Style and matchup scores are excluded.");
+  if (generatedLoaded() && !prospects.length) gaps.push("No player from either team clears the radar threshold yet.");
+  if (prospects.length && !curated.length) gaps.push("Radar entries are production-based evidence, not draft projections. No outside board is loaded.");
   if (!market.spread) gaps.push("No book we track lists this game.");
   if (!weather && status !== "final") gaps.push(venue?.latitude == null ? "No forecast: venue coordinates are missing." : "No forecast: kickoff is outside the 7-day hourly window or the weather service did not answer.");
   if (cls === "ii" || cls === "iii") gaps.push("Lower-division coverage is schedule and score only.");
 
-  const unavailable = { label: "Unavailable", sample: "unavailable" as const };
   return {
     id: String(raw.id),
     division,
@@ -410,22 +613,24 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean): Promis
     coverage,
     whyWatch: why.headline,
     whyWatchReasons: why.reasons,
-    styleLine: undefined,
+    styleLine: charted ? `${shortStyle(profAway.off.label)} O vs ${shortStyle(profHome.def.label)} D` : undefined,
     weather,
     market,
     prospects,
-    matchups: [],
-    keepAnEyeOn: [],
+    matchups,
+    keepAnEyeOn: eye,
     storylines: [
       ...(raw.notes ? [raw.notes] : []),
       ...(raw.conferenceGame && home.conference ? [`${home.conference} conference game.`] : []),
       ...(raw.neutralSite ? ["Neutral site."] : []),
     ],
-    offense: { [home.abbr]: { ...unavailable, passRate: 0, neutralPassRate: 0, secondsPerPlay: 0, structure: "", runGame: "", passGame: "", successRate: 0, explosiveRate: 0, pressureAllowed: 0 }, [away.abbr]: { ...unavailable, passRate: 0, neutralPassRate: 0, secondsPerPlay: 0, structure: "", runGame: "", passGame: "", successRate: 0, explosiveRate: 0, pressureAllowed: 0 } },
-    defense: { [home.abbr]: { ...unavailable, front: "", coverage: "", blitzRate: 0, pressureRate: 0, stuffRate: 0, explosivesAllowed: 0 }, [away.abbr]: { ...unavailable, front: "", coverage: "", blitzRate: 0, pressureRate: 0, stuffRate: 0, explosivesAllowed: 0 } },
-    pressurePoint: "Not charted. Tendency metrics need play-by-play ingestion (build plan weeks 7 to 8). The report does not guess a scheme.",
+    offense: { [home.abbr]: profHome.off, [away.abbr]: profAway.off },
+    defense: { [home.abbr]: profHome.def, [away.abbr]: profAway.def },
+    pressurePoint: pp ?? "Not charted for this division. The report does not guess a scheme.",
     scoreComponents,
     gaps,
+    box,
+    statsAsOf: genMeta()?.ingestedAt,
     reportAsOf: builtAt,
     source: "live",
     week: raw.week,
@@ -437,6 +642,7 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean): Promis
 function sampleSlate(): Slate {
   return {
     source: "sample",
+    polls: [],
     season: 2026,
     date: SLATE_DATE,
     days: [{ date: SLATE_DATE, count: sampleGames.length }],
@@ -486,9 +692,32 @@ export async function getSlate(dateParam?: string): Promise<Slate> {
 
   const notes: string[] = [];
   notes.push("NAIA schedules are not in CollegeFootballData. That division is missing until a second source is wired.");
-  if (!prospectFileLoaded) notes.push("Prospect file is empty, so no game shows draft names yet.");
+  if (!generatedLoaded()) notes.push("Rosters, stats, and tendencies are not ingested yet. Run npm run ingest in web/ to light up the radar.");
+  else notes.push(`Radar and tendencies use season stats ingested ${new Date(genMeta()!.ingestedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", timeZone: "America/New_York" })} ET.`);
 
-  return { source: "live", season, week, date, days, games: built, weekGames: [...built, ...rest], notes };
+  const weekGames = [...built, ...rest];
+  const polls = buildPolls(b, weekGames);
+  return { source: "live", polls, season, week, date, days, games: built, weekGames, notes };
+}
+
+function buildPolls(b: Bundle, weekGames: Game[]): Poll[] {
+  if (!b.rankings) return [];
+  const out: Poll[] = [];
+  for (const div of ["FBS", "FCS", "DII", "DIII"] as Division[]) {
+    const poll = b.rankings.polls.find((p) => POLL_FOR_DIVISION[div].test(p.poll));
+    if (!poll) continue;
+    const teams: RankedTeam[] = poll.ranks
+      .slice()
+      .sort((x, y) => x.rank - y.rank)
+      .map((row) => {
+        const game = weekGames.find((g) => g.home.short === row.school || g.away.short === row.school);
+        const t = b.teams.get(row.school);
+        const team = mkTeam(row.school, row.teamId ?? t?.id ?? 0, row.conference, b);
+        return { rank: row.rank, team, gameId: game?.id, firstPlaceVotes: row.firstPlaceVotes ?? undefined };
+      });
+    out.push({ name: poll.poll, division: div, teams });
+  }
+  return out;
 }
 
 export async function getGame(id: string): Promise<Game | undefined> {
@@ -501,15 +730,29 @@ export async function getGame(id: string): Promise<Game | undefined> {
   const week = cal.find((w) => w.week === raw.week && w.seasonType === raw.seasonType) ?? pickWeek(cal, etDate(new Date(raw.startDate)));
   if (!week) return undefined;
   const b = await loadWeek(raw.season, week, [raw]);
-  return buildGame(raw, b, true);
+  return buildGame(raw, b, true, true);
 }
 
 export async function getPlayer(id: string): Promise<{ player: Prospect; game?: Game } | undefined> {
   if (!hasCfbdKey()) return samplePlayer(id);
   const row = prospectRowById(id);
-  if (!row) return undefined;
+  const r = radarPlayer(id);
+  const school = row?.team ?? r?.team;
+  if (!school) return undefined;
   const slate = await getSlate();
-  const game = slate.weekGames.find((g) => g.home.short === row.team || g.away.short === row.team);
-  const abbr = game ? (game.home.short === row.team ? game.home.abbr : game.away.abbr) : abbrevFallback(row.team);
-  return { player: toProspect(row, abbr), game };
+  const game = slate.weekGames.find((g) => g.home.short === school || g.away.short === school);
+  const abbr = game ? (game.home.short === school ? game.home.abbr : game.away.abbr) : abbrevFallback(school);
+  if (row) return { player: { ...toProspect(row, abbr), radar: r }, game };
+  return { player: radarToProspect(r!, abbr), game };
+}
+
+/** Lookup used by the radar page to link each player to this week's game. */
+export async function gameIndexForWeek(): Promise<Map<string, Game>> {
+  const slate = await getSlate();
+  const m = new Map<string, Game>();
+  for (const g of slate.weekGames) {
+    m.set(g.home.short, g);
+    m.set(g.away.short, g);
+  }
+  return m;
 }

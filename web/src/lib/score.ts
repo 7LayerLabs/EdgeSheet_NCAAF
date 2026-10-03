@@ -59,7 +59,7 @@ export function scoreTag(g: Game): ScoreTag {
 }
 
 export function prospectCounts(g: Game) {
-  const likely = g.prospects.filter((p) => p.tier === "Established" || p.tier === "Emerging").length;
-  const future = g.prospects.filter((p) => p.tier === "Future" || p.tier === "Sleeper" || p.tier === "Watch only").length;
+  const likely = g.prospects.filter((p) => p.tier === "Established" || p.tier === "Emerging" || p.tier === "Eligible").length;
+  const future = g.prospects.filter((p) => p.tier === "Future" || p.tier === "Sleeper" || p.tier === "Watch only" || p.tier === "Watch").length;
   return { likely, future };
 }

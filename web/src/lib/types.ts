@@ -1,7 +1,8 @@
 export type Division = "FBS" | "FCS" | "DII" | "DIII" | "NAIA";
 export type Coverage = "Full" | "Standard" | "Limited";
 export type GameStatus = "upcoming" | "live" | "final";
-export type ProspectTier = "Established" | "Emerging" | "Future" | "Sleeper" | "Watch only";
+/** Established/Emerging come from curated boards. Eligible/Future/Sleeper/Watch come from the production-based radar. */
+export type ProspectTier = "Established" | "Emerging" | "Eligible" | "Future" | "Sleeper" | "Watch only" | "Watch";
 
 export interface Team {
   id: string;
@@ -12,6 +13,9 @@ export interface Team {
   conference: string;
   color: string;
   logo?: string;
+  /** Poll rank for the team's division (AP Top 25 for FBS, coaches polls below). */
+  rank?: number;
+  rankPoll?: string;
 }
 
 export interface WeatherInput {
@@ -58,6 +62,10 @@ export interface Prospect {
   weakness?: string;
   watchFor: string;
   stat?: string;
+  /** Present when the entry comes from the scouting radar. */
+  radar?: import("./radar").RadarPlayer;
+  /** This game's box-score lines for the player, when the game has started. */
+  lines?: { category: string; headline: string }[];
 }
 
 export interface Matchup {
@@ -65,31 +73,59 @@ export interface Matchup {
   b: string;
   why: string;
   evidence: string;
+  /** Unit matchups from tendencies carry which side has the edge. */
+  edge?: "offense" | "defense" | "even";
+}
+
+export interface BoxLeader {
+  id: string;
+  name: string;
+  category: string;
+  headline: string;
+}
+
+export interface BoxSummary {
+  teams: { team: string; abbr: string; points: number | null; leaders: BoxLeader[] }[];
+}
+
+export interface StyleMetric {
+  key: string;
+  label: string;
+  value: string;
+  rank?: number;
+  of?: number;
+  pct?: number;
 }
 
 export interface OffenseProfile {
   label: string;
-  passRate: number;
-  neutralPassRate: number;
-  secondsPerPlay: number;
-  structure: string;
-  runGame: string;
-  passGame: string;
-  successRate: number;
-  explosiveRate: number;
-  pressureAllowed: number;
   sample: "full" | "small" | "unavailable";
+  /** Live: ranked metrics from advanced season stats. */
+  summary?: string;
+  metrics?: StyleMetric[];
+  /** Sample-data fields (hand-written prototype). */
+  passRate?: number;
+  neutralPassRate?: number;
+  secondsPerPlay?: number;
+  structure?: string;
+  runGame?: string;
+  passGame?: string;
+  successRate?: number;
+  explosiveRate?: number;
+  pressureAllowed?: number;
 }
 
 export interface DefenseProfile {
   label: string;
-  front: string;
-  coverage: string;
-  blitzRate: number;
-  pressureRate: number;
-  stuffRate: number;
-  explosivesAllowed: number;
   sample: "full" | "small" | "unavailable";
+  summary?: string;
+  metrics?: StyleMetric[];
+  front?: string;
+  coverage?: string;
+  blitzRate?: number;
+  pressureRate?: number;
+  stuffRate?: number;
+  explosivesAllowed?: number;
 }
 
 /** Each component is 0 to 100. null means the input is not available yet;
@@ -130,6 +166,10 @@ export interface Game {
   pressurePoint: string;
   scoreComponents: ScoreComponents;
   gaps?: string[];
+  /** Box score leaders once the game has started (game page only). */
+  box?: BoxSummary;
+  /** Stats-as-of for radar and tendencies (ingest time). */
+  statsAsOf?: string;
   reportAsOf: string;
   /** "live" = CollegeFootballData, "sample" = hand-written prototype data */
   source: "live" | "sample";

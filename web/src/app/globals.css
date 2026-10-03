@@ -178,3 +178,54 @@ body {
   .rise, .live-dot { animation: none; }
   .meter > span { transition: none; }
 }
+
+/* Mobile tab bar, Sleeper style: five tabs, icon over label, safe-area aware. */
+.tabbar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ink) 92%, transparent);
+  backdrop-filter: blur(10px);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chalk-3);
+}
+.tab:hover, .tab:focus-visible { color: var(--chalk); }
+.tab-icon { display: block; width: 22px; height: 22px; }
+.tab-icon svg { width: 100%; height: 100%; }
+
+/* Segmented control for the radar filters */
+.seg {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--ink-2);
+}
+.seg a, .seg button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--chalk-2);
+  white-space: nowrap;
+}
+.seg a[aria-current="true"], .seg button[aria-pressed="true"] {
+  background: var(--panel-2);
+  color: var(--chalk);
+  font-weight: 600;
+}

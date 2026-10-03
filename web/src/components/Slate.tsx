@@ -8,8 +8,10 @@ import { kickoffWindow, type Window } from "@/lib/format";
 import { useWatchlist } from "@/lib/watchlist";
 import { GameCard } from "./GameCard";
 
-type Quick = "All" | "Live" | "Upcoming" | "Finished" | "Top Prospects" | "Hidden Gems" | "Watchlist" | "Late Night Radar";
-const QUICK: Quick[] = ["All", "Live", "Upcoming", "Finished", "Top Prospects", "Hidden Gems", "Late Night Radar", "Watchlist"];
+type Quick = "All" | "Live" | "Upcoming" | "Finished" | "Top 25" | "Top Prospects" | "Hidden Gems" | "Watchlist" | "Late Night Radar";
+const QUICK: Quick[] = ["All", "Live", "Upcoming", "Finished", "Top 25", "Top Prospects", "Hidden Gems", "Late Night Radar", "Watchlist"];
+
+const bestRank = (g: Game) => Math.min(g.home.rank ?? 99, g.away.rank ?? 99);
 const DIVS: Division[] = ["FBS", "FCS", "DII", "DIII", "NAIA"];
 const WINDOWS: Window[] = ["Noon", "Afternoon", "Prime time", "Late night"];
 
@@ -17,7 +19,7 @@ export function Slate({ games }: { games: Game[] }) {
   const [quick, setQuick] = useState<Quick>("All");
   const [divs, setDivs] = useState<Set<Division>>(new Set(DIVS));
   const [weatherOnly, setWeatherOnly] = useState(false);
-  const [sort, setSort] = useState<"kickoff" | "score">("kickoff");
+  const [sort, setSort] = useState<"kickoff" | "score" | "rank">("kickoff");
   const [q, setQ] = useState("");
   const { list } = useWatchlist();
 
@@ -27,13 +29,20 @@ export function Slate({ games }: { games: Game[] }) {
       case "Live": out = out.filter((g) => g.status === "live"); break;
       case "Upcoming": out = out.filter((g) => g.status === "upcoming"); break;
       case "Finished": out = out.filter((g) => g.status === "final"); break;
+      case "Top 25": out = out.filter((g) => g.home.rank || g.away.rank); break;
       case "Top Prospects": out = out.filter((g) => prospectCounts(g).likely >= 2); break;
       case "Hidden Gems": out = out.filter((g) => scoreTag(g) === "Hidden Gem"); break;
       case "Late Night Radar":
         out = out.filter((g) => g.status === "live" || kickoffWindow(g.kickoff) === "Late night");
         break;
       case "Watchlist":
-        out = out.filter((g) => list.games.includes(g.id) || g.prospects.some((p) => list.players.includes(p.id)));
+        out = out.filter(
+          (g) =>
+            list.games.includes(g.id) ||
+            list.teams.includes(g.home.short) ||
+            list.teams.includes(g.away.short) ||
+            g.prospects.some((p) => list.players.includes(p.id)),
+        );
         break;
     }
     if (weatherOnly) out = out.filter((g) => weatherRisk(g.weather) !== "none");
@@ -49,13 +58,16 @@ export function Slate({ games }: { games: Game[] }) {
     out = [...out].sort((a, b) =>
       sort === "score"
         ? scoutScore(b.scoreComponents) - scoutScore(a.scoreComponents)
-        : a.kickoff.localeCompare(b.kickoff) || scoutScore(b.scoreComponents) - scoutScore(a.scoreComponents),
+        : sort === "rank"
+          ? bestRank(a) - bestRank(b) || a.kickoff.localeCompare(b.kickoff)
+          : a.kickoff.localeCompare(b.kickoff) || scoutScore(b.scoreComponents) - scoutScore(a.scoreComponents),
     );
     return out;
   }, [games, quick, divs, weatherOnly, sort, list, q]);
 
   const grouped = useMemo(() => {
     if (sort === "score") return [["By Scout Score", filtered] as const];
+    if (sort === "rank") return [["By rank", filtered] as const];
     return WINDOWS.map((w) => [w, filtered.filter((g) => kickoffWindow(g.kickoff) === w)] as const).filter(([, gs]) => gs.length);
   }, [filtered, sort]);
 
@@ -118,6 +130,7 @@ export function Slate({ games }: { games: Game[] }) {
           Sort
           <button type="button" className="chip !py-1 !text-[11px]" aria-pressed={sort === "kickoff"} onClick={() => setSort("kickoff")}>Kickoff</button>
           <button type="button" className="chip !py-1 !text-[11px]" aria-pressed={sort === "score"} onClick={() => setSort("score")}>Score</button>
+          <button type="button" className="chip !py-1 !text-[11px]" aria-pressed={sort === "rank"} onClick={() => setSort("rank")}>Rank</button>
         </span>
       </div>
 
@@ -126,7 +139,11 @@ export function Slate({ games }: { games: Game[] }) {
         <div className="card mt-6 p-8 text-center">
           <p className="display text-2xl text-chalk">Nothing matches</p>
           <p className="mt-1 text-sm text-chalk-3">
-            {quick === "Watchlist" ? "Follow a game or a player and it shows up here." : "Loosen a filter. Every scheduled game is on the slate."}
+            {quick === "Watchlist"
+              ? "Follow a team, a game, or a player and it shows up here."
+              : quick === "Top 25"
+                ? "No ranked team plays on this day with these filters."
+                : "Loosen a filter. Every scheduled game is on the slate."}
           </p>
         </div>
       )}

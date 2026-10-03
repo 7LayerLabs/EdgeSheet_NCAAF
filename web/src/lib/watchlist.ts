@@ -7,9 +7,11 @@ const KEY = "sts-watchlist-v1";
 export interface Watchlist {
   games: string[];
   players: string[];
+  /** School names as CollegeFootballData spells them. */
+  teams: string[];
 }
 
-const EMPTY: Watchlist = { games: [], players: [] };
+const EMPTY: Watchlist = { games: [], players: [], teams: [] };
 const SERVER_SNAPSHOT = { list: EMPTY, ready: false };
 
 let cache: { raw: string | null; value: { list: Watchlist; ready: boolean } } | undefined;
@@ -23,7 +25,7 @@ function snapshot() {
   if (cache && cache.raw === raw) return cache.value;
   let list = EMPTY;
   try {
-    if (raw) list = JSON.parse(raw);
+    if (raw) list = { ...EMPTY, ...JSON.parse(raw) };
   } catch {}
   cache = { raw, value: { list, ready: true } };
   return cache.value;

@@ -14,6 +14,7 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
   const risk = weatherRisk(game.weather);
   const topFlag = game.weather ? evaluateWeather(game.weather).find((f) => f.level !== "note") : undefined;
   const projectionsKnown = game.source === "sample" || likely + future > 0;
+  const topName = game.source === "live" ? game.prospects.find((p) => p.tier === "Eligible" || p.tier === "Established") : undefined;
 
   return (
     <Link
@@ -48,15 +49,16 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs">
             {projectionsKnown ? (
               <span className="text-chalk-2">
-                <span className="text-chalk">{likely}</span> likely {likely === 1 ? "pick" : "picks"}
+                <span className="text-chalk">{likely}</span> {game.source === "live" ? "on radar" : `likely ${likely === 1 ? "pick" : "picks"}`}
                 {future > 0 && (
                   <>
-                    , <span className="text-chalk">{future}</span> future {future === 1 ? "name" : "names"}
+                    , <span className="text-chalk">{future}</span> future
                   </>
                 )}
+                {topName && <span className="text-chalk-3"> · {topName.name} ({topName.pos})</span>}
               </span>
             ) : (
-              <span className="text-chalk-3">No projections on file</span>
+              <span className="text-chalk-3">Nobody on radar yet</span>
             )}
             {game.styleLine && <span className="text-chalk-3">{game.styleLine}</span>}
             {topFlag && (
@@ -90,6 +92,7 @@ function TeamLine({ team, score }: { team: Game["home"]; score?: number }) {
         <span className="inline-block h-3 w-1 shrink-0 rounded-sm" style={{ background: team.color }} aria-hidden />
       )}
       <span className="display truncate text-lg font-semibold text-chalk transition-colors group-hover:text-flag">
+        {team.rank && <span className="mr-1 text-sm text-flag">{team.rank}</span>}
         <span className="sm:hidden">{team.short.length > 14 ? team.abbr : team.short}</span>
         <span className="hidden sm:inline">{team.short}</span>
       </span>

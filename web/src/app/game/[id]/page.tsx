@@ -6,9 +6,10 @@ import { COMPONENT_KEYS, COMPONENT_LABELS, WEIGHTS, availableWeight, prospectCou
 import { evaluateWeather } from "@/lib/weather";
 import { asOf, etDateOf, kickoffTime, mlText, moveText, spreadText } from "@/lib/format";
 import type { DefenseProfile, Game, OffenseProfile, Prospect, Team } from "@/lib/types";
-import { CoverageBadge, Confidence, DivisionTag, StatusPill, Tier } from "@/components/badges";
+import { CoverageBadge, DivisionTag, StatusPill } from "@/components/badges";
 import { ScoutScore } from "@/components/ScoutScore";
 import { FollowButton } from "@/components/FollowButton";
+import { ProspectCard } from "@/components/ProspectCard";
 
 export const dynamic = "force-dynamic";
 
@@ -50,14 +51,22 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <FollowButton kind="games" id={game.id} />
+            {game.source === "live" && (
+              <>
+                <FollowButton kind="teams" id={game.away.short} label={`Follow ${game.away.short}`} size="sm" />
+                <FollowButton kind="teams" id={game.home.short} label={`Follow ${game.home.short}`} size="sm" />
+              </>
+            )}
             <span className="mono text-xs text-chalk-3">Report as of {asOf(game.reportAsOf)}</span>
           </div>
         </div>
         <div className="sm:w-48">
           <ScoutScore score={score} tag={tag} size="lg" />
           <p className="mt-2 text-xs text-chalk-3">
-            {game.source === "live" && likely + future === 0
-              ? "No projections on file"
+            {game.source === "live"
+              ? likely + future === 0
+                ? "Nobody clears the radar yet"
+                : `${likely} draft-eligible on radar · ${future} future`
               : `${likely} likely ${likely === 1 ? "pick" : "picks"} · ${future} future ${future === 1 ? "name" : "names"}`}
           </p>
         </div>
@@ -87,7 +96,8 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
       </Section>
 
       {/* 3. Team style */}
-      <Section n="Team style" title={game.offense[game.home.abbr]?.sample === "unavailable" ? "Tendencies not charted yet" : "How each side wants to play"}>
+      <Section n="Team style" title={game.offense[game.home.abbr]?.sample === "unavailable" ? "Tendencies not charted for this division" : "How each side wants to play"}>
+        {game.statsAsOf && <p className="mono mt-1 text-xs text-chalk-3">Season stats as of {asOf(game.statsAsOf)}. Ranks are within the team&apos;s division.</p>}
         <div className="mt-3 grid gap-2.5 md:grid-cols-2">
           {[game.away, game.home].map((t) => (
             <div key={t.id} className="card p-4">
@@ -161,22 +171,29 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
       </Section>
 
       {/* 6. Prospects */}
-      <Section n="Must watch" title={game.prospects.length ? "Prospects by expected draft year" : "No projected prospects on file"}>
+      <Section n="Must watch" title={game.prospects.length ? "Who NFL scouts are watching, by draft class" : "Nobody clears the radar yet"}>
+        {game.prospects.some((p) => p.radar) && (
+          <p className="mt-1 max-w-3xl text-sm text-chalk-3">
+            Radar entries rank evidence: season production against the division, recruiting pedigree, usage share, and NFL size norms. They are not draft grades.
+            {game.statsAsOf ? ` Stats as of ${asOf(game.statsAsOf)}.` : ""}
+          </p>
+        )}
         {years.map((y) => (
-          <div key={y} className="mt-4">
+          <div key={y} className="mt-5">
             <div className="flex items-baseline gap-3">
               <span className="display text-3xl font-bold text-chalk">{y} draft</span>
+              <span className="mono text-xs text-chalk-3">{y === years[0] ? "this year" : y === years[0] + 1 ? "next year" : "the year after"}</span>
               <span className="h-px flex-1 bg-line" />
             </div>
-            <div className="mt-2 grid gap-2 md:grid-cols-2">
+            <div className="mt-2 grid gap-2.5 md:grid-cols-2">
               {byYear.get(y)!.map((p) => (
-                <ProspectCard key={p.id} p={p} game={game} />
+                <ProspectCard key={p.id} p={p} team={p.team === game.home.abbr ? game.home : game.away} />
               ))}
             </div>
           </div>
         ))}
         {game.prospects.length === 0 && (
-          <p className="mt-2 text-sm text-chalk-3">No evaluator we track has published a projection for a player in this game. See Keep an eye on below.</p>
+          <p className="mt-2 text-sm text-chalk-3">No player on either roster clears the production, pedigree, or size thresholds. See Keep an eye on below.</p>
         )}
       </Section>
 
@@ -185,10 +202,10 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
         <Section n="Matchups" title="Who tests whom">
           <div className="mt-3 grid gap-2">
             {game.matchups.map((m, i) => (
-              <div key={i} className="card grid gap-2 p-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-                <span className="display text-xl font-semibold text-chalk">{m.a}</span>
-                <span className="mono text-center text-xs text-flag">VS</span>
-                <span className="display text-xl font-semibold text-chalk sm:text-right">{m.b}</span>
+              <div key={i} className={`card grid gap-2 p-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center ${m.edge === "offense" ? "border-flag/40" : m.edge === "defense" ? "border-sky/40" : ""}`}>
+                <span className={`display text-xl font-semibold ${m.edge === "offense" ? "text-flag" : "text-chalk"}`}>{m.a}</span>
+                <span className="mono text-center text-xs text-chalk-3">{m.edge === "even" ? "EVEN" : "VS"}</span>
+                <span className={`display text-xl font-semibold sm:text-right ${m.edge === "defense" ? "text-sky" : "text-chalk"}`}>{m.b}</span>
                 <p className="text-sm text-chalk-2 sm:col-span-3">{m.why}</p>
                 <p className="mono text-xs text-chalk-3 sm:col-span-3">Evidence: {m.evidence}</p>
               </div>
@@ -225,13 +242,41 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
         </ul>
       </Section>
 
-      {/* 10. Live / postgame placeholder */}
-      <Section n={game.status === "final" ? "Postgame" : "Live notes"} title={game.status === "final" ? "Draft stock review pending editorial approval" : game.status === "live" ? "Observations will appear as plays settle" : "Opens at kickoff"}>
-        <p className="mt-2 text-sm text-chalk-3">
-          {game.status === "final"
-            ? "Stock notes require play-level evidence and an editor's sign-off before publishing. Nothing moves automatically."
-            : "Live notes tie each observation to a play and a statistic. This prototype does not connect to a live feed."}
-        </p>
+      {/* 10. Live / postgame */}
+      <Section
+        n={game.status === "final" ? "Postgame" : "Live"}
+        title={game.box ? "Who showed up" : game.status === "final" ? "Box score not published yet" : game.status === "live" ? "Box score arrives when the game settles" : "Opens at kickoff"}
+      >
+        {game.box ? (
+          <>
+            <div className="mt-3 grid gap-2.5 md:grid-cols-2">
+              {game.box.teams.map((t) => (
+                <div key={t.team} className="card p-4">
+                  <div className="flex items-baseline justify-between">
+                    <span className="display text-2xl font-bold text-chalk">{t.team}</span>
+                    {t.points !== null && <span className="display text-3xl font-extrabold text-flag">{t.points}</span>}
+                  </div>
+                  <ul className="mt-2 grid gap-1.5">
+                    {t.leaders.map((l) => (
+                      <li key={l.id + l.category} className="flex items-baseline gap-2 text-sm">
+                        <span className="mono w-16 shrink-0 text-[10px] uppercase tracking-wider text-chalk-3">{l.category === "interceptions" ? "INT" : l.category.slice(0, 7)}</span>
+                        <Link href={`/player/${l.id}`} className="font-medium text-chalk hover:text-flag">{l.name}</Link>
+                        <span className="mono truncate text-xs text-chalk-2">{l.headline}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-chalk-3">Radar players above show their line from this game. Stock does not move automatically; one game is one data point.</p>
+          </>
+        ) : (
+          <p className="mt-2 text-sm text-chalk-3">
+            {game.status === "upcoming"
+              ? "Box score leaders and each radar player's line appear here once the game starts."
+              : "The data feed posts player stats after the game settles. Check back in a few minutes."}
+          </p>
+        )}
       </Section>
 
       {/* Score breakdown */}
@@ -270,6 +315,7 @@ function TeamName({ t, score }: { t: Team; score?: number }) {
   return (
     <span className="inline-flex items-baseline gap-2">
       {t.logo && <Image src={t.logo} alt="" width={40} height={40} className="h-8 w-8 self-center object-contain sm:h-10 sm:w-10" unoptimized />}
+      {t.rank && <span className="text-2xl text-flag sm:text-3xl" title={t.rankPoll}>{t.rank}</span>}
       <span style={{ color: "var(--chalk)" }}>{t.short}</span>
       {hasScore && <span className="text-flag">{score}</span>}
     </span>
@@ -297,8 +343,10 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
 }
 
 function StyleCard({ side, o, d }: { side: string; o?: OffenseProfile; d?: DefenseProfile }) {
-  const label = o?.label ?? d?.label ?? "Unavailable";
-  const sample = o?.sample ?? d?.sample ?? "unavailable";
+  const prof = o ?? d;
+  const label = prof?.label ?? "Unavailable";
+  const sample = prof?.sample ?? "unavailable";
+  const metrics = prof?.metrics;
   return (
     <div className="mt-3 border-t border-line pt-3">
       <div className="flex items-center justify-between">
@@ -307,30 +355,50 @@ function StyleCard({ side, o, d }: { side: string; o?: OffenseProfile; d?: Defen
         {sample === "unavailable" && <span className="mono text-[10px] text-chalk-3">no charting</span>}
       </div>
       <p className="mt-0.5 text-base font-semibold text-chalk">{label}</p>
-      {sample !== "unavailable" && o && (
+      {prof?.summary && <p className="mt-1 text-xs leading-snug text-chalk-2">{prof.summary}</p>}
+      {metrics && metrics.length > 0 && (
+        <dl className="mono mt-2 grid grid-cols-[1fr_auto_auto] items-center gap-x-3 gap-y-1 text-[11px]">
+          {metrics.filter((m) => ["passRate", "sr", "ex", "rushSr", "passEx", "ly", "havoc", "pdSr"].includes(m.key)).map((m) => (
+            <MetricRow key={m.key} m={m} />
+          ))}
+        </dl>
+      )}
+      {sample !== "unavailable" && !metrics && o && (
         <dl className="mono mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] text-chalk-2">
           <Row k="Pass rate" v={`${o.passRate}% (${o.neutralPassRate}% neutral)`} />
           <Row k="Pace" v={`${o.secondsPerPlay}s per play`} />
-          <Row k="Structure" v={o.structure} />
-          <Row k="Run game" v={o.runGame} />
-          <Row k="Pass game" v={o.passGame} />
+          <Row k="Structure" v={o.structure ?? ""} />
+          <Row k="Run game" v={o.runGame ?? ""} />
+          <Row k="Pass game" v={o.passGame ?? ""} />
           <Row k="Success / explosive" v={`${o.successRate}% / ${o.explosiveRate}%`} />
           <Row k="Pressure allowed" v={`${o.pressureAllowed}%`} />
         </dl>
       )}
-      {sample !== "unavailable" && d && (
+      {sample !== "unavailable" && !metrics && d && (
         <dl className="mono mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] text-chalk-2">
-          <Row k="Front" v={d.front} />
-          <Row k="Coverage" v={d.coverage} />
+          <Row k="Front" v={d.front ?? ""} />
+          <Row k="Coverage" v={d.coverage ?? ""} />
           <Row k="Blitz / pressure" v={`${d.blitzRate}% / ${d.pressureRate}%`} />
           <Row k="Stuff rate" v={`${d.stuffRate}%`} />
           <Row k="Explosives allowed" v={`${d.explosivesAllowed}%`} />
         </dl>
       )}
       {sample === "unavailable" && (
-        <p className="mt-1 text-xs text-chalk-3">Tendency metrics need play-by-play or charting. Label comes from program history.</p>
+        <p className="mt-1 text-xs text-chalk-3">Advanced tendencies are published for FBS and FCS only.</p>
       )}
     </div>
+  );
+}
+
+function MetricRow({ m }: { m: NonNullable<OffenseProfile["metrics"]>[number] }) {
+  const pct = m.pct;
+  const tone = pct === undefined ? "text-chalk-2" : pct >= 75 ? "text-turf" : pct <= 25 ? "text-brick" : "text-chalk-2";
+  return (
+    <>
+      <dt className="text-chalk-3">{m.label}</dt>
+      <dd className={`text-right ${tone}`}>{m.value}</dd>
+      <dd className="w-14 text-right text-chalk-3">{m.rank ? `No. ${m.rank}` : ""}</dd>
+    </>
   );
 }
 
@@ -340,45 +408,6 @@ function Row({ k, v }: { k: string; v: string }) {
       <dt className="text-chalk-3">{k}</dt>
       <dd className="text-chalk-2">{v}</dd>
     </>
-  );
-}
-
-function ProspectCard({ p, game }: { p: Prospect; game: Game }) {
-  const team = p.team === game.home.abbr ? game.home : game.away;
-  return (
-    <div className="card p-4">
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <Link href={`/player/${p.id}`} className="display text-2xl font-bold text-chalk hover:text-flag">
-            <span className="mr-2 text-flag">#{p.jersey}</span>
-            {p.name}
-          </Link>
-          <p className="mono mt-0.5 text-xs text-chalk-3">
-            {p.pos} · {team.abbr} · {p.cls} · {p.ht}, {p.wt}
-          </p>
-        </div>
-        <Tier tier={p.tier} />
-      </div>
-      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
-        <span className="text-chalk">{p.projected}</span>
-        <Confidence level={p.projectionConfidence} />
-        <span className="text-chalk-3">{p.sourceCount} {p.sourceCount === 1 ? "source" : "sources"}</span>
-      </div>
-      <div className="mt-2 flex flex-wrap gap-1.5">
-        {p.traits.map((t) => (
-          <span key={t} className="rounded bg-ink-2 px-2 py-0.5 text-xs text-chalk-2">{t}</span>
-        ))}
-        {p.weakness && <span className="rounded bg-ink-2 px-2 py-0.5 text-xs text-brick">− {p.weakness}</span>}
-      </div>
-      <p className="mt-3 text-sm leading-snug text-chalk-2">
-        <span className="eyebrow mr-1">Watch for</span>
-        {p.watchFor}
-      </p>
-      <div className="mt-3 flex items-center justify-between">
-        <span className="mono text-xs text-chalk-3">{p.stat}</span>
-        <FollowButton kind="players" id={p.id} size="sm" />
-      </div>
-    </div>
   );
 }
 

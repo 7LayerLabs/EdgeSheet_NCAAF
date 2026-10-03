@@ -115,6 +115,13 @@ export interface CfbdRecord {
   total: { games: number; wins: number; losses: number; ties: number };
 }
 
+export interface CfbdRankingWeek {
+  season: number;
+  week: number;
+  seasonType: string;
+  polls: { poll: string; ranks: { rank: number; teamId: number | null; school: string; conference: string | null; firstPlaceVotes: number | null; points: number | null }[] }[];
+}
+
 const HOUR = 3600;
 const DAY = 86400;
 
@@ -134,5 +141,8 @@ export const getMedia = (year: number, week: number, seasonType: string) =>
 export const getTeams = (year: number) => cfbd<CfbdTeam[]>(`/teams?year=${year}`, DAY);
 
 export const getVenues = () => cfbd<CfbdVenue[]>(`/venues`, 7 * DAY);
+
+export const getRankings = (year: number, week: number, seasonType: string) =>
+  cfbd<CfbdRankingWeek[]>(`/rankings?year=${year}&week=${week}&seasonType=${seasonType}`, 6 * HOUR);
 
 export const getRecords = (year: number) => cfbd<CfbdRecord[]>(`/records?year=${year}`, 2 * HOUR);
