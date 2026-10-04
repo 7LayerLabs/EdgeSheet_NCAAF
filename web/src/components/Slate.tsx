@@ -12,7 +12,7 @@ import { flipScore } from "@/lib/live";
 type Quick = "All" | "Live" | "Flip to" | "Upcoming" | "Finished" | "Top 25" | "Top Prospects" | "Hidden Gems" | "Watchlist" | "Late Night Radar";
 const QUICK: Quick[] = ["All", "Live", "Flip to", "Upcoming", "Finished", "Top 25", "Top Prospects", "Hidden Gems", "Late Night Radar", "Watchlist"];
 
-const DIVS: Division[] = ["FBS", "FCS", "DII", "DIII"];
+const DIVS: Division[] = ["FBS", "FCS"];
 const DEFAULT_DIVS: Division[] = ["FBS", "FCS"]; // Division I by default; lower divisions are a toggle
 
 type Group = "top25" | "conference" | "kickoff";

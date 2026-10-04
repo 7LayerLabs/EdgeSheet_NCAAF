@@ -51,6 +51,7 @@ import { games as sampleGames, getGame as sampleGame, getPlayer as samplePlayer,
 import type { Coverage, DefenseProfile, Division, Game, Market, Matchup, OffenseProfile, Prospect, ScoreComponents, Team, WeatherInput } from "./types";
 
 const ET = "America/New_York";
+const SLATE_CLASSIFICATIONS: Classification[] = ["fbs", "fcs"];
 
 export function etDate(d: Date = new Date()): string {
   return new Intl.DateTimeFormat("en-CA", { timeZone: ET, year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
@@ -150,7 +151,8 @@ function rankMap(r: CfbdRankingWeek | undefined): Map<string, { rank: number; po
 async function loadWeek(season: number, week: CfbdWeek, gamesOverride?: CfbdGame[]): Promise<Bundle> {
   const st = week.seasonType;
   const [gameLists, lines, media, teams, venues, records, rankings] = await Promise.all([
-    gamesOverride ? Promise.resolve([gamesOverride]) : Promise.all(CLASSIFICATIONS.map((c) => getGames(season, week.week, st, c))),
+    // Division I only for now. DII and DIII come back when the product can do the work on them.
+    gamesOverride ? Promise.resolve([gamesOverride]) : Promise.all(SLATE_CLASSIFICATIONS.map((c) => getGames(season, week.week, st, c))),
     getLines(season, week.week, st).catch(() => [] as CfbdLineRow[]),
     getMedia(season, week.week, st).catch(() => [] as CfbdMedia[]),
     getTeams(season),
@@ -814,7 +816,7 @@ async function buildSlate(requested: string): Promise<Slate> {
   } catch {}
 
   const notes: string[] = [];
-  notes.push("NAIA schedules are not in CollegeFootballData. That division is missing until a second source is wired.");
+  notes.push("Division I only. DII, DIII, and NAIA are a later version; the product cannot do the scouting work on them yet.");
   if (!generatedLoaded()) notes.push("Rosters, stats, and tendencies are not ingested yet. Run npm run ingest in web/ to light up the radar.");
   else notes.push(`Radar and tendencies use season stats ingested ${new Date(genMeta()!.ingestedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", timeZone: "America/New_York" })} ET.`);
 
