@@ -29,6 +29,20 @@ first game: Memphis 4-1 @ Charlotte 0-5, ESPN+, status final
 
 Only 5 games carried a line because the Saturday was already final when it ran; ESPN drops odds after the game. Outside Next there is no fetch cache, so the run shows one probe per CFBD path (calendar, teams, venues, five ratings), each dead afterwards; inside the server those are cache hits.
 
+**Telegram bot no longer builds the slate in-process (orchestrator follow-up).** `scripts/telegram-bot.mjs` now has `loadSlate(date)` and `loadGame(id)` that read the running site's `GET /api/slate?full=1` (new mode, returns the whole Slate with every Game) and the new `GET /api/game?id=` (`src/app/api/game/route.ts`, same 30 s memo as the game page). Every former `slateLib.getSlate(...)` and `slateLib.getGame(...)` call site (live loop, morning, tick, `/slate`, `/leans`, `/record`, `/radar`, `/game`, `/plan`) goes through them; `getPlan()` in `src/lib/plan-load.ts` takes an optional prebuilt slate so `/plan` does not rebuild either. The in-process build stays only as the fallback when the site does not answer, and it logs `[site] ... building in this process instead. This costs CFBD calls. Is pm2 "scout" up?` at most once a minute. The live loop was already ESPN-only (`espn.liveScoreboard` plus `playerlog`, which has no CFBD call); confirmed and the comment updated. Effect: the ~1,300 CFBD calls a day from the bot go to zero while the site is up.
+
+Verified: `node --check` on the bot, `tsc` clean, and `npx tsx scripts/telegram-api-check.mts http://localhost:3080` (new, kept as a dry run) against a fresh dev server:
+
+```
+GET /api/slate?full=1 -> 200 in 5494ms; 111 games, 117 in week, CFBD quota exhausted true
+morningSlate: 6313 chars (Top 5 by Scout Score rendered with ranks, times, networks)
+leansDigest: 4083 chars
+GET /api/game?id=401862787 -> 200 in 836ms; Memphis @ Charlotte, final, 7 prospects, 4 matchups
+gameDigest: 2252 chars
+```
+
+That run was on the ESPN fallback (quota still exhausted) and the digests came out whole. The dev server on 3080 was stopped afterwards. Restart the bot (`pm2 restart scout-telegram`) once the site is rebuilt so it picks up the routes; until the site has `/api/slate`, the bot falls back in-process and says so.
+
 ### CFBD calls per Saturday, from reading the code
 
 The site runs one Node process with the Next fetch cache, so each endpoint costs one call per revalidate window while anyone (or prewarm) keeps the slate warm. Estimates for a 16-hour active Saturday (9 AM to 1 AM):
