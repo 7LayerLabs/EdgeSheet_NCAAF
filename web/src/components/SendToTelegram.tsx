@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
-type Kind = "slate" | "leans" | "grades";
+type Kind = "slate" | "leans" | "grades" | "plan";
 
-const LABEL: Record<Kind, string> = { slate: "Send slate to Telegram", leans: "Send leans to Telegram", grades: "Send grades to Telegram" };
+const LABEL: Record<Kind, string> = { slate: "Send slate to Telegram", leans: "Send leans to Telegram", grades: "Send grades to Telegram", plan: "Send plan to Telegram" };
 
 /**
  * Small button that POSTs /api/notify. Render it only when the server says

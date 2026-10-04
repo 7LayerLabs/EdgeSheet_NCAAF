@@ -32,6 +32,30 @@ export interface FeedItem {
   team: string;
   /** Community or feed the item came from, for display ("r/CFB", "r/clemsontigers"). */
   where?: string;
+  /** Jev chips (judgeFeed): shown when the probability clears FEED_CHIP_MIN. Absent when Jev is off. */
+  chips?: FeedChip[];
+  /** Per tagged player, the raw Jev probabilities (judgeFeed). Absent when Jev is off. */
+  judged?: Record<string, FeedJudgment>;
+  /** Player ids the regex tagged but Jev said the post is not about (judgeFeed). Already removed from `tags`. */
+  droppedTags?: string[];
+}
+
+export type FeedChip = "injury" | "availability" | "promoted" | "demoted";
+
+/** Raw Jev probabilities for one (item, player) pair. Policy lives in judgeFeed, not here. */
+export interface FeedJudgment {
+  /** The post reports an injury to this player. */
+  injury: number;
+  /** The post reports availability news that is not an injury: out, suspended, questionable, transferring, back. */
+  availability: number;
+  /** Promoted, named the starter, or moved up the depth chart. */
+  promoted: number;
+  /** Demoted, benched, or moved down the depth chart. */
+  demoted: number;
+  /** A reporter or outlet praising the player's play. */
+  praise: number;
+  /** The post is about this player (same person, same team), not a namesake. */
+  refersToPlayer: number;
 }
 
 export interface FeedPlayer {
@@ -39,6 +63,8 @@ export interface FeedPlayer {
   name: string;
   /** School name as CFBD spells it (matches Team.short). */
   team: string;
+  /** Position, when known. Jev uses it to tell a namesake from the player. */
+  pos?: string;
 }
 
 export interface SourceStatus {
@@ -513,4 +539,147 @@ export async function youtubeFor(playerName: string, team: string): Promise<YouT
 
 export function subredditFor(school: string): string | undefined {
   return SUBREDDIT[school];
+}
+
+/* ------------------------------------------------------------- Jev judgments */
+
+import { batchNouls, jevAvailable } from "./jev";
+
+/** A chip shows when its probability clears this. */
+export const FEED_CHIP_MIN = 0.7;
+/** A regex tag is dropped when Jev says the post is this unlikely to be about the player. */
+export const FEED_TAG_MIN = 0.4;
+const JUDGE_TTL_MS = 6 * 3600 * 1000;
+
+const judgeCache = new Map<string, { at: number; value: FeedJudgment }>();
+
+export const FEED_CHIP_LABEL: Record<FeedChip, string> = { injury: "Injury", availability: "Availability", promoted: "Promoted", demoted: "Demoted" };
+
+/** Chips from one judgment, policy only. */
+export function chipsFor(j: FeedJudgment): FeedChip[] {
+  const out: FeedChip[] = [];
+  const depth = j.promoted >= FEED_CHIP_MIN || j.demoted >= FEED_CHIP_MIN;
+  if (j.injury >= FEED_CHIP_MIN) out.push("injury");
+  // "Named the starter" and "benched" also read as availability news; the depth chart chip says it better, so it absorbs that chip unless an injury is in play.
+  if (j.availability >= FEED_CHIP_MIN && (!depth || j.injury >= FEED_CHIP_MIN)) out.push("availability");
+  if (j.promoted >= FEED_CHIP_MIN) out.push("promoted");
+  if (j.demoted >= FEED_CHIP_MIN) out.push("demoted");
+  return out;
+}
+
+const SOURCE_KIND_TEXT: Record<FeedKind, string> = {
+  fan: "a fan's social post or forum thread (opinion, may be a rumor)",
+  outlet: "a reporter or outlet account on a social network",
+  news: "a news article headline",
+};
+
+/**
+ * Ask Jev about every (item, tagged player) pair in ONE request (chunked only past 30 pairs),
+ * then apply the policy: chips at >= 0.7, drop a tag under 0.4 on "about this player".
+ * Items without tags are untouched. Results memoized per item id and player for 6 hours.
+ * Returns the same items (new objects where judged). Never throws; without a key it returns the input.
+ */
+export async function judgeFeed(items: FeedItem[], players: FeedPlayer[], opts: { purpose?: string; ref?: string } = {}): Promise<FeedItem[]> {
+  if (!jevAvailable()) return items;
+  const byId = new Map(players.map((p) => [p.id, p]));
+  type Pair = { item: FeedItem; player: FeedPlayer; key: string };
+  const pending: Pair[] = [];
+  const have = new Map<string, FeedJudgment>();
+  const now = Date.now();
+  for (const it of items) {
+    for (const id of it.tags) {
+      const p = byId.get(id);
+      if (!p) continue;
+      const key = `${it.id}|${id}`;
+      const hit = judgeCache.get(key);
+      if (hit && now - hit.at < JUDGE_TTL_MS) have.set(key, hit.value);
+      else pending.push({ item: it, player: p, key });
+    }
+  }
+  if (pending.length) {
+    try {
+      const rows = await batchNouls(
+        pending.map(({ item, player }) => ({
+          post: item.text,
+          source_kind: SOURCE_KIND_TEXT[item.kind],
+          author: item.author,
+          player: { name: player.name, team: player.team, position: player.pos ?? "unknown" },
+        })),
+        {
+          injury: { q: "Does ITEM.post report an injury to ITEM.player (hurt, injured, a named body part, carted off, surgery, out with an injury)?", yes: "The post says this player is injured or hurt, or gives an injury status.", no: "No injury to this player is reported. Other players' injuries do not count." },
+          availability: { q: "Does ITEM.post report availability news about ITEM.player other than an injury (suspended, out, doubtful, questionable, game-time decision, not traveling, transferring, dismissed, eligible, cleared, or returning)?", yes: "The post says whether this player will or will not play, or that he is leaving or returning.", no: "Nothing about whether this player is available." },
+          promoted: { q: "Does ITEM.post report that ITEM.player moved UP: named the starter, promoted on the depth chart, or taking over a role?", yes: "He was promoted, named a starter, or is getting the job.", no: "No upward depth chart move is reported." },
+          demoted: { q: "Does ITEM.post report that ITEM.player moved DOWN: benched, demoted, lost the starting job, or replaced?", yes: "He was benched, demoted, or replaced.", no: "No downward depth chart move is reported." },
+          praise: { q: "Is ITEM.post a reporter or outlet praising how ITEM.player has played (performance, talent, draft stock), given ITEM.source_kind?", yes: "A reporter or outlet speaks well of this player's play or prospects.", no: "Not praise, or it comes from a fan rather than a reporter or outlet." },
+          refersToPlayer: { q: "Is ITEM.post about ITEM.player, the player with that name on that team, rather than a different person with the same name or only a passing namesake mention?", yes: "The post is talking about this specific player at this team.", no: "A different person, a different team, or the name only appears in a list or as a namesake." },
+        },
+        { purpose: opts.purpose ?? "feed", ref: opts.ref, chunk: 30 },
+      );
+      if (rows) {
+        rows.forEach((r, i) => {
+          const j: FeedJudgment = { injury: r.injury, availability: r.availability, promoted: r.promoted, demoted: r.demoted, praise: r.praise, refersToPlayer: r.refersToPlayer };
+          judgeCache.set(pending[i].key, { at: now, value: j });
+          have.set(pending[i].key, j);
+        });
+      }
+    } catch {}
+  }
+  if (!have.size) return items;
+  return items.map((it) => {
+    if (!it.tags.length) return it;
+    const judged: Record<string, FeedJudgment> = {};
+    const keep: string[] = [];
+    const dropped: string[] = [];
+    for (const id of it.tags) {
+      const j = have.get(`${it.id}|${id}`);
+      if (!j) {
+        keep.push(id);
+        continue;
+      }
+      judged[id] = j;
+      if (j.refersToPlayer < FEED_TAG_MIN) dropped.push(id);
+      else keep.push(id);
+    }
+    if (!Object.keys(judged).length) return it;
+    const chips = new Set<FeedChip>();
+    for (const id of keep) if (judged[id]) for (const c of chipsFor(judged[id])) chips.add(c);
+    return { ...it, tags: keep, judged, chips: [...chips], ...(dropped.length ? { droppedTags: dropped } : {}) };
+  });
+}
+
+/** True when the item carries an injury or availability chip. */
+export const isAvailabilityItem = (it: FeedItem): boolean => Boolean(it.chips?.some((c) => c === "injury" || c === "availability"));
+
+export interface AvailabilityNote {
+  playerId: string;
+  /** "Reported questionable" style lead, from the chip. */
+  lead: string;
+  /** Short quote from the post. */
+  text: string;
+  url: string;
+  source: string;
+  publishedAt: string;
+  probability: number;
+}
+
+/**
+ * For each player, the strongest injury or availability item (highest probability, then newest).
+ * Only items judged at or above FEED_CHIP_MIN and about the player (>= FEED_TAG_MIN) count.
+ */
+export function availabilityNotes(items: FeedItem[]): Record<string, AvailabilityNote> {
+  const best: Record<string, AvailabilityNote> = {};
+  for (const it of items) {
+    if (!it.judged) continue;
+    for (const id of it.tags) {
+      const j = it.judged[id];
+      if (!j || j.refersToPlayer < FEED_TAG_MIN) continue;
+      const p = Math.max(j.injury, j.availability);
+      if (p < FEED_CHIP_MIN) continue;
+      const lead = j.injury >= j.availability ? (j.demoted >= FEED_CHIP_MIN ? "Reported injured, benched" : "Reported injured") : j.promoted >= FEED_CHIP_MIN ? "Reported available, promoted" : "Reported availability news";
+      const cur = best[id];
+      if (cur && (cur.probability > p || (cur.probability === p && cur.publishedAt >= it.publishedAt))) continue;
+      best[id] = { playerId: id, lead, text: it.text.replace(/\s+/g, " ").slice(0, 140), url: it.url, source: it.where ?? SOURCE_LABEL[it.source], publishedAt: it.publishedAt, probability: p };
+    }
+  }
+  return best;
 }

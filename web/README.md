@@ -1,43 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EdgeSheet
 
-## Getting Started
+College football, seen the way an NFL scout sees it. Pick any Division I game and the page tells you why it is worth watching, which players the league is looking at and in what draft class, how the two teams actually play, what the model projects against the number, and, after the final, whether any of that played out.
 
-First, run the development server:
+The rule that runs the whole thing: no invented facts. Every player, stat, line, and quote on a page comes from a source row (CollegeFootballData, ESPN, the National Weather Service, The Odds API). When the data is missing the page says "not available" instead of guessing. Hit rates stay hidden as "too early" until there are enough graded games to mean something.
+
+What is on the site:
+
+- **Slate** (`/`): today's games, Top 25 first, each with a Scout Score, the pressure point, and the model lean. Switch days inside the week.
+- **Game** (`/game/<id>`): why watch, where it gets decided, draft radar, who to keep an eye on, live feed or box score, team style, conditions, market and line movement, storylines, and the graded call once it is final.
+- **Radar** (`/radar`), **Player** (`/player/<id>`): production-based scouting scores by position and draft class, with the week-to-week movement.
+- **Draft** (`/draft`): the 2027 forecast, supply versus demand by position, declared and returning.
+- **Top 25** (`/rankings`), **Watchlist**, **My board**, **Feed**, **Ask**, **Backtest**, **Record** (`/history`): the archive of every locked call and how it graded, plus the ledger and the model tuner.
+- **Telegram**: morning slate, leans, kickoff reminders, grades, and the Saturday sheet as a photo. Commands answered by the bot.
+
+Everything new is Division I (FBS and FCS). Lower divisions keep the basic page.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd web
+# create .env.local with at least CFBD_API_KEY=... (see the key table below)
+npm install
+npm run ingest               # rosters, season stats, drafts from CFBD (minutes; sequential, rate-limited)
+npm run ingest:plays         # play-by-play situations (optional, minutes)
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Keys in `.env.local` (all optional except the first; the UI says which one is missing when a feature is off):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Key | Turns on |
+| --- | --- |
+| `CFBD_API_KEY` | everything; without it the site shows a hand-written sample slate |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Telegram delivery and the Send buttons |
+| `ODDS_API_KEY` | line movement, closing lines, props, CLV in the ledger |
+| `ANTHROPIC_API_KEY` | written reports and Ask |
+| `TYPESAFE_API_KEY` | Jev judgments (feed classification, watch ranking) |
+| `PUBLIC_BASE_URL` | what Telegram links point at (default `http://localhost:3000`) |
+| `CHROME_PATH` | the browser used to render the Saturday sheet PNG, if Chrome is not in the usual place |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Production is `npm run build` then `npm run start` under PM2; see `deploy/agentbox.md` for the always-on box and `deploy/vercel.md` for why Vercel is not the target today. Type-check with `npx tsc --noEmit`.
+
+## Scripts
+
+| `npm run ...` | What it does |
+| --- | --- |
+| `dev` | Next dev server on :3000 |
+| `build` | production build. `prebuild` runs `ingest` first, so a build is also a data refresh |
+| `start` | production server (`next start`) |
+| `lint` | eslint |
+| `ingest` | CFBD rosters, season stats, usage, recruiting, advanced team stats, five drafts, into `data/generated/` |
+| `ingest:plays` | play-by-play per game for situational splits and cues |
+| `ingest:gamelogs` | per-player game logs behind the player pages |
+| `ingest:portal` | transfer portal entries |
+| `ingest:stadiums` | venue coordinates and surfaces for weather |
+| `ingest:climate` | five-year weather baselines per venue and week |
+| `snapshot` | weekly radar and forecast snapshot into `data/snapshots/<date>/`; feeds "who moved" |
+| `tune` | replays the graded archive against the formulas; changes a weight only with 50+ games and a bootstrap-stable gain |
+| `guides` | writes the fan-voice watch guides for the slate |
+| `odds:snapshot` | one Odds API pull for this week's Division I games (3 credits); `--dry` costs nothing |
+| `sheet:render` | renders the Saturday sheet PNG with headless Chrome, no send |
+| `sheet:send` | renders and sends the sheet to Telegram as a photo |
+| `telegram:bot` | the long-polling bot (run under PM2, one instance per token) |
+| `telegram:preview` | prints every digest to the console, no token needed |
+| `telegram:chat-id` | prints the chat ids the bot has seen, for `TELEGRAM_CHAT_ID` |
+
+Not wired to npm (run with `node` or `npx tsx`): `scripts/prewarm.mjs` (warms the pages before a visitor does), `scripts/healthcheck.mjs` (curls the site and Telegram readiness, exits non-zero with a reason), `scripts/write-reports.mjs` (AI reports, on purpose, never on page load), `scripts/backtest.mjs`, and the `*-check.mts` one-offs for debugging a single game or feed.
+
+## PM2 processes
+
+| Name | Script | Schedule |
+| --- | --- | --- |
+| `scout` | `next start -p 3000` | always on |
+| `scout-telegram` | `scripts/telegram-bot.mjs` | always on; its own ET schedule inside |
+| `scout-odds` | `scripts/odds-snapshot.mjs` | `0 */4 * * 3,4,5,6` (every 4 hours, Wed to Sat) |
+| `scout-prewarm` | `scripts/prewarm.mjs --scheduled` | `*/10 * * * *`; runs every tick Sat 9 AM to 1 AM ET, :00 and :30 otherwise |
+| `scout-health` | `scripts/healthcheck.mjs --notify` | `*/15 * * * *`; Telegram message only on failure (hourly at most) and once on recovery |
+
+```bash
+cd web
+pm2 start node_modules/next/dist/bin/next --name scout --time -- start -p 3000
+pm2 start scripts/telegram-bot.mjs --name scout-telegram --time
+pm2 start scripts/odds-snapshot.mjs --name scout-odds --time --cron "0 */4 * * 3,4,5,6" --no-autorestart
+pm2 start scripts/prewarm.mjs --name scout-prewarm --time --cron "*/10 * * * *" --no-autorestart -- --scheduled
+pm2 start scripts/healthcheck.mjs --name scout-health --time --cron "*/15 * * * *" --no-autorestart -- --notify
+pm2 save
+```
+
+Only one machine may run `scout-telegram` for a given bot token (Telegram allows one poller), and only one should run `scout-odds` (one credit budget).
+
+## Data that must survive a deploy
+
+`data/archive`, `data/odds`, `data/ai`, `data/snapshots`, `data/sheets`, `data/declarations.json`, `data/grades.json`, `data/follows.json`, `data/telegram-state.json`. `data/generated` and `data/cache` are rebuilt by ingest.
 
 ## Consensus of projection systems
 
 The game page shows the EdgeSheet projection as the headline, then an "Other systems" table under it. Those rows are not ours. They are rating systems published through CollegeFootballData (free tier): SP+ (Bill Connelly), FPI (ESPN), SRS (Simple Rating System), Elo, and CFBD's own pregame spread and win probability (`/ratings/sp`, `/ratings/fpi`, `/ratings/srs`, `/ratings/elo`, `/metrics/wp/pregame`). Each rating difference becomes a projected margin with 2.5 points of home field (Elo uses the same 65 Elo points and 28 Elo per point as the model), and win probability uses the same 16-point normal. The consensus is the median margin across whatever systems have a number, plus a count of how many lean each side of the posted spread (inside half a point counts as "on the number"). SP+, FPI, and Elo tables are FBS only, so FCS games usually get SRS and CFBD pregame only. The consensus median and side are locked pregame and graded on the Record page ("Consensus vs number"). Code: `src/lib/consensus.ts`, `src/components/ConsensusTable.tsx`; check one game with `npx tsx scripts/consensus-check.mts <gameId>`.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ## Telegram delivery
 
@@ -73,9 +130,10 @@ Dry run with no token: `npm run telegram:preview` prints every digest to the con
 | --- | --- |
 | 8:00 AM ET on any day with Division I games | Morning slate: top 5 by Scout Score, Hidden Gems, strong and moderate model leans (capped at 5 per group, `/leans` for all) |
 | Every 15 min while games are in a window | Kickoff reminders for followed teams and watched games with a kickoff in the next 60 minutes |
+| Monday 7:00 AM ET (after the 6:30 AM snapshot) | Stock report: radar risers, fallers, forecast-board moves |
 | Every 10 min while games are live or recently final, hourly otherwise | Postgame grades for every newly graded game, plus radar alerts when a followed player posts a "showed up" line |
 
-Commands: `/slate [YYYY-MM-DD]`, `/leans`, `/record`, `/radar <team>`, `/game <team>`, `/help`. The bot only answers the chat in `TELEGRAM_CHAT_ID`.
+Commands: `/slate [YYYY-MM-DD]`, `/leans`, `/record`, `/radar <team>`, `/game <team>`, `/plan`, `/stock`, `/help`. The bot only answers the chat in `TELEGRAM_CHAT_ID`.
 
 Every lean is labeled "model, not a pick". Thresholds live in `src/lib/digests.ts` (`LEAN_THRESHOLDS`).
 

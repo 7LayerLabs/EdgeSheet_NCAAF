@@ -1,0 +1,113 @@
+{
+ "gameId": "401862799",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.171Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "Tulsa",
+  "home": "Navy",
+  "abbr": {
+   "home": "NAVY",
+   "away": "TLSA"
+  },
+  "scoutScore": 63,
+  "whyWatch": "Damari Alston (TLSA RB, Sr) is a top-of-the-radar name: 292 rush yds on 68 carries, 5 TD, 77 rec yds.",
+  "pressurePoint": "Tulsa run game vs Navy run defense. Navy is No. 29 of 138 against the run (34%). Tulsa ranks No. 78 in rush success rate (44%). A real edge, not a lock. Tulsa will find the run hard going. Expect more second-and-long than usual. Watch Tulsa's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Tulsa run game",
+    "b": "Navy run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Tulsa",
+    "why": "Navy is No. 29 of 138 against the run (34%). Tulsa ranks No. 78 in rush success rate (44%). A real edge, not a lock. Tulsa will find the run hard going. Expect more second-and-long than usual."
+   },
+   {
+    "a": "Tulsa on passing downs",
+    "b": "Navy pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Tulsa",
+    "why": "Navy is No. 87 of 138 on passing downs (30%). Tulsa ranks No. 137 in passing-downs success (18%). A real edge, not a lock. Navy gets off the field on long downs. Early-down efficiency is everything for Tulsa."
+   },
+   {
+    "a": "Navy deep passing",
+    "b": "Tulsa secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Navy",
+    "why": "Navy is No. 14 of 138 in pass explosiveness (1.83). Tulsa ranks No. 59 at limiting explosive passes (1.51). A real edge, not a lock. Navy has the deep ball available. Watch whether Tulsa rolls a safety over after the first one."
+   },
+   {
+    "a": "Navy run game",
+    "b": "Tulsa run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Navy",
+    "why": "Navy is No. 9 of 138 in rush success rate (53%). Tulsa ranks No. 53 against the run (38%). A real edge, not a lock. Navy should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4685699",
+    "name": "Damari Alston",
+    "team": "Tulsa",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 80
+   },
+   {
+    "id": "4714989",
+    "name": "Hunter Erb",
+    "team": "Tulsa",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5193111",
+    "name": "Brody Duffel",
+    "team": "Tulsa",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5147932",
+    "name": "Will Upshaw",
+    "team": "Tulsa",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 56
+   },
+   {
+    "id": "5158387",
+    "name": "Griffen Willis",
+    "team": "Navy",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 48
+   }
+  ],
+  "projection": {
+   "winner": "NAVY",
+   "winProb": 0.7995708860691783,
+   "margin": 13.44142857142857,
+   "home": 31,
+   "away": 19,
+   "confidence": "high",
+   "modelTotal": 49.5
+  },
+  "consensus": {
+   "median": 2.2,
+   "favorite": "NAVY",
+   "of": 5
+  }
+ }
+}

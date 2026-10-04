@@ -1,0 +1,113 @@
+{
+ "gameId": "401862795",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.160Z",
+  "kickoff": "2026-10-10T16:00:00.000Z",
+  "away": "Tulane",
+  "home": "Army",
+  "abbr": {
+   "home": "ARMY",
+   "away": "TULN"
+  },
+  "scoutScore": 61,
+  "whyWatch": "3 draft-eligible names on the radar, led by Maurice Turner (TULN RB).",
+  "pressurePoint": "Tulane deep passing vs Army secondary. Tulane is No. 31 of 138 in pass explosiveness (1.70). Army ranks No. 88 at limiting explosive passes (1.60). A clear edge, the kind that shapes a game plan. Tulane has the deep ball available. Watch whether Army rolls a safety over after the first one. Watch the first deep shot. If it connects, Army changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "Army offensive line",
+    "b": "Tulane front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Army",
+    "why": "Army is No. 4 of 138 in line yards per carry (3.83). Tulane ranks No. 105 at the line of scrimmage (3.09). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Army. Second-level runs and play-action are live all afternoon."
+   },
+   {
+    "a": "Army deep passing",
+    "b": "Tulane secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Army",
+    "why": "Tulane is No. 68 of 138 at limiting explosive passes (1.55). Army ranks No. 137 in pass explosiveness (1.20). A clear edge, the kind that shapes a game plan. Tulane keeps the lid on. Army should expect to drive the long way."
+   },
+   {
+    "a": "Tulane deep passing",
+    "b": "Army secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Tulane",
+    "why": "Tulane is No. 31 of 138 in pass explosiveness (1.70). Army ranks No. 88 at limiting explosive passes (1.60). A clear edge, the kind that shapes a game plan. Tulane has the deep ball available. Watch whether Army rolls a safety over after the first one."
+   },
+   {
+    "a": "Army run game",
+    "b": "Tulane run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Army",
+    "why": "Army is No. 2 of 138 in rush success rate (58%). Tulane ranks No. 47 against the run (37%). A real edge, not a lock. Army should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4837391",
+    "name": "Maurice Turner",
+    "team": "Tulane",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "5085346",
+    "name": "Darion Reed",
+    "team": "Tulane",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4912221",
+    "name": "John Bock II",
+    "team": "Tulane",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5302751",
+    "name": "Tylan George",
+    "team": "Tulane",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Future",
+    "score": 56
+   },
+   {
+    "id": "5219446",
+    "name": "Ben Britton",
+    "team": "Army",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 55
+   }
+  ],
+  "projection": {
+   "winner": "ARMY",
+   "winProb": 0.5675300398152181,
+   "margin": 2.7214285714285715,
+   "home": 34,
+   "away": 31,
+   "confidence": "high",
+   "modelTotal": 65
+  },
+  "consensus": {
+   "median": 2.7,
+   "favorite": "ARMY",
+   "of": 5
+  }
+ }
+}

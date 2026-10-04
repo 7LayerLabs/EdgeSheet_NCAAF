@@ -1,0 +1,44 @@
+{
+ "gameId": "401868212",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.196Z",
+  "kickoff": "2026-10-10T17:00:00.000Z",
+  "away": "San Diego",
+  "home": "Butler",
+  "abbr": {
+   "home": "BTLR",
+   "away": "USD"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Pioneer conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5085508",
+    "name": "Desmin Jackson",
+    "team": "Butler",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 47
+   },
+   {
+    "id": "5093363",
+    "name": "Adam Criter",
+    "team": "San Diego",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 45
+   }
+  ],
+  "consensus": {
+   "median": 11,
+   "favorite": "BTLR",
+   "of": 1
+  }
+ }
+}

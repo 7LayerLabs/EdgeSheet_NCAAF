@@ -1,0 +1,35 @@
+{
+ "gameId": "401868966",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.202Z",
+  "kickoff": "2026-10-10T19:00:00.000Z",
+  "away": "Mississippi Valley State",
+  "home": "Texas Southern",
+  "abbr": {
+   "home": "TXSO",
+   "away": "MVSU"
+  },
+  "scoutScore": 20,
+  "whyWatch": "SWAC conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5227762",
+    "name": "Athean Renfro Jr.",
+    "team": "Texas Southern",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 47
+   }
+  ],
+  "consensus": {
+   "median": 23.5,
+   "favorite": "TXSO",
+   "of": 1
+  }
+ }
+}

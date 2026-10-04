@@ -1,0 +1,35 @@
+{
+ "gameId": "401868115",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.211Z",
+  "kickoff": "2026-10-10T21:00:00.000Z",
+  "away": "Montana",
+  "home": "Northern Arizona",
+  "abbr": {
+   "home": "NAU",
+   "away": "MONT"
+  },
+  "scoutScore": 22,
+  "whyWatch": "Big Sky conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5087687",
+    "name": "Eli Gillman",
+    "team": "Montana",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 58
+   }
+  ],
+  "consensus": {
+   "median": -3.5,
+   "favorite": "MONT",
+   "of": 1
+  }
+ }
+}

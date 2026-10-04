@@ -1,0 +1,35 @@
+{
+ "gameId": "401868229",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.187Z",
+  "kickoff": "2026-10-10T16:00:00.000Z",
+  "away": "Morehead State",
+  "home": "Dayton",
+  "abbr": {
+   "home": "DAY",
+   "away": "MORE"
+  },
+  "scoutScore": 22,
+  "whyWatch": "Pioneer conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5156762",
+    "name": "Luke Hansen",
+    "team": "Dayton",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 47
+   }
+  ],
+  "consensus": {
+   "median": 9.1,
+   "favorite": "DAY",
+   "of": 1
+  }
+ }
+}

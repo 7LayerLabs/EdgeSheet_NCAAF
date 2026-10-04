@@ -6,6 +6,8 @@ import { LiveTicker } from "@/components/LiveTicker";
 import type { Game } from "@/lib/types";
 import { SendToTelegram } from "@/components/SendToTelegram";
 import { telegramReady } from "@/lib/telegram";
+import { withFlipJev } from "@/lib/flip-jev";
+import { ModelUpdatedNote } from "@/components/ModelUpdates";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +19,8 @@ export default async function Today({ searchParams }: PageProps<"/">) {
   const sp = await searchParams;
   const dateParam = typeof sp.date === "string" ? sp.date : undefined;
   const slate = await getSlate(dateParam);
-  const { games } = slate;
+  // Jev "worth flipping to" per live game (one request, 60s cache); falls back to the numeric flip score when absent.
+  const games = await withFlipJev(slate.games);
 
   const live = games.filter((g) => g.status === "live").length;
   const upcoming = games.filter((g) => g.status === "upcoming").length;
@@ -41,6 +44,7 @@ export default async function Today({ searchParams }: PageProps<"/">) {
           <div>{games.length} games on the slate</div>
           <div>{live ? `${live} in progress` : upcoming ? `${upcoming} still to kick off` : "all final"}</div>
           <div className="mt-1"><Link href="/ask" className="text-sky hover:underline">Ask the slate</Link></div>
+          <div><ModelUpdatedNote /></div>
           {slate.source === "live" && (
             <div className="mt-1.5 flex justify-end gap-1.5">
               <SendToTelegram type="slate" date={slate.date} enabled={telegramReady()} />

@@ -82,3 +82,24 @@ export const genPlayers = (): GenPlayer[] => memoSync(`gen:players:${stamp("play
 export const genTeams = (): GenTeam[] => memoSync(`gen:teams:${stamp("teams.json")}`, 3600, () => readJson<GenTeam[]>("teams.json", []));
 export const genDraft = (): GenDraftPick[] => memoSync(`gen:draft:${stamp("draft.json")}`, 3600, () => readJson<GenDraftPick[]>("draft.json", []));
 export const generatedLoaded = () => genMeta() !== undefined && genPlayers().length > 0;
+
+/* ---------------------------------------------------- game logs (scripts/ingest-gamelogs.mjs) */
+
+export interface GenGameLine {
+  g: string; // game id
+  wk: number;
+  st: string; // regular | postseason
+  t: string; // his school
+  opp: string; // opponent school
+  ha: "home" | "away";
+  s: Record<string, number>; // compact stat keys, same as GenPlayer.s
+}
+
+export interface GenGameLogs {
+  meta: { ingestedAt: string; season: number; weeks: string[]; games: number; players: number; lines: number };
+  games: Record<string, { wk: number; st: string; home: string; away: string; hp: number | null; ap: number | null; hc: string | null; ac: string | null }>;
+  players: Record<string, GenGameLine[]>;
+}
+
+export const genGamelogs = (): GenGameLogs | undefined => memoSync(`gen:gamelogs:${stamp("gamelogs.json")}`, 3600, () => readJson<GenGameLogs | undefined>("gamelogs.json", undefined));
+export const gamelogsStamp = () => stamp("gamelogs.json");

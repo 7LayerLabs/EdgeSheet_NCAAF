@@ -56,5 +56,51 @@
    "sideCount": 1,
    "of": 3
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 12.5,
+   "modelSideCovered": false
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 12.5,
+   "sideCovered": false
+  },
+  "capturedAt": "2026-10-04T01:21:24.782Z",
+  "score": {
+   "home": 31,
+   "away": 30
+  },
+  "excitement": 5.474350867490364,
+  "spreadResult": "underdog covered",
+  "totalResult": "over",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4685543",
+    "name": "Qae'Shon Sapp",
+    "team": "North Carolina A&T",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 51,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4688561",
+    "name": "Jack Funke",
+    "team": "Bryant",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

@@ -1,0 +1,35 @@
+{
+ "gameId": "401866661",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.199Z",
+  "kickoff": "2026-10-10T18:00:00.000Z",
+  "away": "Wofford",
+  "home": "Elon",
+  "abbr": {
+   "home": "ELON",
+   "away": "WOF"
+  },
+  "scoutScore": 20,
+  "whyWatch": "No line, no projections on file, and no charting yet. Schedule-level coverage only.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5301989",
+    "name": "Gerald Modest Jr.",
+    "team": "Wofford",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 52
+   }
+  ],
+  "consensus": {
+   "median": -6.9,
+   "favorite": "WOF",
+   "of": 1
+  }
+ }
+}

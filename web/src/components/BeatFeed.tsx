@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { feedForTeams, KIND_LABEL, SOURCE_LABEL, type FeedItem, type FeedPlayer, type FeedResult } from "@/lib/feed";
+import { feedForTeams, judgeFeed, isAvailabilityItem, FEED_CHIP_LABEL, KIND_LABEL, SOURCE_LABEL, type FeedChip, type FeedItem, type FeedPlayer, type FeedResult } from "@/lib/feed";
+import { jevAvailable } from "@/lib/jev";
 
 /** "4h ago", "2d ago". */
 // eslint-disable-next-line react-hooks/purity
@@ -13,6 +14,26 @@ export function ago(iso: string, now = Date.now()): string {
   if (h < 24) return `${h}h ago`;
   const d = Math.floor(h / 24);
   return `${d}d ago`;
+}
+
+const CHIP_TONE: Record<FeedChip, string> = {
+  injury: "border-brick/40 bg-brick/10 text-brick",
+  availability: "border-warn bg-warn/20 text-chalk",
+  promoted: "border-turf/40 bg-turf/10 text-turf",
+  demoted: "border-line bg-ink-2 text-chalk-2",
+};
+
+/** sleepers.app style chips from Jev, plus the "reported, unverified" mark. Policy: chips only at or above FEED_CHIP_MIN. */
+export function FeedChips({ item }: { item: FeedItem }) {
+  if (!item.chips?.length) return null;
+  return (
+    <span className="inline-flex flex-wrap items-center gap-1">
+      {item.chips.map((c) => (
+        <span key={c} className={`rounded border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${CHIP_TONE[c]}`}>{FEED_CHIP_LABEL[c]}</span>
+      ))}
+      <span className="mono text-[10px] text-chalk-3">reported, unverified</span>
+    </span>
+  );
 }
 
 const KIND_TONE: Record<FeedItem["kind"], string> = {
@@ -32,6 +53,7 @@ export function FeedItemRow({ item, names, now }: { item: FeedItem; names: Recor
         <span className="mono">
           {ago(item.publishedAt, now)} on {item.where ?? SOURCE_LABEL[item.source]}
         </span>
+        <FeedChips item={item} />
         <span className="mono ml-auto text-chalk-3">{item.team}</span>
       </div>
       <a href={item.url} target="_blank" rel="noopener noreferrer" className="mt-1.5 block whitespace-pre-line text-[15px] leading-snug text-chalk hover:text-sky">
@@ -82,6 +104,7 @@ export async function BeatFeed({
   limit,
   onlyTagged,
   emptyText,
+  onlyAvailability,
 }: {
   schools: string[];
   players: FeedPlayer[];
@@ -89,11 +112,15 @@ export async function BeatFeed({
   /** Only show items that tag one of these player ids. */
   onlyTagged?: string[];
   emptyText?: string;
+  /** Only items Jev chipped as injury or availability news (needs TYPESAFE_API_KEY). */
+  onlyAvailability?: boolean;
 }) {
   const feed = await feedForTeams(schools, players);
   const names: Record<string, string> = {};
   for (const p of players) names[p.id] = p.name;
-  let items = feed.items;
+  // One Jev request for every tagged item: chips, name-match check. Falls back to the untouched items without a key.
+  let items = await judgeFeed(feed.items, players, { purpose: "feed", ref: schools.join("+") });
+  if (onlyAvailability) items = items.filter(isAvailabilityItem);
   if (onlyTagged && onlyTagged.length > 0) items = items.filter((it) => it.tags.some((t) => onlyTagged.includes(t)));
   if (limit) items = items.slice(0, limit);
   // eslint-disable-next-line react-hooks/purity
@@ -105,7 +132,13 @@ export async function BeatFeed({
       <SourceLine feed={feed} />
       {items.length === 0 ? (
         <p className="mt-3 text-sm text-chalk-3">
-          {allOff ? "No source answered. The feed will retry in a few minutes." : emptyText ?? `Nothing found about ${schools.join(" or ")} in the last ${feed.windowDays} days.`}
+          {allOff
+            ? "No source answered. The feed will retry in a few minutes."
+            : onlyAvailability
+              ? jevAvailable()
+                ? `No injury or availability news about a tagged radar player in the last ${feed.windowDays} days.`
+                : "The injury and availability filter needs TYPESAFE_API_KEY in .env.local."
+              : emptyText ?? `Nothing found about ${schools.join(" or ")} in the last ${feed.windowDays} days.`}
         </p>
       ) : (
         <ul className="mt-3 grid gap-2">

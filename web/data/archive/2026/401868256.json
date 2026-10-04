@@ -1,0 +1,35 @@
+{
+ "gameId": "401868256",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.197Z",
+  "kickoff": "2026-10-10T18:00:00.000Z",
+  "away": "Drake",
+  "home": "Valparaiso",
+  "abbr": {
+   "home": "VAL",
+   "away": "DRKE"
+  },
+  "scoutScore": 22,
+  "whyWatch": "Pioneer conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5404620",
+    "name": "Riley Warzynski",
+    "team": "Drake",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 51
+   }
+  ],
+  "consensus": {
+   "median": 1.8,
+   "favorite": "VAL",
+   "of": 1
+  }
+ }
+}

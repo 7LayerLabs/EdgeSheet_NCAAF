@@ -1,0 +1,113 @@
+{
+ "gameId": "401864516",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.180Z",
+  "kickoff": "2026-10-10T23:30:00.000Z",
+  "away": "Air Force",
+  "home": "Northern Illinois",
+  "abbr": {
+   "home": "NIU",
+   "away": "AF"
+  },
+  "scoutScore": 51,
+  "whyWatch": "3 draft-eligible names on the radar, led by Jacob Welch (NIU OL).",
+  "pressurePoint": "Air Force offensive line vs Northern Illinois front. Air Force is No. 19 of 138 in line yards per carry (3.53). Northern Illinois ranks No. 76 at the line of scrimmage (2.90). A clear edge, the kind that shapes a game plan. Air Force should win first contact more often than not, which makes every down shorter. Watch yards before contact on Air Force's first ten carries.",
+  "edges": [
+   {
+    "a": "Northern Illinois on passing downs",
+    "b": "Air Force pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Northern Illinois",
+    "why": "Air Force is No. 5 of 138 on passing downs (19%). Northern Illinois ranks No. 131 in passing-downs success (22%). This is not a lean. It is a mismatch, and a prominent one. Air Force gets off the field on long downs. Early-down efficiency is everything for Northern Illinois."
+   },
+   {
+    "a": "Northern Illinois run game",
+    "b": "Air Force run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Northern Illinois",
+    "why": "Air Force is No. 45 of 138 against the run (37%). Northern Illinois ranks No. 117 in rush success rate (38%). A clear edge, the kind that shapes a game plan. Northern Illinois will find the run hard going. Expect more second-and-long than usual."
+   },
+   {
+    "a": "Air Force offensive line",
+    "b": "Northern Illinois front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Air Force",
+    "why": "Air Force is No. 19 of 138 in line yards per carry (3.53). Northern Illinois ranks No. 76 at the line of scrimmage (2.90). A clear edge, the kind that shapes a game plan. Air Force should win first contact more often than not, which makes every down shorter."
+   },
+   {
+    "a": "Air Force deep passing",
+    "b": "Northern Illinois secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Air Force",
+    "why": "Air Force is No. 7 of 138 in pass explosiveness (1.88). Northern Illinois ranks No. 52 at limiting explosive passes (1.49). A real edge, not a lock. Air Force has the deep ball available. Watch whether Northern Illinois rolls a safety over after the first one."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4921415",
+    "name": "Jacob Welch",
+    "team": "Northern Illinois",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5121469",
+    "name": "Landon Hron",
+    "team": "Northern Illinois",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5092259",
+    "name": "Luke Skartvedt",
+    "team": "Northern Illinois",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5223130",
+    "name": "Blake Fletcher",
+    "team": "Air Force",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Sleeper",
+    "score": 60
+   },
+   {
+    "id": "5258463",
+    "name": "Jordan Bellamy",
+    "team": "Northern Illinois",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Future",
+    "score": 59
+   }
+  ],
+  "projection": {
+   "winner": "AF",
+   "winProb": 0.6974094653921539,
+   "margin": 8.271428571428572,
+   "home": 18,
+   "away": 27,
+   "confidence": "high",
+   "modelTotal": 45
+  },
+  "consensus": {
+   "median": -8.3,
+   "favorite": "AF",
+   "of": 5
+  }
+ }
+}

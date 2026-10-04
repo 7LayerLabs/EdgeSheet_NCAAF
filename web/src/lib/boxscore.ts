@@ -4,7 +4,7 @@
  * through the in-process memo instead.
  */
 import { memo } from "./memo";
-import type { Classification } from "./cfbd";
+import { cfbdQuotaExhausted, noteCfbdResponse, type Classification } from "./cfbd";
 
 interface Raw {
   id: number;
@@ -36,10 +36,14 @@ async function fetchWeek(year: number, week: number, seasonType: string, cls: Cl
   const key = process.env.CFBD_API_KEY;
   if (!key) return [];
   return memo(`box:${year}:${week}:${seasonType}:${cls}`, 900, async () => {
-    const res = await fetch(`https://api.collegefootballdata.com/games/players?year=${year}&week=${week}&seasonType=${seasonType}&classification=${cls}`, {
+    // No fetch cache on this call, so never spend it while the monthly quota is known to be gone.
+    if (cfbdQuotaExhausted()) return [];
+    const path = `/games/players?year=${year}&week=${week}&seasonType=${seasonType}&classification=${cls}`;
+    const res = await fetch(`https://api.collegefootballdata.com${path}`, {
       headers: { Authorization: `Bearer ${key}`, Accept: "application/json" },
       cache: "no-store",
     });
+    if (await noteCfbdResponse(path, res)) return [];
     if (!res.ok) return [];
     return (await res.json()) as Raw[];
   });

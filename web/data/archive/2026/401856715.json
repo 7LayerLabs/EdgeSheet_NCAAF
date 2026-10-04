@@ -1,0 +1,158 @@
+{
+ "gameId": "401856715",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.177Z",
+  "kickoff": "2026-10-10T23:00:00.000Z",
+  "away": "LSU",
+  "home": "Kentucky",
+  "abbr": {
+   "home": "UK",
+   "away": "LSU"
+  },
+  "scoutScore": 89,
+  "whyWatch": "CJ Baxter (UK RB, Sr) is a top-of-the-radar name: 313 rush yds on 55 carries, 5 TD, 42 rec yds.",
+  "pressurePoint": "LSU on passing downs vs Kentucky pressure. LSU is No. 13 of 138 in passing-downs success (40%). Kentucky ranks No. 122 on passing downs (35%). This is not a lean. It is a mismatch, and a prominent one. LSU converts the long downs Kentucky needs to win. A third-and-8 is not a stop here. Watch LSU's third-and-long conversions. Two in the first half breaks Kentucky's plan.",
+  "edges": [
+   {
+    "a": "LSU on passing downs",
+    "b": "Kentucky pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "LSU",
+    "why": "LSU is No. 13 of 138 in passing-downs success (40%). Kentucky ranks No. 122 on passing downs (35%). This is not a lean. It is a mismatch, and a prominent one. LSU converts the long downs Kentucky needs to win. A third-and-8 is not a stop here."
+   },
+   {
+    "a": "Kentucky on passing downs",
+    "b": "LSU pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Kentucky",
+    "why": "LSU is No. 22 of 138 on passing downs (23%). Kentucky ranks No. 68 in passing-downs success (32%). A real edge, not a lock. LSU gets off the field on long downs. Early-down efficiency is everything for Kentucky."
+   },
+   {
+    "a": "LSU run game",
+    "b": "Kentucky run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "LSU",
+    "why": "LSU is No. 62 of 138 in rush success rate (46%). Kentucky ranks No. 93 against the run (43%). A real edge, not a lock. LSU should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   },
+   {
+    "a": "Kentucky run game",
+    "b": "LSU run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Kentucky",
+    "why": "Kentucky is No. 6 in rush success rate (55%) and LSU is No. 27 against the run (33%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4870609",
+    "name": "CJ Baxter",
+    "team": "Kentucky",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 90
+   },
+   {
+    "id": "5112647",
+    "name": "Jordan Ross",
+    "team": "LSU",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 84
+   },
+   {
+    "id": "5079482",
+    "name": "Dilin Jones",
+    "team": "LSU",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 83
+   },
+   {
+    "id": "5141632",
+    "name": "DJ Pickett",
+    "team": "LSU",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 80
+   },
+   {
+    "id": "5079682",
+    "name": "Jordan Seaton",
+    "team": "LSU",
+    "pos": "OT",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5150410",
+    "name": "Lance Heard",
+    "team": "Kentucky",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "4870660",
+    "name": "Jordan Castell",
+    "team": "Kentucky",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4899347",
+    "name": "Stephiylan Green",
+    "team": "LSU",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5215172",
+    "name": "Kenny Darby",
+    "team": "Kentucky",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 71
+   }
+  ],
+  "spread": {
+   "team": "LSU",
+   "line": -10
+  },
+  "total": 50.5,
+  "projection": {
+   "winner": "LSU",
+   "winProb": 0.6359926689290893,
+   "margin": 5.564285714285715,
+   "home": 22,
+   "away": 29,
+   "modelSide": "UK",
+   "confidence": "high",
+   "modelTotal": 48.5,
+   "totalLean": "none"
+  },
+  "consensus": {
+   "median": -10.2,
+   "favorite": "LSU",
+   "side": "UK",
+   "sideCount": 2,
+   "of": 5
+  }
+ }
+}

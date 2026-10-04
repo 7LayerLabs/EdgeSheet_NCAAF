@@ -1,0 +1,176 @@
+{
+ "gameId": "401856712",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.183Z",
+  "kickoff": "2026-10-10T23:30:00.000Z",
+  "away": "Georgia",
+  "home": "Alabama",
+  "abbr": {
+   "home": "ALA",
+   "away": "UGA"
+  },
+  "scoutScore": 96,
+  "whyWatch": "Ryan Coleman-Williams (ALA WR, Jr) is a top-of-the-radar name: 20 rec, 376 yds, 4 TD, 18.8 Y/R.",
+  "pressurePoint": "Georgia deep passing vs Alabama secondary. Georgia is No. 74 of 138 in pass explosiveness (1.53). Alabama ranks No. 116 at limiting explosive passes (1.74). A real edge, not a lock. Georgia has the deep ball available. Watch whether Alabama rolls a safety over after the first one. Watch the first deep shot. If it connects, Alabama changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "Alabama offensive line",
+    "b": "Georgia front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Alabama",
+    "why": "Georgia is No. 9 of 138 at the line of scrimmage (2.19). Alabama ranks No. 59 in line yards per carry (3.19). A real edge, not a lock. Georgia should hold the line of scrimmage. Alabama's runs will need the second level to break."
+   },
+   {
+    "a": "Georgia deep passing",
+    "b": "Alabama secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Georgia",
+    "why": "Georgia is No. 74 of 138 in pass explosiveness (1.53). Alabama ranks No. 116 at limiting explosive passes (1.74). A real edge, not a lock. Georgia has the deep ball available. Watch whether Alabama rolls a safety over after the first one."
+   },
+   {
+    "a": "Alabama deep passing",
+    "b": "Georgia secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Alabama",
+    "why": "Alabama is No. 32 of 138 in pass explosiveness (1.69). Georgia ranks No. 74 at limiting explosive passes (1.56). A real edge, not a lock. Alabama has the deep ball available. Watch whether Georgia rolls a safety over after the first one."
+   },
+   {
+    "a": "Alabama on passing downs",
+    "b": "Georgia pressure",
+    "edge": "even",
+    "axis": "passing-downs",
+    "offTeam": "Alabama",
+    "why": "Alabama is No. 20 in passing-downs success (38%) and Georgia is No. 9 on passing downs (20%). Strength on strength. Both sides are average on long downs. Early-down efficiency decides who sees more of them."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5141629",
+    "name": "Keelon Russell",
+    "team": "Alabama",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 96
+   },
+   {
+    "id": "5141711",
+    "name": "Ryan Coleman-Williams",
+    "team": "Alabama",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 88
+   },
+   {
+    "id": "4871074",
+    "name": "Raylen Wilson",
+    "team": "Georgia",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 86
+   },
+   {
+    "id": "4870970",
+    "name": "Yhonzae Pierre",
+    "team": "Alabama",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 86
+   },
+   {
+    "id": "5145410",
+    "name": "Chris Cole",
+    "team": "Georgia",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 85
+   },
+   {
+    "id": "4685578",
+    "name": "Gunner Stockton",
+    "team": "Georgia",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 85
+   },
+   {
+    "id": "5141562",
+    "name": "Dijon Lee Jr.",
+    "team": "Alabama",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 85
+   },
+   {
+    "id": "5079698",
+    "name": "Ellis Robinson IV",
+    "team": "Georgia",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 84
+   },
+   {
+    "id": "5079344",
+    "name": "Zabien Brown",
+    "team": "Alabama",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "5141671",
+    "name": "Talyn Taylor",
+    "team": "Georgia",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 79
+   },
+   {
+    "id": "5158471",
+    "name": "Terrance Green",
+    "team": "Alabama",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 79
+   }
+  ],
+  "spread": {
+   "team": "UGA",
+   "line": -3
+  },
+  "total": 54.5,
+  "projection": {
+   "winner": "UGA",
+   "winProb": 0.5350049537906885,
+   "margin": 1.405714285714286,
+   "home": 27,
+   "away": 28,
+   "modelSide": "ALA",
+   "confidence": "high",
+   "modelTotal": 57,
+   "totalLean": "over"
+  },
+  "consensus": {
+   "median": -1.2,
+   "favorite": "UGA",
+   "side": "ALA",
+   "sideCount": 4,
+   "of": 5
+  }
+ }
+}

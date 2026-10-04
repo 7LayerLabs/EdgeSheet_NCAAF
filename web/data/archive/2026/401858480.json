@@ -1,0 +1,140 @@
+{
+ "gameId": "401858480",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.166Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "Illinois",
+  "home": "Michigan State",
+  "abbr": {
+   "home": "MSU",
+   "away": "ILL"
+  },
+  "scoutScore": 86,
+  "whyWatch": "Katin Houser (ILL QB, Sr) is a top-of-the-radar name: 1021 pass yds, 9 TD, 2 INT, 8.7 Y/A.",
+  "pressurePoint": "Illinois on passing downs vs Michigan State pressure. Illinois is No. 19 of 138 in passing-downs success (38%). Michigan State ranks No. 91 on passing downs (30%). A clear edge, the kind that shapes a game plan. Illinois converts the long downs Michigan State needs to win. A third-and-8 is not a stop here. Watch Illinois's third-and-long conversions. Two in the first half breaks Michigan State's plan.",
+  "edges": [
+   {
+    "a": "Michigan State deep passing",
+    "b": "Illinois secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Michigan State",
+    "why": "Illinois is No. 48 of 138 at limiting explosive passes (1.48). Michigan State ranks No. 129 in pass explosiveness (1.28). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Michigan State needs the underneath game and yards after catch."
+   },
+   {
+    "a": "Illinois on passing downs",
+    "b": "Michigan State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Illinois",
+    "why": "Illinois is No. 19 of 138 in passing-downs success (38%). Michigan State ranks No. 91 on passing downs (30%). A clear edge, the kind that shapes a game plan. Illinois converts the long downs Michigan State needs to win. A third-and-8 is not a stop here."
+   },
+   {
+    "a": "Illinois run game",
+    "b": "Michigan State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Illinois",
+    "why": "Illinois is No. 18 of 138 in rush success rate (52%). Michigan State ranks No. 76 against the run (41%). A clear edge, the kind that shapes a game plan. Illinois should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   },
+   {
+    "a": "Illinois offensive line",
+    "b": "Michigan State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Illinois",
+    "why": "Illinois is No. 26 of 138 in line yards per carry (3.45). Michigan State ranks No. 75 at the line of scrimmage (2.90). A real edge, not a lock. Illinois should win first contact more often than not, which makes every down shorter."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4795295",
+    "name": "Katin Houser",
+    "team": "Illinois",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 80
+   },
+   {
+    "id": "4923226",
+    "name": "Collin Dixon",
+    "team": "Illinois",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "4870737",
+    "name": "Jordan Hall",
+    "team": "Michigan State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "4685460",
+    "name": "Nikai Martinez",
+    "team": "Michigan State",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "5079433",
+    "name": "Brandon Hansen",
+    "team": "Illinois",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4832828",
+    "name": "Luka Vincic",
+    "team": "Michigan State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5148652",
+    "name": "Grant Beerman",
+    "team": "Illinois",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 61
+   },
+   {
+    "id": "5124585",
+    "name": "Brady Pretzlaff",
+    "team": "Michigan State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 61
+   }
+  ],
+  "projection": {
+   "winner": "ILL",
+   "winProb": 0.5492787768881747,
+   "margin": 1.9814285714285715,
+   "home": 28,
+   "away": 30,
+   "confidence": "high",
+   "modelTotal": 58
+  },
+  "consensus": {
+   "median": -0.7,
+   "favorite": "ILL",
+   "of": 5
+  }
+ }
+}

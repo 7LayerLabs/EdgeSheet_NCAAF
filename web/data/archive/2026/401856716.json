@@ -1,0 +1,158 @@
+{
+ "gameId": "401856716",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.154Z",
+  "kickoff": "2026-10-10T04:00:00.000Z",
+  "away": "Texas A&M",
+  "home": "Missouri",
+  "abbr": {
+   "home": "MIZ",
+   "away": "TA&M"
+  },
+  "scoutScore": 93,
+  "whyWatch": "Austin Simmons (MIZ QB, Sr) is a top-of-the-radar name: 930 pass yds, 11 TD, 0 INT, 8.8 Y/A.",
+  "pressurePoint": "Texas A&M on passing downs vs Missouri pressure. Texas A&M is No. 30 of 138 in passing-downs success (37%). Missouri ranks No. 70 on passing downs (28%). A real edge, not a lock. Texas A&M converts the long downs Missouri needs to win. A third-and-8 is not a stop here. Watch Texas A&M's third-and-long conversions. Two in the first half breaks Missouri's plan.",
+  "edges": [
+   {
+    "a": "Missouri deep passing",
+    "b": "Texas A&M secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Missouri",
+    "why": "Missouri is No. 35 of 138 in pass explosiveness (1.67). Texas A&M ranks No. 131 at limiting explosive passes (1.85). This is not a lean. It is a mismatch, and a prominent one. Texas A&M does not keep the lid on. Missouri will take shots, and the market total may be underpriced if they land."
+   },
+   {
+    "a": "Missouri run game",
+    "b": "Texas A&M run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Missouri",
+    "why": "Texas A&M is No. 42 of 138 against the run (37%). Missouri ranks No. 103 in rush success rate (40%). A clear edge, the kind that shapes a game plan. Missouri will find the run hard going. Expect more second-and-long than usual."
+   },
+   {
+    "a": "Texas A&M on passing downs",
+    "b": "Missouri pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Texas A&M",
+    "why": "Texas A&M is No. 30 of 138 in passing-downs success (37%). Missouri ranks No. 70 on passing downs (28%). A real edge, not a lock. Texas A&M converts the long downs Missouri needs to win. A third-and-8 is not a stop here."
+   },
+   {
+    "a": "Texas A&M offensive line",
+    "b": "Missouri front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Texas A&M",
+    "why": "Texas A&M is No. 54 in line yards per carry (3.22) and Missouri is No. 30 at the line of scrimmage (2.48). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5141684",
+    "name": "Austin Simmons",
+    "team": "Missouri",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 80
+   },
+   {
+    "id": "5160111",
+    "name": "DJ Hicks",
+    "team": "Texas A&M",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "5141582",
+    "name": "Donovan Olugbode",
+    "team": "Missouri",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 78
+   },
+   {
+    "id": "4921116",
+    "name": "Jamal Roberts",
+    "team": "Missouri",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5201870",
+    "name": "Daeden Hopkins",
+    "team": "Missouri",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 75
+   },
+   {
+    "id": "4685383",
+    "name": "Isaiah Horton",
+    "team": "Texas A&M",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4685412",
+    "name": "Julio Humphrey",
+    "team": "Texas A&M",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4880351",
+    "name": "Jahlil Florence",
+    "team": "Missouri",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5141540",
+    "name": "Marco Jones",
+    "team": "Texas A&M",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 66
+   }
+  ],
+  "spread": {
+   "team": "MIZ",
+   "line": -1.5
+  },
+  "total": 50.5,
+  "projection": {
+   "winner": "MIZ",
+   "winProb": 0.5010329812800791,
+   "margin": 0.041428571428571426,
+   "home": 25,
+   "away": 26,
+   "modelSide": "TA&M",
+   "confidence": "high",
+   "modelTotal": 46.5,
+   "totalLean": "under"
+  },
+  "consensus": {
+   "median": 0,
+   "favorite": "MIZ",
+   "side": "TA&M",
+   "sideCount": 4,
+   "of": 5
+  }
+ }
+}

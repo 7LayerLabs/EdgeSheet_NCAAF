@@ -1,0 +1,149 @@
+{
+ "gameId": "401856824",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.156Z",
+  "kickoff": "2026-10-10T16:00:00.000Z",
+  "away": "UCF",
+  "home": "Oklahoma State",
+  "abbr": {
+   "home": "OKST",
+   "away": "UCF"
+  },
+  "scoutScore": 80,
+  "whyWatch": "6 draft-eligible names on the radar, led by Antione Jackson (UCF DB).",
+  "pressurePoint": "UCF on passing downs vs Oklahoma State pressure. Oklahoma State is No. 11 of 138 on passing downs (20%). UCF ranks No. 79 in passing-downs success (30%). A clear edge, the kind that shapes a game plan. Oklahoma State gets off the field on long downs. Early-down efficiency is everything for UCF. Watch UCF on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "UCF on passing downs",
+    "b": "Oklahoma State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "UCF",
+    "why": "Oklahoma State is No. 11 of 138 on passing downs (20%). UCF ranks No. 79 in passing-downs success (30%). A clear edge, the kind that shapes a game plan. Oklahoma State gets off the field on long downs. Early-down efficiency is everything for UCF."
+   },
+   {
+    "a": "Oklahoma State deep passing",
+    "b": "UCF secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Oklahoma State",
+    "why": "UCF is No. 53 of 138 at limiting explosive passes (1.49). Oklahoma State ranks No. 83 in pass explosiveness (1.50). A real edge, not a lock. UCF keeps the lid on. Oklahoma State should expect to drive the long way."
+   },
+   {
+    "a": "Oklahoma State on passing downs",
+    "b": "UCF pressure",
+    "edge": "even",
+    "axis": "passing-downs",
+    "offTeam": "Oklahoma State",
+    "why": "Oklahoma State is No. 70 in passing-downs success (31%) and UCF is No. 45 on passing downs (25%). Strength on strength. Both sides are average on long downs. Early-down efficiency decides who sees more of them."
+   },
+   {
+    "a": "Oklahoma State offensive line",
+    "b": "UCF front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Oklahoma State",
+    "why": "Oklahoma State is No. 52 in line yards per carry (3.23) and UCF is No. 28 at the line of scrimmage (2.48). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5258016",
+    "name": "Caleb Hawkins",
+    "team": "Oklahoma State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 80
+   },
+   {
+    "id": "5160072",
+    "name": "Antione Jackson",
+    "team": "UCF",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5136049",
+    "name": "Duke Watson",
+    "team": "UCF",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4941009",
+    "name": "Isaiah Nixon",
+    "team": "UCF",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4685514",
+    "name": "Jacob Sexton",
+    "team": "Oklahoma State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4685380",
+    "name": "Mo Horn",
+    "team": "Oklahoma State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 70
+   },
+   {
+    "id": "5219834",
+    "name": "Drew Mestemaker",
+    "team": "Oklahoma State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 65
+   },
+   {
+    "id": "5148787",
+    "name": "Wyatt Young",
+    "team": "Oklahoma State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 64
+   },
+   {
+    "id": "5141668",
+    "name": "Taevion Swint",
+    "team": "UCF",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 38
+   }
+  ],
+  "projection": {
+   "winner": "UCF",
+   "winProb": 0.5884545601924953,
+   "margin": 3.5771428571428574,
+   "home": 21,
+   "away": 24,
+   "confidence": "high",
+   "modelTotal": 45
+  },
+  "consensus": {
+   "median": -1.4,
+   "favorite": "UCF",
+   "of": 5
+  }
+ }
+}

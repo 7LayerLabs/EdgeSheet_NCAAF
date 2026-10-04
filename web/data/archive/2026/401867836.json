@@ -1,0 +1,35 @@
+{
+ "gameId": "401867836",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.189Z",
+  "kickoff": "2026-10-10T16:00:00.000Z",
+  "away": "Dartmouth",
+  "home": "Yale",
+  "abbr": {
+   "home": "YALE",
+   "away": "DART"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Ivy conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5079683",
+    "name": "Dante Reno",
+    "team": "Yale",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 57
+   }
+  ],
+  "consensus": {
+   "median": -5.7,
+   "favorite": "DART",
+   "of": 1
+  }
+ }
+}

@@ -37,9 +37,10 @@ If the bot is running and you message it before the chat id is set, it replies w
 | --- | --- |
 | 8:00 AM, days with Division I games | Morning slate: top 5 by Scout Score with kickoff, network, one-line why; Hidden Gems; strong and moderate leans capped at 5 per group with a "plus N more" line |
 | Every 15 min while a Division I game kicked off in the last 6 h or kicks off in the next 2 h | Kickoff reminders for followed teams and watched games with kickoff in the next 60 min. Once per game. |
+| Monday 7:00 AM ET, after the 6:30 AM snapshot cron | Stock report from `stockDigest(biggestMoves(5))` (builder by the adjusted agent in digests.ts, data from src/lib/movement.ts) |
 | Every 10 min while a Division I game is live or went final within 6 h, hourly otherwise | Postgame grades for every game graded since the cursor; radar alerts for followed players with a "showed up" verdict |
 
-Commands via long polling: `/slate [YYYY-MM-DD]`, `/leans`, `/record`, `/radar <team>`, `/game <team>`, `/help`. Replies only go to the chat in `TELEGRAM_CHAT_ID`.
+Commands via long polling: `/slate [YYYY-MM-DD]`, `/leans`, `/record`, `/radar <team>`, `/game <team>`, `/plan` (wired by the plan agent), `/stock`, `/help`. Replies only go to the chat in `TELEGRAM_CHAT_ID`.
 
 ## Files
 

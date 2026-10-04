@@ -1,0 +1,140 @@
+{
+ "gameId": "401856718",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.170Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "Ole Miss",
+  "home": "Vanderbilt",
+  "abbr": {
+   "home": "VAN",
+   "away": "MISS"
+  },
+  "scoutScore": 87,
+  "whyWatch": "Caleb Odom (MISS TE, Jr) is a top-of-the-radar name: 13 rec, 201 yds, 1 TD, 15.5 Y/R.",
+  "pressurePoint": "Ole Miss run game vs Vanderbilt run defense. Ole Miss is No. 18 of 138 in rush success rate (52%). Vanderbilt ranks No. 82 against the run (42%). A clear edge, the kind that shapes a game plan. Ole Miss should stay on schedule on the ground, which keeps third downs short and the clock moving. Watch Ole Miss's rushing attempts by halftime. North of 20 means the plan is working.",
+  "edges": [
+   {
+    "a": "Ole Miss run game",
+    "b": "Vanderbilt run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Ole Miss",
+    "why": "Ole Miss is No. 18 of 138 in rush success rate (52%). Vanderbilt ranks No. 82 against the run (42%). A clear edge, the kind that shapes a game plan. Ole Miss should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   },
+   {
+    "a": "Vanderbilt deep passing",
+    "b": "Ole Miss secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Vanderbilt",
+    "why": "Ole Miss is No. 50 of 138 at limiting explosive passes (1.48). Vanderbilt ranks No. 103 in pass explosiveness (1.45). A real edge, not a lock. Ole Miss keeps the lid on. Vanderbilt should expect to drive the long way."
+   },
+   {
+    "a": "Ole Miss offensive line",
+    "b": "Vanderbilt front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Ole Miss",
+    "why": "Vanderbilt is No. 54 of 138 at the line of scrimmage (2.69). Ole Miss ranks No. 97 in line yards per carry (2.94). A real edge, not a lock. Vanderbilt should hold the line of scrimmage. Ole Miss's runs will need the second level to break."
+   },
+   {
+    "a": "Ole Miss on passing downs",
+    "b": "Vanderbilt pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Ole Miss",
+    "why": "Ole Miss is No. 27 of 138 in passing-downs success (37%). Vanderbilt ranks No. 61 on passing downs (28%). A real edge, not a lock. Ole Miss converts the long downs Vanderbilt needs to win. A third-and-8 is not a stop here."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079647",
+    "name": "Caleb Odom",
+    "team": "Ole Miss",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 80
+   },
+   {
+    "id": "5218778",
+    "name": "Will Echoles",
+    "team": "Ole Miss",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 76
+   },
+   {
+    "id": "4918093",
+    "name": "Jaylon Braxton",
+    "team": "Ole Miss",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "4685352",
+    "name": "Gunner Givens",
+    "team": "Vanderbilt",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4911912",
+    "name": "Issa Ouattara",
+    "team": "Vanderbilt",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 70
+   },
+   {
+    "id": "4870744",
+    "name": "Martel Hight",
+    "team": "Vanderbilt",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 70
+   },
+   {
+    "id": "5224178",
+    "name": "Caleb Cunningham",
+    "team": "Ole Miss",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 63
+   },
+   {
+    "id": "5215250",
+    "name": "Cayden Daniels",
+    "team": "Vanderbilt",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 60
+   }
+  ],
+  "projection": {
+   "winner": "MISS",
+   "winProb": 0.5018878566983426,
+   "margin": 0.07571428571428573,
+   "home": 30,
+   "away": 30,
+   "confidence": "high",
+   "modelTotal": 59.5
+  },
+  "consensus": {
+   "median": -1.1,
+   "favorite": "MISS",
+   "of": 5
+  }
+ }
+}

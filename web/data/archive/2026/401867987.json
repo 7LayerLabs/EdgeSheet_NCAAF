@@ -1,0 +1,35 @@
+{
+ "gameId": "401867987",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.214Z",
+  "kickoff": "2026-10-10T22:00:00.000Z",
+  "away": "South Carolina State",
+  "home": "Charleston Southern",
+  "abbr": {
+   "home": "CHSO",
+   "away": "SCST"
+  },
+  "scoutScore": 20,
+  "whyWatch": "No line, no projections on file, and no charting yet. Schedule-level coverage only.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5231371",
+    "name": "Ka Von Chisolm",
+    "team": "South Carolina State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 47
+   }
+  ],
+  "consensus": {
+   "median": -7.5,
+   "favorite": "SCST",
+   "of": 1
+  }
+ }
+}

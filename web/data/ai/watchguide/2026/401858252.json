@@ -1,0 +1,105 @@
+{
+ "gameId": "401858252",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:31:49.613Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "final",
+ "evidenceVersion": "4f9675487c3c",
+ "candidateCount": 16,
+ "top": [
+  {
+   "id": "PCONN1",
+   "kind": "player",
+   "title": "Kalieb Osborne (UConn QB, radar 74)",
+   "jev": 2.65,
+   "playerIds": [
+    "5079619"
+   ]
+  },
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "UConn deep passing vs Syracuse secondary (clear offense edge)",
+   "jev": 2.62,
+   "playerIds": []
+  },
+  {
+   "id": "S2",
+   "kind": "situation",
+   "title": "thirdLongConv situation, UConn offense vs Syracuse defense",
+   "jev": 2.11,
+   "playerIds": []
+  },
+  {
+   "id": "E2",
+   "kind": "edge",
+   "title": "Syracuse on passing downs vs UConn pressure (clear offense edge)",
+   "jev": 2.1,
+   "playerIds": []
+  },
+  {
+   "id": "PSYR2",
+   "kind": "player",
+   "title": "Nissi Ogbebor (Syracuse DL, radar 71)",
+   "jev": 2.07,
+   "playerIds": [
+    "5239197"
+   ]
+  }
+ ],
+ "attempts": 1,
+ "attemptLog": [
+  []
+ ],
+ "usage": {
+  "inputTokens": 3303,
+  "outputTokens": 831,
+  "cacheReadTokens": 0,
+  "costUsd": 0.014916
+ },
+ "guide": {
+  "headline": "Osborne's arm and UConn's deep shots carried this one",
+  "hook": "A freshman quarterback with a 56 percent usage rate threw deep on a defense built to allow it, and Syracuse's own passing-downs edge kept the game from ever getting easy.",
+  "items": [
+   {
+    "title": "Osborne already threw for 314",
+    "what": "Kalieb Osborne came in completing 81 of 140 for 1164 yards and 10 touchdowns on the year, and in this game alone he went 19 of 39 for 314 yards and three touchdowns with zero interceptions. He also picked up 23 yards on nine carries. For a true freshman carrying 56 percent of UConn's offensive usage, that is a starter's workload and a starter's answer.",
+    "when": "Every dropback, especially third down where he operates 71 percent of passing-down snaps.",
+    "who": "Kalieb Osborne",
+    "whoPlayerId": "5079619",
+    "factIds": [
+     "PCONN1",
+     "PCONN1s",
+     "PCONN1l",
+     "PCONN1b",
+     "PCONN1e4"
+    ]
+   },
+   {
+    "title": "UConn's deep ball hunted Syracuse's safeties",
+    "what": "UConn ranks No. 6 of 138 nationally in pass explosiveness at 1.91, and Syracuse ranks just No. 67 at limiting those explosive passes at 1.54, a 44 percentile point gap. Watch the first deep shot UConn takes and see if Syracuse rolls a second safety over after it lands. If they don't adjust, Osborne's 314 yards and three scores make total sense.",
+    "when": "First deep shot of the game, then every look after it.",
+    "who": "UConn offense",
+    "factIds": [
+     "E1",
+     "E1e",
+     "E1w"
+    ]
+   },
+   {
+    "title": "Syracuse kept answering on third-and-long",
+    "what": "Syracuse ranks No. 49 of 138 on passing downs at 35 percent success against a UConn defense that sits at No. 105 at 32 percent, a 41 percentile point gap. That means a third-and-8 was never a guaranteed punt for Syracuse. Two conversions like that in a half is enough to wreck a defensive plan, and this matchup was built for exactly that.",
+    "when": "Third-and-long situations across both halves.",
+    "who": "Syracuse offense",
+    "factIds": [
+     "E2",
+     "E2e",
+     "E2w"
+    ]
+   }
+  ],
+  "cardLine": "A true freshman threw for 314 and three scores by attacking a Syracuse secondary ranked No. 67 against explosive passing."
+ }
+}

@@ -6,6 +6,7 @@
 import type { Market, Matchup, Team, WeatherInput } from "./types";
 import type { GenTeam } from "./generated";
 import { evaluateWeather } from "./weather";
+import { appliedWeights } from "./weights";
 
 export interface Projection {
   winner: string; // abbr
@@ -25,6 +26,9 @@ export interface Projection {
   weatherTilt?: string;
   basis: string[];
   confidence: "high" | "medium" | "low";
+  /** Model parts, archived so scripts/tune.mjs can re-blend them: Elo margin (home positive) and net unit-edge percentile points (home positive). */
+  eloMargin?: number;
+  netEdge?: number;
 }
 
 const HOME_ELO = 65; // typical college home-field edge in Elo points
@@ -39,7 +43,11 @@ const SIGMA = 16; // standard deviation of college margins
 const DEFAULT_BLEND = { eloWeight: 0.6, edgeDivisor: 40 };
 let blendCache: { at: number; value: { eloWeight: number; edgeDivisor: number } } | undefined;
 function blendWeights(): { eloWeight: number; edgeDivisor: number } {
-  if (process.env.USE_FITTED_WEIGHTS !== "1") return DEFAULT_BLEND;
+  // Without USE_FITTED_WEIGHTS the live blend comes from the tuner's `applied` section (defaults equal DEFAULT_BLEND).
+  if (process.env.USE_FITTED_WEIGHTS !== "1") {
+    const a = appliedWeights();
+    return { eloWeight: a.eloWeight, edgeDivisor: a.edgeDivisor };
+  }
   const now = Date.now();
   if (blendCache && now - blendCache.at < 300_000) return blendCache.value;
   let value = DEFAULT_BLEND;
@@ -94,7 +102,8 @@ const AVG_PPG = 26.2;
 /** Expected points for one offense against one defense: league average plus EPA deviations over the game's pace. */
 function expectedPoints(off: GenTeam, def: GenTeam, means: { offPpa: number; defPpa: number }, plays: number): number {
   const dev = (off.off.ppa - means.offPpa + (def.def.ppa - means.defPpa)) / 2;
-  return Math.max(3, AVG_PPG + plays * dev);
+  // The tuner can shift the baseline through data/weights.json `applied.totalBaselineOffset` (default 0).
+  return Math.max(3, AVG_PPG + appliedWeights().totalBaselineOffset + plays * dev);
 }
 
 export function projectGame(i: Input): Projection | undefined {
@@ -226,5 +235,6 @@ export function projectGame(i: Input): Projection | undefined {
             : `Model has ${modelSide} winning outright; the market has ${favAbbr} by ${mktFavMargin.toFixed(1)}. The model leans ${modelSide} against the number by ${gap.toFixed(1)}.`;
   }
 
-  return { winner, winProb, margin: Math.abs(margin), total, home: homePts, away: awayPts, shape, vsMarket, modelSide, sideGap, modelTotal, totalLean, totalGap, totalNote, weatherTilt, basis, confidence };
+  const netEdge = tendMargin === undefined ? undefined : Math.round(tendMargin * blendWeights().edgeDivisor);
+  return { winner, winProb, margin: Math.abs(margin), total, home: homePts, away: awayPts, shape, vsMarket, modelSide, sideGap, modelTotal, totalLean, totalGap, totalNote, weatherTilt, basis, confidence, eloMargin: eloMargin === undefined ? undefined : Math.round(eloMargin * 100) / 100, netEdge };
 }

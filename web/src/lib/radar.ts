@@ -8,6 +8,8 @@
  */
 import { genPlayers, genMeta, type GenPlayer } from "./generated";
 import { memoSync } from "./memo";
+import { adjustedIndex, type QocLabel } from "./adjusted";
+import { movementFor, movementStamp } from "./movement";
 
 export type PosGroup = "QB" | "RB" | "WR" | "TE" | "OL" | "DL" | "EDGE" | "LB" | "CB" | "S" | "ST";
 export type RadarTier = "Eligible" | "Future" | "Sleeper" | "Watch";
@@ -47,6 +49,15 @@ export interface RadarPlayer {
   recruitRank: number | null;
   hometown: string | null;
   gamesPlayed: number | null;
+  /** Raw production percentile before the opponent adjustment (same as `production` when no game log exists). */
+  rawProduction: number;
+  /** Opponent-adjusted production percentile, when a game log exists. */
+  adjustedProduction: number | null;
+  /** Quality of competition: average opponent percentile faced on his production axis (100 = toughest). */
+  qoc: number | null;
+  qocLabel: QocLabel;
+  /** Radar score change between the last two weekly snapshots. null until two snapshots exist. */
+  delta: number | null;
 }
 
 /* ----------------------------------------------------------- helpers */
@@ -194,6 +205,7 @@ export interface RadarIndex {
 function buildIndex(): RadarIndex {
   const players = genPlayers();
   const nextDraft = nextDraftYear();
+  const adjIdx = adjustedIndex();
 
   // Percentile tables per classification + group over players with real volume.
   const tables = new Map<string, number[]>();
@@ -217,7 +229,11 @@ function buildIndex(): RadarIndex {
     if (group === "ST") continue;
     const level = LEVEL[p.c] ?? 0.5;
     const v = raw.get(p.id) ?? 0;
-    const prodPct = v > 0 ? pct(tables.get(`${p.c}:${group}`) ?? [], v) : 0;
+    const rawPct = v > 0 ? pct(tables.get(`${p.c}:${group}`) ?? [], v) : 0;
+    // Opponent adjustment: when a game log exists, production is half the raw season percentile and half the
+    // percentile of opponent-weighted per-game production (see adjusted.ts). Without a log it is the raw percentile.
+    const adj = adjIdx.byId.get(p.id);
+    const prodPct = adj && v > 0 ? Math.round(0.5 * rawPct + 0.5 * adj.adjPct) : rawPct;
 
     const stars = p.r?.st ?? null;
     const pedigree = stars === 5 ? 100 : stars === 4 ? 72 : stars === 3 ? 38 : stars === 2 ? 15 : 0;
@@ -292,6 +308,11 @@ function buildIndex(): RadarIndex {
       recruitRank: p.r?.rk ?? null,
       hometown: p.home,
       gamesPlayed: p.g,
+      rawProduction: rawPct,
+      adjustedProduction: adj && v > 0 ? adj.adjPct : null,
+      qoc: adj?.qoc ?? null,
+      qocLabel: adj?.qocLabel ?? "unmeasured",
+      delta: movementFor(p.id)?.scoreDelta ?? null,
     });
   }
 
@@ -302,7 +323,7 @@ function buildIndex(): RadarIndex {
   return { byId, byTeam, all: out, nextDraft };
 }
 
-export const radarIndex = (): RadarIndex => memoSync(`radar:${genMeta()?.ingestedAt ?? "none"}`, 3600, buildIndex);
+export const radarIndex = (): RadarIndex => memoSync(`radar:${genMeta()?.ingestedAt ?? "none"}:${adjustedIndex().stamp}:${movementStamp()}`, 3600, buildIndex);
 
 export const radarForTeam = (school: string): RadarPlayer[] => radarIndex().byTeam.get(school) ?? [];
 export const radarPlayer = (id: string): RadarPlayer | undefined => radarIndex().byId.get(id);

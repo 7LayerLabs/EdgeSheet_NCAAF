@@ -1,0 +1,35 @@
+{
+ "gameId": "401866660",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.188Z",
+  "kickoff": "2026-10-10T16:00:00.000Z",
+  "away": "Stonehill",
+  "home": "Sacred Heart",
+  "abbr": {
+   "home": "SHU",
+   "away": "STO"
+  },
+  "scoutScore": 20,
+  "whyWatch": "No line, no projections on file, and no charting yet. Schedule-level coverage only.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5106897",
+    "name": "Jack O'Connell",
+    "team": "Stonehill",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 45
+   }
+  ],
+  "consensus": {
+   "median": 4.8,
+   "favorite": "SHU",
+   "of": 1
+  }
+ }
+}

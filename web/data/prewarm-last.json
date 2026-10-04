@@ -1,0 +1,351 @@
+{
+  "at": "2026-10-04T01:27:55.081Z",
+  "base": "http://localhost:3077",
+  "totalMs": 70217,
+  "failed": 0,
+  "results": [
+    {
+      "pathname": "/api/slate",
+      "status": 200,
+      "ms": 7105,
+      "kb": 29,
+      "ok": true
+    },
+    {
+      "pathname": "/",
+      "status": 200,
+      "ms": 2797,
+      "kb": 4653,
+      "ok": true
+    },
+    {
+      "pathname": "/?date=2026-10-01",
+      "status": 200,
+      "ms": 1919,
+      "kb": 141,
+      "ok": true
+    },
+    {
+      "pathname": "/?date=2026-10-02",
+      "status": 200,
+      "ms": 2578,
+      "kb": 237,
+      "ok": true
+    },
+    {
+      "pathname": "/radar",
+      "status": 200,
+      "ms": 2621,
+      "kb": 484,
+      "ok": true
+    },
+    {
+      "pathname": "/draft",
+      "status": 200,
+      "ms": 17431,
+      "kb": 372,
+      "ok": true
+    },
+    {
+      "pathname": "/rankings",
+      "status": 200,
+      "ms": 4021,
+      "kb": 285,
+      "ok": true
+    },
+    {
+      "pathname": "/history",
+      "status": 200,
+      "ms": 397,
+      "kb": 173,
+      "ok": true
+    },
+    {
+      "pathname": "/sheet",
+      "status": 200,
+      "ms": 1062,
+      "kb": 109,
+      "ok": true
+    },
+    {
+      "pathname": "/game/401868309",
+      "status": 200,
+      "ms": 732,
+      "kb": 43,
+      "ok": true,
+      "label": "Incarnate Word @ Stephen F. Austin (live)"
+    },
+    {
+      "pathname": "/game/401868391",
+      "status": 200,
+      "ms": 168,
+      "kb": 43,
+      "ok": true,
+      "label": "Tennessee Tech @ Western Carolina (live)"
+    },
+    {
+      "pathname": "/game/401866657",
+      "status": 200,
+      "ms": 366,
+      "kb": 43,
+      "ok": true,
+      "label": "Campbell @ North Carolina Central (live)"
+    },
+    {
+      "pathname": "/game/401869942",
+      "status": 200,
+      "ms": 186,
+      "kb": 43,
+      "ok": true,
+      "label": "Georgia Southern @ Coastal Carolina (live)"
+    },
+    {
+      "pathname": "/game/401871089",
+      "status": 200,
+      "ms": 170,
+      "kb": 43,
+      "ok": true,
+      "label": "UL Monroe @ South Alabama (live)"
+    },
+    {
+      "pathname": "/game/401856711",
+      "status": 200,
+      "ms": 178,
+      "kb": 43,
+      "ok": true,
+      "label": "Arkansas @ Texas A&M (live)"
+    },
+    {
+      "pathname": "/game/401856818",
+      "status": 200,
+      "ms": 128,
+      "kb": 43,
+      "ok": true,
+      "label": "BYU @ TCU (live)"
+    },
+    {
+      "pathname": "/game/401862788",
+      "status": 200,
+      "ms": 699,
+      "kb": 43,
+      "ok": true,
+      "label": "UTSA @ Rice (live)"
+    },
+    {
+      "pathname": "/game/401867840",
+      "status": 200,
+      "ms": 147,
+      "kb": 43,
+      "ok": true,
+      "label": "Colgate @ Harvard (live)"
+    },
+    {
+      "pathname": "/game/401868248",
+      "status": 200,
+      "ms": 131,
+      "kb": 43,
+      "ok": true,
+      "label": "UT Rio Grande Valley @ East Texas A&M (live)"
+    },
+    {
+      "pathname": "/game/401869131",
+      "status": 200,
+      "ms": 134,
+      "kb": 43,
+      "ok": true,
+      "label": "Northwestern State @ Lamar (live)"
+    },
+    {
+      "pathname": "/game/401868936",
+      "status": 200,
+      "ms": 149,
+      "kb": 43,
+      "ok": true,
+      "label": "Arkansas-Pine Bluff @ Southern (live)"
+    },
+    {
+      "pathname": "/game/401869151",
+      "status": 200,
+      "ms": 136,
+      "kb": 43,
+      "ok": true,
+      "label": "Nicholls @ Houston Christian (live)"
+    },
+    {
+      "pathname": "/game/401867688",
+      "status": 200,
+      "ms": 149,
+      "kb": 43,
+      "ok": true,
+      "label": "Chicago State @ Tarleton State (live)"
+    },
+    {
+      "pathname": "/game/401867848",
+      "status": 200,
+      "ms": 135,
+      "kb": 43,
+      "ok": true,
+      "label": "South Dakota State @ Illinois State (live)"
+    },
+    {
+      "pathname": "/game/401869842",
+      "status": 200,
+      "ms": 123,
+      "kb": 43,
+      "ok": true,
+      "label": "Army @ Louisiana Tech (live)"
+    },
+    {
+      "pathname": "/game/401858249",
+      "status": 200,
+      "ms": 4277,
+      "kb": 634,
+      "ok": true,
+      "label": "Miami @ Clemson (live)"
+    },
+    {
+      "pathname": "/game/401858478",
+      "status": 200,
+      "ms": 239,
+      "kb": 43,
+      "ok": true,
+      "label": "Washington @ USC (live)"
+    },
+    {
+      "pathname": "/game/401856821",
+      "status": 200,
+      "ms": 124,
+      "kb": 43,
+      "ok": true,
+      "label": "Texas Tech @ Colorado (live)"
+    },
+    {
+      "pathname": "/game/401862792",
+      "status": 200,
+      "ms": 232,
+      "kb": 43,
+      "ok": true,
+      "label": "Temple @ South Florida (live)"
+    },
+    {
+      "pathname": "/game/401860898",
+      "status": 200,
+      "ms": 133,
+      "kb": 43,
+      "ok": true,
+      "label": "Utah State @ Boise State (live)"
+    },
+    {
+      "pathname": "/game/401856706",
+      "status": 200,
+      "ms": 256,
+      "kb": 43,
+      "ok": true,
+      "label": "McNeese @ LSU (live)"
+    },
+    {
+      "pathname": "/game/401856706",
+      "status": 200,
+      "ms": 230,
+      "kb": 39,
+      "ok": true,
+      "label": "McNeese @ LSU (live)"
+    },
+    {
+      "pathname": "/game/401858477",
+      "status": 200,
+      "ms": 152,
+      "kb": 43,
+      "ok": true,
+      "label": "Indiana @ Rutgers (live)"
+    },
+    {
+      "pathname": "/game/401869932",
+      "status": 200,
+      "ms": 123,
+      "kb": 43,
+      "ok": true,
+      "label": "Arkansas State @ Louisiana (live)"
+    },
+    {
+      "pathname": "/game/401868053",
+      "status": 200,
+      "ms": 172,
+      "kb": 43,
+      "ok": true,
+      "label": "West Florida @ Abilene Christian (live)"
+    },
+    {
+      "pathname": "/game/401868160",
+      "status": 200,
+      "ms": 118,
+      "kb": 43,
+      "ok": true,
+      "label": "Southern Utah @ Utah Tech (live)"
+    },
+    {
+      "pathname": "/game/401868077",
+      "status": 200,
+      "ms": 153,
+      "kb": 43,
+      "ok": true,
+      "label": "Weber State @ Cal Poly (live)"
+    },
+    {
+      "pathname": "/game/401868104",
+      "status": 200,
+      "ms": 133,
+      "kb": 43,
+      "ok": true,
+      "label": "Northern Arizona @ Idaho State (live)"
+    },
+    {
+      "pathname": "/game/401860921",
+      "status": 200,
+      "ms": 125,
+      "kb": 43,
+      "ok": true,
+      "label": "Fresno State @ Washington State (upcoming)"
+    },
+    {
+      "pathname": "/game/401856817",
+      "status": 200,
+      "ms": 1834,
+      "kb": 473,
+      "ok": true,
+      "label": "Baylor @ Arizona State (upcoming)"
+    },
+    {
+      "pathname": "/game/401860900",
+      "status": 200,
+      "ms": 132,
+      "kb": 43,
+      "ok": true,
+      "label": "Texas State @ San Diego State (upcoming)"
+    },
+    {
+      "pathname": "/game/401868086",
+      "status": 200,
+      "ms": 216,
+      "kb": 43,
+      "ok": true,
+      "label": "Eastern Washington @ UC Davis (upcoming)"
+    },
+    {
+      "pathname": "/game/401856820",
+      "status": 200,
+      "ms": 156,
+      "kb": 43,
+      "ok": true,
+      "label": "Cincinnati @ Arizona (upcoming)"
+    },
+    {
+      "pathname": "/game/401864513",
+      "status": 200,
+      "ms": 142,
+      "kb": 43,
+      "ok": true,
+      "label": "San José State @ Hawai'i (upcoming)"
+    }
+  ]
+}

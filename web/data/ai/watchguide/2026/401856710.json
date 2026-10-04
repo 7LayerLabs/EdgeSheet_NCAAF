@@ -1,0 +1,106 @@
+{
+ "gameId": "401856710",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:26:39.706Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "final",
+ "evidenceVersion": "5c9b766901ea",
+ "candidateCount": 15,
+ "top": [
+  {
+   "id": "PTENN2",
+   "kind": "player",
+   "title": "DeSean Bishop (Tennessee RB, radar 77)",
+   "jev": 2.68,
+   "playerIds": [
+    "4921108"
+   ]
+  },
+  {
+   "id": "E2",
+   "kind": "edge",
+   "title": "Auburn deep passing vs Tennessee secondary (clear defense edge)",
+   "jev": 2.39,
+   "playerIds": []
+  },
+  {
+   "id": "PAUB1",
+   "kind": "player",
+   "title": "Da'Shawn Womack (Auburn EDGE, radar 77)",
+   "jev": 2.12,
+   "playerIds": [
+    "4880967"
+   ]
+  },
+  {
+   "id": "E4",
+   "kind": "edge",
+   "title": "Auburn on passing downs vs Tennessee pressure (real offense edge)",
+   "jev": 2.12,
+   "playerIds": []
+  },
+  {
+   "id": "PTENN1",
+   "kind": "player",
+   "title": "Mike Matthews (Tennessee WR, radar 87)",
+   "jev": 2.11,
+   "playerIds": [
+    "5079580"
+   ]
+  }
+ ],
+ "attempts": 1,
+ "attemptLog": [
+  []
+ ],
+ "usage": {
+  "inputTokens": 3653,
+  "outputTokens": 790,
+  "cacheReadTokens": 0,
+  "costUsd": 0.015206
+ },
+ "guide": {
+  "headline": "Bishop ran wild while Tennessee's secondary locked the game down",
+  "hook": "A Tennessee back ran for 220 yards and Auburn's deep ball never got untracked against the nation's No. 1 pass defense.",
+  "items": [
+   {
+    "title": "DeSean Bishop breaks the game open",
+    "what": "Bishop carried 34 times for 220 yards and three touchdowns in this game alone, way above his season pace of 320 yards on 54 carries. His 5.9 yards per carry on the year said he could do this, and once he got rolling Auburn had no answer.",
+    "when": "First drive and every time Tennessee needed a chain-mover on first down.",
+    "who": "DeSean Bishop",
+    "whoPlayerId": "4921108",
+    "factIds": [
+     "PTENN2b",
+     "PTENN2l",
+     "PTENN2s"
+    ]
+   },
+   {
+    "title": "Tennessee's secondary smothers the deep ball",
+    "what": "Tennessee came in ranked No. 1 of 138 at limiting explosive passes at 1.10, while Auburn ranked just No. 60 in pass explosiveness at 1.58. Watch Auburn's longest completion of the day. If it stayed under 25 yards through the half, Tennessee had already won the matchup that mattered most.",
+    "when": "Every Auburn third down and shot play attempt downfield.",
+    "who": "Tennessee secondary",
+    "factIds": [
+     "E2",
+     "E2e",
+     "E2w"
+    ]
+   },
+   {
+    "title": "Womack wrecks the backfield",
+    "what": "Da'Shawn Womack finished with three TFL and two sacks in this game, a huge jump from his season totals of one TFL and zero sacks. At 6-5, 265 pounds he got consistent get-off at the snap and bent the edge all day.",
+    "when": "Obvious passing downs and any Auburn third-and-long snap.",
+    "who": "Da'Shawn Womack",
+    "whoPlayerId": "4880967",
+    "factIds": [
+     "PAUB1b",
+     "PAUB1s",
+     "PAUB1e3"
+    ]
+   }
+  ],
+  "cardLine": "DeSean Bishop ran for 220 yards and three scores while Tennessee's No. 1 pass defense shut down Auburn's deep shots."
+ }
+}

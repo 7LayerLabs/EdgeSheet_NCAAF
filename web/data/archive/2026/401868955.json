@@ -1,0 +1,44 @@
+{
+ "gameId": "401868955",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.211Z",
+  "kickoff": "2026-10-10T21:00:00.000Z",
+  "away": "Jackson State",
+  "home": "Grambling",
+  "abbr": {
+   "home": "GRAM",
+   "away": "JKST"
+  },
+  "scoutScore": 20,
+  "whyWatch": "SWAC conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5227403",
+    "name": "Nate Blount IV",
+    "team": "Jackson State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 58
+   },
+   {
+    "id": "5141623",
+    "name": "Jamarion Parker",
+    "team": "Grambling",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 14
+   }
+  ],
+  "consensus": {
+   "median": -2.7,
+   "favorite": "JKST",
+   "of": 1
+  }
+ }
+}

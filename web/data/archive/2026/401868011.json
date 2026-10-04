@@ -1,0 +1,44 @@
+{
+ "gameId": "401868011",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.207Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "Richmond",
+  "home": "Fordham",
+  "abbr": {
+   "home": "FOR",
+   "away": "RICH"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Patriot conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5153983",
+    "name": "Aziz Foster-Powell",
+    "team": "Richmond",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 52
+   },
+   {
+    "id": "5165892",
+    "name": "Jamell James",
+    "team": "Fordham",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ],
+  "consensus": {
+   "median": 5.4,
+   "favorite": "FOR",
+   "of": 1
+  }
+ }
+}

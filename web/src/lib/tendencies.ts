@@ -6,6 +6,7 @@
  */
 import { genTeams, type GenTeam, type GenUnit } from "./generated";
 import { memoSync } from "./memo";
+import { appliedWeights } from "./weights";
 
 export interface Metric {
   key: string;
@@ -227,7 +228,9 @@ export function unitEdges(offTeam: string, defTeam: string): UnitEdge[] {
     if (x?.pct === undefined || y?.pct === undefined) continue;
     const gap = x.pct - y.pct;
     const mag = Math.abs(gap);
-    const edge: UnitEdge["edge"] = gap >= 20 ? "offense" : gap <= -20 ? "defense" : "even";
+    // The 20-point call line is tunable: data/weights.json `applied.edgeThreshold` (scripts/tune.mjs, bounds 15..40).
+    const threshold = appliedWeights().edgeThreshold;
+    const edge: UnitEdge["edge"] = gap >= threshold ? "offense" : gap <= -threshold ? "defense" : "even";
     const strength: UnitEdge["strength"] = edge === "even" ? "even" : mag >= 55 ? "dominant" : mag >= 40 ? "clear" : mag >= 20 ? "real" : "slight";
     const mn = meaning(a.axis, edge, mag, offTeam, defTeam);
     const text =
@@ -256,7 +259,7 @@ export function pressurePoint(away: string, home: string): string | undefined {
   if (!edges.length) return undefined;
   const top = edges[0];
   const even = edges.filter((e) => e.edge === "even");
-  if (Math.abs(top.gap) < 20 && even.length) {
+  if (Math.abs(top.gap) < appliedWeights().edgeThreshold && even.length) {
     return `No unit has a clear edge. The closest thing to a swing: ${even[0].title.toLowerCase()}. ${even[0].text} ${even[0].watch}`;
   }
   return `${top.title}. ${top.text} ${top.watch}`;

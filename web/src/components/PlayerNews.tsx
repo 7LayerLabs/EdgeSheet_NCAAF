@@ -1,4 +1,4 @@
-import { feedForTeams, youtubeFor, type FeedPlayer } from "@/lib/feed";
+import { feedForTeams, judgeFeed, youtubeFor, type FeedPlayer } from "@/lib/feed";
 import { FeedDisclaimer, FeedItemRow, SourceLine } from "./BeatFeed";
 
 /**
@@ -7,7 +7,8 @@ import { FeedDisclaimer, FeedItemRow, SourceLine } from "./BeatFeed";
  */
 export async function PlayerNews({ player }: { player: FeedPlayer }) {
   const [feed, yt] = await Promise.all([feedForTeams([player.team], [player]), youtubeFor(player.name, player.team)]);
-  const items = feed.items.filter((it) => it.tags.includes(player.id));
+  // Jev drops namesake matches (a different person with this name) and adds injury or availability chips.
+  const items = (await judgeFeed(feed.items.filter((it) => it.tags.includes(player.id)), [player], { purpose: "feed", ref: player.id })).filter((it) => it.tags.includes(player.id));
   const names = { [player.id]: player.name };
   // eslint-disable-next-line react-hooks/purity
   const now = Date.now();

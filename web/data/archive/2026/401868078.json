@@ -1,0 +1,44 @@
+{
+ "gameId": "401868078",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.213Z",
+  "kickoff": "2026-10-10T22:00:00.000Z",
+  "away": "Cal Poly",
+  "home": "Idaho State",
+  "abbr": {
+   "home": "IDST",
+   "away": "CP"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Big Sky conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5225901",
+    "name": "Jaden Green",
+    "team": "Cal Poly",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 52
+   },
+   {
+    "id": "5158746",
+    "name": "Jordan Cooke",
+    "team": "Idaho State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 51
+   }
+  ],
+  "consensus": {
+   "median": 18.4,
+   "favorite": "IDST",
+   "of": 1
+  }
+ }
+}

@@ -7,6 +7,7 @@
  * in-process memo so a slate build touches each endpoint once.
  */
 import { memo } from "./memo";
+import { noteCfbdResponse } from "./cfbd";
 import type { Market, Team } from "./types";
 import type { Projection } from "./projection";
 
@@ -83,6 +84,8 @@ async function cfbd<T>(path: string): Promise<T> {
     headers: { Authorization: `Bearer ${key}`, Accept: "application/json" },
     next: { revalidate: SIX_HOURS },
   });
+  // Shares the monthly-quota flag with src/lib/cfbd.ts so the whole app backs off together.
+  if (await noteCfbdResponse(path, res)) throw new Error(`CFBD ${path} -> 429 monthly quota exhausted`);
   if (!res.ok) throw new Error(`CFBD ${path} -> ${res.status}`);
   return res.json() as Promise<T>;
 }

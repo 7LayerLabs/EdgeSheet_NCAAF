@@ -1,0 +1,35 @@
+{
+ "gameId": "401868156",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.209Z",
+  "kickoff": "2026-10-10T20:00:00.000Z",
+  "away": "Utah Tech",
+  "home": "Portland State",
+  "abbr": {
+   "home": "PRST",
+   "away": "UTU"
+  },
+  "scoutScore": 22,
+  "whyWatch": "Big Sky conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5152791",
+    "name": "Delon Thompson",
+    "team": "Portland State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 49
+   }
+  ],
+  "consensus": {
+   "median": 7.8,
+   "favorite": "PRST",
+   "of": 1
+  }
+ }
+}

@@ -1,0 +1,149 @@
+{
+ "gameId": "401858257",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.164Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "Stanford",
+  "home": "Notre Dame",
+  "abbr": {
+   "home": "ND",
+   "away": "STAN"
+  },
+  "scoutScore": 77,
+  "whyWatch": "6 draft-eligible names on the radar, led by Adon Shuler (ND S).",
+  "pressurePoint": "Stanford run game vs Notre Dame run defense. Notre Dame is No. 11 of 138 against the run (29%). Stanford ranks No. 111 in rush success rate (39%). This is not a lean. It is a mismatch, and a prominent one. Notre Dame erases the run. Stanford gets pushed into passing downs, and that is where this defense makes its money. Watch Stanford's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Notre Dame run game",
+    "b": "Stanford run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Notre Dame",
+    "why": "Notre Dame is No. 23 of 138 in rush success rate (50%). Stanford ranks No. 129 against the run (49%). This is not a lean. It is a mismatch, and a prominent one. Expect Notre Dame to lean on the run early and often, and to keep leaning. Once Stanford loads the box, play-action is the second punch."
+   },
+   {
+    "a": "Stanford run game",
+    "b": "Notre Dame run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Stanford",
+    "why": "Notre Dame is No. 11 of 138 against the run (29%). Stanford ranks No. 111 in rush success rate (39%). This is not a lean. It is a mismatch, and a prominent one. Notre Dame erases the run. Stanford gets pushed into passing downs, and that is where this defense makes its money."
+   },
+   {
+    "a": "Stanford offensive line",
+    "b": "Notre Dame front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Stanford",
+    "why": "Notre Dame is No. 26 of 138 at the line of scrimmage (2.45). Stanford ranks No. 118 in line yards per carry (2.69). This is not a lean. It is a mismatch, and a prominent one. Notre Dame wins first contact. Backs get met in the backfield; screens and the quick game are the counter."
+   },
+   {
+    "a": "Notre Dame offensive line",
+    "b": "Stanford front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Notre Dame",
+    "why": "Notre Dame is No. 57 of 138 in line yards per carry (3.20). Stanford ranks No. 129 at the line of scrimmage (3.40). A clear edge, the kind that shapes a game plan. Notre Dame should win first contact more often than not, which makes every down shorter."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079369",
+    "name": "CJ Carr",
+    "team": "Notre Dame",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 86
+   },
+   {
+    "id": "5079475",
+    "name": "Micah Gilbert",
+    "team": "Notre Dame",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 74
+   },
+   {
+    "id": "4880937",
+    "name": "Adon Shuler",
+    "team": "Notre Dame",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4685251",
+    "name": "Fisher Anderson",
+    "team": "Stanford",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5078531",
+    "name": "Nick Fattig",
+    "team": "Stanford",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5139001",
+    "name": "Anthonie Knapp",
+    "team": "Notre Dame",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4918125",
+    "name": "Devan Houstan",
+    "team": "Notre Dame",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5143191",
+    "name": "Micah Ford",
+    "team": "Stanford",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 68
+   },
+   {
+    "id": "5217152",
+    "name": "Zion Robinson",
+    "team": "Stanford",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 58
+   }
+  ],
+  "projection": {
+   "winner": "ND",
+   "winProb": 0.9766800017405866,
+   "margin": 31.832857142857144,
+   "home": 46,
+   "away": 14,
+   "confidence": "high",
+   "modelTotal": 60
+  },
+  "consensus": {
+   "median": 36,
+   "favorite": "ND",
+   "of": 5
+  }
+ }
+}

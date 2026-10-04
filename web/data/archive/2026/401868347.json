@@ -1,0 +1,53 @@
+{
+ "gameId": "401868347",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.198Z",
+  "kickoff": "2026-10-10T18:00:00.000Z",
+  "away": "East Tennessee State",
+  "home": "The Citadel",
+  "abbr": {
+   "home": "CIT",
+   "away": "ETSU"
+  },
+  "scoutScore": 26,
+  "whyWatch": "Southern conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5216698",
+    "name": "TJ Peyton",
+    "team": "East Tennessee State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 57
+   },
+   {
+    "id": "4832849",
+    "name": "Gavin Garcia",
+    "team": "The Citadel",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 49
+   },
+   {
+    "id": "4684279",
+    "name": "Charlie Browder",
+    "team": "East Tennessee State",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ],
+  "consensus": {
+   "median": -9.3,
+   "favorite": "ETSU",
+   "of": 1
+  }
+ }
+}

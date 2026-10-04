@@ -1,0 +1,149 @@
+{
+ "gameId": "401856713",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.174Z",
+  "kickoff": "2026-10-10T20:15:00.000Z",
+  "away": "Tennessee",
+  "home": "Arkansas",
+  "abbr": {
+   "home": "ARK",
+   "away": "TENN"
+  },
+  "scoutScore": 87,
+  "whyWatch": "Mike Matthews (TENN WR, Jr) is a top-of-the-radar name: 14 rec, 261 yds, 3 TD, 18.6 Y/R.",
+  "pressurePoint": "Tennessee deep passing vs Arkansas secondary. Arkansas is No. 22 of 138 at limiting explosive passes (1.36). Tennessee ranks No. 120 in pass explosiveness (1.36). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Tennessee needs the underneath game and yards after catch. Watch Tennessee's longest completion. If it is under 25 yards at the half, Arkansas has won the matchup.",
+  "edges": [
+   {
+    "a": "Tennessee deep passing",
+    "b": "Arkansas secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Tennessee",
+    "why": "Arkansas is No. 22 of 138 at limiting explosive passes (1.36). Tennessee ranks No. 120 in pass explosiveness (1.36). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Tennessee needs the underneath game and yards after catch."
+   },
+   {
+    "a": "Tennessee offensive line",
+    "b": "Arkansas front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Tennessee",
+    "why": "Tennessee is No. 16 of 138 in line yards per carry (3.54). Arkansas ranks No. 115 at the line of scrimmage (3.23). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Tennessee. Second-level runs and play-action are live all afternoon."
+   },
+   {
+    "a": "Arkansas deep passing",
+    "b": "Tennessee secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Arkansas",
+    "why": "Tennessee is No. 1 of 138 at limiting explosive passes (1.10). Arkansas ranks No. 96 in pass explosiveness (1.46). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Arkansas needs the underneath game and yards after catch."
+   },
+   {
+    "a": "Tennessee on passing downs",
+    "b": "Arkansas pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Tennessee",
+    "why": "Arkansas is No. 5 of 138 on passing downs (19%). Tennessee ranks No. 86 in passing-downs success (30%). This is not a lean. It is a mismatch, and a prominent one. Arkansas gets off the field on long downs. Early-down efficiency is everything for Tennessee."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079580",
+    "name": "Mike Matthews",
+    "team": "Tennessee",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 87
+   },
+   {
+    "id": "5158973",
+    "name": "Faizon Brandon",
+    "team": "Tennessee",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 77
+   },
+   {
+    "id": "5081886",
+    "name": "Arion Carter",
+    "team": "Tennessee",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5079483",
+    "name": "Dejuan Lane",
+    "team": "Tennessee",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5146422",
+    "name": "Xavier Gilliam",
+    "team": "Tennessee",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 73
+   },
+   {
+    "id": "4918136",
+    "name": "Quincy Rhodes Jr.",
+    "team": "Arkansas",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "5079380",
+    "name": "Charlie Collins",
+    "team": "Arkansas",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "5193556",
+    "name": "Adam Hawkes",
+    "team": "Arkansas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5079715",
+    "name": "Bradley Shaw",
+    "team": "Arkansas",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 62
+   }
+  ],
+  "projection": {
+   "winner": "TENN",
+   "winProb": 0.6705809018396796,
+   "margin": 7.064285714285714,
+   "home": 21,
+   "away": 28,
+   "confidence": "high",
+   "modelTotal": 49
+  },
+  "consensus": {
+   "median": -13.5,
+   "favorite": "TENN",
+   "of": 5
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "gameId": "401868198",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.205Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "UT Martin",
+  "home": "Tennessee State",
+  "abbr": {
+   "home": "TNST",
+   "away": "UTM"
+  },
+  "scoutScore": 22,
+  "whyWatch": "OVC conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4816321",
+    "name": "Travis Gray",
+    "team": "UT Martin",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   },
+   {
+    "id": "5265527",
+    "name": "Greg Ard",
+    "team": "UT Martin",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 14
+   }
+  ],
+  "consensus": {
+   "median": -7.2,
+   "favorite": "UTM",
+   "of": 1
+  }
+ }
+}

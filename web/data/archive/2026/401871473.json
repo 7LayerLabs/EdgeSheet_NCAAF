@@ -1,0 +1,44 @@
+{
+ "gameId": "401871473",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.199Z",
+  "kickoff": "2026-10-10T18:00:00.000Z",
+  "away": "Southeast Missouri State",
+  "home": "Lindenwood",
+  "abbr": {
+   "home": "LIN",
+   "away": "SEMO"
+  },
+  "scoutScore": 24,
+  "whyWatch": "OVC conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5091881",
+    "name": "Chris Farrell",
+    "team": "Southeast Missouri State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   },
+   {
+    "id": "5078069",
+    "name": "Trenton VanBoening",
+    "team": "Lindenwood",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ],
+  "consensus": {
+   "median": -13.4,
+   "favorite": "SEMO",
+   "of": 1
+  }
+ }
+}

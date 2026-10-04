@@ -1,0 +1,167 @@
+{
+ "gameId": "401856714",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.155Z",
+  "kickoff": "2026-10-10T04:00:00.000Z",
+  "away": "South Carolina",
+  "home": "Florida",
+  "abbr": {
+   "home": "FLA",
+   "away": "SC"
+  },
+  "scoutScore": 83,
+  "whyWatch": "Jadan Baugh (FLA RB, Jr) is a top-of-the-radar name: 600 rush yds on 83 carries, 11 TD, 18 rec yds.",
+  "pressurePoint": "South Carolina offensive line vs Florida front. South Carolina is No. 7 of 138 in line yards per carry (3.72). Florida ranks No. 101 at the line of scrimmage (3.05). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to South Carolina. Second-level runs and play-action are live all afternoon. Watch yards before contact on South Carolina's first ten carries.",
+  "edges": [
+   {
+    "a": "South Carolina offensive line",
+    "b": "Florida front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "South Carolina",
+    "why": "South Carolina is No. 7 of 138 in line yards per carry (3.72). Florida ranks No. 101 at the line of scrimmage (3.05). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to South Carolina. Second-level runs and play-action are live all afternoon."
+   },
+   {
+    "a": "Florida deep passing",
+    "b": "South Carolina secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Florida",
+    "why": "Florida is No. 67 of 138 in pass explosiveness (1.56). South Carolina ranks No. 134 at limiting explosive passes (1.90). A clear edge, the kind that shapes a game plan. Florida has the deep ball available. Watch whether South Carolina rolls a safety over after the first one."
+   },
+   {
+    "a": "South Carolina deep passing",
+    "b": "Florida secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "South Carolina",
+    "why": "Florida is No. 14 of 138 at limiting explosive passes (1.31). South Carolina ranks No. 77 in pass explosiveness (1.52). A clear edge, the kind that shapes a game plan. Florida keeps the lid on. South Carolina should expect to drive the long way."
+   },
+   {
+    "a": "Florida on passing downs",
+    "b": "South Carolina pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Florida",
+    "why": "Florida is No. 44 of 138 in passing-downs success (36%). South Carolina ranks No. 102 on passing downs (31%). A clear edge, the kind that shapes a game plan. Florida converts the long downs South Carolina needs to win. A third-and-8 is not a stop here."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079322",
+    "name": "Jadan Baugh",
+    "team": "Florida",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 92
+   },
+   {
+    "id": "5145737",
+    "name": "Matt Fuller",
+    "team": "South Carolina",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 88
+   },
+   {
+    "id": "4870920",
+    "name": "Cormani McClain",
+    "team": "Florida",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "5079724",
+    "name": "Josiah Thompson",
+    "team": "South Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "4870745",
+    "name": "Nyck Harbor",
+    "team": "South Carolina",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5295815",
+    "name": "Duke Clark",
+    "team": "Florida",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 77
+   },
+   {
+    "id": "5295811",
+    "name": "Vernell Brown III",
+    "team": "Florida",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 76
+   },
+   {
+    "id": "4921117",
+    "name": "Vicari Swain",
+    "team": "South Carolina",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4899671",
+    "name": "Dijon Johnson",
+    "team": "Florida",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5200374",
+    "name": "Donovan Murph",
+    "team": "South Carolina",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 67
+   }
+  ],
+  "spread": {
+   "team": "FLA",
+   "line": -14.5
+  },
+  "total": 57.5,
+  "projection": {
+   "winner": "FLA",
+   "winProb": 0.6563419076024664,
+   "margin": 6.44,
+   "home": 32,
+   "away": 26,
+   "modelSide": "SC",
+   "confidence": "high",
+   "modelTotal": 64,
+   "totalLean": "over"
+  },
+  "consensus": {
+   "median": 11.9,
+   "favorite": "FLA",
+   "side": "SC",
+   "sideCount": 4,
+   "of": 5
+  }
+ }
+}

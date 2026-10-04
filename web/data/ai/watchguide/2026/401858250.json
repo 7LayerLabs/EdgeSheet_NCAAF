@@ -1,0 +1,108 @@
+{
+ "gameId": "401858250",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:29:22.518Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "final",
+ "evidenceVersion": "2f4163b5e7fa",
+ "candidateCount": 15,
+ "top": [
+  {
+   "id": "PND1",
+   "kind": "player",
+   "title": "CJ Carr (Notre Dame QB, radar 87)",
+   "jev": 2.71,
+   "playerIds": [
+    "5079369"
+   ]
+  },
+  {
+   "id": "E2",
+   "kind": "edge",
+   "title": "Notre Dame run game vs North Carolina run defense (dominant offense edge)",
+   "jev": 2.59,
+   "playerIds": []
+  },
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "Notre Dame on passing downs vs North Carolina pressure (dominant defense edge)",
+   "jev": 2.51,
+   "playerIds": []
+  },
+  {
+   "id": "PUNC1",
+   "kind": "player",
+   "title": "Jelani Thurman (North Carolina TE, radar 84)",
+   "jev": 2.25,
+   "playerIds": [
+    "4871039"
+   ]
+  },
+  {
+   "id": "E3",
+   "kind": "edge",
+   "title": "Notre Dame deep passing vs North Carolina secondary (dominant defense edge)",
+   "jev": 2.19,
+   "playerIds": []
+  }
+ ],
+ "attempts": 2,
+ "attemptLog": [
+  [
+   "names or proper nouns not in the candidate facts: Chapel, Hill, NFL-size"
+  ],
+  []
+ ],
+ "usage": {
+  "inputTokens": 7981,
+  "outputTokens": 1856,
+  "cacheReadTokens": 0,
+  "costUsd": 0.034522
+ },
+ "guide": {
+  "headline": "Carr carves up North Carolina behind a run game it can't stop",
+  "hook": "A sophomore quarterback threw four touchdowns while Notre Dame leaned on a run game that was always going to work against this defense.",
+  "items": [
+   {
+    "title": "CJ Carr picks apart the secondary",
+    "what": "Carr finished 21 of 29 for 234 yards and four touchdowns, building on a season line of 1197 yards, 13 touchdowns and one interception at 9.7 yards an attempt. He carries 41 percent of Notre Dame's offensive usage, and on this night he added 15 yards and a rushing touchdown on four carries.",
+    "when": "Watch every third down and how quickly he resets his feet after the first read is covered.",
+    "who": "CJ Carr",
+    "whoPlayerId": "5079369",
+    "factIds": [
+     "PND1b",
+     "PND1s",
+     "PND1e4",
+     "PND1"
+    ]
+   },
+   {
+    "title": "Notre Dame leans on the run early",
+    "what": "Notre Dame ranks No. 23 of 138 in rush success rate at 50 percent, while North Carolina sits at No. 119 against the run at 47 percent, a 70 percentile point gap. That kind of mismatch means Notre Dame can keep handing it off and dare North Carolina to stop it, loading the box and setting up play-action off it.",
+    "when": "Check Notre Dame's rushing attempts by halftime, anything north of 20 means the plan is working.",
+    "who": "Notre Dame run game",
+    "factIds": [
+     "E2",
+     "E2e",
+     "E2w"
+    ]
+   },
+   {
+    "title": "Thurman wins the seam twice",
+    "what": "Jelani Thurman caught five passes for 50 yards and two touchdowns in this game, building on a season where he's averaging 14.6 yards a catch on 16 receptions with three touchdowns. He only carries 12 percent of team usage, so when the offense goes to him twice for scores, the matchup was there for the taking.",
+    "when": "Look for him releasing up the seam on early downs when the safety is occupied elsewhere.",
+    "who": "Jelani Thurman",
+    "whoPlayerId": "4871039",
+    "factIds": [
+     "PUNC1b",
+     "PUNC1s",
+     "PUNC1e4"
+    ]
+   }
+  ],
+  "cardLine": "CJ Carr threw four touchdowns while Notre Dame ran at will against a defense ranked 119th against the run."
+ }
+}

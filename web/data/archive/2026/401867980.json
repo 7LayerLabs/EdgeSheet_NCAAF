@@ -1,0 +1,35 @@
+{
+ "gameId": "401867980",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.191Z",
+  "kickoff": "2026-10-10T17:00:00.000Z",
+  "away": "William & Mary",
+  "home": "North Carolina Central",
+  "abbr": {
+   "home": "NCCU",
+   "away": "W&M"
+  },
+  "scoutScore": 20,
+  "whyWatch": "No line, no projections on file, and no charting yet. Schedule-level coverage only.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5226917",
+    "name": "Winston Watkins",
+    "team": "William & Mary",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 52
+   }
+  ],
+  "consensus": {
+   "median": -0.1,
+   "favorite": "W&M",
+   "of": 1
+  }
+ }
+}

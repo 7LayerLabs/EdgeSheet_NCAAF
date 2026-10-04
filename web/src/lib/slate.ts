@@ -40,11 +40,15 @@ import { projectGame } from "./projection";
 import { buildConsensus } from "./consensus";
 import { boxScore } from "./boxscore";
 import { memo } from "./memo";
+import { slateTtlSeconds } from "./cache-policy";
+import { cfbdQuotaExhausted, CfbdQuotaError } from "./cfbd";
+import { derivedWeek, espnCalendar, espnFallbackNote, espnWeek, type EspnWeekBundle } from "./espn-schedule";
 import { liveGame, liveSummary } from "./espn";
 import { gradePostgame, lockPregame, readEntry } from "./archive";
 import { gameOdds } from "./odds";
 import { evaluateWeather } from "./weather";
 import { arrivalNote, portalStorylines } from "./portal";
+import { publishedGuide } from "./watchguide";
 import { fieldBearing } from "./stadiums";
 import { baseline as climateBaseline } from "./climate";
 import { games as sampleGames, getGame as sampleGame, getPlayer as samplePlayer, SLATE_DATE } from "./data";
@@ -126,6 +130,10 @@ interface Bundle {
   /** school name -> { rank, poll } for that school's division poll */
   ranks: Map<string, { rank: number; poll: string }>;
   rankings: CfbdRankingWeek | undefined;
+  /** "espn" when CFBD's monthly quota was exhausted and the week came from ESPN's scoreboard (src/lib/espn-schedule.ts). */
+  source?: "cfbd" | "espn";
+  /** The ESPN bundle behind an "espn" source, for the coverage note. */
+  espn?: EspnWeekBundle;
 }
 
 /** One poll per division. AP for FBS; coaches polls for the rest. */
@@ -148,11 +156,51 @@ function rankMap(r: CfbdRankingWeek | undefined): Map<string, { rank: number; po
   return m;
 }
 
+/**
+ * The week from ESPN's scoreboard when CFBD's monthly quota is gone. CFBD
+ * teams and venues are still used when the fetch cache has them (they carry
+ * coordinates and surfaces ESPN lacks); ESPN fills whatever is missing.
+ */
+async function loadWeekFromEspn(season: number, week: CfbdWeek, gamesOverride?: CfbdGame[]): Promise<Bundle> {
+  const e = await espnWeek(season, week);
+  const [cfbdTeams, cfbdVenues] = await Promise.all([getTeams(season).catch(() => [] as CfbdTeam[]), getVenues().catch(() => [] as CfbdVenue[])]);
+  const teams = new Map(e.teams.map((t) => [t.school, t]));
+  for (const t of cfbdTeams) teams.set(t.school, t);
+  const venues = new Map(e.venues.map((v) => [v.id, v]));
+  for (const v of cfbdVenues) venues.set(v.id, v);
+  const mediaMap = new Map<number, CfbdMedia[]>();
+  for (const m of e.media) mediaMap.set(m.id, [...(mediaMap.get(m.id) ?? []), m]);
+  const games = gamesOverride ?? e.games.filter((g) => SLATE_CLASSIFICATIONS.includes(g.homeClassification ?? "fbs"));
+  return {
+    season,
+    week,
+    games,
+    lines: new Map(e.lines.map((l) => [l.id, l])),
+    media: mediaMap,
+    teams,
+    venues,
+    records: new Map(e.records.map((r) => [r.team, r])),
+    ranks: rankMap(e.rankings),
+    rankings: e.rankings,
+    source: "espn",
+    espn: e,
+  };
+}
+
 async function loadWeek(season: number, week: CfbdWeek, gamesOverride?: CfbdGame[]): Promise<Bundle> {
   const st = week.seasonType;
-  const [gameLists, lines, media, teams, venues, records, rankings] = await Promise.all([
+  // CFBD monthly quota gone: build the week from ESPN instead of asking CFBD again.
+  if (cfbdQuotaExhausted()) return loadWeekFromEspn(season, week, gamesOverride);
+  let gameLists: CfbdGame[][];
+  try {
     // Division I only for now. DII and DIII come back when the product can do the work on them.
-    gamesOverride ? Promise.resolve([gamesOverride]) : Promise.all(SLATE_CLASSIFICATIONS.map((c) => getGames(season, week.week, st, c))),
+    gameLists = gamesOverride ? [gamesOverride] : await Promise.all(SLATE_CLASSIFICATIONS.map((c) => getGames(season, week.week, st, c)));
+  } catch (err) {
+    // The first call that discovers the quota is gone flips the flag; fall back right away.
+    if (err instanceof CfbdQuotaError || cfbdQuotaExhausted()) return loadWeekFromEspn(season, week, gamesOverride);
+    throw err;
+  }
+  const [lines, media, teams, venues, records, rankings] = await Promise.all([
     getLines(season, week.week, st).catch(() => [] as CfbdLineRow[]),
     getMedia(season, week.week, st).catch(() => [] as CfbdMedia[]),
     getTeams(season),
@@ -174,6 +222,7 @@ async function loadWeek(season: number, week: CfbdWeek, gamesOverride?: CfbdGame
     teams: new Map(teams.map((t) => [t.school, t])),
     venues: new Map(venues.map((v) => [v.id, v])),
     records: new Map(records.map((r) => [r.team, r])),
+    source: "cfbd",
     ranks: rankMap(rankingWeek),
     rankings: rankingWeek,
   };
@@ -412,40 +461,39 @@ function deriveWhyWatch(g: {
   division: Division;
   edges?: Matchup[];
 }): { headline: string; reasons: string[] } {
+  // Fallback when no AI watch guide is cached. Reads like a person: lead with the most concrete
+  // thing (a named radar player and his line, or a mismatch with the numbers), never with
+  // "X hosts Y (3-2)" on its own.
   const r: string[] = [];
   const rankedLabel = (t: Team) => (t.rank ? `No. ${t.rank} ${t.short}` : t.short);
-  if (g.home.rank && g.away.rank) {
-    r.push(`Ranked matchup: ${rankedLabel(g.away)} at ${rankedLabel(g.home)}.`);
-  } else if (g.home.rank || g.away.rank) {
-    const ranked = g.home.rank ? g.home : g.away;
-    const other = g.home.rank ? g.away : g.home;
-    r.push(`${rankedLabel(ranked)} ${g.home.rank ? "hosts" : "visits"} ${other.short}${other.record ? ` (${other.record})` : ""}.`);
-  }
-  const likely = g.prospects.filter((p) => p.tier === "Established" || p.tier === "Emerging" || p.tier === "Eligible");
-  const star = likely[0];
-  const starScore = star?.radar?.score ?? (star ? 80 : 0);
-  const radarLine = star
-    ? starScore >= 80
-      ? `${star.name} (${star.team} ${star.pos}, ${star.cls}) is a top-of-the-radar name: ${star.stat ?? star.traits[0]}.`
-      : `${likely.length} draft-eligible ${likely.length === 1 ? "name" : "names"} on the radar, led by ${star.name} (${star.team} ${star.pos}).`
-    : undefined;
-  if (radarLine && starScore >= 80) r.push(radarLine);
   const s = g.market.spread;
+  const t = g.market.total;
+  const star = g.prospects.find((p) => p.radar) ?? g.prospects[0];
+  const starScore = star?.radar?.score ?? (star ? 80 : 0);
+  const starLine = star
+    ? `${star.name} (${star.team} ${star.pos}, ${star.cls})${star.stat ? `: ${star.stat}` : star.traits[0] ? `: ${star.traits[0]}` : ""}. ${star.radar?.watch || star.watchFor || `Radar score ${starScore}.`}`.trim()
+    : undefined;
+  const topEdge = g.edges?.find((e) => e.edge !== "even");
+  const edgeLine = topEdge ? `${topEdge.a} against ${topEdge.b}: ${topEdge.evidence}. ${topEdge.watch ?? `Advantage ${topEdge.edge}.`}` : undefined;
+  const edgeStrong = Boolean(topEdge && (topEdge.strength === "dominant" || topEdge.strength === "clear"));
+  if (starLine && (starScore >= 80 || !edgeStrong)) {
+    r.push(starLine);
+    if (edgeLine) r.push(edgeLine);
+  } else if (edgeLine) {
+    r.push(edgeLine);
+    if (starLine) r.push(starLine);
+  }
   if (s) {
     const a = Math.abs(s.line);
-    if (a <= 3) r.push(`The market calls it a toss-up: ${s.team} ${s.line}.`);
-    else if (a <= 7.5) r.push(`One-score game by the market: ${s.team} ${s.line}.`);
     const move = s.line - s.open;
-    if (Math.abs(move) >= 2.5) r.push(`The line moved ${move > 0 ? "toward the underdog" : "toward the favorite"} this week, from ${s.open} to ${s.line}.`);
+    if (a <= 3) r.push(`The market calls it a toss-up: ${s.team} ${s.line}${t ? `, total ${t.line}` : ""}. Every third down counts.`);
+    else if (a <= 7.5) r.push(`One-score game by the market: ${s.team} ${s.line}${t ? `, total ${t.line}` : ""}.`);
+    if (Math.abs(move) >= 2.5) r.push(`The line moved ${Math.abs(move).toFixed(1)} points ${move > 0 ? "toward the underdog" : "toward the favorite"} this week, from ${s.open} to ${s.line}.`);
   }
-  const t = g.market.total;
   if (t) {
-    if (t.line >= 62) r.push(`Total of ${t.line}. The market expects points.`);
-    else if (t.line <= 42) r.push(`Total of ${t.line}. The market expects a field-position grind.`);
+    if (t.line >= 62) r.push(`Total of ${t.line}. The market expects points, so watch who scores on the first drive.`);
+    else if (t.line <= 42) r.push(`Total of ${t.line}. The market expects a field-position grind, so punts and third-and-medium decide it.`);
   }
-  if (radarLine && starScore < 80) r.push(radarLine);
-  const topEdge = g.edges?.find((e) => e.edge !== "even");
-  if (topEdge) r.push(`${topEdge.a} against ${topEdge.b.toLowerCase()}: advantage ${topEdge.edge}. ${topEdge.evidence}.`);
   if (g.weather) {
     const top = evaluateWeather(g.weather).find((f) => f.level === "elevated") ?? evaluateWeather(g.weather).find((f) => f.level === "flag");
     if (top) r.push(`${top.title}. ${top.effect}`);
@@ -453,10 +501,20 @@ function deriveWhyWatch(g: {
   const hp = winPct(g.home);
   const ap = winPct(g.away);
   if (hp === 1 && ap === 1 && gamesPlayed(g.home) >= 3 && gamesPlayed(g.away) >= 3) {
-    r.push(`Both teams are undefeated: ${g.away.short} ${g.away.record} at ${g.home.short} ${g.home.record}.`);
-  } else if (g.conferenceGame && g.home.conference) {
-    r.push(`${g.home.conference} conference game.`);
+    r.push(`Both teams are undefeated: ${g.away.short} ${g.away.record} at ${g.home.short} ${g.home.record}. Somebody's zero goes.`);
   }
+  if (g.home.rank && g.away.rank) {
+    r.push(`Ranked matchup: ${rankedLabel(g.away)} at ${rankedLabel(g.home)}.`);
+  } else if ((g.home.rank || g.away.rank) && r.length) {
+    const ranked = g.home.rank ? g.home : g.away;
+    const other = g.home.rank ? g.away : g.home;
+    r.push(`${rankedLabel(ranked)} ${g.home.rank ? "hosts" : "visits"} ${other.short}${other.record ? ` (${other.record})` : ""}.`);
+  } else if (g.home.rank || g.away.rank) {
+    const ranked = g.home.rank ? g.home : g.away;
+    const other = g.home.rank ? g.away : g.home;
+    r.push(`${rankedLabel(ranked)} ${g.home.rank ? "hosts" : "visits"} ${other.short}${other.record ? ` (${other.record})` : ""}. No line and nobody on the radar yet, so watch ${other.short}'s first three drives to see if they can hang.`);
+  }
+  if (g.conferenceGame && g.home.conference && r.length < 3) r.push(`${g.home.conference} conference game.`);
   if (!s && g.homeElo != null && g.awayElo != null && Math.abs(g.homeElo - g.awayElo) >= 250) {
     const dog = g.homeElo < g.awayElo ? g.home.short : g.away.short;
     r.push(`Big rating gap and no line. Late snaps for ${dog}'s younger players are the scouting value.`);
@@ -691,7 +749,7 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
     status,
     score,
     coverage,
-    whyWatch: why.headline,
+    whyWatch: publishedGuide({ id: String(raw.id), kickoff: raw.startDate, division })?.cardLine ?? why.headline,
     whyWatchReasons: why.reasons,
     styleLine: charted ? `${shortStyle(profAway.off.label)} O vs ${shortStyle(profHome.def.label)} D` : undefined,
     weather,
@@ -762,13 +820,18 @@ export async function getSlate(dateParam?: string): Promise<Slate> {
   const today = etDate();
   const requested = dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam) ? dateParam : today;
   // The assembled slate is memoized briefly so navigating between pages does not rebuild 300 games each time.
-  return memo(`slate:${requested}`, 60, () => buildSlate(requested));
+  // 60s while any game is live or kicks off within two hours, 120s on a quiet day (src/lib/cache-policy.ts).
+  return memo(`slate:${requested}`, (s) => slateTtlSeconds(s.games), () => buildSlate(requested));
 }
 
 async function buildSlate(requested: string): Promise<Slate> {
   const season = seasonFor(requested);
-  const cal = await getCalendar(season);
-  const week = pickWeek(cal, requested);
+  // Calendar from CFBD (a day in the fetch cache); ESPN's league calendar when the quota is gone and the cache is cold.
+  const cal = cfbdQuotaExhausted()
+    ? await getCalendar(season).catch(() => espnCalendar(season).catch(() => [] as CfbdWeek[]))
+    : await getCalendar(season).catch((err) => (err instanceof CfbdQuotaError ? espnCalendar(season).catch(() => [] as CfbdWeek[]) : Promise.reject(err)));
+  // No calendar from anyone: the 7-day window around the requested date still lets ESPN build the slate.
+  const week = pickWeek(cal, requested) ?? (cfbdQuotaExhausted() ? derivedWeek(season, requested) : undefined);
   if (!week) return { ...sampleSlate(), source: "live", notes: ["No calendar for this season."], games: [], weekGames: [], days: [] };
 
   const b = await loadWeek(season, week);
@@ -817,6 +880,7 @@ async function buildSlate(requested: string): Promise<Slate> {
 
   const notes: string[] = [];
   notes.push("Division I only. DII, DIII, and NAIA are a later version; the product cannot do the scouting work on them yet.");
+  if (b.source === "espn" && b.espn) notes.push(espnFallbackNote(b.espn));
   if (!generatedLoaded()) notes.push("Rosters, stats, and tendencies are not ingested yet. Run npm run ingest in web/ to light up the radar.");
   else notes.push(`Radar and tendencies use season stats ingested ${new Date(genMeta()!.ingestedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", timeZone: "America/New_York" })} ET.`);
 
@@ -854,7 +918,11 @@ export async function getGame(id: string): Promise<Game | undefined> {
 async function buildGameById(id: string): Promise<Game | undefined> {
   const rows = await cfbdGameById(id).catch(() => [] as CfbdGame[]);
   const raw = rows[0];
-  if (!raw) return undefined;
+  if (!raw) {
+    // CFBD unavailable (quota, outage): serve the game from the already-built slate for its week if we have it.
+    const fromSlate = await getSlate().then((s) => s.weekGames.find((g) => g.id === id)).catch(() => undefined);
+    return fromSlate;
+  }
   const cal = await getCalendar(raw.season);
   const week = cal.find((w) => w.week === raw.week && w.seasonType === raw.seasonType) ?? pickWeek(cal, etDate(new Date(raw.startDate)));
   if (!week) return undefined;

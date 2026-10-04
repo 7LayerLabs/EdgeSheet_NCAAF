@@ -1,0 +1,44 @@
+{
+ "gameId": "401867877",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.210Z",
+  "kickoff": "2026-10-10T21:00:00.000Z",
+  "away": "North Dakota",
+  "home": "Northern Iowa",
+  "abbr": {
+   "home": "UNI",
+   "away": "UND"
+  },
+  "scoutScore": 24,
+  "whyWatch": "MVFC conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5155528",
+    "name": "Jerry Kaminski",
+    "team": "North Dakota",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 54
+   },
+   {
+    "id": "4826635",
+    "name": "Jaxon Dailey",
+    "team": "Northern Iowa",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 51
+   }
+  ],
+  "consensus": {
+   "median": -11.3,
+   "favorite": "UND",
+   "of": 1
+  }
+ }
+}

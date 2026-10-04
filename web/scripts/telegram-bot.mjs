@@ -63,6 +63,12 @@ const slateLib = await import("../src/lib/slate.ts");
 const archive = await import("../src/lib/archive.ts");
 const follows = await import("../src/lib/follows.ts");
 const radar = await import("../src/lib/radar.ts");
+const movement = await import("../src/lib/movement.ts");
+// Live loop (followed-player big plays, followed-team score changes) and the /plan command.
+const espn = await import("../src/lib/espn.ts");
+const playerlog = await import("../src/lib/playerlog.ts");
+const planLib = await import("../src/lib/plan.ts");
+const planLoad = await import("../src/lib/plan-load.ts");
 
 const me = await tg.getMe().catch((e) => {
   warn(`Telegram rejected the token: ${e.message}`);
@@ -74,9 +80,9 @@ log(`Bot @${me.username} online. Chat id ${tg.telegramChatId() ?? "NOT SET (push
 
 function readState() {
   try {
-    if (existsSync(STATE_FILE)) return { remindersSent: {}, radarSent: [], ...JSON.parse(readFileSync(STATE_FILE, "utf8")) };
+    if (existsSync(STATE_FILE)) return { remindersSent: {}, radarSent: [], liveCursor: {}, liveSent: {}, scoreSeen: {}, scoreSent: {}, ...JSON.parse(readFileSync(STATE_FILE, "utf8")) };
   } catch {}
-  return { remindersSent: {}, radarSent: [] };
+  return { remindersSent: {}, radarSent: [], liveCursor: {}, liveSent: {}, scoreSeen: {}, scoreSent: {} };
 }
 function writeState(s) {
   mkdirSync(path.dirname(STATE_FILE), { recursive: true });
@@ -98,7 +104,8 @@ function sleep(ms) {
 function etParts(d = new Date()) {
   const f = new Intl.DateTimeFormat("en-US", { timeZone: ET, hour: "numeric", minute: "numeric", hour12: false });
   const p = Object.fromEntries(f.formatToParts(d).map((x) => [x.type, x.value]));
-  return { hour: Number(p.hour) % 24, minute: Number(p.minute), date: slateLib.etDate(d) };
+  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(new Intl.DateTimeFormat("en-US", { timeZone: ET, weekday: "short" }).format(d));
+  return { hour: Number(p.hour) % 24, minute: Number(p.minute), date: slateLib.etDate(d), weekday };
 }
 const isD1 = (g) => g.division === "FBS" || g.division === "FCS";
 
@@ -130,6 +137,145 @@ function gradingWindow(games, now = Date.now()) {
   return games.some((g) => isD1(g) && (g.status === "live" || (g.status === "final" && new Date(g.kickoff).getTime() >= now - 6 * 3600_000)));
 }
 
+/* ----------------------------------------------------------- live loop */
+/**
+ * Every 60 seconds while a Division I game is live: a ping for each NEW big
+ * play by a followed player (20+ yds, TD, sack, INT, TFL, turnover), throttled
+ * to one message per player per 2 minutes, and a score-change ping per followed
+ * team's game, one per 5 minutes. Cursors live in telegram-state.json
+ * (liveCursor = last play sequence sent per game:player, scoreSeen = last score
+ * sent per game) so a restart never resends. Live state comes from the ESPN
+ * scoreboard (30s memo, no CFBD calls); the slate is rebuilt at most every 10 min.
+ */
+const ordinalQ = (n) => (n === 1 ? "1st" : n === 2 ? "2nd" : n === 3 ? "3rd" : n === 4 ? "4th" : n === 5 ? "OT" : `${n - 4}OT`);
+let liveSlate = { at: 0, slate: undefined };
+async function slateForLive(today) {
+  if (!liveSlate.slate || liveSlate.slate.date !== today || Date.now() - liveSlate.at > 10 * 60_000) {
+    liveSlate = { at: Date.now(), slate: await slateLib.getSlate(today) };
+  }
+  return liveSlate.slate;
+}
+
+function bigPlayMessage(p, g, lg, plays, log, base) {
+  const last = plays[plays.length - 1];
+  const score = `${g.away.short} ${last.awayScore}, ${g.home.short} ${last.homeScore}`;
+  const lines = [];
+  if (plays.length === 1) {
+    lines.push(`<b>${tg.escapeHtml(p.name)}</b> (${tg.escapeHtml(log.abbr ?? p.team)} ${tg.escapeHtml(p.pos)}): ${tg.escapeHtml(last.tag)}, ${ordinalQ(last.quarter)} quarter ${last.clock}. ${tg.escapeHtml(score)}`);
+  } else {
+    lines.push(`<b>${tg.escapeHtml(p.name)}</b> (${tg.escapeHtml(log.abbr ?? p.team)} ${tg.escapeHtml(p.pos)}): ${plays.length} big plays. ${tg.escapeHtml(score)}`);
+    for (const x of plays) lines.push(`• ${tg.escapeHtml(x.tag)}, ${ordinalQ(x.quarter)} quarter ${x.clock}`);
+  }
+  lines.push(`   <i>${tg.escapeHtml(last.text)}</i>`);
+  if (log.lineText.length) lines.push(`   Today: ${tg.escapeHtml(log.lineText.map((l) => l.headline).join(" · "))}`);
+  lines.push(`   <a href="${base}/player/${p.id}">player page</a> · <a href="${base}/game/${g.id}">${tg.escapeHtml(`${g.away.short} at ${g.home.short}`)}</a>${lg?.broadcast ? ` · ${tg.escapeHtml(lg.broadcast)}` : ""}`);
+  return lines.join("\n");
+}
+
+function scoreMessage(g, lg, teams, base) {
+  const lines = [`<b>Score change</b>: ${tg.escapeHtml(g.away.short)} ${lg.away.score}, ${tg.escapeHtml(g.home.short)} ${lg.home.score}, ${tg.escapeHtml(lg.detail)}. You follow ${teams.map(tg.escapeHtml).join(" and ")}.`];
+  if (lg.lastPlay) lines.push(`   <i>${tg.escapeHtml(lg.lastPlay)}</i>`);
+  if (lg.homeWinProb !== undefined) lines.push(`   Win prob ${tg.escapeHtml(g.home.abbr)} ${Math.round(lg.homeWinProb * 100)}, ${tg.escapeHtml(g.away.abbr)} ${Math.round((1 - lg.homeWinProb) * 100)}${lg.downDistance ? ` · ${tg.escapeHtml(lg.downDistance)}` : ""}`);
+  lines.push(`   <a href="${base}/game/${g.id}">${tg.escapeHtml(`${g.away.short} at ${g.home.short}`)}</a>${lg.broadcast ? ` · ${tg.escapeHtml(lg.broadcast)}` : ""}`);
+  return lines.join("\n");
+}
+
+let liveTicking = false;
+async function liveTick() {
+  if (liveTicking) return;
+  liveTicking = true;
+  try {
+    const f = follows.readFollows();
+    if (!f.players.length && !f.teams.length) return;
+    const { date: today } = etParts();
+    const slate = await slateForLive(today);
+    if (slate.date !== today) return;
+    const games = slate.games.filter(isD1);
+    if (!gameWindow(games)) return;
+    const board = await espn.liveScoreboard(today);
+    const liveGames = games.filter((g) => board.get(g.id)?.state === "in");
+    if (!liveGames.length) return;
+    const base = digests.baseUrl();
+    const now = Date.now();
+    let dirty = false;
+
+    // 1. Big plays by followed players.
+    const players = planLoad.followedPlayers(f.players);
+    const byGame = new Map();
+    for (const p of players) {
+      const g = liveGames.find((x) => x.home.short === p.team || x.away.short === p.team);
+      if (g) byGame.set(g.id, [...(byGame.get(g.id) ?? []), p]);
+    }
+    for (const [gameId, ps] of byGame) {
+      const g = liveGames.find((x) => x.id === gameId);
+      const lg = board.get(gameId);
+      const logs = await playerlog.playerLogs(gameId, ps.map((p) => p.id));
+      for (const p of ps) {
+        const log = logs[p.id];
+        if (!log) continue;
+        const key = `${gameId}:${p.id}`;
+        const maxSeq = log.plays.reduce((m, x) => Math.max(m, x.seq), 0);
+        if (!(key in state.liveCursor)) {
+          // First sight of this player in this game (bot start or new follow): do not replay what already happened.
+          state.liveCursor[key] = maxSeq;
+          dirty = true;
+          continue;
+        }
+        const fresh = log.plays.filter((x) => x.seq > state.liveCursor[key]);
+        if (!fresh.length) continue;
+        const big = fresh.filter((x) => x.isBig);
+        if (!big.length) {
+          state.liveCursor[key] = maxSeq;
+          dirty = true;
+          continue;
+        }
+        const lastSent = state.liveSent[p.id] ? new Date(state.liveSent[p.id]).getTime() : 0;
+        if (now - lastSent < 2 * 60_000) continue; // throttled: cursor stays, so the play goes out next tick
+        const ok = await push(bigPlayMessage(p, g, lg, big.slice(-3), log, base), `live:${p.name}`);
+        if (ok) {
+          state.liveCursor[key] = maxSeq;
+          state.liveSent[p.id] = new Date(now).toISOString();
+          dirty = true;
+        }
+      }
+    }
+
+    // 2. Score changes in followed teams' games.
+    const followedTeams = new Set(f.teams.map((t) => t.toLowerCase()));
+    for (const g of liveGames) {
+      const teams = [g.away, g.home].filter((t) => followedTeams.has(t.short.toLowerCase())).map((t) => t.short);
+      if (!teams.length) continue;
+      const lg = board.get(g.id);
+      if (lg.home.score == null || lg.away.score == null) continue;
+      const cur = `${lg.away.score}-${lg.home.score}`;
+      if (!(g.id in state.scoreSeen)) {
+        state.scoreSeen[g.id] = cur;
+        dirty = true;
+        continue;
+      }
+      if (state.scoreSeen[g.id] === cur) continue;
+      const lastSent = state.scoreSent[g.id] ? new Date(state.scoreSent[g.id]).getTime() : 0;
+      if (now - lastSent < 5 * 60_000) continue;
+      const ok = await push(scoreMessage(g, lg, teams, base), `score:${g.id}`);
+      if (ok) {
+        state.scoreSeen[g.id] = cur;
+        state.scoreSent[g.id] = new Date(now).toISOString();
+        dirty = true;
+      }
+    }
+
+    // Keep the maps small: drop cursors for games that are not on today's slate.
+    const todayIds = new Set(games.map((g) => g.id));
+    for (const key of Object.keys(state.liveCursor)) if (!todayIds.has(key.split(":")[0])) { delete state.liveCursor[key]; dirty = true; }
+    for (const id of Object.keys(state.scoreSeen)) if (!todayIds.has(id)) { delete state.scoreSeen[id]; delete state.scoreSent[id]; dirty = true; }
+    if (dirty) writeState(state);
+  } catch (e) {
+    warn(`[live] ${e.message}`);
+  } finally {
+    liveTicking = false;
+  }
+}
+
 /* ----------------------------------------------------------- scheduled */
 
 async function morning(today) {
@@ -141,6 +287,15 @@ async function morning(today) {
     return;
   }
   await push(digests.morningSlate(slate), "slate");
+  // The Saturday sheet as a photo (src/lib/render.ts, headless Chrome). Needs the site up on PUBLIC_BASE_URL; failures are logged, not fatal.
+  try {
+    const render = await import("../src/lib/render.ts");
+    const png = await render.renderSheetPng(today, digests.baseUrl());
+    await tg.sendPhoto(png, `EdgeSheet, ${digests.longDate(today)}. ${digests.NOT_A_PICK} ${digests.baseUrl()}/sheet?date=${today}`);
+    log(`[sheet] sent ${png}.`);
+  } catch (e) {
+    warn(`[sheet] not sent: ${e.message}`);
+  }
 }
 
 async function reminders(slate) {
@@ -185,13 +340,19 @@ async function tick() {
   if (ticking) return;
   ticking = true;
   try {
-    const { hour, minute, date: today } = etParts();
-    const slateNeeded = (hour === 8 && minute < 10 && state.lastSlateDate !== today) || minute % 15 === 0 || minute % 10 === 0 || minute === 0;
+    const { hour, minute, date: today, weekday } = etParts();
+    const slateNeeded = (hour === 8 && minute < 10 && state.lastSlateDate !== today) || (hour === 7 && minute < 10 && state.lastStockDate !== today) || minute % 15 === 0 || minute % 10 === 0 || minute === 0;
     if (!slateNeeded) return;
     const slate = await slateLib.getSlate(today);
     const todays = slate.date === today ? slate.games : [];
 
     if (hour === 8 && minute < 10 && state.lastSlateDate !== today) await morning(today);
+    // Monday 7:00 AM ET stock report, after the 6:30 AM snapshot cron (npm run snapshot).
+    if (weekday === 1 && hour === 7 && minute < 10 && state.lastStockDate !== today) {
+      state.lastStockDate = today;
+      writeState(state);
+      await push(digests.stockDigest(movement.biggestMoves(5)), "stock");
+    }
     if (minute % 15 === 0 && gameWindow(todays)) await reminders(slate);
     if ((minute % 10 === 0 && gradingWindow(todays)) || minute === 0) await grades(slate.season);
   } catch (e) {
@@ -213,6 +374,8 @@ async function handle(text, chatId) {
     case "start":
     case "help":
       return reply(digests.helpDigest());
+    case "stock":
+      return reply(digests.stockDigest(movement.biggestMoves(5)));
     case "slate": {
       const slate = await slateLib.getSlate(/^\d{4}-\d{2}-\d{2}$/.test(arg) ? arg : undefined);
       return reply(digests.morningSlate(slate));
@@ -245,6 +408,10 @@ async function handle(text, chatId) {
       if (!hit) return reply(`No game this week for "${tg.escapeHtml(arg)}".`);
       const full = (await slateLib.getGame(hit.id).catch(() => undefined)) ?? hit;
       return reply(digests.gameDigest(full));
+    }
+    case "plan": {
+      const { plan } = await planLoad.getPlan(/^\d{4}-\d{2}-\d{2}$/.test(arg) ? arg : undefined);
+      return reply(planLib.planText(plan, digests.baseUrl()));
     }
     default:
       return reply(`Unknown command /${tg.escapeHtml(cmd)}.\n\n${digests.helpDigest()}`);
@@ -293,7 +460,9 @@ async function poll() {
 /* ---------------------------------------------------------------- run */
 
 setInterval(tick, 60_000);
+setInterval(liveTick, 60_000);
 tick();
+liveTick();
 poll();
 process.on("SIGINT", () => process.exit(0));
 process.on("SIGTERM", () => process.exit(0));

@@ -16,10 +16,17 @@
     "ingest:stadiums": "node scripts/ingest-stadiums.mjs",
     "ingest:climate": "node scripts/ingest-climate.mjs",
     "odds:snapshot": "node scripts/odds-snapshot.mjs",
-    "ingest:plays": "node scripts/ingest-plays.mjs"
+    "ingest:plays": "node scripts/ingest-plays.mjs",
+    "tune": "tsx scripts/tune.mjs",
+    "guides": "tsx scripts/write-watchguides.mjs",
+    "sheet:send": "node scripts/send-sheet.mjs",
+    "sheet:render": "node scripts/send-sheet.mjs --dry",
+    "ingest:gamelogs": "node scripts/ingest-gamelogs.mjs",
+    "snapshot": "node scripts/snapshot.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",
+    "@typesafe-ai/sdk": "^0.6.0",
     "next": "16.3.5",
     "openai": "^7.27.0",
     "react": "19.2.8",

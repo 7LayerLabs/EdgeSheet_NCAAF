@@ -1,0 +1,105 @@
+{
+ "gameId": "401858253",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:27:47.156Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "final",
+ "evidenceVersion": "1802b056c79a",
+ "candidateCount": 14,
+ "top": [
+  {
+   "id": "PFSU1",
+   "kind": "player",
+   "title": "Ousmane Kromah (Florida State RB, radar 89)",
+   "jev": 2.53,
+   "playerIds": [
+    "5141560"
+   ]
+  },
+  {
+   "id": "E3",
+   "kind": "edge",
+   "title": "Florida State deep passing vs Virginia secondary (real offense edge)",
+   "jev": 2.32,
+   "playerIds": []
+  },
+  {
+   "id": "PFSU2",
+   "kind": "player",
+   "title": "Duce Robinson (Florida State WR, radar 85)",
+   "jev": 2.29,
+   "playerIds": [
+    "4870922"
+   ]
+  },
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "Virginia offensive line vs Florida State front (clear offense edge)",
+   "jev": 2.27,
+   "playerIds": []
+  },
+  {
+   "id": "PUVA1",
+   "kind": "player",
+   "title": "Beau Pribula (Virginia QB, radar 71)",
+   "jev": 2.21,
+   "playerIds": [
+    "4685696"
+   ]
+  }
+ ],
+ "attempts": 1,
+ "attemptLog": [
+  []
+ ],
+ "usage": {
+  "inputTokens": 3658,
+  "outputTokens": 926,
+  "cacheReadTokens": 0,
+  "costUsd": 0.016576
+ },
+ "guide": {
+  "headline": "Kromah's legs and Florida State's deep ball decide this one",
+  "hook": "A bruising sophomore back and a top-two explosive passing attack try to pull away from a Virginia line that keeps winning first contact.",
+  "items": [
+   {
+    "title": "Kromah wearing down the front",
+    "what": "Ousmane Kromah came into this game averaging 6.2 yards a carry on 64 totes with five touchdowns, and he kept it going with 80 yards on 17 carries here. He's 6-1, 216 and carries 27 percent of Florida State's offense, so watch his vision on zone cuts and whether he breaks the first tackler clean. If he's still getting four and five yards a pop in the second half, Virginia's front has no answer.",
+    "when": "Every first and second down handoff, especially in the second half",
+    "who": "Ousmane Kromah",
+    "whoPlayerId": "5141560",
+    "factIds": [
+     "PFSU1l",
+     "PFSU1b",
+     "PFSU1e4"
+    ]
+   },
+   {
+    "title": "The first deep shot changes everything",
+    "what": "Florida State ranks No. 2 of 138 in pass explosiveness at 2.06, and Virginia sits at No. 30 for limiting explosive passes at 1.40, a 20 point gap. Watch the first time Florida State takes a shot down the field. If it connects, Virginia has to roll a safety over the top, and that opens up Kromah underneath.",
+    "when": "First deep shot attempt, usually inside the first two drives",
+    "who": "Florida State offense",
+    "factIds": [
+     "E3",
+     "E3e",
+     "E3w"
+    ]
+   },
+   {
+    "title": "Virginia's line winning the trenches",
+    "what": "Virginia's offensive line ranks No. 31 of 138 in line yards per carry at 3.37, while Florida State's front sits way down at No. 94 at 3.01, a 46 point gap. That's the kind of edge that should let Virginia win first contact on most snaps and shorten every down. Watch yards before contact on Virginia's first ten carries to see if that edge actually shows up on tape.",
+    "when": "Virginia's first ten rushing attempts of the game",
+    "who": "Virginia offensive line",
+    "factIds": [
+     "E1",
+     "E1e",
+     "E1w"
+    ]
+   }
+  ],
+  "cardLine": "Florida State's No. 2 deep passing attack and bruising back Ousmane Kromah test a Virginia defense and a line that both have real statistical edges of their own."
+ }
+}

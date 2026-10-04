@@ -1,0 +1,35 @@
+{
+ "gameId": "401867860",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.193Z",
+  "kickoff": "2026-10-10T17:00:00.000Z",
+  "away": "Youngstown State",
+  "home": "Indiana State",
+  "abbr": {
+   "home": "INST",
+   "away": "YSU"
+  },
+  "scoutScore": 22,
+  "whyWatch": "MVFC conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5109518",
+    "name": "Beau Brungard",
+    "team": "Youngstown State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 49
+   }
+  ],
+  "consensus": {
+   "median": -8.6,
+   "favorite": "YSU",
+   "of": 1
+  }
+ }
+}

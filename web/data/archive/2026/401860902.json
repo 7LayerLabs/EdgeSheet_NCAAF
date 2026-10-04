@@ -1,0 +1,131 @@
+{
+ "gameId": "401860902",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.176Z",
+  "kickoff": "2026-10-10T22:00:00.000Z",
+  "away": "San Diego State",
+  "home": "Oregon State",
+  "abbr": {
+   "home": "ORST",
+   "away": "SDSU"
+  },
+  "scoutScore": 66,
+  "whyWatch": "5 draft-eligible names on the radar, led by Malachi Finau (SDSU DL).",
+  "pressurePoint": "San Diego State run game vs Oregon State run defense. Oregon State is No. 59 of 138 against the run (40%). San Diego State ranks No. 130 in rush success rate (35%). A clear edge, the kind that shapes a game plan. San Diego State will find the run hard going. Expect more second-and-long than usual. Watch San Diego State's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "San Diego State run game",
+    "b": "Oregon State run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "San Diego State",
+    "why": "Oregon State is No. 59 of 138 against the run (40%). San Diego State ranks No. 130 in rush success rate (35%). A clear edge, the kind that shapes a game plan. San Diego State will find the run hard going. Expect more second-and-long than usual."
+   },
+   {
+    "a": "Oregon State offensive line",
+    "b": "San Diego State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Oregon State",
+    "why": "Oregon State is No. 56 of 138 in line yards per carry (3.20). San Diego State ranks No. 127 at the line of scrimmage (3.39). A clear edge, the kind that shapes a game plan. Oregon State should win first contact more often than not, which makes every down shorter."
+   },
+   {
+    "a": "San Diego State deep passing",
+    "b": "Oregon State secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "San Diego State",
+    "why": "Oregon State is No. 28 of 138 at limiting explosive passes (1.40). San Diego State ranks No. 73 in pass explosiveness (1.54). A real edge, not a lock. Oregon State keeps the lid on. San Diego State should expect to drive the long way."
+   },
+   {
+    "a": "Oregon State deep passing",
+    "b": "San Diego State secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Oregon State",
+    "why": "Oregon State is No. 24 of 138 in pass explosiveness (1.75). San Diego State ranks No. 66 at limiting explosive passes (1.54). A real edge, not a lock. Oregon State has the deep ball available. Watch whether San Diego State rolls a safety over after the first one."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5212654",
+    "name": "Braden Atkinson",
+    "team": "Oregon State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 72
+   },
+   {
+    "id": "4911953",
+    "name": "Malachi Finau",
+    "team": "San Diego State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4685379",
+    "name": "Sione Hala",
+    "team": "San Diego State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5157305",
+    "name": "Jacob Anderson",
+    "team": "Oregon State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5075593",
+    "name": "Josiah Timoteo",
+    "team": "Oregon State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4898202",
+    "name": "Nathan Elu",
+    "team": "Oregon State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5254150",
+    "name": "Javion Kinnard",
+    "team": "San Diego State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 59
+   }
+  ],
+  "projection": {
+   "winner": "ORST",
+   "winProb": 0.5300347895853317,
+   "margin": 1.2057142857142855,
+   "home": 26,
+   "away": 24,
+   "confidence": "high",
+   "modelTotal": 50
+  },
+  "consensus": {
+   "median": 8,
+   "favorite": "ORST",
+   "of": 5
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "gameId": "401869144",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.208Z",
+  "kickoff": "2026-10-10T20:00:00.000Z",
+  "away": "Incarnate Word",
+  "home": "Lamar",
+  "abbr": {
+   "home": "LAM",
+   "away": "UIW"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Southland conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5414973",
+    "name": "Davin Driskell",
+    "team": "Lamar",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Sleeper",
+    "score": 49
+   },
+   {
+    "id": "5075953",
+    "name": "Easton Fulton",
+    "team": "Incarnate Word",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ],
+  "consensus": {
+   "median": 12.7,
+   "favorite": "LAM",
+   "of": 1
+  }
+ }
+}

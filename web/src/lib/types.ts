@@ -176,6 +176,8 @@ export interface Game {
     swingMinutes?: number;
     closeness?: number;
     broadcast?: string;
+    /** Jev "worth flipping to" 0..100 (flipScoreJev in lib/flip-jev.ts). Set by the slate page; absent when Jev is off. */
+    flipJev?: number;
     asOf: string;
   };
   /** ESPN drives, scoring plays, win probability series, box players (game page only). */

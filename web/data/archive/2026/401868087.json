@@ -1,0 +1,44 @@
+{
+ "gameId": "401868087",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.215Z",
+  "kickoff": "2026-10-10T23:00:00.000Z",
+  "away": "Northern Colorado",
+  "home": "Eastern Washington",
+  "abbr": {
+   "home": "EWU",
+   "away": "UNCO"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Big Sky conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5146792",
+    "name": "AJ Burton",
+    "team": "Northern Colorado",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   },
+   {
+    "id": "5080700",
+    "name": "Isaiah Perez",
+    "team": "Eastern Washington",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 45
+   }
+  ],
+  "consensus": {
+   "median": 0.7,
+   "favorite": "EWU",
+   "of": 1
+  }
+ }
+}

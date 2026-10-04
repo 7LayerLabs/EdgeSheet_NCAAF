@@ -1,0 +1,140 @@
+{
+ "gameId": "401862797",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.174Z",
+  "kickoff": "2026-10-10T20:00:00.000Z",
+  "away": "Rice",
+  "home": "East Carolina",
+  "abbr": {
+   "home": "ECU",
+   "away": "RICE"
+  },
+  "scoutScore": 56,
+  "whyWatch": "6 draft-eligible names on the radar, led by Luke Needham (RICE OL).",
+  "pressurePoint": "No unit has a clear edge. The closest thing to a swing: rice deep passing vs east carolina secondary. Rice is No. 45 in pass explosiveness (1.65) and East Carolina is No. 65 at limiting explosive passes (1.54). Strength on strength. Rice takes shots and East Carolina gives up few. Whoever wins the first deep ball changes the other side's call sheet. First quarter: who wins the first deep shot.",
+  "edges": [
+   {
+    "a": "East Carolina offensive line",
+    "b": "Rice front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "East Carolina",
+    "why": "Rice is No. 58 of 138 at the line of scrimmage (2.77). East Carolina ranks No. 134 in line yards per carry (2.43). This is not a lean. It is a mismatch, and a prominent one. Rice wins first contact. Backs get met in the backfield; screens and the quick game are the counter."
+   },
+   {
+    "a": "East Carolina on passing downs",
+    "b": "Rice pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "East Carolina",
+    "why": "Rice is No. 98 of 138 on passing downs (31%). East Carolina ranks No. 135 in passing-downs success (20%). A real edge, not a lock. Rice gets off the field on long downs. Early-down efficiency is everything for East Carolina."
+   },
+   {
+    "a": "East Carolina run game",
+    "b": "Rice run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "East Carolina",
+    "why": "Rice is No. 89 of 138 against the run (43%). East Carolina ranks No. 122 in rush success rate (37%). A real edge, not a lock. East Carolina will find the run hard going. Expect more second-and-long than usual."
+   },
+   {
+    "a": "East Carolina deep passing",
+    "b": "Rice secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "East Carolina",
+    "why": "Rice is No. 57 of 138 at limiting explosive passes (1.50). East Carolina ranks No. 86 in pass explosiveness (1.50). A real edge, not a lock. Rice keeps the lid on. East Carolina should expect to drive the long way."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5041974",
+    "name": "Luke Needham",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5091819",
+    "name": "Nate Bledsoe",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5054105",
+    "name": "Patrick Valent",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4839485",
+    "name": "Brandon Best",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5077961",
+    "name": "Bryce Weaver",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5125152",
+    "name": "Marleo Neolien",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5300619",
+    "name": "Tyler Lavallier",
+    "team": "Rice",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 58
+   },
+   {
+    "id": "5290949",
+    "name": "Kelton Smith",
+    "team": "East Carolina",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 56
+   }
+  ],
+  "projection": {
+   "winner": "ECU",
+   "winProb": 0.7600114852289717,
+   "margin": 11.301428571428572,
+   "home": 29,
+   "away": 18,
+   "confidence": "high",
+   "modelTotal": 46.5
+  },
+  "consensus": {
+   "median": 12.3,
+   "favorite": "ECU",
+   "of": 5
+  }
+ }
+}

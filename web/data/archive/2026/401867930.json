@@ -1,0 +1,35 @@
+{
+ "gameId": "401867930",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.187Z",
+  "kickoff": "2026-10-10T16:00:00.000Z",
+  "away": "Princeton",
+  "home": "Wagner",
+  "abbr": {
+   "home": "WAG",
+   "away": "PRIN"
+  },
+  "scoutScore": 18,
+  "whyWatch": "No line, no projections on file, and no charting yet. Schedule-level coverage only.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5227460",
+    "name": "Kai Honda",
+    "team": "Princeton",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 45
+   }
+  ],
+  "consensus": {
+   "median": -28,
+   "favorite": "PRIN",
+   "of": 1
+  }
+ }
+}

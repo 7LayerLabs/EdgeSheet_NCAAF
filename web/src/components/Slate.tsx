@@ -7,7 +7,7 @@ import { weatherRisk } from "@/lib/weather";
 import { kickoffWindow, type Window } from "@/lib/format";
 import { useWatchlist } from "@/lib/watchlist";
 import { GameCard } from "./GameCard";
-import { flipScore } from "@/lib/live";
+import { flipRank } from "@/lib/live";
 
 type Quick = "All" | "Live" | "Flip to" | "Upcoming" | "Finished" | "Top 25" | "Top Prospects" | "Hidden Gems" | "Watchlist" | "Late Night Radar";
 const QUICK: Quick[] = ["All", "Live", "Flip to", "Upcoming", "Finished", "Top 25", "Top Prospects", "Hidden Gems", "Late Night Radar", "Watchlist"];
@@ -64,7 +64,7 @@ export function Slate({ games }: { games: Game[] }) {
           .includes(needle),
       );
     }
-    if (quick === "Flip to") return [...out].sort((a, b) => flipScore(b) - flipScore(a) || a.kickoff.localeCompare(b.kickoff));
+    if (quick === "Flip to") return [...out].sort((a, b) => flipRank(b) - flipRank(a) || a.kickoff.localeCompare(b.kickoff));
     out = [...out].sort((a, b) =>
       sort === "score"
         ? scoutScore(b.scoreComponents) - scoutScore(a.scoreComponents)

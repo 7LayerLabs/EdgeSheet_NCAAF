@@ -1,0 +1,122 @@
+{
+ "gameId": "401856808",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.185Z",
+  "kickoff": "2026-10-11T02:30:00.000Z",
+  "away": "Hawai'i",
+  "home": "Arizona State",
+  "abbr": {
+   "home": "ASU",
+   "away": "HAW"
+  },
+  "scoutScore": 68,
+  "whyWatch": "5 draft-eligible names on the radar, led by Cutter Boley (ASU QB).",
+  "pressurePoint": "Hawai'i on passing downs vs Arizona State pressure. Arizona State is No. 20 of 138 on passing downs (22%). Hawai'i ranks No. 88 in passing-downs success (29%). A clear edge, the kind that shapes a game plan. Arizona State gets off the field on long downs. Early-down efficiency is everything for Hawai'i. Watch Hawai'i on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "Hawai'i on passing downs",
+    "b": "Arizona State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Hawai'i",
+    "why": "Arizona State is No. 20 of 138 on passing downs (22%). Hawai'i ranks No. 88 in passing-downs success (29%). A clear edge, the kind that shapes a game plan. Arizona State gets off the field on long downs. Early-down efficiency is everything for Hawai'i."
+   },
+   {
+    "a": "Hawai'i deep passing",
+    "b": "Arizona State secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Hawai'i",
+    "why": "Arizona State is No. 90 of 138 at limiting explosive passes (1.60). Hawai'i ranks No. 132 in pass explosiveness (1.27). A real edge, not a lock. Arizona State keeps the lid on. Hawai'i should expect to drive the long way."
+   },
+   {
+    "a": "Hawai'i run game",
+    "b": "Arizona State run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Hawai'i",
+    "why": "Hawai'i is No. 82 in rush success rate (43%) and Arizona State is No. 56 against the run (39%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks."
+   },
+   {
+    "a": "Arizona State on passing downs",
+    "b": "Hawai'i pressure",
+    "edge": "even",
+    "axis": "passing-downs",
+    "offTeam": "Arizona State",
+    "why": "Arizona State is No. 69 in passing-downs success (32%) and Hawai'i is No. 95 on passing downs (31%). Strength on strength. Both sides are average on long downs. Early-down efficiency decides who sees more of them."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5141378",
+    "name": "Cutter Boley",
+    "team": "Arizona State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "4870850",
+    "name": "Omarion Miller",
+    "team": "Arizona State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "5031157",
+    "name": "Reed Harris",
+    "team": "Arizona State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4917319",
+    "name": "Dean Briski",
+    "team": "Hawai'i",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5158459",
+    "name": "Lipe Moala",
+    "team": "Hawai'i",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5079651",
+    "name": "DeVon Rice",
+    "team": "Hawai'i",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 57
+   }
+  ],
+  "projection": {
+   "winner": "ASU",
+   "winProb": 0.7075222910709988,
+   "margin": 8.73857142857143,
+   "home": 29,
+   "away": 20,
+   "confidence": "high",
+   "modelTotal": 49
+  },
+  "consensus": {
+   "median": 16.7,
+   "favorite": "ASU",
+   "of": 5
+  }
+ }
+}

@@ -1,0 +1,149 @@
+{
+ "gameId": "401858258",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.182Z",
+  "kickoff": "2026-10-10T23:30:00.000Z",
+  "away": "Syracuse",
+  "home": "Virginia",
+  "abbr": {
+   "home": "UVA",
+   "away": "SYR"
+  },
+  "scoutScore": 79,
+  "whyWatch": "6 draft-eligible names on the radar, led by Zach Rice (SYR OL).",
+  "pressurePoint": "Syracuse on passing downs vs Virginia pressure. Virginia is No. 19 of 138 on passing downs (22%). Syracuse ranks No. 49 in passing-downs success (35%). A real edge, not a lock. Virginia gets off the field on long downs. Early-down efficiency is everything for Syracuse. Watch Syracuse on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "Virginia on passing downs",
+    "b": "Syracuse pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Virginia",
+    "why": "Syracuse is No. 34 of 138 on passing downs (24%). Virginia ranks No. 109 in passing-downs success (26%). This is not a lean. It is a mismatch, and a prominent one. Syracuse gets off the field on long downs. Early-down efficiency is everything for Virginia."
+   },
+   {
+    "a": "Virginia run game",
+    "b": "Syracuse run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Virginia",
+    "why": "Virginia is No. 56 of 138 in rush success rate (47%). Syracuse ranks No. 98 against the run (44%). A real edge, not a lock. Virginia should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   },
+   {
+    "a": "Syracuse on passing downs",
+    "b": "Virginia pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Syracuse",
+    "why": "Virginia is No. 19 of 138 on passing downs (22%). Syracuse ranks No. 49 in passing-downs success (35%). A real edge, not a lock. Virginia gets off the field on long downs. Early-down efficiency is everything for Syracuse."
+   },
+   {
+    "a": "Virginia offensive line",
+    "b": "Syracuse front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Virginia",
+    "why": "Virginia is No. 31 in line yards per carry (3.37) and Syracuse is No. 52 at the line of scrimmage (2.68). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5081423",
+    "name": "Zach Rice",
+    "team": "Syracuse",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "4685696",
+    "name": "Beau Pribula",
+    "team": "Virginia",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "5239197",
+    "name": "Nissi Ogbebor",
+    "team": "Syracuse",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 71
+   },
+   {
+    "id": "5026719",
+    "name": "Rashard Perry",
+    "team": "Syracuse",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "5200435",
+    "name": "Demetres Samuel Jr.",
+    "team": "Syracuse",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 66
+   },
+   {
+    "id": "5103804",
+    "name": "Brandyn Hillman",
+    "team": "Virginia",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "5079295",
+    "name": "Omillio Agard",
+    "team": "Virginia",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "4870944",
+    "name": "Chris Peal",
+    "team": "Syracuse",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 64
+   },
+   {
+    "id": "5216634",
+    "name": "Sichan John",
+    "team": "Virginia",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Future",
+    "score": 63
+   }
+  ],
+  "projection": {
+   "winner": "UVA",
+   "winProb": 0.8541851963448291,
+   "margin": 16.872857142857143,
+   "home": 29,
+   "away": 13,
+   "confidence": "high",
+   "modelTotal": 42
+  },
+  "consensus": {
+   "median": 16.9,
+   "favorite": "UVA",
+   "of": 5
+  }
+ }
+}

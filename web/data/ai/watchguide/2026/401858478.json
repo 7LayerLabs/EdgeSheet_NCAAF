@@ -1,0 +1,105 @@
+{
+ "gameId": "401858478",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:35:13.565Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "live",
+ "evidenceVersion": "7de90ff08cb8",
+ "candidateCount": 17,
+ "top": [
+  {
+   "id": "PUSC2",
+   "kind": "player",
+   "title": "Jayden Maiava (USC QB, radar 81)",
+   "jev": 2.72,
+   "playerIds": [
+    "4685454"
+   ]
+  },
+  {
+   "id": "E2",
+   "kind": "edge",
+   "title": "USC on passing downs vs Washington pressure (clear offense edge)",
+   "jev": 2.58,
+   "playerIds": []
+  },
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "Washington offensive line vs USC front (clear defense edge)",
+   "jev": 2.3,
+   "playerIds": []
+  },
+  {
+   "id": "PUSC1",
+   "kind": "player",
+   "title": "Mark Bowman (USC TE, radar 84)",
+   "jev": 2.14,
+   "playerIds": [
+    "5264686"
+   ]
+  },
+  {
+   "id": "PWASH2",
+   "kind": "player",
+   "title": "Baron Naone (Washington TE, radar 71)",
+   "jev": 2.07,
+   "playerIds": [
+    "5164338"
+   ]
+  }
+ ],
+ "attempts": 1,
+ "attemptLog": [
+  []
+ ],
+ "usage": {
+  "inputTokens": 3473,
+  "outputTokens": 1056,
+  "cacheReadTokens": 0,
+  "costUsd": 0.017506
+ },
+ "guide": {
+  "headline": "USC's front and third downs are strangling Washington",
+  "hook": "A top-2-percent passer has gone quiet while two trench mismatches decide whether Washington can ever get untracked.",
+  "items": [
+   {
+    "title": "Maiava's clean efficiency vs his rough day",
+    "what": "Jayden Maiava came in averaging 9.5 yards per attempt with 14 touchdowns against two interceptions, numbers that put him in the top 2 percent of FBS quarterbacks this season. So far today he is 12 of 19 for just 143 yards with one interception and zero touchdowns, a sharp drop from his season line. If he starts resetting his feet and hitting throws outside the numbers like his tape suggests he can, USC's offense should open back up.",
+    "when": "Watch his next two or three dropbacks after the interception",
+    "who": "Jayden Maiava",
+    "whoPlayerId": "4685454",
+    "factIds": [
+     "PUSC2s",
+     "PUSC2e1",
+     "PUSC2b"
+    ]
+   },
+   {
+    "title": "USC owns third and long",
+    "what": "USC ranks No. 3 of 138 nationally on passing downs, converting 47 percent of the time, while Washington's defense sits at No. 57 on passing downs, stopping only 27 percent. That is a 40 percentile point gap, the kind that breaks a defense's game plan over four quarters. Two third-and-long conversions for USC in a half is the sign Washington's pressure plan is already failing.",
+    "when": "Every third-and-8 or longer USC faces",
+    "who": "USC on passing downs vs Washington pressure",
+    "factIds": [
+     "E2",
+     "E2e",
+     "E2w"
+    ]
+   },
+   {
+    "title": "USC's front is winning the line",
+    "what": "USC's defensive front ranks No. 39 of 138 at the line of scrimmage at 2.59, while Washington's offensive line ranks No. 106 in line yards per carry at 2.82. That is a 49 percentile point gap in USC's favor up front. Tackles for loss piling up early is the clearest sign Washington's run game never gets to the second level today.",
+    "when": "On Washington's first-down runs, especially in the first quarter",
+    "who": "Washington offensive line",
+    "factIds": [
+     "E1",
+     "E1e",
+     "E1w"
+    ]
+   }
+  ],
+  "cardLine": "Watch whether USC's 40-point passing-downs edge and 49-point front edge finally bury Washington, or if Maiava's quiet day keeps this one close."
+ }
+}

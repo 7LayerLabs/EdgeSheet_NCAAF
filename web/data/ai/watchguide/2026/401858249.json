@@ -1,0 +1,102 @@
+{
+ "gameId": "401858249",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:28:25.717Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "live",
+ "evidenceVersion": "48e4b2d53350",
+ "candidateCount": 15,
+ "top": [
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "Miami offensive line vs Clemson front (dominant offense edge)",
+   "jev": 2.85,
+   "playerIds": []
+  },
+  {
+   "id": "E2",
+   "kind": "edge",
+   "title": "Clemson run game vs Miami run defense (dominant defense edge)",
+   "jev": 2.69,
+   "playerIds": []
+  },
+  {
+   "id": "PMIA2",
+   "kind": "player",
+   "title": "Darian Mensah (Miami QB, radar 76)",
+   "jev": 2.65,
+   "playerIds": [
+    "5121169"
+   ]
+  },
+  {
+   "id": "E3",
+   "kind": "edge",
+   "title": "Miami run game vs Clemson run defense (dominant offense edge)",
+   "jev": 2.44,
+   "playerIds": []
+  },
+  {
+   "id": "E4",
+   "kind": "edge",
+   "title": "Clemson offensive line vs Miami front (dominant defense edge)",
+   "jev": 2.37,
+   "playerIds": []
+  }
+ ],
+ "attempts": 1,
+ "attemptLog": [
+  []
+ ],
+ "usage": {
+  "inputTokens": 3187,
+  "outputTokens": 783,
+  "cacheReadTokens": 0,
+  "costUsd": 0.014204
+ },
+ "guide": {
+  "headline": "Miami's line and Mensah are running Clemson out of the building",
+  "hook": "Miami grades out as a top-three run blocking line against one of the worst fronts in the country, and its quarterback already has a touchdown pass and a touchdown run in this one.",
+  "items": [
+   {
+    "title": "Miami offensive line owns the point",
+    "what": "Miami ranks No. 3 of 138 in line yards per carry at 3.89, and Clemson ranks No. 135 of 138 at the line of scrimmage at 3.46. That is a 97 percentile point gap, not a lean. If Miami is getting yards before contact on its first ten carries, the line of scrimmage is settled for the day.",
+    "when": "Watch Miami's first ten carries of the game.",
+    "who": "Miami offensive line",
+    "factIds": [
+     "E1",
+     "E1e",
+     "E1w"
+    ]
+   },
+   {
+    "title": "Mensah already has two scores",
+    "what": "Darian Mensah is 9 of 13 for 141 yards and a touchdown through the air, plus two carries for 33 yards and a rushing touchdown. On the season he has 1211 yards, 14 touchdowns, and zero interceptions at 11.4 yards per attempt, which sits in the top 1 percent of FBS quarterbacks. Watch his footwork when the first read is covered and whether he still throws on time if Clemson brings pressure.",
+    "when": "Any third down or play-action shot off the run.",
+    "who": "Darian Mensah",
+    "whoPlayerId": "5121169",
+    "factIds": [
+     "PMIA2b",
+     "PMIA2s",
+     "PMIA2e1",
+     "PMIA2w"
+    ]
+   },
+   {
+    "title": "Clemson can't run on this defense",
+    "what": "Miami is No. 1 of 138 against the run at 26 percent, while Clemson's rush success rate ranks No. 120 of 138 at 37 percent, an 87 percentile point gap. If Clemson can't get three yards a carry in the first quarter, the game plan has to change and Miami's defense gets to tee off on passing downs.",
+    "when": "Clemson's run plays in the first quarter.",
+    "who": "Clemson run game vs Miami run defense",
+    "factIds": [
+     "E2",
+     "E2e",
+     "E2w"
+    ]
+   }
+  ],
+  "cardLine": "Miami's offensive line is dismantling one of the worst fronts in the country while Darian Mensah already has a passing and rushing touchdown."
+ }
+}

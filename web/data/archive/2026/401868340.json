@@ -1,0 +1,35 @@
+{
+ "gameId": "401868340",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.195Z",
+  "kickoff": "2026-10-10T17:00:00.000Z",
+  "away": "Samford",
+  "home": "Chattanooga",
+  "abbr": {
+   "home": "UTC",
+   "away": "SAM"
+  },
+  "scoutScore": 22,
+  "whyWatch": "Southern conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5426001",
+    "name": "Kevin Lalin",
+    "team": "Chattanooga",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 47
+   }
+  ],
+  "consensus": {
+   "median": 10,
+   "favorite": "UTC",
+   "of": 1
+  }
+ }
+}

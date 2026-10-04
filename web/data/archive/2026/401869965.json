@@ -1,0 +1,131 @@
+{
+ "gameId": "401869965",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.181Z",
+  "kickoff": "2026-10-10T23:30:00.000Z",
+  "away": "Louisiana",
+  "home": "Louisiana Tech",
+  "abbr": {
+   "home": "LT",
+   "away": "UL"
+  },
+  "scoutScore": 68,
+  "whyWatch": "5 draft-eligible names on the radar, led by Eli Finley (LT TE).",
+  "pressurePoint": "Louisiana offensive line vs Louisiana Tech front. Louisiana Tech is No. 6 of 138 at the line of scrimmage (2.06). Louisiana ranks No. 80 in line yards per carry (3.06). A clear edge, the kind that shapes a game plan. Louisiana Tech should hold the line of scrimmage. Louisiana's runs will need the second level to break. Watch tackles for loss. Louisiana Tech living in the backfield early is the tell.",
+  "edges": [
+   {
+    "a": "Louisiana offensive line",
+    "b": "Louisiana Tech front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Louisiana",
+    "why": "Louisiana Tech is No. 6 of 138 at the line of scrimmage (2.06). Louisiana ranks No. 80 in line yards per carry (3.06). A clear edge, the kind that shapes a game plan. Louisiana Tech should hold the line of scrimmage. Louisiana's runs will need the second level to break."
+   },
+   {
+    "a": "Louisiana Tech offensive line",
+    "b": "Louisiana front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Louisiana Tech",
+    "why": "Louisiana is No. 49 of 138 at the line of scrimmage (2.65). Louisiana Tech ranks No. 122 in line yards per carry (2.65). A clear edge, the kind that shapes a game plan. Louisiana should hold the line of scrimmage. Louisiana Tech's runs will need the second level to break."
+   },
+   {
+    "a": "Louisiana run game",
+    "b": "Louisiana Tech run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Louisiana",
+    "why": "Louisiana Tech is No. 23 of 138 against the run (33%). Louisiana ranks No. 92 in rush success rate (42%). A clear edge, the kind that shapes a game plan. Louisiana will find the run hard going. Expect more second-and-long than usual."
+   },
+   {
+    "a": "Louisiana Tech run game",
+    "b": "Louisiana run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Louisiana Tech",
+    "why": "Louisiana is No. 81 of 138 against the run (42%). Louisiana Tech ranks No. 137 in rush success rate (32%). A clear edge, the kind that shapes a game plan. Louisiana Tech will find the run hard going. Expect more second-and-long than usual."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5121453",
+    "name": "Eli Finley",
+    "team": "Louisiana Tech",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "5077212",
+    "name": "Matthew Broussard",
+    "team": "Louisiana",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5122094",
+    "name": "Xzavier Brown",
+    "team": "Louisiana",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5091822",
+    "name": "Hayden Christman",
+    "team": "Louisiana Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5080818",
+    "name": "Roy Brackins III",
+    "team": "Louisiana Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5222655",
+    "name": "Brent Gordon Jr.",
+    "team": "Louisiana",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 61
+   },
+   {
+    "id": "5222250",
+    "name": "Zheric Hill",
+    "team": "Louisiana Tech",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 56
+   }
+  ],
+  "projection": {
+   "winner": "LT",
+   "winProb": 0.5016028990237267,
+   "margin": 0.0642857142857143,
+   "home": 19,
+   "away": 18,
+   "confidence": "high",
+   "modelTotal": 37
+  },
+  "consensus": {
+   "median": 0,
+   "favorite": "LT",
+   "of": 5
+  }
+ }
+}

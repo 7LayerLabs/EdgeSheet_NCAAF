@@ -1,0 +1,122 @@
+{
+ "gameId": "401869943",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.179Z",
+  "kickoff": "2026-10-10T23:00:00.000Z",
+  "away": "Coastal Carolina",
+  "home": "Marshall",
+  "abbr": {
+   "home": "MRSH",
+   "away": "CCU"
+  },
+  "scoutScore": 66,
+  "whyWatch": "3 draft-eligible names on the radar, led by Ja'Marion Wayne (CCU CB).",
+  "pressurePoint": "Coastal Carolina deep passing vs Marshall secondary. Coastal Carolina is No. 3 of 138 in pass explosiveness (2.00). Marshall ranks No. 126 at limiting explosive passes (1.82). This is not a lean. It is a mismatch, and a prominent one. Marshall does not keep the lid on. Coastal Carolina will take shots, and the market total may be underpriced if they land. Watch the first deep shot. If it connects, Marshall changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "Coastal Carolina deep passing",
+    "b": "Marshall secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Coastal Carolina",
+    "why": "Coastal Carolina is No. 3 of 138 in pass explosiveness (2.00). Marshall ranks No. 126 at limiting explosive passes (1.82). This is not a lean. It is a mismatch, and a prominent one. Marshall does not keep the lid on. Coastal Carolina will take shots, and the market total may be underpriced if they land."
+   },
+   {
+    "a": "Coastal Carolina offensive line",
+    "b": "Marshall front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Coastal Carolina",
+    "why": "Coastal Carolina is No. 27 of 138 in line yards per carry (3.41). Marshall ranks No. 122 at the line of scrimmage (3.28). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Coastal Carolina. Second-level runs and play-action are live all afternoon."
+   },
+   {
+    "a": "Marshall on passing downs",
+    "b": "Coastal Carolina pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Marshall",
+    "why": "Coastal Carolina is No. 60 of 138 on passing downs (27%). Marshall ranks No. 114 in passing-downs success (24%). A real edge, not a lock. Coastal Carolina gets off the field on long downs. Early-down efficiency is everything for Marshall."
+   },
+   {
+    "a": "Coastal Carolina run game",
+    "b": "Marshall run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Coastal Carolina",
+    "why": "Coastal Carolina is No. 70 of 138 in rush success rate (44%). Marshall ranks No. 122 against the run (47%). A real edge, not a lock. Coastal Carolina should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4685602",
+    "name": "Ja'Marion Wayne",
+    "team": "Coastal Carolina",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5296439",
+    "name": "Deuce Bailey",
+    "team": "Coastal Carolina",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 72
+   },
+   {
+    "id": "4899669",
+    "name": "Jalen Slappy",
+    "team": "Marshall",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4870138",
+    "name": "Tariq Montgomery",
+    "team": "Marshall",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4836468",
+    "name": "Reggie Jean",
+    "team": "Coastal Carolina",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 59
+   },
+   {
+    "id": "5229438",
+    "name": "Kenyatta Hardge",
+    "team": "Marshall",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 59
+   }
+  ],
+  "projection": {
+   "winner": "MRSH",
+   "winProb": 0.6055265655133157,
+   "margin": 4.282857142857143,
+   "home": 32,
+   "away": 29,
+   "confidence": "high",
+   "modelTotal": 60.5
+  },
+  "consensus": {
+   "median": 1.4,
+   "favorite": "MRSH",
+   "of": 5
+  }
+ }
+}

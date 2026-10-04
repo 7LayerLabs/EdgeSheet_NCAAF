@@ -5,6 +5,7 @@ import { GROUP_LABEL, type PosGroup } from "@/lib/radar";
 import { Avatar } from "@/components/Avatar";
 import { gameIndexForWeek } from "@/lib/slate";
 import type { Game } from "@/lib/types";
+import { BiggestMoves } from "@/components/Movement";
 
 export const dynamic = "force-dynamic";
 
@@ -85,6 +86,8 @@ export default async function DraftPage({ searchParams }: { searchParams: Promis
 
       {fc && (
         <>
+          <BiggestMoves n={5} />
+
           <section className="mt-8">
             <div className="flex flex-wrap items-baseline gap-3">
               <h2 className="display text-4xl font-bold text-chalk">Round 1 range</h2>
@@ -257,7 +260,7 @@ function ForecastRow({ e, games, showPos = false }: { e: ForecastEntry; games: M
         <span className="mt-0.5 flex flex-wrap items-center gap-1.5">
           <span className="mono text-[11px] font-semibold text-navy">{pickText(e)}</span>
           {e.decision === "declared" && <span className="rounded bg-turf px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Declared</span>}
-          {e.decision === "undecided" && p.classYear === 3 && <span className="rounded border border-line bg-white px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-chalk-3">Jr, undecided</span>}
+          {e.decision === "returning" && <span className="rounded border border-line bg-white px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-chalk-3">Returning</span>}
         </span>
       </span>
       <span className="flex shrink-0 flex-col items-end gap-1">

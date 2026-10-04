@@ -1,0 +1,44 @@
+{
+ "gameId": "401867886",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.201Z",
+  "kickoff": "2026-10-10T18:00:00.000Z",
+  "away": "Southern Illinois",
+  "home": "South Dakota",
+  "abbr": {
+   "home": "SDAK",
+   "away": "SIU"
+  },
+  "scoutScore": 24,
+  "whyWatch": "MVFC conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5302115",
+    "name": "Austyn Modrzewski",
+    "team": "South Dakota",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 57
+   },
+   {
+    "id": "5086818",
+    "name": "Asher Tomaszewski",
+    "team": "South Dakota",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 49
+   }
+  ],
+  "consensus": {
+   "median": 10.3,
+   "favorite": "SDAK",
+   "of": 1
+  }
+ }
+}

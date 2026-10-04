@@ -1,0 +1,44 @@
+{
+ "gameId": "401868382",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.201Z",
+  "kickoff": "2026-10-10T19:00:00.000Z",
+  "away": "Western Carolina",
+  "home": "Mercer",
+  "abbr": {
+   "home": "MER",
+   "away": "WCU"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Southern conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4875128",
+    "name": "Lex Thomas",
+    "team": "Western Carolina",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 50
+   },
+   {
+    "id": "4910237",
+    "name": "Abiathar Curry",
+    "team": "Mercer",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ],
+  "consensus": {
+   "median": 8,
+   "favorite": "MER",
+   "of": 1
+  }
+ }
+}

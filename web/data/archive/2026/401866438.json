@@ -1,0 +1,113 @@
+{
+ "gameId": "401866438",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.167Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "Central Michigan",
+  "home": "Ohio",
+  "abbr": {
+   "home": "OHIO",
+   "away": "CMU"
+  },
+  "scoutScore": 54,
+  "whyWatch": "3 draft-eligible names on the radar, led by Brady Ploucha (CMU OL).",
+  "pressurePoint": "Central Michigan run game vs Ohio run defense. Ohio is No. 69 of 138 against the run (41%). Central Michigan ranks No. 102 in rush success rate (40%). A real edge, not a lock. Central Michigan will find the run hard going. Expect more second-and-long than usual. Watch Central Michigan's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Ohio offensive line",
+    "b": "Central Michigan front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Ohio",
+    "why": "Ohio is No. 14 of 138 in line yards per carry (3.57). Central Michigan ranks No. 136 at the line of scrimmage (3.53). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Ohio. Second-level runs and play-action are live all afternoon."
+   },
+   {
+    "a": "Ohio run game",
+    "b": "Central Michigan run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Ohio",
+    "why": "Ohio is No. 59 of 138 in rush success rate (46%). Central Michigan ranks No. 132 against the run (50%). A clear edge, the kind that shapes a game plan. Ohio should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   },
+   {
+    "a": "Ohio deep passing",
+    "b": "Central Michigan secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Ohio",
+    "why": "Central Michigan is No. 17 of 138 at limiting explosive passes (1.33). Ohio ranks No. 69 in pass explosiveness (1.55). A real edge, not a lock. Central Michigan keeps the lid on. Ohio should expect to drive the long way."
+   },
+   {
+    "a": "Central Michigan run game",
+    "b": "Ohio run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Central Michigan",
+    "why": "Ohio is No. 69 of 138 against the run (41%). Central Michigan ranks No. 102 in rush success rate (40%). A real edge, not a lock. Central Michigan will find the run hard going. Expect more second-and-long than usual."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4716635",
+    "name": "Brady Ploucha",
+    "team": "Central Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5077108",
+    "name": "Matthew Nehf",
+    "team": "Central Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5083191",
+    "name": "Tigana Cisse",
+    "team": "Ohio",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5125829",
+    "name": "DJ Walker",
+    "team": "Ohio",
+    "pos": "S",
+    "group": "S",
+    "tier": "Sleeper",
+    "score": 58
+   },
+   {
+    "id": "5254876",
+    "name": "Ike Ackerman",
+    "team": "Ohio",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 56
+   }
+  ],
+  "projection": {
+   "winner": "OHIO",
+   "winProb": 0.6686399029619817,
+   "margin": 6.978571428571429,
+   "home": 33,
+   "away": 27,
+   "confidence": "high",
+   "modelTotal": 59.5
+  },
+  "consensus": {
+   "median": 8.9,
+   "favorite": "OHIO",
+   "of": 5
+  }
+ }
+}

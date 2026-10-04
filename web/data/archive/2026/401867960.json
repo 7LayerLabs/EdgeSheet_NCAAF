@@ -1,0 +1,35 @@
+{
+ "gameId": "401867960",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.194Z",
+  "kickoff": "2026-10-10T17:00:00.000Z",
+  "away": "Howard",
+  "home": "Pennsylvania",
+  "abbr": {
+   "home": "PENN",
+   "away": "HOW"
+  },
+  "scoutScore": 20,
+  "whyWatch": "No line, no projections on file, and no charting yet. Schedule-level coverage only.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4941005",
+    "name": "De'Eric Mister",
+    "team": "Howard",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ],
+  "consensus": {
+   "median": 11.4,
+   "favorite": "PENN",
+   "of": 1
+  }
+ }
+}

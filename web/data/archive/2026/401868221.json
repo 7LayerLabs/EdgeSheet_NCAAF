@@ -1,0 +1,35 @@
+{
+ "gameId": "401868221",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.212Z",
+  "kickoff": "2026-10-10T21:30:00.000Z",
+  "away": "Davidson",
+  "home": "Presbyterian",
+  "abbr": {
+   "home": "PRES",
+   "away": "DAV"
+  },
+  "scoutScore": 22,
+  "whyWatch": "Pioneer conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5224535",
+    "name": "Casey Bullock",
+    "team": "Davidson",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 50
+   }
+  ],
+  "consensus": {
+   "median": -0.9,
+   "favorite": "DAV",
+   "of": 1
+  }
+ }
+}

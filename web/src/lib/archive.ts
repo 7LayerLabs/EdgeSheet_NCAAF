@@ -23,6 +23,8 @@ export interface EdgeCall {
   axis: string; // rush, pass, line, passing-downs
   offTeam: string; // school name
   why: string;
+  /** Signed percentile gap (positive favors the offense). Lets scripts/tune.mjs re-sweep the edge threshold. */
+  gap?: number;
 }
 
 export interface ProspectCall {
@@ -48,7 +50,9 @@ export interface Pregame {
   spread?: { team: string; line: number }; // abbr of favorite, negative line
   total?: number;
   abbr: { home: string; away: string };
-  projection?: { winner: string; winProb: number; margin: number; home: number; away: number; modelSide?: string; confidence: string; modelTotal?: number; totalLean?: "over" | "under" | "none" };
+  projection?: { winner: string; winProb: number; margin: number; home: number; away: number; modelSide?: string; confidence: string; modelTotal?: number; totalLean?: "over" | "under" | "none"; eloMargin?: number; netEdge?: number };
+  /** Scout Score inputs at lock, so the tuner can correlate each component with the excitement index. */
+  scoreComponents?: import("./types").ScoreComponents;
   /** Consensus of outside systems (SP+, FPI, SRS, Elo, CFBD pregame) plus ours: median home margin and the side most lean to against the number. */
   consensus?: { median: number; favorite: string; side?: string; sideCount?: number; of: number };
 }
@@ -106,6 +110,13 @@ function writeEntry(e: ArchiveEntry) {
   writeFileSync(f, JSON.stringify(e, null, 1));
 }
 
+/** Signed percentile gap from the matchup evidence ("gap 23 percentile points"); positive favors the offense. */
+function gapOf(m: Matchup): number | undefined {
+  const g = Number((m.evidence.match(/gap (\d+) percentile/) ?? [])[1]);
+  if (!Number.isFinite(g)) return undefined;
+  return m.edge === "defense" ? -g : g;
+}
+
 function axisOf(m: Matchup): string {
   const t = `${m.a} ${m.b}`.toLowerCase();
   if (t.includes("run game")) return "rush";
@@ -122,7 +133,7 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
   if (existing) {
     // A lock taken before the projection existed can take one on, as long as the game has not kicked off.
     if (!existing.postgame && !existing.pregame.projection && game.projection) {
-      existing.pregame.projection = { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence, modelTotal: game.projection.modelTotal, totalLean: game.projection.totalLean };
+      existing.pregame.projection = { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence, modelTotal: game.projection.modelTotal, totalLean: game.projection.totalLean, eloMargin: game.projection.eloMargin, netEdge: game.projection.netEdge };
       writeEntry(existing);
     } else if (!existing.postgame && existing.pregame.projection && existing.pregame.projection.totalLean === undefined && game.projection?.totalLean) {
       existing.pregame.projection.modelTotal = game.projection.modelTotal;
@@ -156,14 +167,16 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
         axis: axisOf(m),
         offTeam: m.a.replace(/ (run game|deep passing|offensive line|on passing downs)$/i, ""),
         why: m.why,
+        gap: gapOf(m),
       })),
+      scoreComponents: game.scoreComponents,
       prospects: game.prospects
         .filter((p) => p.radar)
         .map((p) => ({ id: p.id, name: p.name, team: p.radar!.team, pos: p.pos, group: p.radar!.group, tier: p.tier, score: p.radar!.score })),
       spread: game.market.spread ? { team: game.market.spread.team, line: game.market.spread.line } : undefined,
       total: game.market.total?.line,
       projection: game.projection
-        ? { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence, modelTotal: game.projection.modelTotal, totalLean: game.projection.totalLean }
+        ? { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence, modelTotal: game.projection.modelTotal, totalLean: game.projection.totalLean, eloMargin: game.projection.eloMargin, netEdge: game.projection.netEdge }
         : undefined,
       consensus: consensusLock(game),
     },

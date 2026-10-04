@@ -29,6 +29,14 @@ export function makeGet(KEY, log = () => {}, { pause = 0, retries = 4 } = {}) {
   return async function get(pathname, { optional = false, attempt = 0 } = {}) {
     if (pause) await sleep(pause);
     const res = await fetch(`${BASE}${pathname}`, { headers: { Authorization: `Bearer ${KEY}`, Accept: "application/json" } });
+    if (res.status === 429) {
+      const body = await res.clone().text().catch(() => "");
+      if (/quota/i.test(body)) {
+        // Monthly quota, not a burst limit. Retrying is pointless; keep the existing digests and exit cleanly so builds still run.
+        console.error("CollegeFootballData monthly call quota exceeded. Existing digests in data/generated are kept. Upgrade the key (Patreon tier) or wait for the monthly reset.");
+        process.exit(0);
+      }
+    }
     if (res.status === 429 && attempt < retries) {
       await sleep(1500 * (attempt + 1));
       return get(pathname, { optional, attempt: attempt + 1 });

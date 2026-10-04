@@ -1,0 +1,122 @@
+{
+ "gameId": "401864518",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.178Z",
+  "kickoff": "2026-10-10T23:00:00.000Z",
+  "away": "North Dakota State",
+  "home": "UNLV",
+  "abbr": {
+   "home": "UNLV",
+   "away": "NDSU"
+  },
+  "scoutScore": 85,
+  "whyWatch": "Jackson Arnold (UNLV QB, Sr) is a top-of-the-radar name: 891 pass yds, 5 TD, 0 INT, 8.0 Y/A.",
+  "pressurePoint": "North Dakota State deep passing vs UNLV secondary. North Dakota State is No. 17 of 138 in pass explosiveness (1.79). UNLV ranks No. 110 at limiting explosive passes (1.70). This is not a lean. It is a mismatch, and a prominent one. UNLV does not keep the lid on. North Dakota State will take shots, and the market total may be underpriced if they land. Watch the first deep shot. If it connects, UNLV changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "UNLV on passing downs",
+    "b": "North Dakota State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "UNLV",
+    "why": "North Dakota State is No. 3 of 138 on passing downs (18%). UNLV ranks No. 126 in passing-downs success (23%). This is not a lean. It is a mismatch, and a prominent one. North Dakota State gets off the field on long downs. Early-down efficiency is everything for UNLV."
+   },
+   {
+    "a": "North Dakota State deep passing",
+    "b": "UNLV secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "North Dakota State",
+    "why": "North Dakota State is No. 17 of 138 in pass explosiveness (1.79). UNLV ranks No. 110 at limiting explosive passes (1.70). This is not a lean. It is a mismatch, and a prominent one. UNLV does not keep the lid on. North Dakota State will take shots, and the market total may be underpriced if they land."
+   },
+   {
+    "a": "UNLV run game",
+    "b": "North Dakota State run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "UNLV",
+    "why": "North Dakota State is No. 60 of 138 against the run (40%). UNLV ranks No. 105 in rush success rate (40%). A real edge, not a lock. UNLV will find the run hard going. Expect more second-and-long than usual."
+   },
+   {
+    "a": "North Dakota State offensive line",
+    "b": "UNLV front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "North Dakota State",
+    "why": "North Dakota State is No. 103 of 138 in line yards per carry (2.83). UNLV ranks No. 138 at the line of scrimmage (3.61). A real edge, not a lock. North Dakota State should win first contact more often than not, which makes every down shorter."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4870607",
+    "name": "Jackson Arnold",
+    "team": "UNLV",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "4685388",
+    "name": "Denver Harris",
+    "team": "UNLV",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 81
+   },
+   {
+    "id": "4837473",
+    "name": "Jake Pope",
+    "team": "UNLV",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5297938",
+    "name": "Marion Moore",
+    "team": "North Dakota State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 60
+   },
+   {
+    "id": "5147224",
+    "name": "Tre Fulton",
+    "team": "UNLV",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 60
+   },
+   {
+    "id": "5087156",
+    "name": "Nathan Hayes",
+    "team": "North Dakota State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 57
+   }
+  ],
+  "projection": {
+   "winner": "NDSU",
+   "winProb": 0.5872382160301517,
+   "margin": 3.527142857142857,
+   "home": 19,
+   "away": 23,
+   "confidence": "high",
+   "modelTotal": 42
+  },
+  "consensus": {
+   "median": -3.5,
+   "favorite": "NDSU",
+   "of": 5
+  }
+ }
+}

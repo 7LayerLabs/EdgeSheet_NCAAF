@@ -1,0 +1,111 @@
+{
+ "gameId": "401856705",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:29:42.098Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "final",
+ "evidenceVersion": "7c88d02cf607",
+ "candidateCount": 16,
+ "top": [
+  {
+   "id": "PUGA1",
+   "kind": "player",
+   "title": "Gunner Stockton (Georgia QB, radar 86)",
+   "jev": 2.86,
+   "playerIds": [
+    "4685578"
+   ]
+  },
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "Vanderbilt on passing downs vs Georgia pressure (dominant defense edge)",
+   "jev": 2.53,
+   "playerIds": []
+  },
+  {
+   "id": "E2",
+   "kind": "edge",
+   "title": "Vanderbilt run game vs Georgia run defense (dominant defense edge)",
+   "jev": 2.41,
+   "playerIds": []
+  },
+  {
+   "id": "PUGA2",
+   "kind": "player",
+   "title": "Raylen Wilson (Georgia LB, radar 84)",
+   "jev": 2.19,
+   "playerIds": [
+    "4871074"
+   ]
+  },
+  {
+   "id": "E3",
+   "kind": "edge",
+   "title": "Vanderbilt offensive line vs Georgia front (clear defense edge)",
+   "jev": 2.17,
+   "playerIds": []
+  }
+ ],
+ "attempts": 2,
+ "attemptLog": [
+  [
+   "names or proper nouns not in the candidate facts: Add"
+  ],
+  []
+ ],
+ "usage": {
+  "inputTokens": 7977,
+  "outputTokens": 1939,
+  "cacheReadTokens": 0,
+  "costUsd": 0.035344
+ },
+ "guide": {
+  "headline": "Stockton's precision meets a defense that erases Vanderbilt",
+  "hook": "Georgia's defense ranks inside the top 10 nationally against the run and on passing downs, and Gunner Stockton is already carving Vanderbilt up on the other side.",
+  "items": [
+   {
+    "title": "Stockton picks apart the secondary",
+    "what": "Gunner Stockton came in completing passes at a top 5 percent clip with 1049 yards, 13 TD and one INT on 10.3 yards per attempt, and he kept it rolling here, going 25 of 32 for 295 yards and three TD. Watch his footwork when the first read is covered, he resets and still throws on time, which is why the touchdowns keep stacking up.",
+    "when": "Every third down and anytime Georgia drops into coverage",
+    "who": "Gunner Stockton",
+    "whoPlayerId": "4685578",
+    "factIds": [
+     "PUGA1s",
+     "PUGA1e1",
+     "PUGA1b",
+     "PUGA1w"
+    ]
+   },
+   {
+    "title": "Vanderbilt's run game has nowhere to go",
+    "what": "Georgia's run defense ranks No. 6 of 138 nationally at 28 percent allowed, while Vanderbilt's rush success rate sits at No. 96 at 41 percent, a 65 percentile point gap. Georgia's line of scrimmage ranks No. 9 with 2.19 line yards allowed against Vanderbilt's No. 83 mark of 3.04, so the Commodores get stuffed before they can turn a corner.",
+    "when": "First quarter, watch yards per carry and tackles for loss",
+    "who": "Vanderbilt run game vs Georgia run defense",
+    "factIds": [
+     "E2",
+     "E2e",
+     "E3",
+     "E3e"
+    ]
+   },
+   {
+    "title": "Wilson erases Vanderbilt on passing downs",
+    "what": "Raylen Wilson already has 24 tackles, five TFL and three sacks on the year, top 10 percent among FBS linebackers, and he added seven more tackles in this game. Georgia's defense ranks No. 9 of 138 on passing downs at 20 percent while Vanderbilt ranks No. 110 at 26 percent, a 74 percentile point gap, so when Vanderbilt gets stuffed on early downs, Wilson and this front close the door.",
+    "when": "Third-and-7 or longer, watch if Vanderbilt is forced to punt",
+    "who": "Raylen Wilson",
+    "whoPlayerId": "4871074",
+    "factIds": [
+     "PUGA2s",
+     "PUGA2e1",
+     "PUGA2b",
+     "E1",
+     "E1e"
+    ]
+   }
+  ],
+  "cardLine": "Gunner Stockton's precision against a Georgia defense that erases the run and buries Vanderbilt on third down."
+ }
+}

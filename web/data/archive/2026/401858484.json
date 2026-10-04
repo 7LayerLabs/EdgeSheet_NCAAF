@@ -1,0 +1,167 @@
+{
+ "gameId": "401858484",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.165Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "UCLA",
+  "home": "Oregon",
+  "abbr": {
+   "home": "ORE",
+   "away": "UCLA"
+  },
+  "scoutScore": 88,
+  "whyWatch": "Evan Stewart (ORE WR, Sr) is a top-of-the-radar name: 22 rec, 278 yds, 3 TD, 12.6 Y/R.",
+  "pressurePoint": "UCLA offensive line vs Oregon front. UCLA is No. 1 of 138 in line yards per carry (3.97). Oregon ranks No. 53 at the line of scrimmage (2.68). A real edge, not a lock. UCLA should win first contact more often than not, which makes every down shorter. Watch yards before contact on UCLA's first ten carries.",
+  "edges": [
+   {
+    "a": "Oregon deep passing",
+    "b": "UCLA secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Oregon",
+    "why": "Oregon is No. 20 of 138 in pass explosiveness (1.78). UCLA ranks No. 130 at limiting explosive passes (1.84). This is not a lean. It is a mismatch, and a prominent one. UCLA does not keep the lid on. Oregon will take shots, and the market total may be underpriced if they land."
+   },
+   {
+    "a": "UCLA offensive line",
+    "b": "Oregon front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "UCLA",
+    "why": "UCLA is No. 1 of 138 in line yards per carry (3.97). Oregon ranks No. 53 at the line of scrimmage (2.68). A real edge, not a lock. UCLA should win first contact more often than not, which makes every down shorter."
+   },
+   {
+    "a": "UCLA run game",
+    "b": "Oregon run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "UCLA",
+    "why": "UCLA is No. 3 of 138 in rush success rate (57%). Oregon ranks No. 51 against the run (38%). A real edge, not a lock. UCLA should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   },
+   {
+    "a": "UCLA on passing downs",
+    "b": "Oregon pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "UCLA",
+    "why": "UCLA is No. 51 of 138 in passing-downs success (34%). Oregon ranks No. 81 on passing downs (29%). A real edge, not a lock. UCLA converts the long downs Oregon needs to win. A third-and-8 is not a stop here."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4685565",
+    "name": "Evan Stewart",
+    "team": "Oregon",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 88
+   },
+   {
+    "id": "4870921",
+    "name": "Dante Moore",
+    "team": "Oregon",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 83
+   },
+   {
+    "id": "5141617",
+    "name": "Na'eem Offord",
+    "team": "Oregon",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 80
+   },
+   {
+    "id": "4685244",
+    "name": "Bear Alexander",
+    "team": "Oregon",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "4922988",
+    "name": "Jamari Johnson",
+    "team": "Oregon",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5141586",
+    "name": "Dakorien Moore",
+    "team": "Oregon",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 76
+   },
+   {
+    "id": "4899483",
+    "name": "Sammy Omosigho",
+    "team": "UCLA",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4870799",
+    "name": "Nico Iamaleava",
+    "team": "UCLA",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4685242",
+    "name": "Julian Armella",
+    "team": "UCLA",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5126563",
+    "name": "Eugene Brooks",
+    "team": "UCLA",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Future",
+    "score": 56
+   }
+  ],
+  "spread": {
+   "team": "ORE",
+   "line": -12.5
+  },
+  "total": 60.5,
+  "projection": {
+   "winner": "ORE",
+   "winProb": 0.7076143379255619,
+   "margin": 8.742857142857142,
+   "home": 35,
+   "away": 26,
+   "modelSide": "UCLA",
+   "confidence": "high",
+   "modelTotal": 54,
+   "totalLean": "under"
+  },
+  "consensus": {
+   "median": 8.9,
+   "favorite": "ORE",
+   "side": "UCLA",
+   "sideCount": 4,
+   "of": 5
+  }
+ }
+}

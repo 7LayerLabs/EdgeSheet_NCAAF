@@ -1,0 +1,149 @@
+{
+ "gameId": "401861964",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.173Z",
+  "kickoff": "2026-10-10T19:45:00.000Z",
+  "away": "UConn",
+  "home": "Temple",
+  "abbr": {
+   "home": "TEM",
+   "away": "CONN"
+  },
+  "scoutScore": 88,
+  "whyWatch": "6 draft-eligible names on the radar, led by Ty Chan (CONN OL).",
+  "pressurePoint": "UConn deep passing vs Temple secondary. UConn is No. 6 of 138 in pass explosiveness (1.91). Temple ranks No. 81 at limiting explosive passes (1.58). A clear edge, the kind that shapes a game plan. UConn has the deep ball available. Watch whether Temple rolls a safety over after the first one. Watch the first deep shot. If it connects, Temple changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "UConn deep passing",
+    "b": "Temple secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "UConn",
+    "why": "UConn is No. 6 of 138 in pass explosiveness (1.91). Temple ranks No. 81 at limiting explosive passes (1.58). A clear edge, the kind that shapes a game plan. UConn has the deep ball available. Watch whether Temple rolls a safety over after the first one."
+   },
+   {
+    "a": "UConn on passing downs",
+    "b": "Temple pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "UConn",
+    "why": "UConn is No. 55 of 138 in passing-downs success (34%). Temple ranks No. 121 on passing downs (35%). A clear edge, the kind that shapes a game plan. UConn converts the long downs Temple needs to win. A third-and-8 is not a stop here."
+   },
+   {
+    "a": "Temple deep passing",
+    "b": "UConn secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Temple",
+    "why": "Temple is No. 13 of 138 in pass explosiveness (1.83). UConn ranks No. 78 at limiting explosive passes (1.57). A clear edge, the kind that shapes a game plan. Temple has the deep ball available. Watch whether UConn rolls a safety over after the first one."
+   },
+   {
+    "a": "UConn run game",
+    "b": "Temple run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "UConn",
+    "why": "UConn is No. 64 of 138 in rush success rate (46%). Temple ranks No. 111 against the run (46%). A real edge, not a lock. UConn should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079619",
+    "name": "Kalieb Osborne",
+    "team": "UConn",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 77
+   },
+   {
+    "id": "4921112",
+    "name": "Braedyn Moore",
+    "team": "UConn",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 72
+   },
+   {
+    "id": "4685711",
+    "name": "Ty Chan",
+    "team": "UConn",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4685695",
+    "name": "Samuel Brown V",
+    "team": "Temple",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4870938",
+    "name": "Joshua Mickens",
+    "team": "UConn",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "4870959",
+    "name": "Shamar Porter",
+    "team": "UConn",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "4924137",
+    "name": "Saboor Karriem",
+    "team": "Temple",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 64
+   },
+   {
+    "id": "5296364",
+    "name": "Keveun Mason",
+    "team": "Temple",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 64
+   },
+   {
+    "id": "4921254",
+    "name": "Eric King",
+    "team": "Temple",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   }
+  ],
+  "projection": {
+   "winner": "CONN",
+   "winProb": 0.5832706573617708,
+   "margin": 3.3642857142857143,
+   "home": 29,
+   "away": 33,
+   "confidence": "high",
+   "modelTotal": 61.5
+  },
+  "consensus": {
+   "median": 0.1,
+   "favorite": "TEM",
+   "of": 5
+  }
+ }
+}

@@ -1,0 +1,131 @@
+{
+ "gameId": "401869949",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.152Z",
+  "kickoff": "2026-10-10T04:00:00.000Z",
+  "away": "James Madison",
+  "home": "Georgia Southern",
+  "abbr": {
+   "home": "GASO",
+   "away": "JMU"
+  },
+  "scoutScore": 51,
+  "whyWatch": "5 draft-eligible names on the radar, led by George Pettaway (JMU RB).",
+  "pressurePoint": "James Madison on passing downs vs Georgia Southern pressure. James Madison is No. 56 of 138 in passing-downs success (34%). Georgia Southern ranks No. 87 on passing downs (30%). A real edge, not a lock. James Madison converts the long downs Georgia Southern needs to win. A third-and-8 is not a stop here. Watch James Madison's third-and-long conversions. Two in the first half breaks Georgia Southern's plan.",
+  "edges": [
+   {
+    "a": "Georgia Southern run game",
+    "b": "James Madison run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Georgia Southern",
+    "why": "James Madison is No. 3 of 138 against the run (26%). Georgia Southern ranks No. 76 in rush success rate (44%). A clear edge, the kind that shapes a game plan. Georgia Southern will find the run hard going. Expect more second-and-long than usual."
+   },
+   {
+    "a": "Georgia Southern offensive line",
+    "b": "James Madison front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Georgia Southern",
+    "why": "James Madison is No. 21 of 138 at the line of scrimmage (2.37). Georgia Southern ranks No. 74 in line yards per carry (3.08). A real edge, not a lock. James Madison should hold the line of scrimmage. Georgia Southern's runs will need the second level to break."
+   },
+   {
+    "a": "Georgia Southern on passing downs",
+    "b": "James Madison pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Georgia Southern",
+    "why": "James Madison is No. 26 of 138 on passing downs (23%). Georgia Southern ranks No. 66 in passing-downs success (33%). A real edge, not a lock. James Madison gets off the field on long downs. Early-down efficiency is everything for Georgia Southern."
+   },
+   {
+    "a": "James Madison on passing downs",
+    "b": "Georgia Southern pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "James Madison",
+    "why": "James Madison is No. 56 of 138 in passing-downs success (34%). Georgia Southern ranks No. 87 on passing downs (30%). A real edge, not a lock. James Madison converts the long downs Georgia Southern needs to win. A third-and-8 is not a stop here."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4685494",
+    "name": "George Pettaway",
+    "team": "James Madison",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "5079736",
+    "name": "Alex Taylor",
+    "team": "Georgia Southern",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "5258304",
+    "name": "Elijah Fears",
+    "team": "Georgia Southern",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 65
+   },
+   {
+    "id": "5085342",
+    "name": "Daniel Michel",
+    "team": "James Madison",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5027433",
+    "name": "Frankie Tinilau",
+    "team": "James Madison",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4837377",
+    "name": "Mo Clipper Jr.",
+    "team": "Georgia Southern",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5295448",
+    "name": "DJ Kelly",
+    "team": "James Madison",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 57
+   }
+  ],
+  "projection": {
+   "winner": "JMU",
+   "winProb": 0.8299175082545545,
+   "margin": 15.26142857142857,
+   "home": 16,
+   "away": 32,
+   "confidence": "high",
+   "modelTotal": 47.5
+  },
+  "consensus": {
+   "median": -13.8,
+   "favorite": "JMU",
+   "of": 5
+  }
+ }
+}

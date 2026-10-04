@@ -59,3 +59,26 @@ Owner: Derek. Product name is now **EdgeSheet** (was Scout the Slate).
 
 ## Division I only
 Everything new is for FBS and FCS. Lower divisions keep today's behavior.
+
+## Round 2 (2026-10-03 night): presentation pass and the next layer
+
+Everything from round 1 is live (ESPN live feed, consensus, situations, beat feed, odds, AI reports and Ask, Telegram, portal, backtest).
+Keys now in `.env.local`: CFBD_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, ODDS_API_KEY, ANTHROPIC_API_KEY, TYPESAFE_API_KEY.
+LLM adapter is `src/lib/llm.ts` (Anthropic: claude-opus-5 for reports, claude-sonnet-5 when `small: true`). Slate is Division I only, grouped Top 25 first.
+PM2: `scout` (site), `scout-telegram`, `scout-odds`. Still do not build, restart, commit, or run `npm run ingest`.
+
+### TypeSafe Jev (new)
+Jev is a System One judgment model: send `state` (JSON) plus typed questions and get calibrated probabilities back, fast and cheap. It does NOT
+generate text. Three primitives: Choice (pick one option, probabilities per option, confidence), Score (ordered descriptive levels), Noul (probability
+that a yes/no condition holds). Read https://docs.typesafe.ai/llms.txt, then https://docs.typesafe.ai/api.md and https://docs.typesafe.ai/sdk/javascript.md
+before writing any call. Batch independent questions over the same state in ONE request (speculative fan-out). Key: `TYPESAFE_API_KEY`.
+A shared client will live at `src/lib/jev.ts` (owned by the `jev` agent): `askJev(state, questions)` plus helpers. If it does not exist yet when you need it,
+write your call against the documented JS SDK directly and keep it behind a try/catch so the feature works without Jev.
+Good uses here: classify a feed post (injury / availability / praise / demotion / unrelated as separate Nouls), confirm a name match refers to
+the player at that team (Noul), rank candidate "things to watch" by how compelling they are to a neutral diehard fan (Score), verify a report
+sentence is supported by its evidence (Noul per sentence), rank live games by "worth flipping to right now" (Score). Code keeps the policy and thresholds.
+
+### Voice for anything written for the fan
+Derek's words: "shown from the perspective of a diehard fan watching, someone who's never really seen each team, where they can explain: hey you got
+to see this player, or what they do here on defense, or how they handle this." Specific, confident, numbers inside the sentence, tells you WHAT to look for
+and WHEN. No hedging, no filler, no emojis, no em dashes.

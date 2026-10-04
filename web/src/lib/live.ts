@@ -22,6 +22,12 @@ export function flipScore(g: Game): number {
   return Math.round(Math.min(100, (closeness * 60 + Math.min(swing, 0.4) * 100) * late));
 }
 
+/** Jev's "worth flipping to" when the slate page attached it (lib/flip-jev.ts), else the numeric flip score. */
+export function flipRank(g: Game): number {
+  if (g.status !== "live") return 0;
+  return g.live?.flipJev ?? flipScore(g);
+}
+
 /** "TENN 61%" plus the swing, phrased from the leading side's point of view. */
 export function winProbLine(g: Game): { team: string; pct: number; swing?: number; minutes?: number } | undefined {
   const l = g.live;

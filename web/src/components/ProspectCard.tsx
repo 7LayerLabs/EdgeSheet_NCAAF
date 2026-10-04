@@ -3,16 +3,20 @@ import type { Prospect, Team } from "@/lib/types";
 import { Tier } from "./badges";
 import { Avatar } from "./Avatar";
 import { FollowButton } from "./FollowButton";
+import { DeltaArrow } from "./MovementBits";
+import { GradeWidget } from "./GradeWidget";
+import type { LastPlay } from "@/lib/playerlog";
 
 /**
  * One prospect, in the game report or on the radar board. Everything shown is
  * evidence with a source: production, pedigree, size, usage. The score ranks
  * evidence; it is not a draft grade and the card says so.
  */
-export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: { p: Prospect; team: Team; gameLabel?: string; gameHref?: string; compact?: boolean }) {
+export function ProspectCard({ p, team, gameLabel, gameHref, compact = false, grade, note, lastPlay }: { p: Prospect; team: Team; gameLabel?: string; gameHref?: string; compact?: boolean; /** When set (game live or final), Derek can grade the player for this game. */ grade?: { gameId: string; date: string }; /** Optional slot above the header, e.g. a feed-derived availability note (AvailabilityNote). */ note?: React.ReactNode; /** Live game: the newest play from ESPN's play-by-play that names him (src/lib/playerlog.ts). */ lastPlay?: LastPlay }) {
   const r = p.radar;
   return (
     <div className="card flex flex-col gap-3 p-4">
+      {note}
       <div className="flex items-start gap-3">
         <Avatar jersey={p.jersey} color={team.color} logo={team.logo} size={compact ? "sm" : "md"} playerId={p.id} name={p.name} />
         <div className="min-w-0 flex-1">
@@ -20,7 +24,7 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
             <Link href={`/player/${p.id}`} className="display truncate text-2xl font-bold leading-none text-chalk hover:text-flag">
               {p.name}
             </Link>
-            {r && <RadarScore score={r.score} />}
+            {r && <span className="flex shrink-0 items-center gap-1.5"><DeltaArrow delta={r.delta} /><RadarScore score={r.score} /></span>}
           </div>
           <p className="mono mt-1 text-xs text-chalk-3">
             {p.pos} · {team.abbr} · {p.cls}{p.ht ? ` · ${p.ht}, ${p.wt}` : ""}
@@ -53,6 +57,12 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
         </div>
       )}
 
+      {r && (r.qocLabel === "tough" || r.qocLabel === "soft") && (
+        <p className="mono -mt-1 text-[11px] text-chalk-3" title="Average opponent percentile on his production axis, from the game log">
+          vs {r.qocLabel} schedule{r.qoc !== null ? `, avg opponent ${r.qoc}th pct` : ""}
+        </p>
+      )}
+
       {p.lines && p.lines.length > 0 && (
         <div className="rounded-md border border-turf/40 bg-turf/10 px-3 py-2 text-xs">
           <span className="eyebrow text-turf">In this game</span>
@@ -62,6 +72,14 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
             ))}
           </ul>
         </div>
+      )}
+
+      {lastPlay && (
+        <p className={`rounded-md border px-3 py-1.5 text-xs leading-snug ${lastPlay.isScoring ? "border-turf/40 bg-turf/10" : lastPlay.isBig ? "border-navy/30 bg-panel" : "border-line bg-panel"}`} title={lastPlay.text}>
+          <span className="eyebrow mr-1">Last play</span>
+          <span className={`font-semibold ${lastPlay.isScoring ? "text-turf" : lastPlay.isBig ? "text-navy" : "text-chalk"}`}>{lastPlay.tag}</span>
+          <span className="mono ml-1.5 text-chalk-3">{lastPlay.when}</span>
+        </p>
       )}
 
       {!compact && (
@@ -79,6 +97,11 @@ export function ProspectCard({ p, team, gameLabel, gameHref, compact = false }: 
         )}
         <FollowButton kind="players" id={p.id} size="sm" />
       </div>
+      {grade && (
+        <div className="border-t border-line pt-2">
+          <GradeWidget playerId={p.id} gameId={grade.gameId} date={grade.date} name={p.name} team={p.radar?.team ?? team.name} pos={p.pos} cls={p.cls} compact />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,44 @@
+{
+ "gameId": "401868968",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.204Z",
+  "kickoff": "2026-10-10T19:00:00.000Z",
+  "away": "Southern",
+  "home": "Prairie View A&M",
+  "abbr": {
+   "home": "PV",
+   "away": "SOU"
+  },
+  "scoutScore": 22,
+  "whyWatch": "SWAC conference game.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4870784",
+    "name": "Trey Holly",
+    "team": "Southern",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 57
+   },
+   {
+    "id": "4801301",
+    "name": "Tevin Carter",
+    "team": "Prairie View A&M",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 53
+   }
+  ],
+  "consensus": {
+   "median": 21.1,
+   "favorite": "PV",
+   "of": 1
+  }
+ }
+}

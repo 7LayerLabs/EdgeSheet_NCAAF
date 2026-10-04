@@ -1,0 +1,102 @@
+{
+ "gameId": "401856819",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:29:53.729Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "final",
+ "evidenceVersion": "9f412c10120e",
+ "candidateCount": 15,
+ "top": [
+  {
+   "id": "PHOU1",
+   "kind": "player",
+   "title": "Conner Weigman (Houston QB, radar 92)",
+   "jev": 2.86,
+   "playerIds": [
+    "4685574"
+   ]
+  },
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "UCF offensive line vs Houston front (dominant defense edge)",
+   "jev": 2.65,
+   "playerIds": []
+  },
+  {
+   "id": "E3",
+   "kind": "edge",
+   "title": "Houston on passing downs vs UCF pressure (real offense edge)",
+   "jev": 2.56,
+   "playerIds": []
+  },
+  {
+   "id": "S1",
+   "kind": "situation",
+   "title": "pd situation, Houston offense vs UCF defense",
+   "jev": 2.35,
+   "playerIds": []
+  },
+  {
+   "id": "S2",
+   "kind": "situation",
+   "title": "thirdMedConv situation, Houston offense vs UCF defense",
+   "jev": 2.13,
+   "playerIds": []
+  }
+ ],
+ "attempts": 1,
+ "attemptLog": [
+  []
+ ],
+ "usage": {
+  "inputTokens": 2817,
+  "outputTokens": 803,
+  "cacheReadTokens": 0,
+  "costUsd": 0.013664
+ },
+ "guide": {
+  "headline": "Weigman and Houston's front owned this one",
+  "hook": "A five-star senior quarterback ran into an overmatched UCF line, and Houston's passing-downs machine did the rest.",
+  "items": [
+   {
+    "title": "Weigman adds touchdowns with his legs",
+    "what": "Conner Weigman threw for 239 yards on 18 of 33 with zero touchdowns and zero picks, but he ran 13 times for 50 yards and three touchdowns. For a quarterback with 11 passing touchdowns and an 8.8 yards per attempt average on the season, finding his scores on the ground tells you Houston adjusted mid-game. Watch his footwork resetting after the first read is covered, that's the trait that got him to 92 on this radar.",
+    "when": "Every called quarterback run near the goal line",
+    "who": "Conner Weigman",
+    "whoPlayerId": "4685574",
+    "factIds": [
+     "PHOU1b",
+     "PHOU1s",
+     "PHOU1w"
+    ]
+   },
+   {
+    "title": "Houston's front lived in the backfield",
+    "what": "Houston ranks No. 15 of 138 at the line of scrimmage with a 2.32 mark, while UCF's offensive line sits at No. 93 with just 2.96 line yards per carry. That 57 percentile point gap is not a lean, it's a mismatch, and it shows up as negative runs before UCF backs even get moving. Watch tackles for loss in the first quarter, that's where this game got decided up front.",
+    "when": "First quarter, every early-down run by UCF",
+    "who": "UCF offensive line",
+    "factIds": [
+     "E1",
+     "E1e",
+     "E1w"
+    ]
+   },
+   {
+    "title": "Houston never got stopped on third and long",
+    "what": "Houston ranks No. 2 of 138 on passing downs at 51% success, while UCF ranks No. 45 on defense at just 25%. On third-and-medium specifically Houston throws it 53% of the time and converts 65%, the No. 4 rate in the country, against a UCF defense that allows 53% there. Two third-and-long conversions in a half was enough to break UCF's plan, and Houston had the volume to get them.",
+    "when": "Third and medium to long, especially in the first half",
+    "who": "Houston offense",
+    "factIds": [
+     "E3",
+     "E3e",
+     "S1",
+     "S2"
+    ]
+   }
+  ],
+  "cardLine": "Houston's front dominated UCF's line while Weigman ran in three scores, a complete mismatch on both sides of the ball."
+ }
+}

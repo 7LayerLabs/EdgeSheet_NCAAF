@@ -12,6 +12,7 @@ import { historyStats } from "./archive";
 import { kickoffTime } from "./format";
 import type { Follows } from "./follows";
 import type { RadarPlayer } from "./radar";
+import type { BiggestMoves, MoveRow } from "./movement";
 import { scoreTag, scoutScore } from "./score";
 import { escapeHtml as h } from "./telegram";
 import type { Game } from "./types";
@@ -426,6 +427,46 @@ export function helpDigest(): string {
     "/record · how the calls have graded out",
     "/radar &lt;team&gt; · that team's draft radar",
     "/game &lt;team&gt; · that team's game this week",
+    "/plan · today's viewing plan by half hour, with switch triggers",
+    "/stock · weekly stock report: radar risers, fallers, forecast-board moves",
     "/help · this list",
   ].join("\n");
+}
+
+/* ---------------------------------------------------------- stock report */
+
+/**
+ * Monday "stock report": biggest radar risers and fallers and forecast-board
+ * moves between the last two weekly snapshots. Takes the result of
+ * movement.ts biggestMoves() so this file stays free of node:fs. The bot calls
+ * biggestMoves(5) server-side and passes it in. With one snapshot it says so.
+ */
+export function stockDigest(moves: BiggestMoves, base = baseUrl()): string {
+  const lines: string[] = [];
+  lines.push("<b>Stock report</b>");
+  if (!moves.available) {
+    lines.push(h(moves.note));
+    lines.push(`<a href="${base}/draft">Draft board</a>`);
+    return lines.join("\n");
+  }
+  lines.push(h(moves.note));
+  const row = (r: MoveRow, forecast: boolean) => {
+    const delta = forecast ? r.overallDelta ?? 0 : r.scoreDelta;
+    const what = forecast ? `No. ${r.overallFrom} to No. ${r.overallTo}${r.bandFrom !== r.bandTo ? `, ${r.bandFrom?.replace(" range", "")} to ${r.bandTo?.replace(" range", "")}` : ""}` : `radar ${r.prevScore} to ${r.score}`;
+    return `• <b>${delta > 0 ? "+" : ""}${delta}</b> <a href="${base}/player/${r.id}">${h(r.name)}</a> (${h(r.team)} ${h(r.pos)}, ${h(r.cls)}) · ${h(what)}\n   ${h(r.reasonText)}`;
+  };
+  const group = (title: string, rows: MoveRow[], forecast = false) => {
+    lines.push("");
+    lines.push(`<b>${title}</b>`);
+    if (!rows.length) lines.push("None this week.");
+    for (const r of rows) lines.push(row(r, forecast));
+  };
+  group("Radar risers", moves.risers);
+  group("Radar fallers", moves.fallers);
+  group("Up the forecast board", moves.forecastRisers, true);
+  group("Down the forecast board", moves.forecastFallers, true);
+  lines.push("");
+  lines.push("<i>Radar score ranks evidence, not a draft grade. Reasons come from the snapshot diff: production, pedigree, usage, or a declaration.</i>");
+  lines.push(`<a href="${base}/draft">Biggest moves on the draft page</a>`);
+  return lines.join("\n");
 }

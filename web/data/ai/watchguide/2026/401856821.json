@@ -1,0 +1,104 @@
+{
+ "gameId": "401856821",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:28:58.049Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "live",
+ "evidenceVersion": "269340027529",
+ "candidateCount": 16,
+ "top": [
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "Texas Tech on passing downs vs Colorado pressure (dominant offense edge)",
+   "jev": 2.68,
+   "playerIds": []
+  },
+  {
+   "id": "E3",
+   "kind": "edge",
+   "title": "Texas Tech run game vs Colorado run defense (clear offense edge)",
+   "jev": 2.27,
+   "playerIds": []
+  },
+  {
+   "id": "S3",
+   "kind": "situation",
+   "title": "thirdLongConv situation, Texas Tech offense vs Colorado defense",
+   "jev": 2.07,
+   "playerIds": []
+  },
+  {
+   "id": "E2",
+   "kind": "edge",
+   "title": "Colorado run game vs Texas Tech run defense (clear defense edge)",
+   "jev": 2.05,
+   "playerIds": []
+  },
+  {
+   "id": "PCOLO1",
+   "kind": "player",
+   "title": "Randon Fontenette (Colorado DB, radar 74)",
+   "jev": 2.04,
+   "playerIds": [
+    "4922985"
+   ]
+  }
+ ],
+ "attempts": 2,
+ "attemptLog": [
+  [
+   "item 3 \"what\" is too long (98 words); two or three sentences"
+  ],
+  []
+ ],
+ "usage": {
+  "inputTokens": 6907,
+  "outputTokens": 1824,
+  "cacheReadTokens": 0,
+  "costUsd": 0.032054
+ },
+ "guide": {
+  "headline": "Texas Tech's offense is built to break Colorado today",
+  "hook": "Texas Tech owns both the ground game and the money downs against a Colorado defense that struggles on both, and Randon Fontenette is the one Colorado player making them pay for it.",
+  "items": [
+   {
+    "title": "Third-and-long is not a stop",
+    "what": "Texas Tech ranks No. 14 of 138 on passing downs at 40 percent success, while Colorado ranks No. 109 at 32 percent, a 70 percentile point gap. On third-and-7 or more, Texas Tech throws it 80 percent of the time and converts 36 percent, and Colorado allows 37 percent there, ranking No. 125 of 136. That turns a defensive stand into a fresh set of downs.",
+    "when": "Third-and-8 or longer, any quarter.",
+    "who": "Texas Tech offense",
+    "factIds": [
+     "E1",
+     "E1e",
+     "S3"
+    ]
+   },
+   {
+    "title": "Red Raiders stay on schedule on the ground",
+    "what": "Texas Tech's rush success rate is 52 percent, No. 12 of 138 nationally, against a Colorado run defense ranked No. 74 at 41 percent. That is a 45 percentile point edge, enough to keep Texas Tech out of third-and-long altogether. If Texas Tech is past 20 rushing attempts by halftime, the clock and the chains are both working for them.",
+    "when": "First drive and every first down after that.",
+    "who": "Texas Tech run game",
+    "factIds": [
+     "E3",
+     "E3e"
+    ]
+   },
+   {
+    "title": "Fontenette is already wrecking this game",
+    "what": "Randon Fontenette sits in the top 3 percent of FBS cornerbacks in production, and he is proving it live with 5 tackles, 1 TFL, 1 sack, and 1 PD already in this game. Watch his press technique at the line and his hip fluidity in transition.",
+    "when": "Whenever Texas Tech targets his side on third down.",
+    "who": "Randon Fontenette",
+    "whoPlayerId": "4922985",
+    "factIds": [
+     "PCOLO1",
+     "PCOLO1b",
+     "PCOLO1e1",
+     "PCOLO1w"
+    ]
+   }
+  ],
+  "cardLine": "Texas Tech's offense owns both the run and third-and-long against Colorado, but Randon Fontenette already has a sack and a PD trying to stop it."
+ }
+}

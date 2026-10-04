@@ -1,0 +1,106 @@
+{
+ "gameId": "401856708",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:27:34.965Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "final",
+ "evidenceVersion": "f3372d51a8f6",
+ "candidateCount": 16,
+ "top": [
+  {
+   "id": "PMIZ2",
+   "kind": "player",
+   "title": "Jamal Roberts (Missouri RB, radar 81)",
+   "jev": 2.75,
+   "playerIds": [
+    "4921116"
+   ]
+  },
+  {
+   "id": "PMIZ1",
+   "kind": "player",
+   "title": "Austin Simmons (Missouri QB, radar 82)",
+   "jev": 2.4,
+   "playerIds": [
+    "5141684"
+   ]
+  },
+  {
+   "id": "S3",
+   "kind": "situation",
+   "title": "xPass situation, Florida offense vs Missouri defense",
+   "jev": 2.26,
+   "playerIds": []
+  },
+  {
+   "id": "PFLA1",
+   "kind": "player",
+   "title": "Jadan Baugh (Florida RB, radar 92)",
+   "jev": 2.26,
+   "playerIds": [
+    "5079322"
+   ]
+  },
+  {
+   "id": "E2",
+   "kind": "edge",
+   "title": "Florida deep passing vs Missouri secondary (real offense edge)",
+   "jev": 2.09,
+   "playerIds": []
+  }
+ ],
+ "attempts": 1,
+ "attemptLog": [
+  []
+ ],
+ "usage": {
+  "inputTokens": 3563,
+  "outputTokens": 1075,
+  "cacheReadTokens": 0,
+  "costUsd": 0.017876
+ },
+ "guide": {
+  "headline": "Jamal Roberts ran through Missouri while Simmons carved the air",
+  "hook": "A 211-yard day from a bruising senior back and a clean, efficient passing clinic turned this into one of the more lopsided tape sessions of the week.",
+  "items": [
+   {
+    "title": "Jamal Roberts breaks the game open",
+    "what": "Roberts came in averaging 4.4 yards a carry on the season but exploded for 211 yards on just 24 carries with three touchdowns in this one. He is a 216-pound back who already handles 32% of Missouri's team usage, and on this day his contact balance through the first tackler was the whole story. When he is hitting creases like this, there is no answer for it.",
+    "when": "Watch his runs on early downs in the first half before Florida adjusts fronts.",
+    "who": "Jamal Roberts",
+    "whoPlayerId": "4921116",
+    "factIds": [
+     "PMIZ2b",
+     "PMIZ2",
+     "PMIZ2e4"
+    ]
+   },
+   {
+    "title": "Austin Simmons stays clean and accurate",
+    "what": "Simmons finished 23 of 30 for 340 yards and two touchdowns with zero interceptions, building on a season line of 11 touchdowns against none. He is a 4-star recruit with legitimate NFL size at 6-4, 220, and his placement outside the numbers shows up on the tape as the receivers run under the ball in stride. This was a quarterback playing on schedule all day.",
+    "when": "Look at his third-down throws, where he already carries 56% of his usage on passing downs.",
+    "who": "Austin Simmons",
+    "whoPlayerId": "5141684",
+    "factIds": [
+     "PMIZ1b",
+     "PMIZ1s",
+     "PMIZ1e4"
+    ]
+   },
+   {
+    "title": "Florida's deep ball vs a leaky Missouri secondary",
+    "what": "Florida ranks No. 67 of 138 in pass explosiveness at 1.56 while Missouri ranks No. 111 of 138 in limiting explosive passes at 1.70, a 32 percentile point gap. On replay, find the first deep shot Florida takes and watch whether Missouri rolls a safety over after it connects. If that shell never changes, it explains why the big plays kept coming.",
+    "when": "The first vertical shot of the game and how the coverage shifts afterward.",
+    "who": "Florida deep passing attack",
+    "factIds": [
+     "E2",
+     "E2e",
+     "E2w"
+    ]
+   }
+  ],
+  "cardLine": "Jamal Roberts ran for 211 yards and three scores while Austin Simmons went 23 of 30 with zero picks in a near-perfect offensive day."
+ }
+}

@@ -14,6 +14,13 @@ import { decisionFor } from "@/lib/declarations";
 import { Suspense } from "react";
 import { PlayerNews } from "@/components/PlayerNews";
 import { BeatFeedFallback } from "@/components/BeatFeed";
+import { GradeWidget } from "@/components/GradeWidget";
+import { etDateOf } from "@/lib/format";
+import { GameLog, StockPanel } from "@/components/Movement";
+import { DeltaArrow } from "@/components/MovementBits";
+import { PlayerGameLog } from "@/components/PlayerGameLog";
+import { LivePoller } from "@/components/LivePoller";
+import { playerLog } from "@/lib/playerlog";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +31,8 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
   const { player: p, game } = hit;
   const team = game ? (p.team === game.home.abbr ? game.home : game.away) : undefined;
   const r = p.radar;
+  // Play-by-play log for this week's game once it has kicked off (Division I only, ESPN summary).
+  const log = game && game.status !== "upcoming" && (game.division === "FBS" || game.division === "FCS") ? await playerLog(game.id, p.id).catch(() => undefined) : undefined;
   const meta = genMeta();
   const upper = r?.classYear === 3 || r?.classYear === 4;
   const fc = r && upper ? entryFor(r.id) : undefined;
@@ -58,7 +67,7 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
         {r && (
           <div className="text-right">
             <RadarScore score={r.score} size="lg" />
-            <p className="eyebrow mt-1">Radar score</p>
+            <p className="eyebrow mt-1">Radar score <DeltaArrow delta={r.delta} size="lg" /></p>
           </div>
         )}
       </header>
@@ -120,7 +129,7 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
 
       {r && (
         <section className="mt-8 grid gap-2 sm:grid-cols-4">
-          <Meter label="Production" value={r.production} note={`percentile vs ${r.classification?.toUpperCase()} ${r.group}`} />
+          <Meter label="Production" value={r.production} note={r.adjustedProduction !== null ? `raw ${r.rawProduction}, opponent-adjusted ${r.adjustedProduction}, vs ${r.classification?.toUpperCase()} ${r.group}` : `percentile vs ${r.classification?.toUpperCase()} ${r.group}, no game log`} />
           <Meter label="Pedigree" value={r.pedigree} note="recruiting rating" />
           <Meter label="Usage" value={r.usage} note="share of team plays" />
           <Meter label="Size" value={r.size === null ? 40 : r.size ? 100 : 0} note={r.size === null ? "unknown" : r.size ? "meets NFL norms" : "under NFL norms"} />
@@ -150,7 +159,16 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
         {r && r.gamesPlayed ? <p className="mono mt-2 text-xs text-chalk-3">{r.gamesPlayed} team games this season.</p> : null}
       </section>
 
-      {p.lines && p.lines.length > 0 && (
+      {r && (
+        <>
+          <section className="mt-8">
+            <StockPanel playerId={r.id} />
+          </section>
+          <GameLog playerId={r.id} group={r.group} />
+        </>
+      )}
+
+      {p.lines && p.lines.length > 0 && !log && (
         <section className="mt-8">
           <p className="eyebrow text-turf">This week&apos;s game</p>
           <ul className="mono mt-2 grid gap-1 text-sm text-chalk">
@@ -159,6 +177,13 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
             ))}
           </ul>
         </section>
+      )}
+
+      {log && game && (
+        <>
+          <PlayerGameLog log={log} boxLines={p.lines} live={game.status === "live"} />
+          {game.status === "live" && <LivePoller active label="live, log updates every minute" />}
+        </>
       )}
 
       <section className="mt-8">
@@ -179,6 +204,17 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
         ) : (
           <p className="mt-2 text-sm text-chalk-3">No game on this week&apos;s schedule for {r?.team ?? p.team}.</p>
         )}
+      </section>
+
+      {/* Derek's own grade for this player. Tied to this week's game when there is one; feeds /board. */}
+      <section className="mt-8">
+        <div className="flex items-baseline justify-between gap-3">
+          <p className="eyebrow">My grade{game ? ` for ${game.away.short} @ ${game.home.short}` : ""}</p>
+          <Link href="/board" className="mono text-xs text-sky hover:underline">My board</Link>
+        </div>
+        <div className="mt-2">
+          <GradeWidget playerId={p.id} gameId={game?.id} date={game ? etDateOf(game.kickoff) : undefined} name={p.name} team={r?.team ?? team?.name ?? p.team} pos={p.pos} cls={p.cls} />
+        </div>
       </section>
 
       {/* Beat feed items that name this player, plus a highlights link. Context only. */}

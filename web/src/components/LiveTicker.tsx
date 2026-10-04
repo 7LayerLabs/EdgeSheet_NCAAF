@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Game } from "@/lib/types";
-import { flipScore } from "@/lib/live";
+import { flipRank } from "@/lib/live";
 import { LivePoller } from "./LivePoller";
 
 /**
@@ -8,7 +8,7 @@ import { LivePoller } from "./LivePoller";
  * refresh indicator. Nothing renders when nothing is live.
  */
 export function LiveTicker({ games }: { games: Game[] }) {
-  const live = games.filter((g) => g.status === "live").sort((a, b) => flipScore(b) - flipScore(a) || a.kickoff.localeCompare(b.kickoff));
+  const live = games.filter((g) => g.status === "live").sort((a, b) => flipRank(b) - flipRank(a) || a.kickoff.localeCompare(b.kickoff));
   if (!live.length) return null;
   return (
     <div className="mt-4 rounded border border-turf/30 bg-turf/5 px-3 py-2">
@@ -19,7 +19,7 @@ export function LiveTicker({ games }: { games: Game[] }) {
       </div>
       <div className="scroll-x -mx-3 mt-1.5 flex gap-2 px-3 pb-0.5">
         {live.map((g) => {
-          const fs = flipScore(g);
+          const fs = flipRank(g);
           const l = g.live;
           return (
             <Link key={g.id} href={`/game/${g.id}`} className="chip shrink-0 !py-1 !text-xs hover:bg-panel-2">

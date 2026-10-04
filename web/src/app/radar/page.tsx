@@ -5,6 +5,7 @@ import { gameIndexForWeek, radarToProspect } from "@/lib/slate";
 import { asOf, kickoffTime } from "@/lib/format";
 import { ProspectCard } from "@/components/ProspectCard";
 import type { Team } from "@/lib/types";
+import { biggestMoves } from "@/lib/movement";
 
 export const dynamic = "force-dynamic";
 
@@ -35,12 +36,13 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   const group = GROUPS.includes(str("pos") as PosGroup) ? (str("pos") as PosGroup) : undefined;
   const div = (DIVS.find((d) => d.key === str("div"))?.key ?? "fbs") as "fbs" | "fcs" | "ii" | "iii";
   const q = str("q");
-  const sort = (["score", "pedigree", "production"].includes(str("sort") ?? "") ? str("sort") : "score") as "score" | "pedigree" | "production";
+  const sort = (["score", "pedigree", "production", "risers"].includes(str("sort") ?? "") ? str("sort") : "score") as "score" | "pedigree" | "production" | "risers";
   const showAll = str("all") === "1";
   const base = { class: String(cls), pos: group, div, q, sort: sort === "score" ? undefined : sort, all: showAll ? "1" : undefined };
 
   const pool = loaded ? radarBoard({ draftClass: cls, group, classification: div, q, limit: 5000 }) : [];
-  const sorted = sort === "score" ? pool : [...pool].sort((a, b) => (sort === "pedigree" ? b.pedigree - a.pedigree || b.score - a.score : b.production - a.production || b.score - a.score));
+  const sorted = sort === "score" ? pool : sort === "risers" ? [...pool].sort((a, b) => (b.delta ?? 0) - (a.delta ?? 0) || b.score - a.score) : [...pool].sort((a, b) => (sort === "pedigree" ? b.pedigree - a.pedigree || b.score - a.score : b.production - a.production || b.score - a.score));
+  const risersEmpty = sort === "risers" && !pool.some((p) => p.delta !== null);
   const players = showAll ? sorted : sorted.slice(0, 60);
   const games = loaded ? await gameIndexForWeek() : new Map();
 
@@ -77,8 +79,8 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
           ))}
         </span>
         <span className="seg" title="Sort">
-          {(["score", "pedigree", "production"] as const).map((k) => (
-            <Link key={k} href={href({ ...base, sort: k === "score" ? undefined : k })} aria-current={k === sort}>{k === "score" ? "Radar score" : k === "pedigree" ? "Pedigree" : "Production"}</Link>
+          {(["score", "pedigree", "production", "risers"] as const).map((k) => (
+            <Link key={k} href={href({ ...base, sort: k === "score" ? undefined : k })} aria-current={k === sort}>{k === "score" ? "Radar score" : k === "pedigree" ? "Pedigree" : k === "production" ? "Production" : "Risers"}</Link>
           ))}
         </span>
         <form action="/radar" className="ml-auto flex items-center gap-2">
@@ -100,6 +102,12 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
           <Link key={g} href={href({ ...base, pos: g })} className="chip" aria-pressed={g === group}>{g}</Link>
         ))}
       </div>
+
+      {loaded && risersEmpty && (
+        <div className="card mt-5 px-4 py-3 text-sm text-chalk-3">
+          Risers need two weekly snapshots. {biggestMoves(1).note} Until then this list is in radar-score order.
+        </div>
+      )}
 
       {loaded && players.length === 0 && (
         <div className="card mt-6 p-8 text-center">

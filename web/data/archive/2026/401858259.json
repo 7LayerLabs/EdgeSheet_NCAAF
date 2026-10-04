@@ -1,0 +1,158 @@
+{
+ "gameId": "401858259",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.172Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "Virginia Tech",
+  "home": "California",
+  "abbr": {
+   "home": "CAL",
+   "away": "VT"
+  },
+  "scoutScore": 88,
+  "whyWatch": "Luke Reynolds (VT TE, Jr) is a top-of-the-radar name: 37 rec, 373 yds, 4 TD, 10.1 Y/R.",
+  "pressurePoint": "Virginia Tech deep passing vs California secondary. Virginia Tech is No. 68 of 138 in pass explosiveness (1.56). California ranks No. 101 at limiting explosive passes (1.64). A real edge, not a lock. Virginia Tech has the deep ball available. Watch whether California rolls a safety over after the first one. Watch the first deep shot. If it connects, California changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "California run game",
+    "b": "Virginia Tech run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "California",
+    "why": "Virginia Tech is No. 9 of 138 against the run (28%). California ranks No. 119 in rush success rate (38%). This is not a lean. It is a mismatch, and a prominent one. Virginia Tech erases the run. California gets pushed into passing downs, and that is where this defense makes its money."
+   },
+   {
+    "a": "California offensive line",
+    "b": "Virginia Tech front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "California",
+    "why": "Virginia Tech is No. 1 of 138 at the line of scrimmage (1.24). California ranks No. 104 in line yards per carry (2.82). This is not a lean. It is a mismatch, and a prominent one. Virginia Tech wins first contact. Backs get met in the backfield; screens and the quick game are the counter."
+   },
+   {
+    "a": "California on passing downs",
+    "b": "Virginia Tech pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "California",
+    "why": "Virginia Tech is No. 12 of 138 on passing downs (20%). California ranks No. 90 in passing-downs success (29%). This is not a lean. It is a mismatch, and a prominent one. Virginia Tech gets off the field on long downs. Early-down efficiency is everything for California."
+   },
+   {
+    "a": "California deep passing",
+    "b": "Virginia Tech secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "California",
+    "why": "Virginia Tech is No. 46 of 138 at limiting explosive passes (1.46). California ranks No. 94 in pass explosiveness (1.47). A real edge, not a lock. Virginia Tech keeps the lid on. California should expect to drive the long way."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5138451",
+    "name": "Luke Reynolds",
+    "team": "Virginia Tech",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 85
+   },
+   {
+    "id": "5144078",
+    "name": "Ethan Grunkemeyer",
+    "team": "Virginia Tech",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 84
+   },
+   {
+    "id": "5214409",
+    "name": "Jeffrey Overton Jr.",
+    "team": "Virginia Tech",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 80
+   },
+   {
+    "id": "5087950",
+    "name": "Kingston Lopa",
+    "team": "California",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 75
+   },
+   {
+    "id": "5147861",
+    "name": "Adam Mohammed",
+    "team": "California",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4923269",
+    "name": "Layth Ghannam",
+    "team": "Virginia Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4923284",
+    "name": "Logan Howland",
+    "team": "Virginia Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4870753",
+    "name": "Daniel Harris",
+    "team": "California",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5126998",
+    "name": "Jericho Johnson",
+    "team": "California",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 66
+   },
+   {
+    "id": "4871030",
+    "name": "Jayden Wayne",
+    "team": "California",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 65
+   }
+  ],
+  "projection": {
+   "winner": "VT",
+   "winProb": 0.6413105780255004,
+   "margin": 5.791428571428572,
+   "home": 20,
+   "away": 25,
+   "confidence": "high",
+   "modelTotal": 45
+  },
+  "consensus": {
+   "median": -5.8,
+   "favorite": "VT",
+   "of": 5
+  }
+ }
+}

@@ -1,0 +1,140 @@
+{
+ "gameId": "401866437",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.167Z",
+  "kickoff": "2026-10-10T19:30:00.000Z",
+  "away": "Buffalo",
+  "home": "Toledo",
+  "abbr": {
+   "home": "TOL",
+   "away": "BUF"
+  },
+  "scoutScore": 69,
+  "whyWatch": "6 draft-eligible names on the radar, led by John Alan Richter (TOL QB).",
+  "pressurePoint": "Buffalo run game vs Toledo run defense. Toledo is No. 8 of 138 against the run (28%). Buffalo ranks No. 124 in rush success rate (36%). This is not a lean. It is a mismatch, and a prominent one. Toledo erases the run. Buffalo gets pushed into passing downs, and that is where this defense makes its money. Watch Buffalo's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Buffalo run game",
+    "b": "Toledo run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Buffalo",
+    "why": "Toledo is No. 8 of 138 against the run (28%). Buffalo ranks No. 124 in rush success rate (36%). This is not a lean. It is a mismatch, and a prominent one. Toledo erases the run. Buffalo gets pushed into passing downs, and that is where this defense makes its money."
+   },
+   {
+    "a": "Toledo deep passing",
+    "b": "Buffalo secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Toledo",
+    "why": "Toledo is No. 5 of 138 in pass explosiveness (1.93). Buffalo ranks No. 121 at limiting explosive passes (1.78). This is not a lean. It is a mismatch, and a prominent one. Buffalo does not keep the lid on. Toledo will take shots, and the market total may be underpriced if they land."
+   },
+   {
+    "a": "Buffalo on passing downs",
+    "b": "Toledo pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Buffalo",
+    "why": "Toledo is No. 15 of 138 on passing downs (21%). Buffalo ranks No. 121 in passing-downs success (23%). This is not a lean. It is a mismatch, and a prominent one. Toledo gets off the field on long downs. Early-down efficiency is everything for Buffalo."
+   },
+   {
+    "a": "Buffalo offensive line",
+    "b": "Toledo front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Buffalo",
+    "why": "Toledo is No. 44 of 138 at the line of scrimmage (2.62). Buffalo ranks No. 115 in line yards per carry (2.75). A clear edge, the kind that shapes a game plan. Toledo should hold the line of scrimmage. Buffalo's runs will need the second level to break."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5082330",
+    "name": "John Alan Richter",
+    "team": "Toledo",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5078063",
+    "name": "Connor Walendzak",
+    "team": "Toledo",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4869601",
+    "name": "Chance Morrow",
+    "team": "Buffalo",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4894657",
+    "name": "Cornell Evans",
+    "team": "Buffalo",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "5184012",
+    "name": "Jackson Bellamy",
+    "team": "Buffalo",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4833021",
+    "name": "Jonathan Harder",
+    "team": "Toledo",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5218379",
+    "name": "Christopher Climes",
+    "team": "Buffalo",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 55
+   },
+   {
+    "id": "5079699",
+    "name": "Corey Smith",
+    "team": "Toledo",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 19
+   }
+  ],
+  "projection": {
+   "winner": "TOL",
+   "winProb": 0.855488589175674,
+   "margin": 16.964285714285715,
+   "home": 34,
+   "away": 17,
+   "confidence": "high",
+   "modelTotal": 50.5
+  },
+  "consensus": {
+   "median": 20,
+   "favorite": "TOL",
+   "of": 5
+  }
+ }
+}

@@ -1,0 +1,113 @@
+{
+ "gameId": "401869843",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.162Z",
+  "kickoff": "2026-10-10T17:00:00.000Z",
+  "away": "Old Dominion",
+  "home": "App State",
+  "abbr": {
+   "home": "APP",
+   "away": "ODU"
+  },
+  "scoutScore": 70,
+  "whyWatch": "Malachi Singleton (APP QB, Sr) is a top-of-the-radar name: 1206 pass yds, 7 TD, 1 INT, 9.1 Y/A.",
+  "pressurePoint": "Old Dominion offensive line vs App State front. App State is No. 43 of 138 at the line of scrimmage (2.62). Old Dominion ranks No. 138 in line yards per carry (1.61). This is not a lean. It is a mismatch, and a prominent one. App State wins first contact. Backs get met in the backfield; screens and the quick game are the counter. Watch tackles for loss. App State living in the backfield early is the tell.",
+  "edges": [
+   {
+    "a": "App State offensive line",
+    "b": "Old Dominion front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "App State",
+    "why": "Old Dominion is No. 23 of 138 at the line of scrimmage (2.39). App State ranks No. 127 in line yards per carry (2.58). This is not a lean. It is a mismatch, and a prominent one. Old Dominion wins first contact. Backs get met in the backfield; screens and the quick game are the counter."
+   },
+   {
+    "a": "App State run game",
+    "b": "Old Dominion run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "App State",
+    "why": "Old Dominion is No. 16 of 138 against the run (32%). App State ranks No. 113 in rush success rate (39%). This is not a lean. It is a mismatch, and a prominent one. Old Dominion erases the run. App State gets pushed into passing downs, and that is where this defense makes its money."
+   },
+   {
+    "a": "Old Dominion offensive line",
+    "b": "App State front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Old Dominion",
+    "why": "App State is No. 43 of 138 at the line of scrimmage (2.62). Old Dominion ranks No. 138 in line yards per carry (1.61). This is not a lean. It is a mismatch, and a prominent one. App State wins first contact. Backs get met in the backfield; screens and the quick game are the counter."
+   },
+   {
+    "a": "App State on passing downs",
+    "b": "Old Dominion pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "App State",
+    "why": "App State is No. 5 of 138 in passing-downs success (45%). Old Dominion ranks No. 72 on passing downs (29%). A clear edge, the kind that shapes a game plan. App State converts the long downs Old Dominion needs to win. A third-and-8 is not a stop here."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4870999",
+    "name": "Malachi Singleton",
+    "team": "App State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 83
+   },
+   {
+    "id": "5075538",
+    "name": "Cayden Sweatt",
+    "team": "App State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4921234",
+    "name": "Lance Williams",
+    "team": "App State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5156152",
+    "name": "Jaquari Lewis",
+    "team": "App State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 62
+   },
+   {
+    "id": "4879884",
+    "name": "Mario Easterly",
+    "team": "Old Dominion",
+    "pos": "S",
+    "group": "S",
+    "tier": "Sleeper",
+    "score": 59
+   }
+  ],
+  "projection": {
+   "winner": "APP",
+   "winProb": 0.5864732271233836,
+   "margin": 3.4957142857142856,
+   "home": 24,
+   "away": 21,
+   "confidence": "high",
+   "modelTotal": 45
+  },
+  "consensus": {
+   "median": 6,
+   "favorite": "APP",
+   "of": 5
+  }
+ }
+}

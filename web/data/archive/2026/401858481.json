@@ -1,0 +1,158 @@
+{
+ "gameId": "401858481",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.156Z",
+  "kickoff": "2026-10-10T16:00:00.000Z",
+  "away": "Indiana",
+  "home": "Nebraska",
+  "abbr": {
+   "home": "NEB",
+   "away": "IU"
+  },
+  "scoutScore": 91,
+  "whyWatch": "6 draft-eligible names on the radar, led by Riley Van Poppel (NEB DT).",
+  "pressurePoint": "Indiana offensive line vs Nebraska front. Indiana is No. 21 of 138 in line yards per carry (3.51). Nebraska ranks No. 73 at the line of scrimmage (2.90). A real edge, not a lock. Indiana should win first contact more often than not, which makes every down shorter. Watch yards before contact on Indiana's first ten carries.",
+  "edges": [
+   {
+    "a": "Indiana offensive line",
+    "b": "Nebraska front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Indiana",
+    "why": "Indiana is No. 21 of 138 in line yards per carry (3.51). Nebraska ranks No. 73 at the line of scrimmage (2.90). A real edge, not a lock. Indiana should win first contact more often than not, which makes every down shorter."
+   },
+   {
+    "a": "Nebraska deep passing",
+    "b": "Indiana secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 42 of 138 in pass explosiveness (1.66). Indiana ranks No. 89 at limiting explosive passes (1.60). A real edge, not a lock. Nebraska has the deep ball available. Watch whether Indiana rolls a safety over after the first one."
+   },
+   {
+    "a": "Nebraska on passing downs",
+    "b": "Indiana pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 4 of 138 in passing-downs success (45%). Indiana ranks No. 40 on passing downs (25%). A real edge, not a lock. Nebraska converts the long downs Indiana needs to win. A third-and-8 is not a stop here."
+   },
+   {
+    "a": "Nebraska run game",
+    "b": "Indiana run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 29 in rush success rate (49%) and Indiana is No. 4 against the run (26%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079639",
+    "name": "Williams Nwaneri",
+    "team": "Nebraska",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 84
+   },
+   {
+    "id": "4954452",
+    "name": "Riley Van Poppel",
+    "team": "Nebraska",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "5290565",
+    "name": "Jamal Rule",
+    "team": "Nebraska",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 77
+   },
+   {
+    "id": "4685401",
+    "name": "Josh Hoover",
+    "team": "Indiana",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "5079600",
+    "name": "Nick Marsh",
+    "team": "Indiana",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4685276",
+    "name": "Joe Brunner",
+    "team": "Indiana",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4685519",
+    "name": "Elijah Pritchett",
+    "team": "Nebraska",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5083370",
+    "name": "Jacory Barney Jr.",
+    "team": "Nebraska",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5210001",
+    "name": "Byron Baldwin Jr.",
+    "team": "Indiana",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 66
+   }
+  ],
+  "spread": {
+   "team": "IU",
+   "line": -8.5
+  },
+  "total": 50.5,
+  "projection": {
+   "winner": "IU",
+   "winProb": 0.750474075366246,
+   "margin": 10.815714285714286,
+   "home": 20,
+   "away": 31,
+   "modelSide": "IU",
+   "confidence": "high",
+   "modelTotal": 61.5,
+   "totalLean": "over"
+  },
+  "consensus": {
+   "median": -7.5,
+   "favorite": "IU",
+   "side": "NEB",
+   "sideCount": 3,
+   "of": 5
+  }
+ }
+}

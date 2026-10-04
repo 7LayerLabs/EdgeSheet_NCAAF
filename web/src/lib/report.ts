@@ -300,6 +300,18 @@ export interface CachedReport {
   report?: Report;
   failed?: { reasons: string[] };
   factCount: number;
+  /** Jev soft gate (verifyReport): sentences the judgment model could not confirm against the packet. Absent when Jev is off. */
+  flags?: ReportFlag[];
+  /** How many sentences Jev checked, when it ran. */
+  verified?: { sentences: number; model: string; ms: number };
+  /** The packet facts the report was written from, so the soft gate can be re-run offline (scripts/jev-check.mts). */
+  evidence?: string[];
+}
+
+export interface ReportFlag {
+  sentence: string;
+  /** Jev's probability that the sentence is fully supported by the evidence packet. */
+  supported: number;
 }
 
 const DIR = path.join(process.cwd(), "data", "ai", "reports");
@@ -361,6 +373,13 @@ export async function generateReport(game: Game, opts: { force?: boolean } = {})
     attemptLog.push(violations);
     if (!violations.length) {
       const out: CachedReport = { gameId: game.id, season, generatedAt: new Date().toISOString(), provider, model, pregame: packet.pregame, evidenceAsOf: packet.evidenceAsOf, attempts, attemptLog, words: wordCount(res.data), usage, report: res.data, factCount: packet.facts.length };
+      // Soft gate: Jev reads every sentence against the packet. Flags are shown, never block publication.
+      out.evidence = packet.facts.map((f) => f.text);
+      const v = await verifyReport(res.data, packet, game.id);
+      if (v) {
+        out.flags = v.flags;
+        out.verified = v.verified;
+      }
       writeReport(out);
       return out;
     }
@@ -370,4 +389,72 @@ export async function generateReport(game: Game, opts: { force?: boolean } = {})
   const out: CachedReport = { gameId: game.id, season, generatedAt: new Date().toISOString(), provider, model, pregame: packet.pregame, evidenceAsOf: packet.evidenceAsOf, attempts, attemptLog, usage, failed: { reasons: lastViolations }, factCount: packet.facts.length };
   writeReport(out);
   return out;
+}
+
+/* ------------------------------------------------------ Jev soft gate */
+
+import { batchNouls, jevAvailable } from "./jev";
+
+/** A sentence is flagged when Jev's "fully supported" probability is under this. */
+export const REPORT_FLAG_MAX = 0.5;
+
+/** Report body split into sentences (headline, titles and the card line included). */
+export function reportSentences(r: Report): string[] {
+  const out: string[] = [];
+  for (const block of [r.headline, r.openingParagraph, ...r.sections.flatMap((s) => [s.title, ...s.paragraphs]), r.oneLineForCard]) {
+    for (const s of splitSentences(block)) {
+      const t = s.trim();
+      if (t.length >= 12) out.push(t);
+    }
+  }
+  return [...new Set(out)];
+}
+
+/** Sentence split that does not break on "No. 3", "vs.", "Jr.", "St.", or initials like "T.J." */
+const NO_SPLIT_BEFORE = /(?:\b(?:No|vs|Jr|Sr|St|Mr|Dr|Mt|Ft|approx|avg|lb|lbs|yds|pts)|\b[A-Z]|\b[A-Z]\.[A-Z])\.$/;
+export function splitSentences(text: string): string[] {
+  const out: string[] = [];
+  let cur = "";
+  const parts = text.split(/(?<=[.!?])\s+(?=[A-Z0-9"'(])/);
+  for (const p of parts) {
+    cur = cur ? `${cur} ${p}` : p;
+    if (NO_SPLIT_BEFORE.test(cur)) continue;
+    out.push(cur);
+    cur = "";
+  }
+  if (cur) out.push(cur);
+  return out;
+}
+
+/**
+ * Second pass after the regex validator: one Jev request, one Noul per sentence, state = the whole
+ * evidence packet. Returns the flagged sentences (probability under REPORT_FLAG_MAX) or undefined when
+ * Jev is off or the call failed. Never throws.
+ */
+export async function verifyReport(r: Report, packet: Packet, ref?: string): Promise<{ flags: ReportFlag[]; verified: { sentences: number; model: string; ms: number } } | undefined> {
+  if (!jevAvailable()) return undefined;
+  const sentences = reportSentences(r);
+  if (!sentences.length) return undefined;
+  const started = Date.now();
+  try {
+    const rows = await batchNouls(
+      sentences.map((sentence) => ({ sentence })),
+      {
+        supported: {
+          q: "Is ITEM.sentence fully supported by `evidence`? Every fact, number, name, and comparison in the sentence must appear in or follow directly from `evidence`. A general framing sentence with no checkable claim counts as supported.",
+          yes: "Everything the sentence asserts is stated in the evidence or follows directly from it.",
+          no: "The sentence adds a fact, number, name, cause, or comparison that the evidence does not state, or it contradicts the evidence.",
+        },
+      },
+      { shared: { evidence: packet.facts.map((f) => f.text).join("\n") }, purpose: "report-verify", ref, timeoutMs: 8000, chunk: 60 },
+    );
+    if (!rows) return undefined;
+    const flags: ReportFlag[] = [];
+    rows.forEach((row, i) => {
+      if (row.supported < REPORT_FLAG_MAX) flags.push({ sentence: sentences[i], supported: Math.round(row.supported * 100) / 100 });
+    });
+    return { flags, verified: { sentences: sentences.length, model: "jev", ms: Date.now() - started } };
+  } catch {
+    return undefined;
+  }
 }

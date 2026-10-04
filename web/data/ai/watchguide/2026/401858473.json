@@ -1,0 +1,103 @@
+{
+ "gameId": "401858473",
+ "season": 2026,
+ "generatedAt": "2026-10-04T01:28:37.652Z",
+ "provider": "anthropic",
+ "model": "claude-sonnet-5",
+ "ranker": "jev",
+ "status": "final",
+ "evidenceVersion": "35fbd757456b",
+ "candidateCount": 16,
+ "top": [
+  {
+   "id": "POSU1",
+   "kind": "player",
+   "title": "Julian Sayin (Ohio State QB, radar 95)",
+   "jev": 2.76,
+   "playerIds": [
+    "5079712"
+   ]
+  },
+  {
+   "id": "POSU2",
+   "kind": "player",
+   "title": "Jeremiah Smith (Ohio State WR, radar 94)",
+   "jev": 2.66,
+   "playerIds": [
+    "5079720"
+   ]
+  },
+  {
+   "id": "E1",
+   "kind": "edge",
+   "title": "Ohio State deep passing vs Iowa secondary (clear offense edge)",
+   "jev": 2.4,
+   "playerIds": []
+  },
+  {
+   "id": "S3",
+   "kind": "situation",
+   "title": "thirdLongConv situation, Ohio State offense vs Iowa defense",
+   "jev": 2.12,
+   "playerIds": []
+  },
+  {
+   "id": "E3",
+   "kind": "edge",
+   "title": "Ohio State run game vs Iowa run defense (real defense edge)",
+   "jev": 2.04,
+   "playerIds": []
+  }
+ ],
+ "attempts": 1,
+ "attemptLog": [
+  []
+ ],
+ "usage": {
+  "inputTokens": 3262,
+  "outputTokens": 865,
+  "cacheReadTokens": 0,
+  "costUsd": 0.015174
+ },
+ "guide": {
+  "headline": "Sayin and Smith shredded Iowa through the air",
+  "hook": "Ohio State's top-tier quarterback and the nation's most explosive young receiver turned Iowa's banged-up pass defense into a track meet.",
+  "items": [
+   {
+    "title": "Sayin picks apart the deep shell",
+    "what": "Julian Sayin finished 20 of 27 for 324 yards and three touchdowns, building on a season line of 1206 yards, 10 touchdowns, and just 1 interception at 10.5 yards an attempt. Ohio State ranks top 2 percent of FBS quarterbacks in that profile, and against Iowa he looked every bit of it, throwing with rhythm and getting the ball outside the numbers in stride.",
+    "when": "Watch every first-down dropback in the first half.",
+    "who": "Julian Sayin",
+    "whoPlayerId": "5079712",
+    "factIds": [
+     "POSU1b",
+     "POSU1s",
+     "POSU1e1"
+    ]
+   },
+   {
+    "title": "Smith wins over the top again",
+    "what": "Jeremiah Smith caught 11 passes for 206 yards and two touchdowns in this game, pushing his season totals to 33 catches, 617 yards, and 7 touchdowns at 18.7 yards a reception, top 1 percent of FBS receivers. Ohio State came in ranked No. 61 of 138 in pass explosiveness while Iowa ranked No. 122 of 138 at stopping it, a 44 percentile point gap, and Smith is exactly how that gap gets exploited.",
+    "when": "Watch the first deep shot of the game and whether Iowa rolls a safety over after it.",
+    "who": "Jeremiah Smith",
+    "whoPlayerId": "5079720",
+    "factIds": [
+     "POSU2b",
+     "POSU2s",
+     "E1",
+     "E1e"
+    ]
+   },
+   {
+    "title": "Third-and-long was no problem",
+    "what": "Ohio State throws on 85 percent of third-and-long situations, 17 of 20 snaps, and converts 45 percent of the time, No. 6 of 133 nationally. Iowa had been solid there, allowing just a 19 percent conversion rate, No. 39 of 136, but Sayin's efficiency and Smith's catch radius made those down-and-distance numbers look irrelevant on replay.",
+    "when": "Watch any third-and-7-or-more snap in the second and third quarters.",
+    "who": "Ohio State offensive line",
+    "factIds": [
+     "S3"
+    ]
+   }
+  ],
+  "cardLine": "Julian Sayin threw for 324 yards and three scores while Jeremiah Smith went for 206 yards and two touchdowns against Iowa's exposed secondary."
+ }
+}

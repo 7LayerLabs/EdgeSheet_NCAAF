@@ -1,0 +1,131 @@
+{
+ "gameId": "401858482",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.161Z",
+  "kickoff": "2026-10-10T16:30:00.000Z",
+  "away": "Ball State",
+  "home": "Northwestern",
+  "abbr": {
+   "home": "NU",
+   "away": "BALL"
+  },
+  "scoutScore": 65,
+  "whyWatch": "Aidan Chiles (NU QB, Sr) is a top-of-the-radar name: 900 pass yds, 6 TD, 0 INT, 10.1 Y/A.",
+  "pressurePoint": "Ball State on passing downs vs Northwestern pressure. Northwestern is No. 35 of 138 on passing downs (25%). Ball State ranks No. 113 in passing-downs success (25%). This is not a lean. It is a mismatch, and a prominent one. Northwestern gets off the field on long downs. Early-down efficiency is everything for Ball State. Watch Ball State on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "Northwestern on passing downs",
+    "b": "Ball State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Northwestern",
+    "why": "Northwestern is No. 21 of 138 in passing-downs success (38%). Ball State ranks No. 124 on passing downs (35%). This is not a lean. It is a mismatch, and a prominent one. Northwestern converts the long downs Ball State needs to win. A third-and-8 is not a stop here."
+   },
+   {
+    "a": "Ball State on passing downs",
+    "b": "Northwestern pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Ball State",
+    "why": "Northwestern is No. 35 of 138 on passing downs (25%). Ball State ranks No. 113 in passing-downs success (25%). This is not a lean. It is a mismatch, and a prominent one. Northwestern gets off the field on long downs. Early-down efficiency is everything for Ball State."
+   },
+   {
+    "a": "Ball State deep passing",
+    "b": "Northwestern secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Ball State",
+    "why": "Northwestern is No. 15 of 138 at limiting explosive passes (1.32). Ball State ranks No. 55 in pass explosiveness (1.60). A real edge, not a lock. Northwestern keeps the lid on. Ball State should expect to drive the long way."
+   },
+   {
+    "a": "Northwestern run game",
+    "b": "Ball State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Northwestern",
+    "why": "Northwestern is No. 51 of 138 in rush success rate (47%). Ball State ranks No. 85 against the run (42%). A real edge, not a lock. Northwestern should stay on schedule on the ground, which keeps third downs short and the clock moving."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5075805",
+    "name": "Aidan Chiles",
+    "team": "Northwestern",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "4685448",
+    "name": "Kobie McKinzie",
+    "team": "Northwestern",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "5078244",
+    "name": "Caleb Komolafe",
+    "team": "Northwestern",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4558733",
+    "name": "Chris Hood",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4356017",
+    "name": "Luke Dalton",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5078424",
+    "name": "Misael Sandoval",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5328488",
+    "name": "Luke Dehnicke",
+    "team": "Northwestern",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Future",
+    "score": 63
+   }
+  ],
+  "projection": {
+   "winner": "NU",
+   "winProb": 0.9567782878109126,
+   "margin": 27.431428571428572,
+   "home": 44,
+   "away": 18,
+   "confidence": "high",
+   "modelTotal": 61.5
+  },
+  "consensus": {
+   "median": 28.9,
+   "favorite": "NU",
+   "of": 5
+  }
+ }
+}

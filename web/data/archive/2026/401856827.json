@@ -1,0 +1,140 @@
+{
+ "gameId": "401856827",
+ "season": 2026,
+ "week": 6,
+ "pregame": {
+  "capturedAt": "2026-10-04T01:24:31.184Z",
+  "kickoff": "2026-10-11T02:15:00.000Z",
+  "away": "Kansas",
+  "home": "Utah",
+  "abbr": {
+   "home": "UTAH",
+   "away": "KU"
+  },
+  "scoutScore": 73,
+  "whyWatch": "Wayshawn Parker (UTAH RB, Jr) is a top-of-the-radar name: 328 rush yds on 50 carries, 5 TD, 154 rec yds.",
+  "pressurePoint": "Kansas deep passing vs Utah secondary. Kansas is No. 9 of 138 in pass explosiveness (1.88). Utah ranks No. 92 at limiting explosive passes (1.61). This is not a lean. It is a mismatch, and a prominent one. Utah does not keep the lid on. Kansas will take shots, and the market total may be underpriced if they land. Watch the first deep shot. If it connects, Utah changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "Kansas deep passing",
+    "b": "Utah secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Kansas",
+    "why": "Kansas is No. 9 of 138 in pass explosiveness (1.88). Utah ranks No. 92 at limiting explosive passes (1.61). This is not a lean. It is a mismatch, and a prominent one. Utah does not keep the lid on. Kansas will take shots, and the market total may be underpriced if they land."
+   },
+   {
+    "a": "Kansas offensive line",
+    "b": "Utah front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Kansas",
+    "why": "Kansas is No. 5 of 138 in line yards per carry (3.74). Utah ranks No. 46 at the line of scrimmage (2.63). A real edge, not a lock. Kansas should win first contact more often than not, which makes every down shorter."
+   },
+   {
+    "a": "Utah deep passing",
+    "b": "Kansas secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Utah",
+    "why": "Utah is No. 78 of 138 in pass explosiveness (1.52). Kansas ranks No. 112 at limiting explosive passes (1.70). A real edge, not a lock. Utah has the deep ball available. Watch whether Kansas rolls a safety over after the first one."
+   },
+   {
+    "a": "Utah run game",
+    "b": "Kansas run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Utah",
+    "why": "Kansas is No. 2 of 138 against the run (26%). Utah ranks No. 32 in rush success rate (49%). A real edge, not a lock. Utah will find the run hard going. Expect more second-and-long than usual."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5173431",
+    "name": "Wayshawn Parker",
+    "team": "Utah",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 81
+   },
+   {
+    "id": "4918414",
+    "name": "Dylan Edwards",
+    "team": "Kansas",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "4870775",
+    "name": "Amir Herring",
+    "team": "Kansas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5079464",
+    "name": "Isaiah Garcia",
+    "team": "Utah",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5167750",
+    "name": "Karson Kaufusi",
+    "team": "Utah",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Future",
+    "score": 66
+   },
+   {
+    "id": "5079346",
+    "name": "Dakyus Brinkley",
+    "team": "Kansas",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 64
+   },
+   {
+    "id": "4900351",
+    "name": "Noah Bennee",
+    "team": "Utah",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 64
+   },
+   {
+    "id": "4921453",
+    "name": "Brandon Solis",
+    "team": "Kansas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   }
+  ],
+  "projection": {
+   "winner": "UTAH",
+   "winProb": 0.8568244672932438,
+   "margin": 17.058571428571426,
+   "home": 34,
+   "away": 18,
+   "confidence": "high",
+   "modelTotal": 51.5
+  },
+  "consensus": {
+   "median": 21.1,
+   "favorite": "UTAH",
+   "of": 5
+  }
+ }
+}

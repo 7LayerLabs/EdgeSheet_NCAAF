@@ -16,6 +16,8 @@ export default async function FeedPage({ searchParams }: { searchParams: Promise
   const sp = await searchParams;
   const raw = sp.team;
   const teams = [...new Set((Array.isArray(raw) ? raw : raw ? [raw] : []).map((t) => t.trim()).filter(Boolean))].slice(0, MAX_TEAMS);
+  const onlyAvailability = sp.only === "availability";
+  const teamQs = teams.map((t) => `team=${encodeURIComponent(t)}`).join("&");
 
   const players: FeedPlayer[] = [];
   for (const t of teams) {
@@ -52,8 +54,13 @@ export default async function FeedPage({ searchParams }: { searchParams: Promise
               </Link>
             ))}
           </div>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="eyebrow">Filter</span>
+            <Link href={`/feed?${teamQs}`} className="chip" aria-pressed={!onlyAvailability}>All posts</Link>
+            <Link href={`/feed?${teamQs}&only=availability`} className="chip" aria-pressed={onlyAvailability}>Injury and availability only</Link>
+          </div>
           <Suspense fallback={<BeatFeedFallback />}>
-            <BeatFeed schools={teams} players={players} />
+            <BeatFeed schools={teams} players={players} onlyAvailability={onlyAvailability} />
           </Suspense>
         </section>
       )}

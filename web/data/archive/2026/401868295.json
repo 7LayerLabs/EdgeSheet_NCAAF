@@ -49,5 +49,46 @@
    "modelSide": "JKST",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 7,
+   "modelSideCovered": false
+  },
+  "capturedAt": "2026-10-04T01:01:54.786Z",
+  "score": {
+   "home": 31,
+   "away": 28
+  },
+  "excitement": 7.0371954472625875,
+  "spreadResult": "underdog covered",
+  "totalResult": "over",
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5227403",
+    "name": "Nate Blount IV",
+    "team": "Jackson State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 58,
+    "verdict": "showed up",
+    "line": "18 car, 88 yds, 0 TD"
+   },
+   {
+    "id": "4806381",
+    "name": "Jarel Williams",
+    "team": "Alabama A&M",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Sleeper",
+    "score": 55,
+    "verdict": "showed up",
+    "line": "3 rec, 46 yds, 1 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }
