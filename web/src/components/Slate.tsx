@@ -12,15 +12,22 @@ import { flipScore } from "@/lib/live";
 type Quick = "All" | "Live" | "Flip to" | "Upcoming" | "Finished" | "Top 25" | "Top Prospects" | "Hidden Gems" | "Watchlist" | "Late Night Radar";
 const QUICK: Quick[] = ["All", "Live", "Flip to", "Upcoming", "Finished", "Top 25", "Top Prospects", "Hidden Gems", "Late Night Radar", "Watchlist"];
 
+const DIVS: Division[] = ["FBS", "FCS", "DII", "DIII"];
+const DEFAULT_DIVS: Division[] = ["FBS", "FCS"]; // Division I by default; lower divisions are a toggle
+
+type Group = "top25" | "conference" | "kickoff";
+/** Conference display order: the four power leagues, then the rest alphabetically, FBS before FCS. */
+const POWER = ["SEC", "Big Ten", "Big 12", "ACC"];
 const bestRank = (g: Game) => Math.min(g.home.rank ?? 99, g.away.rank ?? 99);
-const DIVS: Division[] = ["FBS", "FCS", "DII", "DIII", "NAIA"];
+const confOf = (g: Game) => (g.home.conference || g.away.conference || "Other").replace(/^Mid-American$/, "MAC").replace(/^American Athletic$/, "American");
 const WINDOWS: Window[] = ["Noon", "Afternoon", "Prime time", "Late night"];
 
 export function Slate({ games }: { games: Game[] }) {
   const [quick, setQuick] = useState<Quick>("All");
-  const [divs, setDivs] = useState<Set<Division>>(new Set(DIVS));
+  const [divs, setDivs] = useState<Set<Division>>(new Set(DEFAULT_DIVS));
   const [weatherOnly, setWeatherOnly] = useState(false);
   const [sort, setSort] = useState<"kickoff" | "score" | "rank">("kickoff");
+  const [group, setGroup] = useState<Group>("top25");
   const [q, setQ] = useState("");
   const { list } = useWatchlist();
 
@@ -68,17 +75,50 @@ export function Slate({ games }: { games: Game[] }) {
     return out;
   }, [games, quick, divs, weatherOnly, sort, list, q]);
 
-  const grouped = useMemo(() => {
+  const grouped = useMemo((): (readonly [string, Game[]])[] => {
     if (quick === "Flip to") return [["Flip to, best first", filtered] as const];
-    if (sort === "score") return [["By Scout Score", filtered] as const];
-    if (sort === "rank") return [["By rank", filtered] as const];
-    return WINDOWS.map((w) => [w, filtered.filter((g) => kickoffWindow(g.kickoff) === w)] as const).filter(([, gs]) => gs.length);
-  }, [filtered, sort, quick]);
+    const byKick = (a: Game, b: Game) => a.kickoff.localeCompare(b.kickoff) || scoutScore(b.scoreComponents) - scoutScore(a.scoreComponents);
+    const byScore = (a: Game, b: Game) => scoutScore(b.scoreComponents) - scoutScore(a.scoreComponents);
+    const within = sort === "score" ? byScore : byKick;
+
+    if (group === "top25") {
+      const both = filtered.filter((g) => g.home.rank && g.away.rank).sort((a, b) => bestRank(a) - bestRank(b) || byKick(a, b));
+      const one = filtered.filter((g) => (g.home.rank || g.away.rank) && !(g.home.rank && g.away.rank)).sort((a, b) => bestRank(a) - bestRank(b) || byKick(a, b));
+      const rest = filtered.filter((g) => !g.home.rank && !g.away.rank);
+      const out: (readonly [string, Game[]])[] = [];
+      if (both.length) out.push(["Ranked vs ranked", both] as const);
+      if (one.length) out.push(["Top 25 in action", one] as const);
+      for (const d of DIVS) {
+        const gs = rest.filter((g) => g.division === d).sort(within);
+        if (gs.length) out.push([d === "FBS" ? "Rest of FBS" : d === "FCS" ? "FCS" : d, gs] as const);
+      }
+      return out;
+    }
+
+    if (group === "conference") {
+      const m = new Map<string, Game[]>();
+      for (const g of filtered) m.set(confOf(g), [...(m.get(confOf(g)) ?? []), g]);
+      const divRank = (c: string) => {
+        const g = m.get(c)![0];
+        return g.division === "FBS" ? 0 : g.division === "FCS" ? 1 : 2;
+      };
+      const order = [...m.keys()].sort((a, b) => {
+        const pa = POWER.indexOf(a);
+        const pb = POWER.indexOf(b);
+        if (pa !== -1 || pb !== -1) return (pa === -1 ? 99 : pa) - (pb === -1 ? 99 : pb);
+        return divRank(a) - divRank(b) || a.localeCompare(b);
+      });
+      return order.map((c) => [c, m.get(c)!.sort(within)] as const);
+    }
+
+    if (sort === "score") return [["By Scout Score", [...filtered].sort(byScore)] as const];
+    return WINDOWS.map((w) => [w, filtered.filter((g) => kickoffWindow(g.kickoff) === w).sort(byKick)] as const).filter(([, gs]) => gs.length);
+  }, [filtered, sort, quick, group]);
 
   const toggleDiv = (d: Division) =>
     setDivs((prev) => {
       const next = new Set(prev);
-      if (next.has(d) && next.size === 1) return new Set(DIVS); // never allow zero
+      if (next.has(d) && next.size === 1) return new Set(DEFAULT_DIVS); // never allow zero
       if (next.has(d)) next.delete(d); else next.add(d);
       return next;
     });
@@ -130,12 +170,26 @@ export function Slate({ games }: { games: Game[] }) {
         >
           △ Weather risk
         </button>
-        <span className="ml-auto flex items-center gap-1 text-[11px] text-chalk-3">
-          Sort
-          <button type="button" className="chip !py-1 !text-[11px]" aria-pressed={sort === "kickoff"} onClick={() => setSort("kickoff")}>Kickoff</button>
-          <button type="button" className="chip !py-1 !text-[11px]" aria-pressed={sort === "score"} onClick={() => setSort("score")}>Score</button>
-          <button type="button" className="chip !py-1 !text-[11px]" aria-pressed={sort === "rank"} onClick={() => setSort("rank")}>Rank</button>
+      </div>
+
+      {/* Group by + order */}
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <span className="flex items-center gap-2">
+          <span className="eyebrow">Group by</span>
+          <span className="seg">
+            <button type="button" aria-pressed={group === "top25"} onClick={() => setGroup("top25")}>Top 25</button>
+            <button type="button" aria-pressed={group === "conference"} onClick={() => setGroup("conference")}>Conference</button>
+            <button type="button" aria-pressed={group === "kickoff"} onClick={() => setGroup("kickoff")}>Kickoff</button>
+          </span>
         </span>
+        <span className="flex items-center gap-2">
+          <span className="eyebrow">Order</span>
+          <span className="seg">
+            <button type="button" aria-pressed={sort !== "score"} onClick={() => setSort("kickoff")}>Kickoff</button>
+            <button type="button" aria-pressed={sort === "score"} onClick={() => setSort("score")}>Scout Score</button>
+          </span>
+        </span>
+        <span className="text-xs text-chalk-3">{filtered.length} games shown</span>
       </div>
 
       {/* Groups */}
