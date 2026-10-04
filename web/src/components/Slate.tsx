@@ -82,8 +82,10 @@ export function Slate({ games }: { games: Game[] }) {
     const within = sort === "score" ? byScore : byKick;
 
     if (group === "top25") {
-      const both = filtered.filter((g) => g.home.rank && g.away.rank).sort((a, b) => bestRank(a) - bestRank(b) || byKick(a, b));
-      const one = filtered.filter((g) => (g.home.rank || g.away.rank) && !(g.home.rank && g.away.rank)).sort((a, b) => bestRank(a) - bestRank(b) || byKick(a, b));
+      // AP Top 25 (FBS) ahead of the FCS coaches poll, then by best rank.
+      const divFirst = (a: Game, b: Game) => (a.division === "FBS" ? 0 : 1) - (b.division === "FBS" ? 0 : 1);
+      const both = filtered.filter((g) => g.home.rank && g.away.rank).sort((a, b) => divFirst(a, b) || bestRank(a) - bestRank(b) || byKick(a, b));
+      const one = filtered.filter((g) => (g.home.rank || g.away.rank) && !(g.home.rank && g.away.rank)).sort((a, b) => divFirst(a, b) || bestRank(a) - bestRank(b) || byKick(a, b));
       const rest = filtered.filter((g) => !g.home.rank && !g.away.rank);
       const out: (readonly [string, Game[]])[] = [];
       if (both.length) out.push(["Ranked vs ranked", both] as const);
