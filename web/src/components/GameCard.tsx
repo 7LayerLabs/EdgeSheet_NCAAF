@@ -95,7 +95,12 @@ function TeamLine({ team, score }: { team: Game["home"]; score?: number }) {
         <span className="inline-block h-3 w-1 shrink-0 rounded-sm" style={{ background: team.color }} aria-hidden />
       )}
       <span className="display truncate text-lg font-semibold text-chalk transition-colors group-hover:text-flag">
-        {team.rank && <span className="mr-1 text-sm text-flag">{team.rank}</span>}
+        {team.rank && (
+          <span className="mr-1 text-sm text-flag" title={team.rankPoll}>
+            {team.rankPoll && !/^AP/i.test(team.rankPoll) ? <span className="mono mr-0.5 text-[9px] uppercase tracking-wider text-chalk-3">{team.rankPoll.includes("FCS") ? "FCS" : team.rankPoll.includes("Division II") ? "DII" : team.rankPoll.includes("Division III") ? "DIII" : ""}</span> : null}
+            {team.rank}
+          </span>
+        )}
         <span className="sm:hidden">{team.short.length > 14 ? team.abbr : team.short}</span>
         <span className="hidden sm:inline">{team.short}</span>
       </span>

@@ -82,17 +82,19 @@ export function Slate({ games }: { games: Game[] }) {
     const within = sort === "score" ? byScore : byKick;
 
     if (group === "top25") {
-      // AP Top 25 (FBS) ahead of the FCS coaches poll, then by best rank.
-      const divFirst = (a: Game, b: Game) => (a.division === "FBS" ? 0 : 1) - (b.division === "FBS" ? 0 : 1);
-      const both = filtered.filter((g) => g.home.rank && g.away.rank).sort((a, b) => divFirst(a, b) || bestRank(a) - bestRank(b) || byKick(a, b));
-      const one = filtered.filter((g) => (g.home.rank || g.away.rank) && !(g.home.rank && g.away.rank)).sort((a, b) => divFirst(a, b) || bestRank(a) - bestRank(b) || byKick(a, b));
-      const rest = filtered.filter((g) => !g.home.rank && !g.away.rank);
+      // AP Top 25 sections for FBS, then the rest of FBS, then FCS Top 25 sections (coaches poll), then the rest of FCS.
+      const byRank = (a: Game, b: Game) => bestRank(a) - bestRank(b) || byKick(a, b);
       const out: (readonly [string, Game[]])[] = [];
-      if (both.length) out.push(["Ranked vs ranked", both] as const);
-      if (one.length) out.push(["Top 25 in action", one] as const);
       for (const d of DIVS) {
-        const gs = rest.filter((g) => g.division === d).sort(within);
-        if (gs.length) out.push([d === "FBS" ? "Rest of FBS" : d === "FCS" ? "FCS" : d, gs] as const);
+        const pool = filtered.filter((g) => g.division === d);
+        if (!pool.length) continue;
+        const label = d === "FBS" ? "AP Top 25" : "FCS Top 25";
+        const both = pool.filter((g) => g.home.rank && g.away.rank).sort(byRank);
+        const one = pool.filter((g) => (g.home.rank || g.away.rank) && !(g.home.rank && g.away.rank)).sort(byRank);
+        const rest = pool.filter((g) => !g.home.rank && !g.away.rank).sort(within);
+        if (both.length) out.push([`${label}: ranked vs ranked`, both] as const);
+        if (one.length) out.push([`${label} in action`, one] as const);
+        if (rest.length) out.push([d === "FBS" ? "Rest of FBS" : "Rest of FCS", rest] as const);
       }
       return out;
     }

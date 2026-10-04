@@ -70,7 +70,7 @@ function PollTable({ poll, byId, open = false }: { poll: Poll; byId: Map<string,
               <span className="col-span-4 sm:col-span-1 sm:text-right">
                 {g && opp ? (
                   <Link href={`/game/${g.id}`} className="mono text-xs text-sky hover:text-chalk">
-                    {atHome ? "vs" : "at"} {opp.rank ? `${opp.rank} ` : ""}{opp.short} · {kickoffTime(g.kickoff)} ET
+                    {atHome ? "vs" : "at"} {opp.rank ? `${opp.rankPoll && !/^AP/i.test(opp.rankPoll) ? "FCS " : ""}${opp.rank} ` : ""}{opp.short} · {kickoffTime(g.kickoff)} ET
                     {g.status === "final" && g.score && Number.isFinite(g.score.home) ? ` · Final ${atHome ? g.score.home : g.score.away}-${atHome ? g.score.away : g.score.home}` : ""}
                     {g.status === "live" ? " · in progress" : ""}
                   </Link>

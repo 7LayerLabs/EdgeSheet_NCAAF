@@ -609,7 +609,12 @@ function TeamName({ t, score }: { t: Team; score?: number }) {
   return (
     <span className="inline-flex items-baseline gap-2">
       {t.logo && <Image src={t.logo} alt="" width={40} height={40} className="h-8 w-8 self-center object-contain sm:h-10 sm:w-10" unoptimized />}
-      {t.rank && <span className="text-2xl text-flag sm:text-3xl" title={t.rankPoll}>{t.rank}</span>}
+      {t.rank && (
+        <span className="text-2xl text-flag sm:text-3xl" title={t.rankPoll}>
+          {t.rankPoll && !/^AP/i.test(t.rankPoll) && <span className="mono mr-1 text-xs uppercase tracking-wider text-chalk-3">{t.rankPoll.includes("FCS") ? "FCS" : "poll"}</span>}
+          {t.rank}
+        </span>
+      )}
       <span style={{ color: "var(--chalk)" }}>{t.short}</span>
       {hasScore && <span className="text-flag">{score}</span>}
     </span>
