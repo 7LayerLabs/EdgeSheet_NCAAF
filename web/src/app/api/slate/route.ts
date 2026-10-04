@@ -14,6 +14,11 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const date = url.searchParams.get("date") ?? undefined;
   const slate = await getSlate(date);
+  // ?full=1 returns the whole Slate (every Game object, JSON-serializable). The Telegram bot reads this
+  // instead of rebuilding the slate in its own process, which was costing CFBD calls with no fetch cache.
+  if (url.searchParams.get("full") === "1") {
+    return NextResponse.json({ ...slate, cfbdQuota: cfbdQuotaStatus() }, { headers: { "Cache-Control": "no-store" } });
+  }
   const pick = (g: (typeof slate.games)[number]) => ({
     id: g.id,
     kickoff: g.kickoff,

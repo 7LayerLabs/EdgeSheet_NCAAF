@@ -34,8 +34,9 @@ export async function followedLogs(slate: Slate, players: PlanPlayer[]): Promise
   return out;
 }
 
-export async function getPlan(date?: string): Promise<{ plan: Plan; slate: Slate }> {
-  const slate = await getSlate(date);
+export async function getPlan(date?: string, prebuilt?: Slate): Promise<{ plan: Plan; slate: Slate }> {
+  // The Telegram bot passes a slate it fetched from the site's /api/slate?full=1, so this process makes no CFBD calls.
+  const slate = prebuilt ?? (await getSlate(date));
   const follows = readFollows();
   const players = followedPlayers(follows.players);
   const logs = await followedLogs(slate, players);

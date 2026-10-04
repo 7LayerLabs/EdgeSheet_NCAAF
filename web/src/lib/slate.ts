@@ -200,7 +200,7 @@ async function loadWeek(season: number, week: CfbdWeek, gamesOverride?: CfbdGame
     if (err instanceof CfbdQuotaError || cfbdQuotaExhausted()) return loadWeekFromEspn(season, week, gamesOverride);
     throw err;
   }
-  const [lines, media, teams, venues, records, rankings] = await Promise.all([
+  const [linesRaw, media, teams, venues, records, rankings] = await Promise.all([
     getLines(season, week.week, st).catch(() => [] as CfbdLineRow[]),
     getMedia(season, week.week, st).catch(() => [] as CfbdMedia[]),
     getTeams(season),
@@ -208,6 +208,14 @@ async function loadWeek(season: number, week: CfbdWeek, gamesOverride?: CfbdGame
     getRecords(season).catch(() => [] as CfbdRecord[]),
     getRankings(season, week.week, st).catch(() => [] as CfbdRankingWeek[]),
   ]);
+  // CFBD games may still be served from the fetch cache while the lines call fails on quota. Borrow ESPN's one-book lines then.
+  let lines = linesRaw;
+  if (!lines.length && (cfbdQuotaExhausted() || gameLists.flat().length)) {
+    try {
+      const e = await espnWeek(season, week);
+      if (e.lines.length) lines = e.lines;
+    } catch {}
+  }
   // Rankings are published for the week they apply to; fall back to the latest week available.
   const rankingWeek = rankings.find((r) => r.week === week.week) ?? [...rankings].sort((a, b) => b.week - a.week)[0];
   const games = gameLists.flat().filter((g) => !g.startTimeTBD || true);

@@ -70,6 +70,54 @@ const playerlog = await import("../src/lib/playerlog.ts");
 const planLib = await import("../src/lib/plan.ts");
 const planLoad = await import("../src/lib/plan-load.ts");
 
+/* ------------------------------------------------- slate from the site */
+/**
+ * The bot used to build the slate in its own process: no Next fetch cache,
+ * so every rebuild was nine CFBD calls, every 10 minutes, all week. Now it
+ * reads the running site's /api/slate?full=1 and /api/game?id= (same memos
+ * the pages use, zero extra CFBD calls). Building in-process is only the
+ * fallback when the site does not answer, and it warns every time so the
+ * logs show it.
+ */
+const SITE = digests.baseUrl();
+const SITE_TIMEOUT_MS = 45_000;
+let fallbackWarnedAt = 0;
+
+async function siteJson(pathname) {
+  const res = await fetch(`${SITE}${pathname}`, { headers: { Accept: "application/json", "User-Agent": "edgesheet-telegram-bot" }, signal: AbortSignal.timeout(SITE_TIMEOUT_MS) });
+  if (!res.ok) throw new Error(`${pathname} -> HTTP ${res.status}`);
+  return res.json();
+}
+
+function warnFallback(what, err) {
+  // Once a minute at most, so a long outage does not flood the log.
+  if (Date.now() - fallbackWarnedAt < 60_000) return;
+  fallbackWarnedAt = Date.now();
+  warn(`[site] ${what} not available from ${SITE} (${err?.message ?? err}); building in this process instead. This costs CFBD calls. Is pm2 "scout" up?`);
+}
+
+/** The slate for a date from the site; in-process build only when the site is down. */
+async function loadSlate(date) {
+  try {
+    const q = date ? `?date=${date}&full=1` : "?full=1";
+    return await siteJson(`/api/slate${q}`);
+  } catch (e) {
+    warnFallback("slate", e);
+    return slateLib.getSlate(date);
+  }
+}
+
+/** One built game from the site; in-process build only when the site is down. Resolves undefined when nobody can build it. */
+async function loadGame(id) {
+  try {
+    return await siteJson(`/api/game?id=${encodeURIComponent(id)}`);
+  } catch (e) {
+    if (/HTTP 404/.test(e?.message ?? "")) return undefined;
+    warnFallback(`game ${id}`, e);
+    return slateLib.getGame(id).catch(() => undefined);
+  }
+}
+
 const me = await tg.getMe().catch((e) => {
   warn(`Telegram rejected the token: ${e.message}`);
   process.exit(1);
@@ -145,13 +193,14 @@ function gradingWindow(games, now = Date.now()) {
  * team's game, one per 5 minutes. Cursors live in telegram-state.json
  * (liveCursor = last play sequence sent per game:player, scoreSeen = last score
  * sent per game) so a restart never resends. Live state comes from the ESPN
- * scoreboard (30s memo, no CFBD calls); the slate is rebuilt at most every 10 min.
+ * scoreboard (30s memo, no CFBD calls); the slate comes from the site's
+ * /api/slate at most every 10 min, so this loop never touches CFBD.
  */
 const ordinalQ = (n) => (n === 1 ? "1st" : n === 2 ? "2nd" : n === 3 ? "3rd" : n === 4 ? "4th" : n === 5 ? "OT" : `${n - 4}OT`);
 let liveSlate = { at: 0, slate: undefined };
 async function slateForLive(today) {
   if (!liveSlate.slate || liveSlate.slate.date !== today || Date.now() - liveSlate.at > 10 * 60_000) {
-    liveSlate = { at: Date.now(), slate: await slateLib.getSlate(today) };
+    liveSlate = { at: Date.now(), slate: await loadSlate(today) };
   }
   return liveSlate.slate;
 }
@@ -279,7 +328,7 @@ async function liveTick() {
 /* ----------------------------------------------------------- scheduled */
 
 async function morning(today) {
-  const slate = await slateLib.getSlate(today);
+  const slate = await loadSlate(today);
   state.lastSlateDate = today;
   writeState(state);
   if (slate.date !== today || !slate.games.some(isD1)) {
@@ -343,7 +392,7 @@ async function tick() {
     const { hour, minute, date: today, weekday } = etParts();
     const slateNeeded = (hour === 8 && minute < 10 && state.lastSlateDate !== today) || (hour === 7 && minute < 10 && state.lastStockDate !== today) || minute % 15 === 0 || minute % 10 === 0 || minute === 0;
     if (!slateNeeded) return;
-    const slate = await slateLib.getSlate(today);
+    const slate = await loadSlate(today);
     const todays = slate.date === today ? slate.games : [];
 
     if (hour === 8 && minute < 10 && state.lastSlateDate !== today) await morning(today);
@@ -377,20 +426,20 @@ async function handle(text, chatId) {
     case "stock":
       return reply(digests.stockDigest(movement.biggestMoves(5)));
     case "slate": {
-      const slate = await slateLib.getSlate(/^\d{4}-\d{2}-\d{2}$/.test(arg) ? arg : undefined);
+      const slate = await loadSlate(/^\d{4}-\d{2}-\d{2}$/.test(arg) ? arg : undefined);
       return reply(digests.morningSlate(slate));
     }
     case "leans": {
-      const slate = await slateLib.getSlate(/^\d{4}-\d{2}-\d{2}$/.test(arg) ? arg : undefined);
+      const slate = await loadSlate(/^\d{4}-\d{2}-\d{2}$/.test(arg) ? arg : undefined);
       return reply(digests.leansDigest(slate.games.filter(isD1), slate.date));
     }
     case "record": {
-      const slate = await slateLib.getSlate();
+      const slate = await loadSlate();
       return reply(digests.recordDigest(archive.listEntries(slate.season)));
     }
     case "radar": {
       if (!arg) return reply("Usage: /radar &lt;team&gt;, for example /radar LSU");
-      const slate = await slateLib.getSlate();
+      const slate = await loadSlate();
       let school = digests.resolveSchool(slate.weekGames, arg);
       if (!school) {
         const q = arg.toLowerCase();
@@ -403,14 +452,15 @@ async function handle(text, chatId) {
     }
     case "game": {
       if (!arg) return reply("Usage: /game &lt;team&gt;, for example /game Ohio State");
-      const slate = await slateLib.getSlate();
+      const slate = await loadSlate();
       const hit = digests.findTeamGames(slate.weekGames, arg)[0];
       if (!hit) return reply(`No game this week for "${tg.escapeHtml(arg)}".`);
-      const full = (await slateLib.getGame(hit.id).catch(() => undefined)) ?? hit;
+      const full = (await loadGame(hit.id)) ?? hit;
       return reply(digests.gameDigest(full));
     }
     case "plan": {
-      const { plan } = await planLoad.getPlan(/^\d{4}-\d{2}-\d{2}$/.test(arg) ? arg : undefined);
+      const planDate = /^\d{4}-\d{2}-\d{2}$/.test(arg) ? arg : undefined;
+      const { plan } = await planLoad.getPlan(planDate, await loadSlate(planDate));
       return reply(planLib.planText(plan, digests.baseUrl()));
     }
     default:
