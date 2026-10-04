@@ -176,13 +176,11 @@ export const REPORT_SCHEMA: Record<string, unknown> = {
     openingParagraph: { type: "string" },
     sections: {
       type: "array",
-      minItems: 2,
-      maxItems: 4,
       items: {
         type: "object",
         properties: {
           title: { type: "string" },
-          paragraphs: { type: "array", items: { type: "string" }, minItems: 1, maxItems: 3 },
+          paragraphs: { type: "array", items: { type: "string" } },
           factIds: { type: "array", items: { type: "string" }, description: "Ids of the packet facts this section rests on." },
         },
         required: ["title", "paragraphs", "factIds"],
