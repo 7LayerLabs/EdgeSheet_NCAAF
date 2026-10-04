@@ -67,6 +67,8 @@ export interface ToolRunResult {
 }
 
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || "claude-opus-5";
+// Ask the slate pushes 60k tokens of game data per question; Sonnet answers it well at a fraction of Opus's price.
+const ANTHROPIC_MODEL_SMALL = process.env.ANTHROPIC_MODEL_SMALL || "claude-sonnet-5";
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-5.4";
 const OPENAI_MODEL_SMALL = process.env.OPENAI_MODEL_SMALL || "gpt-5.4-mini";
 
@@ -114,7 +116,7 @@ function key(name: "ANTHROPIC_API_KEY" | "OPENAI_API_KEY"): string | undefined {
 
 /** Which provider will answer, or what key to add. Safe to call from server components. */
 export function llmInfo(opts: { small?: boolean } = {}): LlmInfo | Unavailable {
-  if (key("ANTHROPIC_API_KEY")) return { provider: "anthropic", model: ANTHROPIC_MODEL };
+  if (key("ANTHROPIC_API_KEY")) return { provider: "anthropic", model: opts.small ? ANTHROPIC_MODEL_SMALL : ANTHROPIC_MODEL };
   if (key("OPENAI_API_KEY")) return { provider: "openai", model: opts.small ? OPENAI_MODEL_SMALL : OPENAI_MODEL };
   return { unavailable: "add ANTHROPIC_API_KEY" };
 }
