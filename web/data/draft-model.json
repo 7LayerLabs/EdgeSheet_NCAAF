@@ -1,0 +1,266 @@
+{
+ "fittedAt": "2026-10-10T20:43:04.620Z",
+ "seasons": [
+  2022,
+  2023,
+  2024,
+  2025
+ ],
+ "lambda": 100,
+ "priorGames": 4,
+ "teamElo": true,
+ "weights": {
+  "b:LB": 0.07607,
+  "prod:LB": 0.06842,
+  "rk:LB": 0.05151,
+  "rt:LB": 0.0623,
+  "hz:LB": 0.00763,
+  "wz:LB": 0.00949,
+  "usage": 0.14244,
+  "senior": -0.06609,
+  "power": 0.03622,
+  "fcs": -0.02191,
+  "noRec": -0.04425,
+  "team": 0.08011,
+  "b:WR": 0.05863,
+  "prod:WR": 0.13134,
+  "rk:WR": 0.10026,
+  "rt:WR": 0.13918,
+  "hz:WR": 0.00891,
+  "wz:WR": 0.00367,
+  "b:QB": 0.03763,
+  "prod:QB": 0.13323,
+  "rk:QB": 0.08688,
+  "rt:QB": 0.1177,
+  "hz:QB": 0.00621,
+  "wz:QB": -0.00042,
+  "b:RB": 0.05246,
+  "prod:RB": 0.0525,
+  "rk:RB": 0.05596,
+  "rt:RB": 0.08973,
+  "hz:RB": 0.00134,
+  "wz:RB": 0.00313,
+  "b:OL": 0.11501,
+  "prod:OL": 0,
+  "rk:OL": 0.145,
+  "rt:OL": 0.20738,
+  "hz:OL": 0.00892,
+  "wz:OL": 0.02382,
+  "b:DL": 0.07687,
+  "prod:DL": 0.10538,
+  "rk:DL": 0.11369,
+  "rt:DL": 0.15786,
+  "hz:DL": 0.00961,
+  "wz:DL": 0.01268,
+  "b:CB": 0.07272,
+  "prod:CB": 0.11523,
+  "rk:CB": 0.04751,
+  "rt:CB": 0.08405,
+  "hz:CB": 0.00954,
+  "wz:CB": 0.00002,
+  "b:TE": 0.07834,
+  "prod:TE": 0.11922,
+  "rk:TE": 0.04101,
+  "rt:TE": 0.06863,
+  "hz:TE": 0.00987,
+  "wz:TE": 0.00457,
+  "b:S": 0.08177,
+  "prod:S": 0.0422,
+  "rk:S": 0.01401,
+  "rt:S": 0.0129,
+  "hz:S": 0.01148,
+  "wz:S": 0.00092,
+  "b:EDGE": 0.09688,
+  "prod:EDGE": 0.0979,
+  "rk:EDGE": 0.06069,
+  "rt:EDGE": 0.08799,
+  "hz:EDGE": 0.00835,
+  "wz:EDGE": 0.0189
+ },
+ "size": {
+  "QB": {
+   "hMean": 74.01559020044543,
+   "hSd": 1.8922424915469438,
+   "wMean": 207.3726362625139,
+   "wSd": 14.94683104163377
+  },
+  "RB": {
+   "hMean": 70.46975806451613,
+   "hSd": 1.8477051167112357,
+   "wMean": 204.37828725556304,
+   "wSd": 17.855069191967626
+  },
+  "WR": {
+   "hMean": 72.36869679109365,
+   "hSd": 2.453955103086065,
+   "wMean": 190.98096488349196,
+   "wSd": 15.51623063081331
+  },
+  "TE": {
+   "hMean": 75.86459087617668,
+   "hSd": 1.5792308010788472,
+   "wMean": 242.34490238611713,
+   "wSd": 13.663161028554162
+  },
+  "OL": {
+   "hMean": 76.12211920529802,
+   "hSd": 1.7298084174835744,
+   "wMean": 304.7788665254237,
+   "wSd": 18.797113724818747
+  },
+  "DL": {
+   "hMean": 74.59632425336396,
+   "hSd": 1.6342805428858913,
+   "wMean": 277.6079266295447,
+   "wSd": 27.90096514262125
+  },
+  "EDGE": {
+   "hMean": 75.08477237048666,
+   "hSd": 1.45769606489151,
+   "wMean": 250.5943396226415,
+   "wSd": 17.682828523813303
+  },
+  "LB": {
+   "hMean": 73.28035398230088,
+   "hSd": 1.5606210681258512,
+   "wMean": 225.08907026259757,
+   "wSd": 13.97699112557558
+  },
+  "CB": {
+   "hMean": 71.85640401581989,
+   "hSd": 1.7039053898147554,
+   "wMean": 189.50258751902587,
+   "wSd": 12.375534142510661
+  },
+  "S": {
+   "hMean": 72.1064039408867,
+   "hSd": 1.5884532732088428,
+   "wMean": 196.49655172413793,
+   "wSd": 11.575740544896291
+  }
+ },
+ "validation": {
+  "model": {
+   "per": {
+    "2022": {
+     "r1Recall": 50,
+     "r1In64": 59.1,
+     "top100Recall": 46.8,
+     "r1BandDraftedR1": 11,
+     "r1BandDraftedAtAll": 28,
+     "spearman": 0.365,
+     "r1Total": 22
+    },
+    "2023": {
+     "r1Recall": 36.7,
+     "r1In64": 50,
+     "top100Recall": 47.8,
+     "r1BandDraftedR1": 11,
+     "r1BandDraftedAtAll": 27,
+     "spearman": 0.446,
+     "r1Total": 30
+    },
+    "2024": {
+     "r1Recall": 38.7,
+     "r1In64": 71,
+     "top100Recall": 47.4,
+     "r1BandDraftedR1": 12,
+     "r1BandDraftedAtAll": 26,
+     "spearman": 0.393,
+     "r1Total": 31
+    },
+    "2025": {
+     "r1Recall": 38.7,
+     "r1In64": 51.6,
+     "top100Recall": 39.2,
+     "r1BandDraftedR1": 12,
+     "r1BandDraftedAtAll": 25,
+     "spearman": 0.315,
+     "r1Total": 31
+    }
+   },
+   "avg": {
+    "r1Recall": 41,
+    "r1In64": 57.9,
+    "top100Recall": 45.3,
+    "spearman": 0.38
+   }
+  },
+  "quota": {
+   "2022": {
+    "r1Recall": 50,
+    "r1In64": 59.1,
+    "top100Recall": 46.8,
+    "r1BandDraftedR1": 11,
+    "r1BandDraftedAtAll": 25,
+    "spearman": 0.386,
+    "r1Total": 22
+   },
+   "2023": {
+    "r1Recall": 36.7,
+    "r1In64": 46.7,
+    "top100Recall": 47.8,
+    "r1BandDraftedR1": 11,
+    "r1BandDraftedAtAll": 28,
+    "spearman": 0.42,
+    "r1Total": 30
+   },
+   "2024": {
+    "r1Recall": 45.2,
+    "r1In64": 64.5,
+    "top100Recall": 48.5,
+    "r1BandDraftedR1": 14,
+    "r1BandDraftedAtAll": 28,
+    "spearman": 0.395,
+    "r1Total": 31
+   },
+   "2025": {
+    "r1Recall": 38.7,
+    "r1In64": 61.3,
+    "top100Recall": 43.3,
+    "r1BandDraftedR1": 12,
+    "r1BandDraftedAtAll": 29,
+    "spearman": 0.332,
+    "r1Total": 31
+   }
+  },
+  "current": {
+   "2022": {
+    "r1Recall": 27.3,
+    "r1In64": 31.8,
+    "top100Recall": 20.8,
+    "r1BandDraftedR1": 6,
+    "r1BandDraftedAtAll": 10,
+    "spearman": 0.186,
+    "r1Total": 22
+   },
+   "2023": {
+    "r1Recall": 10,
+    "r1In64": 23.3,
+    "top100Recall": 22.8,
+    "r1BandDraftedR1": 3,
+    "r1BandDraftedAtAll": 7,
+    "spearman": 0.354,
+    "r1Total": 30
+   },
+   "2024": {
+    "r1Recall": 22.6,
+    "r1In64": 45.2,
+    "top100Recall": 28.9,
+    "r1BandDraftedR1": 7,
+    "r1BandDraftedAtAll": 12,
+    "spearman": 0.288,
+    "r1Total": 31
+   },
+   "2025": {
+    "r1Recall": 12.9,
+    "r1In64": 22.6,
+    "top100Recall": 14.4,
+    "r1BandDraftedR1": 4,
+    "r1BandDraftedAtAll": 10,
+    "spearman": 0.3,
+    "r1Total": 31
+   }
+  }
+ }
+}

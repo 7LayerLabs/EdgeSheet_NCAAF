@@ -45,3 +45,8 @@ export function ourPregameElo(gameId: string, home: { id?: number; school: strin
   };
   return { home: rating(home), away: rating(away) };
 }
+
+/** A school's current rating in our Elo, or null when unrated (FCS and below). */
+export function teamElo(school: string): number | null {
+  return load()?.ratings[school] ?? null;
+}

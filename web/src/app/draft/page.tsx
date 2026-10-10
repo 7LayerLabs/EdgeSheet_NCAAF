@@ -74,7 +74,7 @@ export default async function DraftPage({ searchParams }: { searchParams: Promis
       <p className="eyebrow">NFL Draft</p>
       <h1 className="display mt-1 text-5xl font-extrabold text-chalk sm:text-6xl">{fc ? `${fc.draftYear} forecast` : "NFL Draft"}</h1>
       <p className="mt-2 max-w-3xl text-base text-chalk-3">
-        Supply is the scouting radar: this season&apos;s production, recruiting pedigree, usage, and size for every draft-eligible Division I player. Demand is the last five drafts: how many players at each position actually go in round one, the top 100, and overall. The forecast matches the two and assigns a range, never a pick. It is a model, not a scouting consensus, and it does not know about injuries, film, or character.
+        The order comes from a draft model trained on where 2022 to 2025 college players actually went in the 2023 to 2026 drafts. It weighs this season&apos;s production blended with last season&apos;s, national recruiting rank, size for the position, team strength, conference, and usage, with different weights per position. The last five drafts set how many players at each position land in round one, the top 100, and the draft. Tested on drafts it never saw, it put 43% of real first-rounders in its Round 1 range (the old method: 18%). It assigns a range, not a pick, assumes the player declares, and does not know about injuries, film, or character.
       </p>
 
       {!loaded && (
@@ -91,7 +91,7 @@ export default async function DraftPage({ searchParams }: { searchParams: Promis
           <section className="mt-8">
             <div className="flex flex-wrap items-baseline gap-3">
               <h2 className="display text-4xl font-bold text-chalk">Round 1 range</h2>
-              <span className="mono text-xs text-chalk-3">{r1Board.length} names, matched to the five-year average of first-round picks by position</span>
+              <span className="mono text-xs text-chalk-3">{r1Board.length} names: the model&apos;s order inside each position, filled to the five-year average of first-round picks at that position</span>
               <span className="h-px flex-1 bg-line" />
             </div>
             <ol className="mt-3 grid gap-2 md:grid-cols-2">
@@ -265,7 +265,7 @@ function ForecastRow({ e, games, showPos = false }: { e: ForecastEntry; games: M
       </span>
       <span className="flex shrink-0 flex-col items-end gap-1">
         <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${BAND_TONE[e.band]}`}>{e.band.replace(" range", "")}</span>
-        <span className="mono text-xs text-chalk-3" title="radar score, then demand-adjusted">{p.score} · {e.adjusted}</span>
+        <span className="mono text-xs text-chalk-3" title="radar score, then draft-model score (100 = top of the board)">{p.score} · {e.adjusted}</span>
       </span>
     </li>
   );

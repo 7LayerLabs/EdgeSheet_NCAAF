@@ -1,12 +1,25 @@
 /**
- * NFL Draft forecast for the next class. Supply comes from the scouting radar
- * (production, pedigree, usage, size). Demand comes from the last five drafts:
- * how many players at each position go in round one, the top 100, and overall.
- * The forecast matches supply to demand and assigns a range, never a pick.
+ * NFL Draft forecast for the next class.
+ *
+ * Since October 2026 the order comes from the draft model (src/lib/draft-model-core.mjs, fitted by
+ * scripts/draft-fit.mjs into data/draft-model.json): production this season blended with last season,
+ * national recruiting rank and rating, size against the position, team strength (Elo), conference,
+ * usage, and class, each weighted per position from where 2022 to 2025 players actually went in the
+ * 2023 to 2026 drafts. Graded on drafts it never saw, it put 43% of real first-rounders in its Round 1
+ * range (the old method: 18%) and 47% of real top-100 picks in its top 100 (old: 22%).
+ *
+ * The model orders each position; the last five drafts set each position's share of round one, the
+ * top 100, and the draft, so the board has a real draft's position mix. The question
+ * it answers is "where does he go if he declares"; juniors marked returning drop off the board.
+ * Without data/draft-model.json it falls back to the old method below.
  *
  * It is a model, not a scouting consensus, and every page that shows it says so.
  */
-import { genDraft, genMeta } from "./generated";
+import { existsSync, readFileSync, statSync } from "node:fs";
+import path from "node:path";
+import { genDraft, genMeta, genPlayers, type GenPlayer } from "./generated";
+import { blendProduction, features, groupOf, predict, productionPercentiles, type SizeTable } from "./draft-model-core.mjs";
+import { teamElo } from "./elo";
 import { memoSync } from "./memo";
 import { radarIndex, type PosGroup, type RadarPlayer } from "./radar";
 import { readDeclarations, type Decision } from "./declarations";
@@ -74,7 +87,105 @@ export interface Forecast {
   demand: Demand[];
 }
 
+interface DraftModel { weights: Record<string, number>; size: SizeTable; seasons: number[]; validation?: unknown }
+
+const MODEL_FILE = path.join(process.cwd(), "data", "draft-model.json");
+
+function loadModel(): DraftModel | undefined {
+  if (!existsSync(MODEL_FILE)) return undefined;
+  return memoSync(`draftmodel:${statSync(MODEL_FILE).mtimeMs}`, 3600, () => {
+    try {
+      return JSON.parse(readFileSync(MODEL_FILE, "utf8")) as DraftModel;
+    } catch {
+      return undefined;
+    }
+  });
+}
+
+/** Last season's production percentiles by player id (data/backtest/<season - 1>/players.json). */
+function priorPercentiles(season: number): Map<string, number> {
+  const f = path.join(process.cwd(), "data", "backtest", String(season - 1), "players.json");
+  if (!existsSync(f)) return new Map();
+  return memoSync(`draft:prior:${season}:${statSync(f).mtimeMs}`, 86400, () => {
+    try {
+      return productionPercentiles(JSON.parse(readFileSync(f, "utf8")) as GenPlayer[]);
+    } catch {
+      return new Map();
+    }
+  });
+}
+
+const SPREAD: Record<Band, number> = { "Round 1 range": 6, "Day 2 range": 15, "Day 3 range": 40, "Priority free agent": 60 };
+
 export function forecastNextDraft(): Forecast {
+  const model = loadModel();
+  if (!model) return legacyForecast();
+  const idx = radarIndex();
+  const meta = genMeta();
+  const decl = readDeclarations();
+  const declStamp = Object.keys(decl).length + ":" + Object.values(decl).map((d) => d.at).sort().pop();
+  return memoSync(`forecast:model:${meta?.ingestedAt ?? "none"}:${declStamp}:${statSync(MODEL_FILE).mtimeMs}`, 3600, () => {
+    const demand = demandByGroup();
+    const years = [...new Set(genDraft().map((p) => p.year))].sort();
+    const season = meta?.season ?? idx.nextDraft - 1;
+    const players = new Map(genPlayers().map((p) => [p.id, p]));
+    const cur = productionPercentiles(genPlayers());
+    const prior = priorPercentiles(season);
+
+    // Every Division I radar player in the next class, minus juniors who said they are returning.
+    const pool = idx.all.filter(
+      (p) => p.draftClass === idx.nextDraft && (p.classification === "fbs" || p.classification === "fcs") && (decl[p.id]?.decision ?? "undecided") !== "returning",
+    );
+    const scored = pool
+      .map((r) => {
+        const gp = players.get(r.id);
+        const g = gp ? groupOf(gp.p) : null;
+        if (!gp || !g) return undefined;
+        const prod = blendProduction(cur.get(r.id) ?? 0, prior.has(r.id) ? prior.get(r.id)! : null, gp.g);
+        const v = predict(model.weights, features(gp, g, prod, model.size, teamElo(gp.t)));
+        return { r, v };
+      })
+      .filter((x): x is { r: RadarPlayer; v: number } => Boolean(x))
+      .sort((a, b) => b.v - a.v);
+
+    // The model orders players inside each position; the last five drafts set how many from each
+    // position land in round one, the top 100, and the draft (the quota variant graded best: 43% of
+    // real first-rounders in Round 1 range, 47% of real top-100 picks in the top 100).
+    const dmap = new Map(demand.map((d) => [d.group, d]));
+    const top = scored[0]?.v ?? 1;
+    const byGroup = new Map<PosGroup, ForecastEntry[]>();
+    for (const x of scored) {
+      const list = byGroup.get(x.r.group) ?? byGroup.set(x.r.group, []).get(x.r.group)!;
+      const d = dmap.get(x.r.group);
+      const i = list.length;
+      const band: Band = !d ? "Priority free agent" : i < Math.round(d.r1) ? "Round 1 range" : i < Math.round(d.top100) ? "Day 2 range" : i < Math.round(d.perDraft) ? "Day 3 range" : "Priority free agent";
+      list.push({
+        player: x.r,
+        overall: 0,
+        posRank: i + 1,
+        band,
+        // Draft score: model value relative to the top player on the board (100).
+        adjusted: Math.max(0, Math.round((x.v / Math.max(0.01, top)) * 100)),
+        decision: decl[x.r.id]?.decision ?? "undecided",
+        estPick: 0,
+        estLow: 0,
+        estHigh: 0,
+      });
+    }
+    const rank: Record<Band, number> = { "Round 1 range": 0, "Day 2 range": 1, "Day 3 range": 2, "Priority free agent": 3 };
+    const board = [...byGroup.values()].flat().sort((a, b) => rank[a.band] - rank[b.band] || b.adjusted - a.adjusted);
+    board.forEach((e, i) => {
+      e.overall = i + 1;
+      e.estPick = Math.min(257, e.overall);
+      e.estLow = Math.max(1, e.overall - SPREAD[e.band]);
+      e.estHigh = Math.min(257, e.overall + SPREAD[e.band]);
+    });
+    return { draftYear: idx.nextDraft, years, board, byGroup, demand };
+  });
+}
+
+/** The pre-October-2026 method: radar score plus demand and pedigree bumps, slotted by five-year position demand. */
+function legacyForecast(): Forecast {
   const idx = radarIndex();
   const meta = genMeta();
   const decl = readDeclarations();

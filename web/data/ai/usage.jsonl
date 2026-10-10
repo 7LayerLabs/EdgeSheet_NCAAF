@@ -289,3 +289,7 @@
 {"at":"2026-10-10T20:24:58.571Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Texas+Oklahoma","input":18997,"output":3604,"costUsd":0.0007978740000000001,"ms":363,"questions":180,"ok":true,"cacheRead":0}
 {"at":"2026-10-10T20:24:58.710Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Texas+Oklahoma","input":2070,"output":352,"costUsd":0.00008694000000000002,"ms":152,"questions":18,"ok":true,"cacheRead":0}
 {"at":"2026-10-10T20:24:58.813Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Texas+Oklahoma","input":2070,"output":352,"costUsd":0.00008694000000000002,"ms":242,"questions":18,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T20:42:13.901Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Texas+Oklahoma","input":4006,"output":700,"costUsd":0.000168252,"ms":264,"questions":36,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T20:42:13.961Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Texas+Oklahoma","input":4006,"output":700,"costUsd":0.000168252,"ms":323,"questions":36,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T20:43:59.637Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"4870906","input":6006,"output":1048,"costUsd":0.000252252,"ms":319,"questions":54,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T20:44:02.035Z","provider":"typesafe","model":"jev-1.13.0","purpose":"flip","ref":"37 live","input":14480,"output":586,"costUsd":0.0006081600000000001,"ms":395,"questions":37,"ok":true,"cacheRead":0}
