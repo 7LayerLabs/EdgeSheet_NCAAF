@@ -14,11 +14,12 @@
  * Display only. The projection still reads the four largest unit edges from tendencies.ts, the inputs
  * the backtest graded, so this board changes nothing in the model.
  */
-import { genGamelogs, gamelogsStamp, genMeta, genPlayers, genTeams, type GenTeam, type GenUnit } from "./generated";
+import { genGamelogs, gamelogsStamp, genMeta, genPlayers, genTeams, type GenPlayer, type GenTeam, type GenUnit } from "./generated";
 import { eloAsOf, ourPregameElo } from "./elo";
 import { memoSync } from "./memo";
-import { radarForTeam, type RadarPlayer } from "./radar";
+import { radarForTeam, radarPlayer, type RadarPlayer } from "./radar";
 import { appliedWeights } from "./weights";
+import { adjustedProduction } from "./adjusted";
 
 export type RowKey = "trenches" | "run" | "pass" | "qb" | "redzone";
 type Dir = "high" | "low";
@@ -55,9 +56,12 @@ const ROWS: { key: RowKey; title: string; offUnit: string; defUnit: string; offL
     ],
   },
   {
-    key: "qb", title: "QB vs the defense", offUnit: "QB on passing downs", defUnit: "defense on passing downs", offLabel: "QB", defLabel: "Pass D",
+    key: "qb", title: "Quarterback vs pass defense", offUnit: "quarterback", defUnit: "pass defense", offLabel: "QB", defLabel: "Pass D",
+    // The offense side of this row is replaced by the quarterback himself (qbProfile); these metrics rank the pass defense.
     metrics: [
-      { key: "pdSr", label: "passing-downs success", offName: "Passing-downs success", defName: "Passing-downs success allowed", off: "high", fmt: pct },
+      { key: "passSr", label: "pass success", offName: "Pass success rate", defName: "Pass success allowed", off: "high", fmt: pct },
+      { key: "passEx", label: "pass explosiveness", offName: "Explosive passes", defName: "Explosive passes allowed", off: "high", fmt: f2 },
+      { key: "pdSr", label: "passing-downs success", offName: "Passing-downs success", defName: "Third-and-long success allowed", off: "high", fmt: pct },
       { key: "havoc", label: "havoc (sacks, turnovers, TFL)", offName: "Havoc allowed (sacks, TOs, TFL)", defName: "Havoc created (sacks, TOs, TFL)", off: "low", fmt: pct },
     ],
   },
@@ -89,6 +93,27 @@ export interface SideRow {
   /** Plain-English read of each unit: tier plus where the strength or the problem is. */
   offRead: string;
   defRead: string;
+  /** Quarterback row only: the starter himself, ranked among FBS starters. */
+  qb?: QbProfile;
+  /** Size of the pool the offense rank is out of when it differs from the defense (QBs vs teams). */
+  offOf?: number;
+}
+
+/** The starting quarterback, ranked among FBS starters on his own numbers. */
+export interface QbProfile {
+  id: string;
+  name: string;
+  type: string; // "Dual-threat", "Efficient pocket passer", ...
+  why: string; // the numbers behind the type
+  rank: number; // opponent-adjusted production rank among qualifying FBS QBs
+  rawRank: number; // same, on raw season production
+  of: number;
+  pct: number; // 0..100, 100 = best, for the matchup gap
+  line: { label: string; value: string; rank: number }[];
+  /** Game by game: each opponent's coverage and pass-rush rank, the multiplier, his line, and his game score before and after. */
+  games: { week: number; opponent: string; homeAway: "home" | "away"; coverRank: number | null; rushRank: number | null; note: string; weight: number; line: string; raw: number; adjusted: number }[];
+  rawAvg: number | null;
+  adjAvg: number | null;
 }
 
 export interface TeamContext {
@@ -186,6 +211,97 @@ function unitRead(rank: number, of: number, stats: { name: string; rank: number 
   if (tier === "Bad" || tier === "Below average") return `${tier}. Worst number: ${lc(worst.name)} (No. ${worst.rank}).`;
   if (tier === "Elite" || tier === "Good") return `${tier}. Best number: ${lc(best.name)} (No. ${best.rank}).`;
   return `${tier}. No stat stands out either way.`;
+}
+
+/* --------------------------------------------------------- quarterbacks */
+
+interface QbRow { p: GenPlayer; ypa: number; comp: number; tdr: number; intr: number; rypg: number; adj: number; raw: number }
+
+/** Qualifying FBS quarterbacks: at least 8 attempts per team game. Ranked on the radar's production (opponent-adjusted). */
+function qbTable(): QbRow[] {
+  return memoSync(`board:qbs:${genMeta()?.ingestedAt ?? ""}`, 3600, () => {
+    const rows: QbRow[] = [];
+    for (const p of genPlayers()) {
+      const s = p.s;
+      if (p.c !== "fbs" || p.p !== "QB" || !s?.pa) continue;
+      const g = Math.max(1, p.g ?? 1);
+      if (s.pa < 8 * g) continue;
+      const r = radarPlayer(p.id);
+      rows.push({
+        p,
+        ypa: (s.py ?? 0) / s.pa,
+        comp: (s.pc ?? 0) / s.pa,
+        tdr: (s.ptd ?? 0) / s.pa,
+        intr: (s.pint ?? 0) / s.pa,
+        rypg: (s.ry ?? 0) / g,
+        adj: r?.production ?? 0,
+        raw: r?.rawProduction ?? 0,
+      });
+    }
+    return rows;
+  });
+}
+
+function qbType(q: QbRow): { type: string; why: string } {
+  const s = q.p.s ?? {};
+  const why = `${Math.round(q.comp * 100)}% completions, ${q.ypa.toFixed(1)} yards per attempt, ${s.ptd ?? 0} TD and ${s.pint ?? 0} INT, ${Math.round(q.rypg)} rushing yards a game`;
+  const type =
+    q.intr >= 0.03 && q.ypa < 7 ? "Struggling"
+    : q.rypg >= 40 ? "Dual-threat"
+    : q.ypa >= 9 && q.intr >= 0.02 ? "Gunslinger"
+    : q.ypa >= 8.5 ? "Big-play passer"
+    : q.comp >= 0.67 && q.intr <= 0.015 ? "Efficient pocket passer"
+    : q.ypa < 7 && q.intr <= 0.02 ? "Game manager"
+    : "Balanced passer";
+  return { type, why };
+}
+
+/** The team's starter (most attempts), ranked among qualifying FBS quarterbacks. */
+function qbProfile(school: string): QbProfile | undefined {
+  const all = qbTable();
+  const starter = all.filter((q) => q.p.t === school).sort((a, b) => (b.p.s?.pa ?? 0) - (a.p.s?.pa ?? 0))[0];
+  if (!starter) return undefined;
+  const n = all.length;
+  const rankBy = (val: (q: QbRow) => number, high = true) => {
+    const v = val(starter);
+    return 1 + all.filter((q) => (high ? val(q) > v : val(q) < v)).length;
+  };
+  const rank = 1 + all.filter((q) => q.adj > starter.adj || (q.adj === starter.adj && q.ypa > starter.ypa)).length;
+  const rawRank = 1 + all.filter((q) => q.raw > starter.raw || (q.raw === starter.raw && q.ypa > starter.ypa)).length;
+  const s = starter.p.s ?? {};
+  const t = qbType(starter);
+  const adj = adjustedProduction(starter.p.id, "QB");
+  return {
+    id: starter.p.id,
+    name: starter.p.n,
+    type: t.type,
+    why: t.why,
+    rank,
+    rawRank,
+    of: n,
+    pct: Math.round(100 * (1 - (rank - 1) / Math.max(1, n - 1))),
+    line: [
+      { label: "Yards per attempt", value: starter.ypa.toFixed(1), rank: rankBy((q) => q.ypa) },
+      { label: "Completion rate", value: `${Math.round(starter.comp * 100)}%`, rank: rankBy((q) => q.comp) },
+      { label: "TD rate", value: `${s.ptd ?? 0} TD (${(starter.tdr * 100).toFixed(1)}%)`, rank: rankBy((q) => q.tdr) },
+      { label: "INT rate (low is good)", value: `${s.pint ?? 0} INT (${(starter.intr * 100).toFixed(1)}%)`, rank: rankBy((q) => q.intr, false) },
+      { label: "Rushing yards per game", value: String(Math.round(starter.rypg)), rank: rankBy((q) => q.rypg) },
+    ],
+    games: (adj?.rows ?? []).map((r) => ({
+      week: r.week,
+      opponent: r.opponent,
+      homeAway: r.homeAway,
+      coverRank: r.coverRank ?? null,
+      rushRank: r.rushRank ?? null,
+      note: r.oppNote,
+      weight: r.weight,
+      line: r.line,
+      raw: Math.round(r.raw),
+      adjusted: Math.round(r.adjusted),
+    })),
+    rawAvg: adj ? Math.round(adj.rawAvg) : null,
+    adjAvg: adj ? Math.round(adj.adjAvg) : null,
+  };
 }
 
 /* --------------------------------------------------------- schedule */
@@ -308,7 +424,8 @@ function watchFor(key: RowKey, edge: SideRow["edge"], o: string, d: string, offN
 /* --------------------------------------------------------- build */
 
 function side(row: (typeof ROWS)[number], o: GenTeam, d: GenTeam, tb: Tables, used: Map<string, Set<string>>): SideRow | undefined {
-  const offPct = unitPct(o, "off", row, tb);
+  const qb = row.key === "qb" ? qbProfile(o.team) : undefined;
+  const offPct = qb ? qb.pct : unitPct(o, "off", row, tb);
   const defPct = unitPct(d, "def", row, tb);
   if (offPct == null || defPct == null) return undefined;
   const comp = tb.comp.get(row.key)!;
@@ -320,6 +437,7 @@ function side(row: (typeof ROWS)[number], o: GenTeam, d: GenTeam, tb: Tables, us
   // Each player is named once per team across the board, so the defense is not one linebacker five times.
   const usedFor = (school: string) => used.get(school) ?? used.set(school, new Set()).get(school)!;
   const names = row.key === "redzone" ? redZoneNames(o.team, d.team, usedFor(d.team)) : { off: top(o.team, GROUPS[row.key].off, usedFor(o.team)), def: top(d.team, GROUPS[row.key].def, usedFor(d.team)) };
+  if (qb) names.off = { id: qb.id, name: qb.name, pos: "QB" };
   const evidence = row.metrics
     .map((m) => {
       const ov = o.off[m.key];
@@ -338,11 +456,15 @@ function side(row: (typeof ROWS)[number], o: GenTeam, d: GenTeam, tb: Tables, us
       return { offName: m.offName, defName: m.defName, off: m.fmt(ov), offRank: metricRank(so, ov, m.off === "high"), def: m.fmt(dv), defRank: metricRank(sd, dv, m.off !== "high") };
     })
     .filter((x): x is NonNullable<typeof x> => Boolean(x));
-  const offRank = rankOf(comp.off, offPct);
+  const offRank = qb ? qb.rank : rankOf(comp.off, offPct);
   const defRank = rankOf(comp.def, defPct);
   return {
     stats,
-    offRead: unitRead(offRank, comp.off.length, stats.map((x) => ({ name: x.offName, rank: x.offRank }))),
+    qb,
+    offOf: qb?.of,
+    offRead: qb
+      ? `${tierOf(qb.rank, qb.of)} among FBS QBs. ${qb.type}: ${qb.why}.`
+      : unitRead(offRank, comp.off.length, stats.map((x) => ({ name: x.offName, rank: x.offRank }))),
     defRead: unitRead(defRank, comp.def.length, stats.map((x) => ({ name: x.defName, rank: x.defRank }))),
     offense: o.team,
     defense: d.team,
@@ -386,12 +508,13 @@ export function matchBoard(awaySchool: string, homeSchool: string): MatchBoard |
   const all = rows.flatMap((r) => [{ r, s: r.away }, { r, s: r.home }]).sort((x, y) => Math.abs(y.s.gap) - Math.abs(x.s.gap));
   const b = all[0];
   const def = ROWS.find((x) => x.key === b.r.key)!;
+  const offLabel = b.s.qb ? `${b.s.qb.name} (No. ${b.s.qb.rank} of ${b.s.qb.of} FBS QBs)` : null;
   const pressurePoint =
     b.s.edge === "even"
-      ? `No unit has a clear edge. The closest swing: ${b.s.offense} ${def.offUnit} (No. ${b.s.offRank}) against ${b.s.defense} ${def.defUnit} (No. ${b.s.defRank}). ${b.s.watch}`
+      ? `No unit has a clear edge. The closest swing: ${offLabel ?? `${b.s.offense} ${def.offUnit} (No. ${b.s.offRank})`} against ${b.s.defense} ${def.defUnit} (No. ${b.s.defRank}). ${b.s.watch}`
       : b.s.edge === "offense"
-        ? `${b.s.offense} ${def.offUnit} (No. ${b.s.offRank}) against ${b.s.defense} ${def.defUnit} (No. ${b.s.defRank}). ${b.s.watch}`
-        : `${b.s.defense} ${def.defUnit} (No. ${b.s.defRank}) against ${b.s.offense} ${def.offUnit} (No. ${b.s.offRank}). ${b.s.watch}`;
+        ? `${offLabel ?? `${b.s.offense} ${def.offUnit} (No. ${b.s.offRank})`} against ${b.s.defense} ${def.defUnit} (No. ${b.s.defRank}). ${b.s.watch}`
+        : `${b.s.defense} ${def.defUnit} (No. ${b.s.defRank}) against ${offLabel ?? `${b.s.offense} ${def.offUnit} (No. ${b.s.offRank})`}. ${b.s.watch}`;
   const context = { away: contextFor(away.team, away.games), home: contextFor(home.team, home.games) };
   const meta = genMeta() as (ReturnType<typeof genMeta> & { rosterIngestedAt?: string }) | undefined;
   return { rows, context, pressurePoint, statsAsOf: meta?.rosterIngestedAt ?? meta?.ingestedAt, games: { away: away.games, home: home.games } };

@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Team } from "@/lib/types";
 import { tierOf, type BoardRow, type MatchBoard as Board, type Name, type SideRow, type TeamContext } from "@/lib/matchboard";
 import { asOf } from "@/lib/format";
+import { Fold } from "./Section";
 
 /**
  * The five-row matchup board on the game page. Same rows, same order, same format for every game:
@@ -88,11 +89,15 @@ function Side({ s, row, off, def }: { s: SideRow; row: BoardRow; off: Team; def:
       </div>
 
       <div className="mt-2 flex items-stretch gap-2">
-        <Unit team={off} label={row.offLabel} rank={s.offRank} of={s.of} win={winner === off} lose={winner === def} />
+        <Unit team={off} label={s.qb ? "QB" : row.offLabel} rank={s.offRank} of={s.offOf ?? s.of} win={winner === off} lose={winner === def} />
         <span className="self-center text-xs text-chalk-3">vs</span>
         <Unit team={def} label={row.defLabel} rank={s.defRank} of={s.of} win={winner === def} lose={winner === off} />
       </div>
 
+      {s.qb ? (
+        <QbBlock s={s} off={off} def={def} defLabel={row.defLabel} />
+      ) : (
+      <>
       <ul className="mt-2 grid gap-1 text-sm leading-snug">
         <li>
           <span className="font-semibold text-chalk">{off.abbr} {row.offLabel}:</span> <span className="text-chalk-2">{s.offRead}</span>
@@ -126,6 +131,8 @@ function Side({ s, row, off, def }: { s: SideRow; row: BoardRow; off: Team; def:
           </tbody>
         </table>
       )}
+      </>
+      )}
 
       {(s.offName || s.defName) && (
         <p className="mt-2 text-sm text-chalk-2">
@@ -137,6 +144,115 @@ function Side({ s, row, off, def }: { s: SideRow; row: BoardRow; off: Team; def:
         <span className="eyebrow mr-1">Watch</span>
         {s.watch}
       </p>
+    </div>
+  );
+}
+
+/** Quarterback row: the starter on his own numbers, ranked among FBS starters, and the pass defense he faces. */
+function QbBlock({ s, off, def, defLabel }: { s: SideRow; off: Team; def: Team; defLabel: string }) {
+  const q = s.qb!;
+  return (
+    <div className="mt-2 grid gap-2 text-sm">
+      <p className="leading-snug">
+        <span className="font-semibold text-chalk">{q.name}</span>{" "}
+        <span className="rounded bg-ink-2 px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-chalk">{q.type}</span>{" "}
+        <span className="text-chalk-2">
+          Ranks No. {q.rank} of {q.of} FBS quarterbacks once you credit the defenses he has faced.
+          {q.rawRank !== q.rank && (
+            <>
+              {" "}On his numbers alone he is No. {q.rawRank}
+              {q.rawRank > q.rank ? ", so he has done it against tougher defenses than most." : ", so his numbers came against easier defenses than most."}
+            </>
+          )}
+        </span>
+      </p>
+      <p className="text-xs text-chalk-3">{q.why}. Ranked against the {q.of} FBS quarterbacks who throw at least 8 passes a game, which leaves out backups.</p>
+      <table className="w-full text-xs">
+        <thead>
+          <tr className="text-left text-[10px] uppercase tracking-wider text-chalk-3">
+            <th className="py-1 pr-2 font-semibold">{off.abbr} QB</th>
+            <th className="py-1 text-right font-semibold">Rank among {q.of} QBs</th>
+          </tr>
+        </thead>
+        <tbody>
+          {q.line.map((x) => (
+            <tr key={x.label} className="border-t border-line/60">
+              <td className="py-1 pr-2 text-chalk-2">{x.label}</td>
+              <td className="mono whitespace-nowrap py-1 text-right">
+                <span className="text-chalk">{x.value}</span> <Rank rank={x.rank} of={q.of} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {q.games.length > 0 && (
+        <Fold label="Game by game: how the defenses he faced move his rank">
+          <p className="mt-1 text-xs text-chalk-3">
+            Each game gets a score from his line. That score is multiplied by how tough the defense was, half its pass coverage and half its pass rush:
+            the best defense in the country counts 1.5 times, an average one 1 time, the worst (or an FCS team) 0.6 times. His rank blends his plain numbers
+            and these adjusted ones half and half.
+          </p>
+          <div className="mt-2 overflow-x-auto">
+            <table className="w-full min-w-[520px] text-xs">
+              <thead>
+                <tr className="text-left text-[10px] uppercase tracking-wider text-chalk-3">
+                  <th className="py-1 pr-2 font-semibold">Opponent</th>
+                  <th className="py-1 pr-2 text-right font-semibold">Coverage</th>
+                  <th className="py-1 pr-2 text-right font-semibold">Pass rush</th>
+                  <th className="py-1 pr-2 text-right font-semibold">Counts</th>
+                  <th className="py-1 pr-2 font-semibold">His line</th>
+                  <th className="py-1 text-right font-semibold">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {q.games.map((g) => (
+                  <tr key={`${g.week}-${g.opponent}`} className="border-t border-line/60 align-top">
+                    <td className="py-1 pr-2 text-chalk">
+                      {g.homeAway === "away" ? "at " : "vs "}
+                      {g.opponent}
+                      <span className="block text-[10px] text-chalk-3">Week {g.week}</span>
+                    </td>
+                    <td className="mono py-1 pr-2 text-right">{g.coverRank != null ? <Rank rank={g.coverRank} of={138} /> : <span className="text-chalk-3">FCS</span>}</td>
+                    <td className="mono py-1 pr-2 text-right">{g.rushRank != null ? <Rank rank={g.rushRank} of={138} /> : <span className="text-chalk-3">FCS</span>}</td>
+                    <td className={`mono py-1 pr-2 text-right font-semibold ${g.weight > 1.02 ? "text-turf" : g.weight < 0.98 ? "text-brick" : "text-chalk-2"}`}>x{g.weight.toFixed(2)}</td>
+                    <td className="py-1 pr-2 text-chalk-2">{g.line}</td>
+                    <td className="mono whitespace-nowrap py-1 text-right text-chalk">
+                      {g.raw} <span className="text-chalk-3">to</span> {g.adjusted}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {q.rawAvg != null && q.adjAvg != null && (
+            <p className="mt-1 text-xs text-chalk-2">
+              Average game score {q.rawAvg} before, {q.adjAvg} after the defenses are counted.{" "}
+              {q.adjAvg > q.rawAvg ? "His schedule was tougher than average, so his rank goes up." : q.adjAvg < q.rawAvg ? "His schedule was easier than average, so his rank comes down." : ""}
+            </p>
+          )}
+        </Fold>
+      )}
+      <p className="leading-snug">
+        <span className="font-semibold text-chalk">{def.abbr} {defLabel}:</span> <span className="text-chalk-2">{s.defRead}</span>
+      </p>
+      <table className="w-full text-xs">
+        <thead>
+          <tr className="text-left text-[10px] uppercase tracking-wider text-chalk-3">
+            <th className="py-1 pr-2 font-semibold">{def.abbr} pass defense</th>
+            <th className="py-1 text-right font-semibold">Rank of {s.of} teams</th>
+          </tr>
+        </thead>
+        <tbody>
+          {s.stats.map((x) => (
+            <tr key={x.defName} className="border-t border-line/60">
+              <td className="py-1 pr-2 text-chalk-2">{x.defName}</td>
+              <td className="mono whitespace-nowrap py-1 text-right">
+                <span className="text-chalk">{x.def}</span> <Rank rank={x.defRank} of={s.of} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

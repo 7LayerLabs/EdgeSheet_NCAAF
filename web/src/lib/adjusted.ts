@@ -8,7 +8,9 @@
  * stats, FBS only on the free tier). Each game's production is weighted by the
  * opponent's quality on the axis that matters for the position:
  *   rushers (RB)                 opponent rush-defense success rate (lower is better defense)
- *   passers, receivers (QB WR TE) opponent pass-defense success rate and explosiveness allowed
+ *   quarterbacks (QB)            half pass coverage (success rate and explosiveness allowed), half pass
+ *                                rush (front-seven havoc rate: sacks, tackles for loss, forced fumbles)
+ *   receivers (WR TE)            opponent pass coverage: success rate and explosiveness allowed
  *   defenders (DL EDGE LB CB S)  opponent offensive line yards (higher is a better offense)
  * The weight is 1.0 for a league-average opponent, about 1.5 for the best unit
  * and about 0.6 for the worst. An FCS opponent with no advanced stats counts 0.6
@@ -21,7 +23,7 @@
 import { genGamelogs, genPlayers, genTeams, gamelogsStamp, type GenGameLine, type GenTeam } from "./generated";
 import { memoSync } from "./memo";
 
-export type Axis = "rush" | "pass" | "def";
+export type Axis = "rush" | "pass" | "qb" | "def";
 export type QocLabel = "soft" | "average" | "tough" | "unmeasured";
 
 /** Position group names match radar.ts PosGroup. Kept local so this module never imports radar.ts (radar imports us). */
@@ -35,12 +37,12 @@ const GROUP: Record<string, string> = {
 };
 
 export const AXIS_OF_GROUP: Record<string, Axis | null> = {
-  QB: "pass", RB: "rush", WR: "pass", TE: "pass",
+  QB: "qb", RB: "rush", WR: "pass", TE: "pass",
   DL: "def", EDGE: "def", LB: "def", CB: "def", S: "def",
   OL: null, ST: null,
 };
 
-export const AXIS_LABEL: Record<Axis, string> = { rush: "rush defense", pass: "pass defense", def: "offensive line" };
+export const AXIS_LABEL: Record<Axis, string> = { rush: "rush defense", pass: "pass coverage", qb: "pass defense (coverage and pass rush)", def: "offensive line" };
 
 /* -------------------------------------------------------------- weights */
 
@@ -129,6 +131,9 @@ interface OppQuality {
   /** percentile per axis, 100 = toughest. */
   pct: Record<Axis, number>;
   rank: Record<Axis, number>;
+  /** The two halves of the quarterback axis, ranked separately (1 = toughest). */
+  coverRank: number;
+  rushRank: number;
   of: number;
   team: GenTeam;
 }
@@ -152,6 +157,7 @@ function opponentTable(): Map<string, OppQuality> {
     const passSr = teams.map((t) => t.def.passSr).filter((v): v is number => typeof v === "number").sort((a, b) => a - b);
     const passEx = teams.map((t) => t.def.passEx).filter((v): v is number => typeof v === "number").sort((a, b) => a - b);
     const ly = teams.map((t) => t.off.ly).filter((v): v is number => typeof v === "number").sort((a, b) => a - b);
+    const f7 = teams.map((t) => t.def.havocF7).filter((v): v is number => typeof v === "number").sort((a, b) => a - b);
     const out = new Map<string, OppQuality>();
     const n = teams.length;
     for (const t of teams) {
@@ -160,11 +166,15 @@ function opponentTable(): Map<string, OppQuality> {
       const ps = typeof t.def.passSr === "number" ? 100 - pctBelow(passSr, t.def.passSr) : 50;
       const pe = typeof t.def.passEx === "number" ? 100 - pctBelow(passEx, t.def.passEx) : 50;
       const pass = Math.round((ps + pe) / 2);
+      // Pass rush: front-seven havoc (sacks, tackles for loss, forced fumbles by the front); higher is tougher.
+      const passRush = typeof t.def.havocF7 === "number" ? pctBelow(f7, t.def.havocF7) : 50;
+      const qb = Math.round((pass + passRush) / 2);
       // Offense line yards: higher is a tougher opponent for a defender.
       const def = typeof t.off.ly === "number" ? pctBelow(ly, t.off.ly) : 50;
-      const pct = { rush, pass, def };
-      const rank = { rush: Math.max(1, Math.round(n - (rush / 100) * (n - 1))), pass: Math.max(1, Math.round(n - (pass / 100) * (n - 1))), def: Math.max(1, Math.round(n - (def / 100) * (n - 1))) };
-      out.set(t.team, { pct, rank, of: n, team: t });
+      const pct = { rush, pass, qb, def };
+      const toRank = (p: number) => Math.max(1, Math.round(n - (p / 100) * (n - 1)));
+      const rank = { rush: toRank(rush), pass: toRank(pass), qb: toRank(qb), def: toRank(def) };
+      out.set(t.team, { pct, rank, coverRank: toRank(pass), rushRank: toRank(passRush), of: n, team: t });
     }
     return out;
   });
@@ -182,6 +192,9 @@ export interface GameLogRow {
   oppRank: number | null;
   oppOf: number | null;
   oppNote: string; // "No. 12 of 136 rush defense" | "FCS, no advanced stats" | "unmeasured"
+  /** Quarterbacks only: the opponent's coverage and pass-rush ranks behind the weight. */
+  coverRank?: number;
+  rushRank?: number;
   weight: number;
   raw: number; // this game's production
   adjusted: number; // raw * weight
@@ -236,12 +249,19 @@ function rowsFor(lines: GenGameLine[], group: string, playerClass: string | null
     let oppRank: number | null = null;
     let oppOf: number | null = null;
     let oppNote = "unmeasured";
+    let coverRank: number | undefined;
+    let rushRank: number | undefined;
     if (axis && q) {
       oppPct = q.pct[axis];
       oppRank = q.rank[axis];
       oppOf = q.of;
       weight = weightFor(oppPct);
       oppNote = `No. ${oppRank} of ${oppOf} ${AXIS_LABEL[axis]}`;
+      if (axis === "qb") {
+        coverRank = q.coverRank;
+        rushRank = q.rushRank;
+        oppNote = `No. ${q.coverRank} pass coverage, No. ${q.rushRank} pass rush (of ${oppOf})`;
+      }
     } else if (axis && playerClass === "fbs" && (cls.get(l.opp) === "fcs" || !cls.get(l.opp))) {
       weight = FCS_OPPONENT_WEIGHT;
       oppNote = cls.get(l.opp) === "fcs" ? "FCS opponent, no advanced stats" : "opponent not in the team digest";
@@ -251,7 +271,7 @@ function rowsFor(lines: GenGameLine[], group: string, playerClass: string | null
       oppNote = "no production axis for this position";
     }
     return {
-      gameId: l.g, week: l.wk, opponent: l.opp, homeAway: l.ha, oppPct, oppRank, oppOf, oppNote, weight,
+      gameId: l.g, week: l.wk, opponent: l.opp, homeAway: l.ha, oppPct, oppRank, oppOf, oppNote, coverRank, rushRank, weight,
       raw: Math.round(raw * 10) / 10, adjusted: Math.round(raw * weight * 10) / 10, line: gameLineText(l.s, group), stats: l.s,
     };
   });

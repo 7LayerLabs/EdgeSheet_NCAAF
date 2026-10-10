@@ -293,3 +293,10 @@
 {"at":"2026-10-10T20:42:13.961Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Texas+Oklahoma","input":4006,"output":700,"costUsd":0.000168252,"ms":323,"questions":36,"ok":true,"cacheRead":0}
 {"at":"2026-10-10T20:43:59.637Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"4870906","input":6006,"output":1048,"costUsd":0.000252252,"ms":319,"questions":54,"ok":true,"cacheRead":0}
 {"at":"2026-10-10T20:44:02.035Z","provider":"typesafe","model":"jev-1.13.0","purpose":"flip","ref":"37 live","input":14480,"output":586,"costUsd":0.0006081600000000001,"ms":395,"questions":37,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T20:57:30.747Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Texas+Oklahoma","input":7060,"output":1286,"costUsd":0.00029652000000000004,"ms":3942,"questions":66,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T21:02:51.088Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Georgia+Alabama","input":1514,"output":236,"costUsd":0.000063588,"ms":1370,"questions":12,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T21:02:51.107Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Georgia+Alabama","input":1514,"output":236,"costUsd":0.000063588,"ms":1387,"questions":12,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T21:02:53.138Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Indiana+Nebraska","input":19980,"output":3604,"costUsd":0.00083916,"ms":326,"questions":180,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T21:02:53.156Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Indiana+Nebraska","input":19980,"output":3604,"costUsd":0.00083916,"ms":340,"questions":180,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T21:02:53.319Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Indiana+Nebraska","input":3365,"output":584,"costUsd":0.00014133,"ms":162,"questions":30,"ok":true,"cacheRead":0}
+{"at":"2026-10-10T21:02:53.767Z","provider":"typesafe","model":"jev-1.13.0","purpose":"feed","ref":"Indiana+Nebraska","input":3365,"output":584,"costUsd":0.00014133,"ms":627,"questions":30,"ok":true,"cacheRead":0}
