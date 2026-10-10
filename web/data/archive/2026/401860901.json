@@ -127,6 +127,181 @@
    "median": -5.4,
    "favorite": "BOIS",
    "of": 5
+  },
+  "board": {
+   "pressurePoint": "Boise State D-line (No. 20) against Fresno State O-line (No. 130). Watch tackles for loss. Boise State living in the backfield early is the tell.",
+   "rows": [
+    {
+     "key": "trenches",
+     "title": "O-line vs D-line",
+     "offLabel": "O-line",
+     "defLabel": "D-line",
+     "away": {
+      "offense": "Boise State",
+      "defense": "Fresno State",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 20,
+      "defRank": 64,
+      "of": 138,
+      "offRead": "Good. Best number: backfield penetration allowed (No. 19).",
+      "defRead": "Average. No stat stands out either way."
+     },
+     "home": {
+      "offense": "Fresno State",
+      "defense": "Boise State",
+      "edge": "defense",
+      "strength": "mismatch",
+      "offRank": 130,
+      "defRank": 20,
+      "of": 138,
+      "offRead": "Bad. Worst number: runs stuffed (No. 135).",
+      "defRead": "Good. Best number: runs stuffed (No. 6)."
+     }
+    },
+    {
+     "key": "run",
+     "title": "Running back vs front seven",
+     "offLabel": "Run game",
+     "defLabel": "Front 7",
+     "away": {
+      "offense": "Boise State",
+      "defense": "Fresno State",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 67,
+      "defRank": 80,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Average, but mixed: explosive runs allowed is No. 32, open-field yards allowed is No. 112."
+     },
+     "home": {
+      "offense": "Fresno State",
+      "defense": "Boise State",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 33,
+      "defRank": 103,
+      "of": 138,
+      "offRead": "Good, but mixed: explosive runs is No. 7, second-level yards per carry is No. 105.",
+      "defRead": "Below average, but mixed: second-level yards allowed is No. 42, open-field yards allowed is No. 128."
+     }
+    },
+    {
+     "key": "pass",
+     "title": "Receivers vs secondary",
+     "offLabel": "Receivers",
+     "defLabel": "Secondary",
+     "away": {
+      "offense": "Boise State",
+      "defense": "Fresno State",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 45,
+      "defRank": 97,
+      "of": 138,
+      "offRead": "Average, but mixed: picks and breakups allowed is No. 15, explosive passes is No. 89.",
+      "defRead": "Below average, but mixed: explosive passes allowed is No. 55, pass success allowed is No. 117."
+     },
+     "home": {
+      "offense": "Fresno State",
+      "defense": "Boise State",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 19,
+      "defRank": 74,
+      "of": 138,
+      "offRead": "Good, but mixed: picks and breakups allowed is No. 6, pass success rate is No. 66.",
+      "defRead": "Average, but mixed: picks and breakups (DBs) is No. 29, explosive passes allowed is No. 137."
+     }
+    },
+    {
+     "key": "qb",
+     "title": "Quarterback vs pass defense",
+     "offLabel": "QB",
+     "defLabel": "Pass D",
+     "away": {
+      "offense": "Boise State",
+      "defense": "Fresno State",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 41,
+      "defRank": 85,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Good among FBS QBs. Balanced passer: 66% completions, 8.0 yards per attempt, 11 TD and 0 INT, 21 rushing yards a game.",
+      "defRead": "Average, but mixed: explosive passes allowed is No. 55, pass success allowed is No. 117.",
+      "qb": {
+       "id": "4870513",
+       "name": "Maddux Madsen",
+       "type": "Balanced passer",
+       "rank": 41,
+       "of": 162,
+       "season": {
+        "ypa": 8.02,
+        "comp": 0.659,
+        "tdr": 0.083,
+        "intr": 0,
+        "attempts": 132
+       }
+      }
+     },
+     "home": {
+      "offense": "Fresno State",
+      "defense": "Boise State",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 69,
+      "defRank": 67,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Average among FBS QBs. Balanced passer: 66% completions, 7.5 yards per attempt, 6 TD and 1 INT, 22 rushing yards a game.",
+      "defRead": "Average, but mixed: havoc created (sacks, TOs, TFL) is No. 27, explosive passes allowed is No. 137.",
+      "qb": {
+       "id": "5010409",
+       "name": "Jayden Mandal",
+       "type": "Balanced passer",
+       "rank": 69,
+       "of": 162,
+       "season": {
+        "ypa": 7.55,
+        "comp": 0.664,
+        "tdr": 0.044,
+        "intr": 0.007,
+        "attempts": 137
+       }
+      }
+     }
+    },
+    {
+     "key": "redzone",
+     "title": "Red zone",
+     "offLabel": "Red zone O",
+     "defLabel": "Red zone D",
+     "away": {
+      "offense": "Boise State",
+      "defense": "Fresno State",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 53,
+      "defRank": 36,
+      "of": 138,
+      "offRead": "Average.",
+      "defRead": "Good."
+     },
+     "home": {
+      "offense": "Fresno State",
+      "defense": "Boise State",
+      "edge": "defense",
+      "strength": "clear",
+      "offRank": 84,
+      "defRank": 21,
+      "of": 138,
+      "offRead": "Average.",
+      "defRead": "Good."
+     }
+    }
+   ]
   }
  }
 }

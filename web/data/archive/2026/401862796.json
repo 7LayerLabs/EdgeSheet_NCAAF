@@ -128,5 +128,143 @@
    "favorite": "UNT",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 13.415714285714284
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 14.8
+  },
+  "capturedAt": "2026-10-10T23:38:32.743Z",
+  "score": {
+   "home": 50,
+   "away": 10
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "North Texas on passing downs",
+    "b": "Charlotte pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "North Texas",
+    "why": "North Texas is No. 29 of 138 in passing-downs success (37%). Charlotte ranks No. 138 on passing downs (44%). This is not a lean. It is a mismatch, and a prominent one. North Texas converts the long downs Charlotte needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Charlotte offensive line",
+    "b": "North Texas front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Charlotte",
+    "why": "North Texas is No. 50 of 138 at the line of scrimmage (2.66). Charlotte ranks No. 136 in line yards per carry (2.28). This is not a lean. It is a mismatch, and a prominent one. North Texas wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "verdict": "played out",
+    "actual": "56 rush yds on 33 carries (1.7 per)"
+   },
+   {
+    "a": "North Texas deep passing",
+    "b": "Charlotte secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "North Texas",
+    "why": "Charlotte is No. 26 of 138 at limiting explosive passes (1.39). North Texas ranks No. 82 in pass explosiveness (1.51). A clear edge, the kind that shapes a game plan. Charlotte keeps the lid on. North Texas should expect to drive the long way.",
+    "verdict": "did not play out",
+    "actual": "382 pass yds, longest play 75"
+   },
+   {
+    "a": "Charlotte run game",
+    "b": "North Texas run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Charlotte",
+    "why": "North Texas is No. 73 of 138 against the run (41%). Charlotte ranks No. 121 in rush success rate (37%). A real edge, not a lock. Charlotte will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "played out",
+    "actual": "56 rush yds on 33 carries (1.7 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4801307",
+    "name": "Tayven Jackson",
+    "team": "North Texas",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 80,
+    "verdict": "showed up",
+    "line": "24/31, 349 yds, 5 TD, 0 INT · 1 car, 8 yds, 0 TD"
+   },
+   {
+    "id": "4911971",
+    "name": "Jahiem White",
+    "team": "North Texas",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 74,
+    "verdict": "showed up",
+    "line": "12 car, 105 yds, 1 TD · 2 rec, 37 yds, 0 TD"
+   },
+   {
+    "id": "5151012",
+    "name": "J'ven Williams",
+    "team": "Charlotte",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4685737",
+    "name": "Neto Umeozulu",
+    "team": "North Texas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4921434",
+    "name": "Collin Gill",
+    "team": "Charlotte",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Sleeper",
+    "score": 61,
+    "verdict": "quiet",
+    "line": "4 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5219099",
+    "name": "Caleb Irving",
+    "team": "Charlotte",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 57,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5205096",
+    "name": "Henry Fenuku",
+    "team": "North Texas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Future",
+    "score": 56,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

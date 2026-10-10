@@ -26,5 +26,28 @@
     "score": 49
    }
   ]
+ },
+ "postgame": {
+  "capturedAt": "2026-10-10T23:38:30.084Z",
+  "score": {
+   "home": 34,
+   "away": 0
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4923034",
+    "name": "Gensley Auguste",
+    "team": "Delaware State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 49,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

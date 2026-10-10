@@ -26,5 +26,28 @@
     "score": 50
    }
   ]
+ },
+ "postgame": {
+  "capturedAt": "2026-10-10T23:38:31.449Z",
+  "score": {
+   "home": 63,
+   "away": 7
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4878822",
+    "name": "Jaylon Tolbert",
+    "team": "Alcorn State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 50,
+    "verdict": "showed up",
+    "line": "7/9, 123 yds, 1 TD, 1 INT · 4 car, 48 yds, 1 TD · FUM 1, LOST 0, REC 0"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

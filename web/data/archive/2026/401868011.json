@@ -49,5 +49,47 @@
    "modelSide": "FOR",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 14.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 0.5999999999999996
+  },
+  "capturedAt": "2026-10-10T23:38:33.449Z",
+  "score": {
+   "home": 20,
+   "away": 14
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5153983",
+    "name": "Aziz Foster-Powell",
+    "team": "Richmond",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 52,
+    "verdict": "showed up",
+    "line": "12 car, 68 yds, 0 TD · 2 rec, 8 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   },
+   {
+    "id": "5165892",
+    "name": "Jamell James",
+    "team": "Fordham",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "showed up",
+    "line": "15 car, 80 yds, 0 TD · 1 rec, -3 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

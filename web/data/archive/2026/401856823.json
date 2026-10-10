@@ -136,5 +136,154 @@
    "favorite": "ARIZ",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 12.071428571428571
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 14.2
+  },
+  "capturedAt": "2026-10-10T23:38:27.758Z",
+  "score": {
+   "home": 31,
+   "away": 52
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "West Virginia deep passing",
+    "b": "Arizona secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "West Virginia",
+    "why": "West Virginia is No. 1 of 138 in pass explosiveness (2.32). Arizona ranks No. 91 at limiting explosive passes (1.60). This is not a lean. It is a mismatch, and a prominent one. Arizona does not keep the lid on. West Virginia will take shots, and the market total may be underpriced if they land.",
+    "verdict": "played out",
+    "actual": "219 pass yds, longest play 40"
+   },
+   {
+    "a": "Arizona on passing downs",
+    "b": "West Virginia pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Arizona",
+    "why": "Arizona is No. 9 of 138 in passing-downs success (42%). West Virginia ranks No. 86 on passing downs (30%). This is not a lean. It is a mismatch, and a prominent one. Arizona converts the long downs West Virginia needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Arizona offensive line",
+    "b": "West Virginia front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Arizona",
+    "why": "Arizona is No. 17 of 138 in line yards per carry (3.53). West Virginia ranks No. 86 at the line of scrimmage (2.96). A clear edge, the kind that shapes a game plan. Arizona should win first contact more often than not, which makes every down shorter.",
+    "verdict": "played out",
+    "actual": "141 rush yds on 27 carries (5.2 per)"
+   },
+   {
+    "a": "Arizona run game",
+    "b": "West Virginia run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Arizona",
+    "why": "Arizona is No. 15 of 138 in rush success rate (52%). West Virginia ranks No. 62 against the run (40%). A real edge, not a lock. Arizona should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "played out",
+    "actual": "141 rush yds on 27 carries (5.2 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079465",
+    "name": "Michael Hawkins Jr.",
+    "team": "West Virginia",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 86,
+    "verdict": "showed up",
+    "line": "11/28, 219 yds, 0 TD, 0 INT · 25 car, 98 yds, 1 TD"
+   },
+   {
+    "id": "4918103",
+    "name": "Cam Cook",
+    "team": "West Virginia",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 82,
+    "verdict": "showed up",
+    "line": "34 car, 141 yds, 2 TD · 1 rec, 18 yds, 0 TD · FUM 2, LOST 2, REC 0"
+   },
+   {
+    "id": "4685625",
+    "name": "Kamari Wilson",
+    "team": "West Virginia",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4685628",
+    "name": "Deshawn Woods",
+    "team": "West Virginia",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4801717",
+    "name": "Noah Fifita",
+    "team": "Arizona",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 69,
+    "verdict": "showed up",
+    "line": "16/23, 341 yds, 3 TD, 1 INT · 3 car, 1 yds, 0 TD"
+   },
+   {
+    "id": "4921408",
+    "name": "Alexander Doost",
+    "team": "Arizona",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4685580",
+    "name": "Grayson Stovall",
+    "team": "Arizona",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5198318",
+    "name": "Isaiah Mizell",
+    "team": "Arizona",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 59,
+    "verdict": "showed up",
+    "line": "6 rec, 183 yds, 2 TD"
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

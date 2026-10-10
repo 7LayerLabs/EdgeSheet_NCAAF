@@ -40,5 +40,36 @@
    "modelSide": "STMN",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 20.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 16.5
+  },
+  "capturedAt": "2026-10-10T23:38:31.245Z",
+  "score": {
+   "home": 64,
+   "away": 21
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5088989",
+    "name": "Gabriel Abel",
+    "team": "St. Thomas (MN)",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 48,
+    "verdict": "showed up",
+    "line": "4 car, 38 yds, 1 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

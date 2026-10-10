@@ -40,5 +40,36 @@
    "modelSide": "TXSO",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 18
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 27.5
+  },
+  "capturedAt": "2026-10-10T23:38:31.729Z",
+  "score": {
+   "home": 34,
+   "away": 38
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5227762",
+    "name": "Athean Renfro Jr.",
+    "team": "Texas Southern",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 47,
+    "verdict": "showed up",
+    "line": "16 car, 82 yds, 2 TD · 1 rec, -1 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

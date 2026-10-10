@@ -154,5 +154,170 @@
    "sideCount": 3,
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 7.815714285714286,
+   "modelSideCovered": false,
+   "totalLeanRight": false
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 4.5,
+   "sideCovered": true
+  },
+  "capturedAt": "2026-10-10T23:38:27.092Z",
+  "score": {
+   "home": 17,
+   "away": 20
+  },
+  "excitement": null,
+  "spreadResult": "underdog covered",
+  "totalResult": "under",
+  "edges": [
+   {
+    "a": "Indiana offensive line",
+    "b": "Nebraska front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Indiana",
+    "why": "Indiana is No. 21 of 138 in line yards per carry (3.51). Nebraska ranks No. 73 at the line of scrimmage (2.90). A real edge, not a lock. Indiana should win first contact more often than not, which makes every down shorter.",
+    "verdict": "did not play out",
+    "actual": "65 rush yds on 22 carries (3.0 per)"
+   },
+   {
+    "a": "Nebraska deep passing",
+    "b": "Indiana secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 42 of 138 in pass explosiveness (1.66). Indiana ranks No. 89 at limiting explosive passes (1.60). A real edge, not a lock. Nebraska has the deep ball available. Watch whether Indiana rolls a safety over after the first one.",
+    "verdict": "played out",
+    "actual": "263 pass yds, longest play 39"
+   },
+   {
+    "a": "Nebraska on passing downs",
+    "b": "Indiana pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 4 of 138 in passing-downs success (45%). Indiana ranks No. 40 on passing downs (25%). A real edge, not a lock. Nebraska converts the long downs Indiana needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Nebraska run game",
+    "b": "Indiana run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 29 in rush success rate (49%) and Indiana is No. 4 against the run (26%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.",
+    "verdict": "unmeasured",
+    "actual": "128 rush yds on 39 carries (3.3 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079639",
+    "name": "Williams Nwaneri",
+    "team": "Nebraska",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 84,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "4954452",
+    "name": "Riley Van Poppel",
+    "team": "Nebraska",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 78,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5290565",
+    "name": "Jamal Rule",
+    "team": "Nebraska",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 77,
+    "verdict": "quiet",
+    "line": "15 car, 53 yds, 0 TD"
+   },
+   {
+    "id": "4685401",
+    "name": "Josh Hoover",
+    "team": "Indiana",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 74,
+    "verdict": "showed up",
+    "line": "12/22, 263 yds, 2 TD, 0 INT · 5 car, 24 yds, 0 TD"
+   },
+   {
+    "id": "5079600",
+    "name": "Nick Marsh",
+    "team": "Indiana",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "showed up",
+    "line": "6 rec, 187 yds, 2 TD"
+   },
+   {
+    "id": "4685276",
+    "name": "Joe Brunner",
+    "team": "Indiana",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4685519",
+    "name": "Elijah Pritchett",
+    "team": "Nebraska",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5083370",
+    "name": "Jacory Barney Jr.",
+    "team": "Nebraska",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "showed up",
+    "line": "9 rec, 108 yds, 0 TD"
+   },
+   {
+    "id": "5210001",
+    "name": "Byron Baldwin Jr.",
+    "team": "Indiana",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 66,
+    "verdict": "showed up",
+    "line": "4 tkl, 1 TFL, 1 sacks"
+   }
+  ],
+  "pressurePointVerdict": "did not play out"
  }
 }

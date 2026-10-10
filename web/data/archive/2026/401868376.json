@@ -49,5 +49,47 @@
    "modelSide": "TNTC",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 8.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 17.7
+  },
+  "capturedAt": "2026-10-10T23:38:33.744Z",
+  "score": {
+   "home": 20,
+   "away": 15
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5027925",
+    "name": "Jax Leatherwood",
+    "team": "Tennessee Tech",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 53,
+    "verdict": "showed up",
+    "line": "24/36, 212 yds, 1 TD, 0 INT · 5 car, -3 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   },
+   {
+    "id": "5091835",
+    "name": "Parker Peterson",
+    "team": "Furman",
+    "pos": "OT",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

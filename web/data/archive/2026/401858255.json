@@ -155,5 +155,176 @@
    "favorite": "DUKE",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 8.48
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 10.8
+  },
+  "capturedAt": "2026-10-10T23:38:32.298Z",
+  "score": {
+   "home": 28,
+   "away": 25
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Duke deep passing",
+    "b": "Georgia Tech secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Duke",
+    "why": "Duke is No. 41 of 138 in pass explosiveness (1.66). Georgia Tech ranks No. 138 at limiting explosive passes (2.09). This is not a lean. It is a mismatch, and a prominent one. Georgia Tech does not keep the lid on. Duke will take shots, and the market total may be underpriced if they land.",
+    "verdict": "played out",
+    "actual": "259 pass yds, longest play 42"
+   },
+   {
+    "a": "Georgia Tech on passing downs",
+    "b": "Duke pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Georgia Tech",
+    "why": "Duke is No. 2 of 138 on passing downs (18%). Georgia Tech ranks No. 73 in passing-downs success (31%). A clear edge, the kind that shapes a game plan. Duke gets off the field on long downs. Early-down efficiency is everything for Georgia Tech.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Duke on passing downs",
+    "b": "Georgia Tech pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Duke",
+    "why": "Duke is No. 58 of 138 in passing-downs success (34%). Georgia Tech ranks No. 117 on passing downs (34%). A clear edge, the kind that shapes a game plan. Duke converts the long downs Georgia Tech needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Georgia Tech run game",
+    "b": "Duke run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Georgia Tech",
+    "why": "Duke is No. 21 of 138 against the run (32%). Georgia Tech ranks No. 66 in rush success rate (45%). A real edge, not a lock. Georgia Tech will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "did not play out",
+    "actual": "165 rush yds on 27 carries (6.1 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4870760",
+    "name": "Justice Haynes",
+    "team": "Georgia Tech",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 94,
+    "verdict": "showed up",
+    "line": "14 car, 69 yds, 0 TD"
+   },
+   {
+    "id": "5164332",
+    "name": "Nate Sheppard",
+    "team": "Duke",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 93,
+    "verdict": "showed up",
+    "line": "27 car, 99 yds, 2 TD · 7 rec, 91 yds, 0 TD"
+   },
+   {
+    "id": "5215542",
+    "name": "Bradley Gompers",
+    "team": "Duke",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 72,
+    "verdict": "quiet",
+    "line": "2 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4812383",
+    "name": "Tawfiq Thomas",
+    "team": "Georgia Tech",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 72,
+    "verdict": "showed up",
+    "line": "7 tkl, 1 TFL, 0 sacks"
+   },
+   {
+    "id": "5139096",
+    "name": "Noah Carter",
+    "team": "Georgia Tech",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5215629",
+    "name": "Kevin Roche Jr.",
+    "team": "Georgia Tech",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Future",
+    "score": 68,
+    "verdict": "quiet",
+    "line": "2 rec, 12 yds, 0 TD"
+   },
+   {
+    "id": "5147934",
+    "name": "Tae Harris",
+    "team": "Georgia Tech",
+    "pos": "S",
+    "group": "S",
+    "tier": "Future",
+    "score": 68,
+    "verdict": "showed up",
+    "line": "7 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4816326",
+    "name": "Braden Miller",
+    "team": "Duke",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5078065",
+    "name": "Caleb Dorris",
+    "team": "Duke",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4702899",
+    "name": "Matt Craycraft",
+    "team": "Duke",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

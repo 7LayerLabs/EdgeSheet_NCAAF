@@ -31,5 +31,32 @@
    "favorite": "PRIN",
    "of": 1
   }
+ },
+ "postgame": {
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 13
+  },
+  "capturedAt": "2026-10-10T23:38:28.850Z",
+  "score": {
+   "home": 13,
+   "away": 28
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5227460",
+    "name": "Kai Honda",
+    "team": "Princeton",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 45,
+    "verdict": "showed up",
+    "line": "22 car, 103 yds, 2 TD · 3 rec, 19 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

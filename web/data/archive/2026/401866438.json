@@ -110,5 +110,121 @@
    "favorite": "OHIO",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 10.021428571428572
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 8.1
+  },
+  "capturedAt": "2026-10-10T23:38:33.240Z",
+  "score": {
+   "home": 31,
+   "away": 14
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Ohio offensive line",
+    "b": "Central Michigan front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Ohio",
+    "why": "Ohio is No. 14 of 138 in line yards per carry (3.57). Central Michigan ranks No. 136 at the line of scrimmage (3.53). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Ohio. Second-level runs and play-action are live all afternoon.",
+    "verdict": "played out",
+    "actual": "245 rush yds on 50 carries (4.9 per)"
+   },
+   {
+    "a": "Ohio run game",
+    "b": "Central Michigan run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Ohio",
+    "why": "Ohio is No. 59 of 138 in rush success rate (46%). Central Michigan ranks No. 132 against the run (50%). A clear edge, the kind that shapes a game plan. Ohio should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "played out",
+    "actual": "245 rush yds on 50 carries (4.9 per)"
+   },
+   {
+    "a": "Ohio deep passing",
+    "b": "Central Michigan secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Ohio",
+    "why": "Central Michigan is No. 17 of 138 at limiting explosive passes (1.33). Ohio ranks No. 69 in pass explosiveness (1.55). A real edge, not a lock. Central Michigan keeps the lid on. Ohio should expect to drive the long way.",
+    "verdict": "mixed",
+    "actual": "158 pass yds, longest play 44"
+   },
+   {
+    "a": "Central Michigan run game",
+    "b": "Ohio run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Central Michigan",
+    "why": "Ohio is No. 69 of 138 against the run (41%). Central Michigan ranks No. 102 in rush success rate (40%). A real edge, not a lock. Central Michigan will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "mixed",
+    "actual": "121 rush yds on 32 carries (3.8 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4716635",
+    "name": "Brady Ploucha",
+    "team": "Central Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5077108",
+    "name": "Matthew Nehf",
+    "team": "Central Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5083191",
+    "name": "Tigana Cisse",
+    "team": "Ohio",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5125829",
+    "name": "DJ Walker",
+    "team": "Ohio",
+    "pos": "S",
+    "group": "S",
+    "tier": "Sleeper",
+    "score": 58,
+    "verdict": "quiet",
+    "line": "4 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5254876",
+    "name": "Ike Ackerman",
+    "team": "Ohio",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 56,
+    "verdict": "showed up",
+    "line": "1 tkl, 1 TFL, 1 sacks"
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

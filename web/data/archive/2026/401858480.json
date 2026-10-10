@@ -137,5 +137,154 @@
    "favorite": "ILL",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 0.9814285714285715
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 0.30000000000000004
+  },
+  "capturedAt": "2026-10-10T23:38:32.576Z",
+  "score": {
+   "home": 37,
+   "away": 38
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Michigan State deep passing",
+    "b": "Illinois secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Michigan State",
+    "why": "Illinois is No. 48 of 138 at limiting explosive passes (1.48). Michigan State ranks No. 129 in pass explosiveness (1.28). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Michigan State needs the underneath game and yards after catch.",
+    "verdict": "mixed",
+    "actual": "215 pass yds, longest play 36"
+   },
+   {
+    "a": "Illinois on passing downs",
+    "b": "Michigan State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Illinois",
+    "why": "Illinois is No. 19 of 138 in passing-downs success (38%). Michigan State ranks No. 91 on passing downs (30%). A clear edge, the kind that shapes a game plan. Illinois converts the long downs Michigan State needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Illinois run game",
+    "b": "Michigan State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Illinois",
+    "why": "Illinois is No. 18 of 138 in rush success rate (52%). Michigan State ranks No. 76 against the run (41%). A clear edge, the kind that shapes a game plan. Illinois should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "mixed",
+    "actual": "127 rush yds on 33 carries (3.8 per)"
+   },
+   {
+    "a": "Illinois offensive line",
+    "b": "Michigan State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Illinois",
+    "why": "Illinois is No. 26 of 138 in line yards per carry (3.45). Michigan State ranks No. 75 at the line of scrimmage (2.90). A real edge, not a lock. Illinois should win first contact more often than not, which makes every down shorter.",
+    "verdict": "mixed",
+    "actual": "127 rush yds on 33 carries (3.8 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4795295",
+    "name": "Katin Houser",
+    "team": "Illinois",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 80,
+    "verdict": "showed up",
+    "line": "20/29, 194 yds, 1 TD, 1 INT · 5 car, 14 yds, 1 TD · 1 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4923226",
+    "name": "Collin Dixon",
+    "team": "Illinois",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 67,
+    "verdict": "showed up",
+    "line": "7 rec, 62 yds, 1 TD"
+   },
+   {
+    "id": "4870737",
+    "name": "Jordan Hall",
+    "team": "Michigan State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 67,
+    "verdict": "quiet",
+    "line": "4 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4685460",
+    "name": "Nikai Martinez",
+    "team": "Michigan State",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 67,
+    "verdict": "showed up",
+    "line": "9 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5079433",
+    "name": "Brandon Hansen",
+    "team": "Illinois",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4832828",
+    "name": "Luka Vincic",
+    "team": "Michigan State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5148652",
+    "name": "Grant Beerman",
+    "team": "Illinois",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 61,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5124585",
+    "name": "Brady Pretzlaff",
+    "team": "Michigan State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 61,
+    "verdict": "quiet",
+    "line": "2 tkl, 0 TFL, 0 sacks"
+   }
+  ],
+  "pressurePointVerdict": "mixed"
  }
 }

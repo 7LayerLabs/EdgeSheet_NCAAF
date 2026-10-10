@@ -146,5 +146,165 @@
    "favorite": "TENN",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 0.06428571428571406
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 6.5
+  },
+  "capturedAt": "2026-10-10T23:38:34.360Z",
+  "score": {
+   "home": 17,
+   "away": 24
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Tennessee deep passing",
+    "b": "Arkansas secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Tennessee",
+    "why": "Arkansas is No. 22 of 138 at limiting explosive passes (1.36). Tennessee ranks No. 120 in pass explosiveness (1.36). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Tennessee needs the underneath game and yards after catch.",
+    "verdict": "did not play out",
+    "actual": "247 pass yds, longest play 68"
+   },
+   {
+    "a": "Tennessee offensive line",
+    "b": "Arkansas front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Tennessee",
+    "why": "Tennessee is No. 16 of 138 in line yards per carry (3.54). Arkansas ranks No. 115 at the line of scrimmage (3.23). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Tennessee. Second-level runs and play-action are live all afternoon.",
+    "verdict": "played out",
+    "actual": "167 rush yds on 35 carries (4.8 per)"
+   },
+   {
+    "a": "Arkansas deep passing",
+    "b": "Tennessee secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Arkansas",
+    "why": "Tennessee is No. 1 of 138 at limiting explosive passes (1.10). Arkansas ranks No. 96 in pass explosiveness (1.46). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Arkansas needs the underneath game and yards after catch.",
+    "verdict": "played out",
+    "actual": "155 pass yds, longest play 29"
+   },
+   {
+    "a": "Tennessee on passing downs",
+    "b": "Arkansas pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Tennessee",
+    "why": "Arkansas is No. 5 of 138 on passing downs (19%). Tennessee ranks No. 86 in passing-downs success (30%). This is not a lean. It is a mismatch, and a prominent one. Arkansas gets off the field on long downs. Early-down efficiency is everything for Tennessee.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079580",
+    "name": "Mike Matthews",
+    "team": "Tennessee",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 87,
+    "verdict": "showed up",
+    "line": "2 car, 14 yds, 0 TD · 4 rec, 78 yds, 0 TD"
+   },
+   {
+    "id": "5158973",
+    "name": "Faizon Brandon",
+    "team": "Tennessee",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 77,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5081886",
+    "name": "Arion Carter",
+    "team": "Tennessee",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "quiet",
+    "line": "5 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5079483",
+    "name": "Dejuan Lane",
+    "team": "Tennessee",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "showed up",
+    "line": "6 tkl, 1 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "5146422",
+    "name": "Xavier Gilliam",
+    "team": "Tennessee",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 73,
+    "verdict": "showed up",
+    "line": "FUM 0, LOST 0, REC 1 · 4 tkl, 1.5 TFL, 1 sacks, 1 PD"
+   },
+   {
+    "id": "4918136",
+    "name": "Quincy Rhodes Jr.",
+    "team": "Arkansas",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 69,
+    "verdict": "showed up",
+    "line": "FUM 0, LOST 0, REC 1 · 2 tkl, 1 TFL, 1 sacks"
+   },
+   {
+    "id": "5079380",
+    "name": "Charlie Collins",
+    "team": "Arkansas",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 65,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5193556",
+    "name": "Adam Hawkes",
+    "team": "Arkansas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5079715",
+    "name": "Bradley Shaw",
+    "team": "Arkansas",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 62,
+    "verdict": "quiet",
+    "line": "4 tkl, 0 TFL, 0 sacks"
+   }
+  ],
+  "pressurePointVerdict": "did not play out"
  }
 }

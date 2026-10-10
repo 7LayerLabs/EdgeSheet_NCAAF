@@ -137,5 +137,154 @@
    "favorite": "MASS",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 1.54
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 1.6
+  },
+  "capturedAt": "2026-10-10T23:38:30.742Z",
+  "score": {
+   "home": 19,
+   "away": 20
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Miami (OH) run game",
+    "b": "Massachusetts run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Miami (OH)",
+    "why": "Massachusetts is No. 33 of 138 against the run (35%). Miami (OH) ranks No. 112 in rush success rate (39%). This is not a lean. It is a mismatch, and a prominent one. Massachusetts erases the run. Miami (OH) gets pushed into passing downs, and that is where this defense makes its money.",
+    "verdict": "mixed",
+    "actual": "165 rush yds on 36 carries (4.6 per)"
+   },
+   {
+    "a": "Miami (OH) offensive line",
+    "b": "Massachusetts front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Miami (OH)",
+    "why": "Massachusetts is No. 37 of 138 at the line of scrimmage (2.57). Miami (OH) ranks No. 101 in line yards per carry (2.87). A clear edge, the kind that shapes a game plan. Massachusetts should hold the line of scrimmage. Miami (OH)'s runs will need the second level to break.",
+    "verdict": "mixed",
+    "actual": "165 rush yds on 36 carries (4.6 per)"
+   },
+   {
+    "a": "Miami (OH) deep passing",
+    "b": "Massachusetts secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Miami (OH)",
+    "why": "Miami (OH) is No. 10 of 138 in pass explosiveness (1.87). Massachusetts ranks No. 61 at limiting explosive passes (1.53). A real edge, not a lock. Miami (OH) has the deep ball available. Watch whether Massachusetts rolls a safety over after the first one.",
+    "verdict": "mixed",
+    "actual": "95 pass yds, longest play 33"
+   },
+   {
+    "a": "Massachusetts run game",
+    "b": "Miami (OH) run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Massachusetts",
+    "why": "Massachusetts is No. 40 of 138 in rush success rate (48%). Miami (OH) ranks No. 88 against the run (42%). A real edge, not a lock. Massachusetts should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "did not play out",
+    "actual": "65 rush yds on 30 carries (2.2 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5141549",
+    "name": "David McComb",
+    "team": "Miami (OH)",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 77,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5079772",
+    "name": "Damarion Witten",
+    "team": "Miami (OH)",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 72,
+    "verdict": "quiet",
+    "line": "0/1, 0 yds, 0 TD, 0 INT · 1 rec, 4 yds, 0 TD"
+   },
+   {
+    "id": "5213301",
+    "name": "Aubrey Melvin",
+    "team": "Massachusetts",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 66,
+    "verdict": "quiet",
+    "line": "1 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5091884",
+    "name": "Andrew Lowry",
+    "team": "Miami (OH)",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5082994",
+    "name": "Brandon Lawhorn Moore",
+    "team": "Miami (OH)",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5078461",
+    "name": "Aitor Urionabarrenechea",
+    "team": "Massachusetts",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5148843",
+    "name": "Brock Taylor",
+    "team": "Massachusetts",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5086376",
+    "name": "Peyton Miller",
+    "team": "Massachusetts",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "mixed"
  }
 }

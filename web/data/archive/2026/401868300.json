@@ -49,5 +49,47 @@
    "modelSide": "AAMU",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 34
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 29.6
+  },
+  "capturedAt": "2026-10-10T23:38:30.528Z",
+  "score": {
+   "home": 55,
+   "away": 17
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4685471",
+    "name": "Samuel McCall",
+    "team": "Bethune-Cookman",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Sleeper",
+    "score": 53,
+    "verdict": "quiet",
+    "line": "4 tkl, 0 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "4568411",
+    "name": "Cornelious Brown IV",
+    "team": "Alabama A&M",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 51,
+    "verdict": "showed up",
+    "line": "6/19, 169 yds, 2 TD, 1 INT · 2 car, 12 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

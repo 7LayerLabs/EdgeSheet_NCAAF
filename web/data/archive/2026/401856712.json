@@ -171,6 +171,181 @@
    "side": "ALA",
    "sideCount": 4,
    "of": 5
+  },
+  "board": {
+   "pressurePoint": "Georgia red zone offense (No. 1) against Alabama red zone defense (No. 106). Georgia turns trips inside the 40 into touchdowns. A field goal is a win for Alabama.",
+   "rows": [
+    {
+     "key": "trenches",
+     "title": "O-line vs D-line",
+     "offLabel": "O-line",
+     "defLabel": "D-line",
+     "away": {
+      "offense": "Georgia",
+      "defense": "Alabama",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 7,
+      "defRank": 10,
+      "of": 138,
+      "offRead": "Elite. Best number: line yards per carry (No. 12).",
+      "defRead": "Elite. Best number: line yards allowed per carry (No. 5)."
+     },
+     "home": {
+      "offense": "Alabama",
+      "defense": "Georgia",
+      "edge": "defense",
+      "strength": "edge",
+      "offRank": 83,
+      "defRank": 25,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Good. Best number: line yards allowed per carry (No. 9)."
+     }
+    },
+    {
+     "key": "run",
+     "title": "Running back vs front seven",
+     "offLabel": "Run game",
+     "defLabel": "Front 7",
+     "away": {
+      "offense": "Georgia",
+      "defense": "Alabama",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 19,
+      "defRank": 25,
+      "of": 138,
+      "offRead": "Good, but mixed: open-field yards per carry is No. 6, explosive runs is No. 64.",
+      "defRead": "Good. Best number: second-level yards allowed (No. 17)."
+     },
+     "home": {
+      "offense": "Alabama",
+      "defense": "Georgia",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 36,
+      "defRank": 9,
+      "of": 138,
+      "offRead": "Good. Best number: second-level yards per carry (No. 38).",
+      "defRead": "Elite. Best number: second-level yards allowed (No. 4)."
+     }
+    },
+    {
+     "key": "pass",
+     "title": "Receivers vs secondary",
+     "offLabel": "Receivers",
+     "defLabel": "Secondary",
+     "away": {
+      "offense": "Georgia",
+      "defense": "Alabama",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 15,
+      "defRank": 56,
+      "of": 138,
+      "offRead": "Good, but mixed: pass success rate is No. 7, explosive passes is No. 74.",
+      "defRead": "Average, but mixed: picks and breakups (DBs) is No. 22, explosive passes allowed is No. 116."
+     },
+     "home": {
+      "offense": "Alabama",
+      "defense": "Georgia",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 18,
+      "defRank": 52,
+      "of": 138,
+      "offRead": "Good. Best number: pass success rate (No. 28).",
+      "defRead": "Average. No stat stands out either way."
+     }
+    },
+    {
+     "key": "qb",
+     "title": "Quarterback vs pass defense",
+     "offLabel": "QB",
+     "defLabel": "Pass D",
+     "away": {
+      "offense": "Georgia",
+      "defense": "Alabama",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 20,
+      "defRank": 49,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Good among FBS QBs. Big-play passer: 75% completions, 10.3 yards per attempt, 13 TD and 1 INT, 24 rushing yards a game.",
+      "defRead": "Average, but mixed: havoc created (sacks, TOs, TFL) is No. 23, explosive passes allowed is No. 116.",
+      "qb": {
+       "id": "4685578",
+       "name": "Gunner Stockton",
+       "type": "Big-play passer",
+       "rank": 20,
+       "of": 162,
+       "season": {
+        "ypa": 10.28,
+        "comp": 0.755,
+        "tdr": 0.127,
+        "intr": 0.01,
+        "attempts": 102
+       }
+      }
+     },
+     "home": {
+      "offense": "Alabama",
+      "defense": "Georgia",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 3,
+      "defRank": 19,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Elite among FBS QBs. Big-play passer: 71% completions, 10.7 yards per attempt, 11 TD and 2 INT, 37 rushing yards a game.",
+      "defRead": "Good, but mixed: third-and-long success allowed is No. 9, explosive passes allowed is No. 74.",
+      "qb": {
+       "id": "5141629",
+       "name": "Keelon Russell",
+       "type": "Big-play passer",
+       "rank": 3,
+       "of": 162,
+       "season": {
+        "ypa": 10.71,
+        "comp": 0.712,
+        "tdr": 0.083,
+        "intr": 0.015,
+        "attempts": 132
+       }
+      }
+     }
+    },
+    {
+     "key": "redzone",
+     "title": "Red zone",
+     "offLabel": "Red zone O",
+     "defLabel": "Red zone D",
+     "away": {
+      "offense": "Georgia",
+      "defense": "Alabama",
+      "edge": "offense",
+      "strength": "mismatch",
+      "offRank": 1,
+      "defRank": 106,
+      "of": 138,
+      "offRead": "Elite.",
+      "defRead": "Below average."
+     },
+     "home": {
+      "offense": "Alabama",
+      "defense": "Georgia",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 2,
+      "defRank": 36,
+      "of": 138,
+      "offRead": "Elite.",
+      "defRead": "Good."
+     }
+    }
+   ]
   }
  }
 }

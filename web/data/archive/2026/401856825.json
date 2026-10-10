@@ -137,5 +137,154 @@
    "favorite": "KSU",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 26.594285714285714
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 23.4
+  },
+  "capturedAt": "2026-10-10T23:38:32.210Z",
+  "score": {
+   "home": 16,
+   "away": 35
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Kansas State on passing downs",
+    "b": "Houston pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Kansas State",
+    "why": "Kansas State is No. 7 of 138 in passing-downs success (43%). Houston ranks No. 77 on passing downs (29%). A clear edge, the kind that shapes a game plan. Kansas State converts the long downs Houston needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Houston on passing downs",
+    "b": "Kansas State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Houston",
+    "why": "Houston is No. 2 of 138 in passing-downs success (51%). Kansas State ranks No. 54 on passing downs (27%). A real edge, not a lock. Houston converts the long downs Kansas State needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Houston offensive line",
+    "b": "Kansas State front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Houston",
+    "why": "Houston is No. 6 in line yards per carry (3.73) and Kansas State is No. 33 at the line of scrimmage (2.51). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.",
+    "verdict": "unmeasured",
+    "actual": "233 rush yds on 43 carries (5.4 per)"
+   },
+   {
+    "a": "Kansas State run game",
+    "b": "Houston run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Kansas State",
+    "why": "Kansas State is No. 4 in rush success rate (56%) and Houston is No. 30 against the run (34%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.",
+    "verdict": "unmeasured",
+    "actual": "117 rush yds on 29 carries (4.0 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4685574",
+    "name": "Conner Weigman",
+    "team": "Houston",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 92,
+    "verdict": "showed up",
+    "line": "19/30, 242 yds, 4 TD, 0 INT · 6 car, 21 yds, 0 TD"
+   },
+   {
+    "id": "5120299",
+    "name": "Patrick Overmyer",
+    "team": "Houston",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 75,
+    "verdict": "showed up",
+    "line": "1 car, 1 yds, 0 TD · 8 rec, 83 yds, 4 TD"
+   },
+   {
+    "id": "4870857",
+    "name": "Avery Johnson",
+    "team": "Kansas State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 75,
+    "verdict": "showed up",
+    "line": "16/30, 182 yds, 2 TD, 1 INT · 9 car, 39 yds, 0 TD"
+   },
+   {
+    "id": "5079426",
+    "name": "Wendell Gregory",
+    "team": "Kansas State",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 75,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5118341",
+    "name": "Khalil Laufau",
+    "team": "Houston",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 72,
+    "verdict": "quiet",
+    "line": "2 tkl, 0.5 TFL, 0.5 sacks"
+   },
+   {
+    "id": "4702557",
+    "name": "George Fitzpatrick",
+    "team": "Kansas State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5245108",
+    "name": "Darien Whitaker Jr.",
+    "team": "Kansas State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 58,
+    "verdict": "quiet",
+    "line": "1 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5142615",
+    "name": "Demetris Dean II",
+    "team": "Houston",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Future",
+    "score": 56,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

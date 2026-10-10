@@ -49,5 +49,47 @@
    "modelSide": "MER",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 4
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 5
+  },
+  "capturedAt": "2026-10-10T23:38:31.642Z",
+  "score": {
+   "home": 17,
+   "away": 14
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4875128",
+    "name": "Lex Thomas",
+    "team": "Western Carolina",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 50,
+    "verdict": "showed up",
+    "line": "19/35, 215 yds, 1 TD, 1 INT · 15 car, 18 yds, 0 TD · 1 rec, 5 yds, 1 TD"
+   },
+   {
+    "id": "4910237",
+    "name": "Abiathar Curry",
+    "team": "Mercer",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

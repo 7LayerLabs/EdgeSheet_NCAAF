@@ -40,5 +40,36 @@
    "modelSide": "INST",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 13.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 24.4
+  },
+  "capturedAt": "2026-10-10T23:38:30.020Z",
+  "score": {
+   "home": 24,
+   "away": 57
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5109518",
+    "name": "Beau Brungard",
+    "team": "Youngstown State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 49,
+    "verdict": "showed up",
+    "line": "25/34, 386 yds, 3 TD, 0 INT · 8 car, 37 yds, 2 TD · 1 rec, 31 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

@@ -136,6 +136,181 @@
    "median": 21.1,
    "favorite": "UTAH",
    "of": 5
+  },
+  "board": {
+   "pressurePoint": "Utah red zone defense (No. 9) against Kansas red zone offense (No. 72). Utah holds in the red zone. Count Kansas's field goals.",
+   "rows": [
+    {
+     "key": "trenches",
+     "title": "O-line vs D-line",
+     "offLabel": "O-line",
+     "defLabel": "D-line",
+     "away": {
+      "offense": "Kansas",
+      "defense": "Utah",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 13,
+      "defRank": 56,
+      "of": 138,
+      "offRead": "Elite, but mixed: runs stuffed is No. 1, backfield penetration allowed is No. 53.",
+      "defRead": "Average. No stat stands out either way."
+     },
+     "home": {
+      "offense": "Utah",
+      "defense": "Kansas",
+      "edge": "defense",
+      "strength": "clear",
+      "offRank": 62,
+      "defRank": 2,
+      "of": 138,
+      "offRead": "Average, but mixed: line yards per carry is No. 24, runs stuffed is No. 98.",
+      "defRead": "Elite. Best number: line yards allowed per carry (No. 7)."
+     }
+    },
+    {
+     "key": "run",
+     "title": "Running back vs front seven",
+     "offLabel": "Run game",
+     "defLabel": "Front 7",
+     "away": {
+      "offense": "Kansas",
+      "defense": "Utah",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 41,
+      "defRank": 40,
+      "of": 138,
+      "offRead": "Good, but mixed: second-level yards per carry is No. 15, open-field yards per carry is No. 78.",
+      "defRead": "Good, but mixed: open-field yards allowed is No. 18, explosive runs allowed is No. 76."
+     },
+     "home": {
+      "offense": "Utah",
+      "defense": "Kansas",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 5,
+      "defRank": 27,
+      "of": 138,
+      "offRead": "Elite. Best number: second-level yards per carry (No. 11).",
+      "defRead": "Good, but mixed: second-level yards allowed is No. 6, open-field yards allowed is No. 67."
+     }
+    },
+    {
+     "key": "pass",
+     "title": "Receivers vs secondary",
+     "offLabel": "Receivers",
+     "defLabel": "Secondary",
+     "away": {
+      "offense": "Kansas",
+      "defense": "Utah",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 51,
+      "defRank": 10,
+      "of": 138,
+      "offRead": "Average, but mixed: explosive passes is No. 9, pass success rate is No. 86.",
+      "defRead": "Elite, but mixed: picks and breakups (DBs) is No. 1, explosive passes allowed is No. 92."
+     },
+     "home": {
+      "offense": "Utah",
+      "defense": "Kansas",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 19,
+      "defRank": 42,
+      "of": 138,
+      "offRead": "Good, but mixed: pass success rate is No. 14, explosive passes is No. 78.",
+      "defRead": "Average, but mixed: pass success allowed is No. 12, explosive passes allowed is No. 112."
+     }
+    },
+    {
+     "key": "qb",
+     "title": "Quarterback vs pass defense",
+     "offLabel": "QB",
+     "defLabel": "Pass D",
+     "away": {
+      "offense": "Kansas",
+      "defense": "Utah",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 74,
+      "defRank": 37,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Average among FBS QBs. Dual-threat: 55% completions, 7.8 yards per attempt, 6 TD and 3 INT, 59 rushing yards a game.",
+      "defRead": "Good, but mixed: pass success allowed is No. 9, explosive passes allowed is No. 92.",
+      "qb": {
+       "id": "5079604",
+       "name": "Isaiah Marshall",
+       "type": "Dual-threat",
+       "rank": 74,
+       "of": 162,
+       "season": {
+        "ypa": 7.79,
+        "comp": 0.548,
+        "tdr": 0.058,
+        "intr": 0.029,
+        "attempts": 104
+       }
+      }
+     },
+     "home": {
+      "offense": "Utah",
+      "defense": "Kansas",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 24,
+      "defRank": 14,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Good among FBS QBs. Big-play passer: 70% completions, 8.9 yards per attempt, 9 TD and 1 INT, 34 rushing yards a game.",
+      "defRead": "Good, but mixed: third-and-long success allowed is No. 4, explosive passes allowed is No. 112.",
+      "qb": {
+       "id": "5105849",
+       "name": "Devon Dampier",
+       "type": "Big-play passer",
+       "rank": 24,
+       "of": 162,
+       "season": {
+        "ypa": 8.87,
+        "comp": 0.703,
+        "tdr": 0.089,
+        "intr": 0.01,
+        "attempts": 101
+       }
+      }
+     }
+    },
+    {
+     "key": "redzone",
+     "title": "Red zone",
+     "offLabel": "Red zone O",
+     "defLabel": "Red zone D",
+     "away": {
+      "offense": "Kansas",
+      "defense": "Utah",
+      "edge": "defense",
+      "strength": "clear",
+      "offRank": 72,
+      "defRank": 9,
+      "of": 138,
+      "offRead": "Average.",
+      "defRead": "Elite."
+     },
+     "home": {
+      "offense": "Utah",
+      "defense": "Kansas",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 13,
+      "defRank": 40,
+      "of": 138,
+      "offRead": "Elite.",
+      "defRead": "Good."
+     }
+    }
+   ]
   }
  }
 }

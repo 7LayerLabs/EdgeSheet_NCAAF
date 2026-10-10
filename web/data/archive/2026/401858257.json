@@ -146,5 +146,165 @@
    "favorite": "ND",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 19.167142857142856
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 15
+  },
+  "capturedAt": "2026-10-10T23:38:31.923Z",
+  "score": {
+   "home": 58,
+   "away": 7
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Notre Dame run game",
+    "b": "Stanford run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Notre Dame",
+    "why": "Notre Dame is No. 23 of 138 in rush success rate (50%). Stanford ranks No. 129 against the run (49%). This is not a lean. It is a mismatch, and a prominent one. Expect Notre Dame to lean on the run early and often, and to keep leaning. Once Stanford loads the box, play-action is the second punch.",
+    "verdict": "played out",
+    "actual": "361 rush yds on 47 carries (7.7 per)"
+   },
+   {
+    "a": "Stanford run game",
+    "b": "Notre Dame run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Stanford",
+    "why": "Notre Dame is No. 11 of 138 against the run (29%). Stanford ranks No. 111 in rush success rate (39%). This is not a lean. It is a mismatch, and a prominent one. Notre Dame erases the run. Stanford gets pushed into passing downs, and that is where this defense makes its money.",
+    "verdict": "played out",
+    "actual": "58 rush yds on 21 carries (2.8 per)"
+   },
+   {
+    "a": "Stanford offensive line",
+    "b": "Notre Dame front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Stanford",
+    "why": "Notre Dame is No. 26 of 138 at the line of scrimmage (2.45). Stanford ranks No. 118 in line yards per carry (2.69). This is not a lean. It is a mismatch, and a prominent one. Notre Dame wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "verdict": "played out",
+    "actual": "58 rush yds on 21 carries (2.8 per)"
+   },
+   {
+    "a": "Notre Dame offensive line",
+    "b": "Stanford front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Notre Dame",
+    "why": "Notre Dame is No. 57 of 138 in line yards per carry (3.20). Stanford ranks No. 129 at the line of scrimmage (3.40). A clear edge, the kind that shapes a game plan. Notre Dame should win first contact more often than not, which makes every down shorter.",
+    "verdict": "played out",
+    "actual": "361 rush yds on 47 carries (7.7 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079369",
+    "name": "CJ Carr",
+    "team": "Notre Dame",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 86,
+    "verdict": "showed up",
+    "line": "14/20, 181 yds, 3 TD, 0 INT · 5 car, 41 yds, 0 TD"
+   },
+   {
+    "id": "5079475",
+    "name": "Micah Gilbert",
+    "team": "Notre Dame",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 74,
+    "verdict": "quiet",
+    "line": "1 rec, 10 yds, 0 TD"
+   },
+   {
+    "id": "4880937",
+    "name": "Adon Shuler",
+    "team": "Notre Dame",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "quiet",
+    "line": "1 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4685251",
+    "name": "Fisher Anderson",
+    "team": "Stanford",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5078531",
+    "name": "Nick Fattig",
+    "team": "Stanford",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5139001",
+    "name": "Anthonie Knapp",
+    "team": "Notre Dame",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4918125",
+    "name": "Devan Houstan",
+    "team": "Notre Dame",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5143191",
+    "name": "Micah Ford",
+    "team": "Stanford",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 68,
+    "verdict": "quiet",
+    "line": "13 car, 48 yds, 0 TD · 1 rec, 1 yds, 0 TD"
+   },
+   {
+    "id": "5217152",
+    "name": "Zion Robinson",
+    "team": "Stanford",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 58,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

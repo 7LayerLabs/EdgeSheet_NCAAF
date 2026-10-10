@@ -110,5 +110,121 @@
    "favorite": "WMU",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 14.425714285714285
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 13.5
+  },
+  "capturedAt": "2026-10-10T23:38:33.354Z",
+  "score": {
+   "home": 38,
+   "away": 7
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Western Michigan deep passing",
+    "b": "Kent State secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Western Michigan",
+    "why": "Kent State is No. 70 of 138 at limiting explosive passes (1.56). Western Michigan ranks No. 122 in pass explosiveness (1.34). A real edge, not a lock. Kent State keeps the lid on. Western Michigan should expect to drive the long way.",
+    "verdict": "did not play out",
+    "actual": "262 pass yds, longest play 42"
+   },
+   {
+    "a": "Kent State deep passing",
+    "b": "Western Michigan secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Kent State",
+    "why": "Kent State is No. 4 of 138 in pass explosiveness (1.98). Western Michigan ranks No. 54 at limiting explosive passes (1.49). A real edge, not a lock. Kent State has the deep ball available. Watch whether Western Michigan rolls a safety over after the first one.",
+    "verdict": "mixed",
+    "actual": "223 pass yds, longest play 30"
+   },
+   {
+    "a": "Western Michigan on passing downs",
+    "b": "Kent State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Western Michigan",
+    "why": "Kent State is No. 48 of 138 on passing downs (26%). Western Michigan ranks No. 96 in passing-downs success (28%). A real edge, not a lock. Kent State gets off the field on long downs. Early-down efficiency is everything for Western Michigan.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Kent State run game",
+    "b": "Western Michigan run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Kent State",
+    "why": "Western Michigan is No. 107 of 138 against the run (45%). Kent State ranks No. 135 in rush success rate (33%). A real edge, not a lock. Kent State will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "played out",
+    "actual": "75 rush yds on 33 carries (2.3 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4882000",
+    "name": "Chad Schuster",
+    "team": "Western Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4814926",
+    "name": "Hunter Whitenack",
+    "team": "Western Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5222397",
+    "name": "Jaihien Roy",
+    "team": "Kent State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 61,
+    "verdict": "quiet",
+    "line": "2 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5082969",
+    "name": "Rocco Nicholl",
+    "team": "Kent State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Sleeper",
+    "score": 58,
+    "verdict": "quiet",
+    "line": "4 tkl, 0.5 TFL, 0 sacks"
+   },
+   {
+    "id": "5219059",
+    "name": "Ahmed Tounkara",
+    "team": "Western Michigan",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Future",
+    "score": 57,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks"
+   }
+  ],
+  "pressurePointVerdict": "did not play out"
  }
 }

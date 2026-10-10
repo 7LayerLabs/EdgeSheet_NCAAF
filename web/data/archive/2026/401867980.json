@@ -40,5 +40,36 @@
    "modelSide": "NCCU",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 5.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 2.9
+  },
+  "capturedAt": "2026-10-10T23:38:30.325Z",
+  "score": {
+   "home": 14,
+   "away": 17
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5226917",
+    "name": "Winston Watkins",
+    "team": "William & Mary",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 52,
+    "verdict": "quiet",
+    "line": "7/18, 106 yds, 1 TD, 1 INT · 10 car, 16 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

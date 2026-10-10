@@ -31,5 +31,32 @@
    "favorite": "DAV",
    "of": 1
   }
+ },
+ "postgame": {
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 17.9
+  },
+  "capturedAt": "2026-10-10T23:38:29.205Z",
+  "score": {
+   "home": 38,
+   "away": 21
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5224535",
+    "name": "Casey Bullock",
+    "team": "Davidson",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 50,
+    "verdict": "showed up",
+    "line": "11/22, 124 yds, 1 TD, 1 INT · 19 car, 74 yds, 2 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

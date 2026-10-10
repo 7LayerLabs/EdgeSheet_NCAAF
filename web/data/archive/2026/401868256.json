@@ -40,5 +40,36 @@
    "modelSide": "VAL",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 17.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 6.2
+  },
+  "capturedAt": "2026-10-10T23:38:31.116Z",
+  "score": {
+   "home": 21,
+   "away": 13
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5404620",
+    "name": "Riley Warzynski",
+    "team": "Drake",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 51,
+    "verdict": "showed up",
+    "line": "22/38, 264 yds, 0 TD, 4 INT · 16 car, 12 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

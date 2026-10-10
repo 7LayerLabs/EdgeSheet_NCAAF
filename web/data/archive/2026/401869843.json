@@ -110,5 +110,121 @@
    "favorite": "APP",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 10.495714285714286
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 13
+  },
+  "capturedAt": "2026-10-10T23:38:29.809Z",
+  "score": {
+   "home": 3,
+   "away": 10
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "App State offensive line",
+    "b": "Old Dominion front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "App State",
+    "why": "Old Dominion is No. 23 of 138 at the line of scrimmage (2.39). App State ranks No. 127 in line yards per carry (2.58). This is not a lean. It is a mismatch, and a prominent one. Old Dominion wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "verdict": "played out",
+    "actual": "92 rush yds on 28 carries (3.3 per)"
+   },
+   {
+    "a": "App State run game",
+    "b": "Old Dominion run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "App State",
+    "why": "Old Dominion is No. 16 of 138 against the run (32%). App State ranks No. 113 in rush success rate (39%). This is not a lean. It is a mismatch, and a prominent one. Old Dominion erases the run. App State gets pushed into passing downs, and that is where this defense makes its money.",
+    "verdict": "played out",
+    "actual": "92 rush yds on 28 carries (3.3 per)"
+   },
+   {
+    "a": "Old Dominion offensive line",
+    "b": "App State front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Old Dominion",
+    "why": "App State is No. 43 of 138 at the line of scrimmage (2.62). Old Dominion ranks No. 138 in line yards per carry (1.61). This is not a lean. It is a mismatch, and a prominent one. App State wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "verdict": "played out",
+    "actual": "207 rush yds on 61 carries (3.4 per)"
+   },
+   {
+    "a": "App State on passing downs",
+    "b": "Old Dominion pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "App State",
+    "why": "App State is No. 5 of 138 in passing-downs success (45%). Old Dominion ranks No. 72 on passing downs (29%). A clear edge, the kind that shapes a game plan. App State converts the long downs Old Dominion needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4870999",
+    "name": "Malachi Singleton",
+    "team": "App State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 83,
+    "verdict": "quiet",
+    "line": "5/23, 72 yds, 0 TD, 1 INT · 4 car, 10 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   },
+   {
+    "id": "5075538",
+    "name": "Cayden Sweatt",
+    "team": "App State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4921234",
+    "name": "Lance Williams",
+    "team": "App State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5156152",
+    "name": "Jaquari Lewis",
+    "team": "App State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 62,
+    "verdict": "quiet",
+    "line": "10 car, 41 yds, 0 TD · 1 rec, -1 yds, 0 TD"
+   },
+   {
+    "id": "4879884",
+    "name": "Mario Easterly",
+    "team": "Old Dominion",
+    "pos": "S",
+    "group": "S",
+    "tier": "Sleeper",
+    "score": 59,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks"
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

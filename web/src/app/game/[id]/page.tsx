@@ -29,6 +29,8 @@ import { JumpOpener } from "@/components/JumpOpener";
 import { GameMore } from "@/components/GameMore";
 import { GameHeader } from "@/components/GameHeader";
 import { GradeCard } from "@/components/GradeCard";
+import { Recap } from "@/components/Recap";
+import { buildRecap } from "@/lib/recap";
 import { PregameScorecard } from "@/components/PregameScorecard";
 import * as S from "@/lib/summaries";
 import { boardSummary, matchBoard } from "@/lib/matchboard";
@@ -65,7 +67,10 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
   const guide = publishedGuide(game);
 
   const status = game.status;
-  const isOpen = (key: string) => PRIMARY[status].includes(key);
+  // Finished Division I game: the full recap of every call against what happened (src/lib/recap.ts).
+  const recap = status === "final" && (game.division === "FBS" || game.division === "FCS") ? await buildRecap(game).catch(() => undefined) : undefined;
+  const primaryKeys = status === "final" && recap ? ["recap", "decided", "radar", "why", "market"] : PRIMARY[status];
+  const isOpen = (key: string) => primaryKeys.includes(key);
   const score = scoutScore(game.scoreComponents);
   const tag = scoreTag(game);
   const flags = game.weather ? evaluateWeather(game.weather) : [];
@@ -434,20 +439,27 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
     </Section>
   );
 
+  const recapSection = recap ? (
+    <Section key="recap" n="Recap" id="recap" title={recap.headline.split(". ")[0] + "."} summary={`${recap.score.right} of ${recap.score.right + recap.score.wrong + recap.score.mixed} calls right`} defaultOpen={isOpen("recap")} tone="final">
+      <Recap recap={recap} game={game} />
+    </Section>
+  ) : null;
+
   /* ------------------------------------------------------------ order per state */
 
   const all =
     status === "live"
       ? [live, scorecard, radar, why, report, decided, eye, style, conditions, market, storylines, feed, scoreSec]
       : status === "final"
-        ? [grade, report, showed, decided, radar, why, eye, style, conditions, market, storylines, feed, scoreSec]
+        ? [recapSection, grade, report, showed, decided, radar, why, eye, style, conditions, market, storylines, feed, scoreSec]
         : [why, report, decided, radar, eye, showed, style, conditions, market, storylines, feed, scoreSec];
   const present = all.filter((s): s is React.ReactElement => Boolean(s));
   const byKey = new Map(present.map((s) => [String(s.key), s]));
-  const primary = PRIMARY[status].map((k) => byKey.get(k)).filter((s): s is React.ReactElement => Boolean(s));
-  const rest = present.filter((s) => !PRIMARY[status].includes(String(s.key)));
+  const primary = primaryKeys.map((k) => byKey.get(k)).filter((s): s is React.ReactElement => Boolean(s));
+  const rest = present.filter((s) => !primaryKeys.includes(String(s.key)));
 
   const LABELS: Record<string, string> = {
+    recap: "Recap",
     why: "Why watch",
     report: "Report",
     decided: status === "final" ? "What we called" : "Matchups",

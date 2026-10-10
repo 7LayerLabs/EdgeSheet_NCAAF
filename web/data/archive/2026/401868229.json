@@ -31,5 +31,32 @@
    "favorite": "DAY",
    "of": 1
   }
+ },
+ "postgame": {
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 18.9
+  },
+  "capturedAt": "2026-10-10T23:38:29.288Z",
+  "score": {
+   "home": 56,
+   "away": 28
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5156762",
+    "name": "Luke Hansen",
+    "team": "Dayton",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 47,
+    "verdict": "showed up",
+    "line": "11 car, 44 yds, 0 TD · 4 rec, 27 yds, 1 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

@@ -137,5 +137,154 @@
    "favorite": "MISS",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 34.924285714285716
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 33.9
+  },
+  "capturedAt": "2026-10-10T23:38:32.014Z",
+  "score": {
+   "home": 17,
+   "away": 52
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Ole Miss run game",
+    "b": "Vanderbilt run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Ole Miss",
+    "why": "Ole Miss is No. 18 of 138 in rush success rate (52%). Vanderbilt ranks No. 82 against the run (42%). A clear edge, the kind that shapes a game plan. Ole Miss should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "played out",
+    "actual": "196 rush yds on 35 carries (5.6 per)"
+   },
+   {
+    "a": "Vanderbilt deep passing",
+    "b": "Ole Miss secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Vanderbilt",
+    "why": "Ole Miss is No. 50 of 138 at limiting explosive passes (1.48). Vanderbilt ranks No. 103 in pass explosiveness (1.45). A real edge, not a lock. Ole Miss keeps the lid on. Vanderbilt should expect to drive the long way.",
+    "verdict": "mixed",
+    "actual": "240 pass yds, longest play 34"
+   },
+   {
+    "a": "Ole Miss offensive line",
+    "b": "Vanderbilt front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Ole Miss",
+    "why": "Vanderbilt is No. 54 of 138 at the line of scrimmage (2.69). Ole Miss ranks No. 97 in line yards per carry (2.94). A real edge, not a lock. Vanderbilt should hold the line of scrimmage. Ole Miss's runs will need the second level to break.",
+    "verdict": "did not play out",
+    "actual": "196 rush yds on 35 carries (5.6 per)"
+   },
+   {
+    "a": "Ole Miss on passing downs",
+    "b": "Vanderbilt pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Ole Miss",
+    "why": "Ole Miss is No. 27 of 138 in passing-downs success (37%). Vanderbilt ranks No. 61 on passing downs (28%). A real edge, not a lock. Ole Miss converts the long downs Vanderbilt needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079647",
+    "name": "Caleb Odom",
+    "team": "Ole Miss",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 80,
+    "verdict": "quiet",
+    "line": "4 rec, 29 yds, 0 TD"
+   },
+   {
+    "id": "5218778",
+    "name": "Will Echoles",
+    "team": "Ole Miss",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 76,
+    "verdict": "quiet",
+    "line": "1 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4918093",
+    "name": "Jaylon Braxton",
+    "team": "Ole Miss",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 74,
+    "verdict": "showed up",
+    "line": "6 tkl, 0.5 TFL, 0 sacks"
+   },
+   {
+    "id": "4685352",
+    "name": "Gunner Givens",
+    "team": "Vanderbilt",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4911912",
+    "name": "Issa Ouattara",
+    "team": "Vanderbilt",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 70,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "4870744",
+    "name": "Martel Hight",
+    "team": "Vanderbilt",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 70,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "5224178",
+    "name": "Caleb Cunningham",
+    "team": "Ole Miss",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 63,
+    "verdict": "quiet",
+    "line": "1 rec, 22 yds, 0 TD"
+   },
+   {
+    "id": "5215250",
+    "name": "Cayden Daniels",
+    "team": "Vanderbilt",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 60,
+    "verdict": "quiet",
+    "line": "1 tkl, 0 TFL, 0 sacks, 1 PD"
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

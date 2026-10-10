@@ -137,5 +137,154 @@
    "favorite": "TOL",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 31.964285714285715
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 35
+  },
+  "capturedAt": "2026-10-10T23:38:33.146Z",
+  "score": {
+   "home": 8,
+   "away": 23
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Buffalo run game",
+    "b": "Toledo run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Buffalo",
+    "why": "Toledo is No. 8 of 138 against the run (28%). Buffalo ranks No. 124 in rush success rate (36%). This is not a lean. It is a mismatch, and a prominent one. Toledo erases the run. Buffalo gets pushed into passing downs, and that is where this defense makes its money.",
+    "verdict": "mixed",
+    "actual": "180 rush yds on 47 carries (3.8 per)"
+   },
+   {
+    "a": "Toledo deep passing",
+    "b": "Buffalo secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Toledo",
+    "why": "Toledo is No. 5 of 138 in pass explosiveness (1.93). Buffalo ranks No. 121 at limiting explosive passes (1.78). This is not a lean. It is a mismatch, and a prominent one. Buffalo does not keep the lid on. Toledo will take shots, and the market total may be underpriced if they land.",
+    "verdict": "mixed",
+    "actual": "203 pass yds, longest play 21"
+   },
+   {
+    "a": "Buffalo on passing downs",
+    "b": "Toledo pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Buffalo",
+    "why": "Toledo is No. 15 of 138 on passing downs (21%). Buffalo ranks No. 121 in passing-downs success (23%). This is not a lean. It is a mismatch, and a prominent one. Toledo gets off the field on long downs. Early-down efficiency is everything for Buffalo.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Buffalo offensive line",
+    "b": "Toledo front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Buffalo",
+    "why": "Toledo is No. 44 of 138 at the line of scrimmage (2.62). Buffalo ranks No. 115 in line yards per carry (2.75). A clear edge, the kind that shapes a game plan. Toledo should hold the line of scrimmage. Buffalo's runs will need the second level to break.",
+    "verdict": "mixed",
+    "actual": "180 rush yds on 47 carries (3.8 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5082330",
+    "name": "John Alan Richter",
+    "team": "Toledo",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 77,
+    "verdict": "showed up",
+    "line": "22/35, 203 yds, 0 TD, 0 INT · 4 car, 2 yds, 0 TD · FUM 2, LOST 2, REC 0"
+   },
+   {
+    "id": "5078063",
+    "name": "Connor Walendzak",
+    "team": "Toledo",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "showed up",
+    "line": "10 car, 50 yds, 1 TD · 2 rec, 12 yds, 0 TD"
+   },
+   {
+    "id": "4869601",
+    "name": "Chance Morrow",
+    "team": "Buffalo",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 66,
+    "verdict": "quiet",
+    "line": "2 rec, 17 yds, 0 TD"
+   },
+   {
+    "id": "4894657",
+    "name": "Cornell Evans",
+    "team": "Buffalo",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 66,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5184012",
+    "name": "Jackson Bellamy",
+    "team": "Buffalo",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4833021",
+    "name": "Jonathan Harder",
+    "team": "Toledo",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5218379",
+    "name": "Christopher Climes",
+    "team": "Buffalo",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 55,
+    "verdict": "quiet",
+    "line": "4 tkl, 0 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "5079699",
+    "name": "Corey Smith",
+    "team": "Toledo",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 19,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "mixed"
  }
 }

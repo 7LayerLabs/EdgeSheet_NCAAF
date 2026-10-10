@@ -154,5 +154,170 @@
    "sideCount": 4,
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 20.958571428571428,
+   "modelSideCovered": false,
+   "totalLeanRight": true
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 21,
+   "sideCovered": false
+  },
+  "capturedAt": "2026-10-10T23:38:27.318Z",
+  "score": {
+   "home": 27,
+   "away": 6
+  },
+  "excitement": null,
+  "spreadResult": "favorite covered",
+  "totalResult": "under",
+  "edges": [
+   {
+    "a": "Missouri deep passing",
+    "b": "Texas A&M secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Missouri",
+    "why": "Missouri is No. 35 of 138 in pass explosiveness (1.67). Texas A&M ranks No. 131 at limiting explosive passes (1.85). This is not a lean. It is a mismatch, and a prominent one. Texas A&M does not keep the lid on. Missouri will take shots, and the market total may be underpriced if they land.",
+    "verdict": "played out",
+    "actual": "147 pass yds, longest play 54"
+   },
+   {
+    "a": "Missouri run game",
+    "b": "Texas A&M run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Missouri",
+    "why": "Texas A&M is No. 42 of 138 against the run (37%). Missouri ranks No. 103 in rush success rate (40%). A clear edge, the kind that shapes a game plan. Missouri will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "did not play out",
+    "actual": "252 rush yds on 44 carries (5.7 per)"
+   },
+   {
+    "a": "Texas A&M on passing downs",
+    "b": "Missouri pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Texas A&M",
+    "why": "Texas A&M is No. 30 of 138 in passing-downs success (37%). Missouri ranks No. 70 on passing downs (28%). A real edge, not a lock. Texas A&M converts the long downs Missouri needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Texas A&M offensive line",
+    "b": "Missouri front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Texas A&M",
+    "why": "Texas A&M is No. 54 in line yards per carry (3.22) and Missouri is No. 30 at the line of scrimmage (2.48). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.",
+    "verdict": "unmeasured",
+    "actual": "29 rush yds on 23 carries (1.3 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5141684",
+    "name": "Austin Simmons",
+    "team": "Missouri",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 80,
+    "verdict": "quiet",
+    "line": "14/28, 147 yds, 1 TD, 1 INT · 4 car, 24 yds, 0 TD · FUM 1, LOST 0, REC 0"
+   },
+   {
+    "id": "5160111",
+    "name": "DJ Hicks",
+    "team": "Texas A&M",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 78,
+    "verdict": "quiet",
+    "line": "2 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5141582",
+    "name": "Donovan Olugbode",
+    "team": "Missouri",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 78,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "4921116",
+    "name": "Jamal Roberts",
+    "team": "Missouri",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 77,
+    "verdict": "showed up",
+    "line": "34 car, 222 yds, 2 TD · 3 rec, 8 yds, 0 TD · 1 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5201870",
+    "name": "Daeden Hopkins",
+    "team": "Missouri",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 75,
+    "verdict": "quiet",
+    "line": "2 tkl, 0.5 TFL, 0.5 sacks"
+   },
+   {
+    "id": "4685383",
+    "name": "Isaiah Horton",
+    "team": "Texas A&M",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "quiet",
+    "line": "2 rec, 22 yds, 0 TD"
+   },
+   {
+    "id": "4685412",
+    "name": "Julio Humphrey",
+    "team": "Texas A&M",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "showed up",
+    "line": "6 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4880351",
+    "name": "Jahlil Florence",
+    "team": "Missouri",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "quiet",
+    "line": "2 tkl, 0 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "5141540",
+    "name": "Marco Jones",
+    "team": "Texas A&M",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 66,
+    "verdict": "quiet",
+    "line": "2 tkl, 0 TFL, 0 sacks"
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

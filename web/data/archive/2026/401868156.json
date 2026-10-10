@@ -40,5 +40,36 @@
    "modelSide": "PRST",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 11.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 8.2
+  },
+  "capturedAt": "2026-10-10T23:38:34.047Z",
+  "score": {
+   "home": 30,
+   "away": 14
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5152791",
+    "name": "Delon Thompson",
+    "team": "Portland State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 49,
+    "verdict": "showed up",
+    "line": "20 car, 78 yds, 0 TD · 1 rec, 45 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

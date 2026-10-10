@@ -49,5 +49,47 @@
    "modelSide": "WEB",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 14.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 8.6
+  },
+  "capturedAt": "2026-10-10T23:41:21.492Z",
+  "score": {
+   "home": 38,
+   "away": 27
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4832830",
+    "name": "Joshua Wood",
+    "team": "Idaho",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 58,
+    "verdict": "showed up",
+    "line": "32/50, 383 yds, 4 TD, 2 INT · 13 car, 52 yds, 0 TD"
+   },
+   {
+    "id": "5153697",
+    "name": "Ammon Munyer",
+    "team": "Weber State",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

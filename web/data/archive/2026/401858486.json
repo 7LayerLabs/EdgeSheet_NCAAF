@@ -136,6 +136,181 @@
    "median": -5.5,
    "favorite": "MINN",
    "of": 5
+  },
+  "board": {
+   "pressurePoint": "Minnesota front seven (No. 50) against Purdue run game (No. 123). Minnesota tackles well in space. Fame Ijeboi needs the line to win first, or it is a long day.",
+   "rows": [
+    {
+     "key": "trenches",
+     "title": "O-line vs D-line",
+     "offLabel": "O-line",
+     "defLabel": "D-line",
+     "away": {
+      "offense": "Minnesota",
+      "defense": "Purdue",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 123,
+      "defRank": 117,
+      "of": 138,
+      "offRead": "Below average, but mixed: backfield penetration allowed is No. 84, line yards per carry is No. 135.",
+      "defRead": "Below average. Worst number: line yards allowed per carry (No. 124)."
+     },
+     "home": {
+      "offense": "Purdue",
+      "defense": "Minnesota",
+      "edge": "defense",
+      "strength": "edge",
+      "offRank": 83,
+      "defRank": 20,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Good, but mixed: backfield penetration is No. 4, line yards allowed per carry is No. 55."
+     }
+    },
+    {
+     "key": "run",
+     "title": "Running back vs front seven",
+     "offLabel": "Run game",
+     "defLabel": "Front 7",
+     "away": {
+      "offense": "Minnesota",
+      "defense": "Purdue",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 120,
+      "defRank": 129,
+      "of": 138,
+      "offRead": "Below average, but mixed: open-field yards per carry is No. 66, second-level yards per carry is No. 133.",
+      "defRead": "Bad. Worst number: second-level yards allowed (No. 130)."
+     },
+     "home": {
+      "offense": "Purdue",
+      "defense": "Minnesota",
+      "edge": "defense",
+      "strength": "clear",
+      "offRank": 123,
+      "defRank": 50,
+      "of": 138,
+      "offRead": "Below average. Worst number: open-field yards per carry (No. 129).",
+      "defRead": "Average. No stat stands out either way."
+     }
+    },
+    {
+     "key": "pass",
+     "title": "Receivers vs secondary",
+     "offLabel": "Receivers",
+     "defLabel": "Secondary",
+     "away": {
+      "offense": "Minnesota",
+      "defense": "Purdue",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 65,
+      "defRank": 131,
+      "of": 138,
+      "offRead": "Average, but mixed: picks and breakups allowed is No. 44, explosive passes is No. 121.",
+      "defRead": "Bad, but mixed: picks and breakups (DBs) is No. 76, explosive passes allowed is No. 127."
+     },
+     "home": {
+      "offense": "Purdue",
+      "defense": "Minnesota",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 35,
+      "defRank": 12,
+      "of": 138,
+      "offRead": "Good, but mixed: picks and breakups allowed is No. 15, explosive passes is No. 109.",
+      "defRead": "Elite. Best number: picks and breakups (DBs) (No. 29)."
+     }
+    },
+    {
+     "key": "qb",
+     "title": "Quarterback vs pass defense",
+     "offLabel": "QB",
+     "defLabel": "Pass D",
+     "away": {
+      "offense": "Minnesota",
+      "defense": "Purdue",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 81,
+      "defRank": 137,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Average among FBS QBs. Balanced passer: 67% completions, 6.9 yards per attempt, 8 TD and 4 INT, -3 rushing yards a game.",
+      "defRead": "Bad. Worst number: third-and-long success allowed (No. 135).",
+      "qb": {
+       "id": "5144959",
+       "name": "Drake Lindsey",
+       "type": "Balanced passer",
+       "rank": 81,
+       "of": 162,
+       "season": {
+        "ypa": 6.92,
+        "comp": 0.669,
+        "tdr": 0.051,
+        "intr": 0.025,
+        "attempts": 157
+       }
+      }
+     },
+     "home": {
+      "offense": "Purdue",
+      "defense": "Minnesota",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 31,
+      "defRank": 12,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Good among FBS QBs. Big-play passer: 71% completions, 8.9 yards per attempt, 8 TD and 1 INT, -6 rushing yards a game.",
+      "defRead": "Elite. Best number: havoc created (sacks, TOs, TFL) (No. 3).",
+      "qb": {
+       "id": "5104738",
+       "name": "Ryan Browne",
+       "type": "Big-play passer",
+       "rank": 31,
+       "of": 162,
+       "season": {
+        "ypa": 8.91,
+        "comp": 0.705,
+        "tdr": 0.051,
+        "intr": 0.006,
+        "attempts": 156
+       }
+      }
+     }
+    },
+    {
+     "key": "redzone",
+     "title": "Red zone",
+     "offLabel": "Red zone O",
+     "defLabel": "Red zone D",
+     "away": {
+      "offense": "Minnesota",
+      "defense": "Purdue",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 113,
+      "defRank": 136,
+      "of": 138,
+      "offRead": "Below average.",
+      "defRead": "Bad."
+     },
+     "home": {
+      "offense": "Purdue",
+      "defense": "Minnesota",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 86,
+      "defRank": 109,
+      "of": 138,
+      "offRead": "Average.",
+      "defRead": "Below average."
+     }
+    }
+   ]
   }
  }
 }

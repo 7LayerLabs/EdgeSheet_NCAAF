@@ -49,5 +49,47 @@
    "modelSide": "SDAK",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 10.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 10.7
+  },
+  "capturedAt": "2026-10-10T23:38:30.917Z",
+  "score": {
+   "home": 31,
+   "away": 10
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5302115",
+    "name": "Austyn Modrzewski",
+    "team": "South Dakota",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 57,
+    "verdict": "showed up",
+    "line": "16/20, 268 yds, 1 TD, 0 INT · 4 car, -1 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   },
+   {
+    "id": "5086818",
+    "name": "Asher Tomaszewski",
+    "team": "South Dakota",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 49,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

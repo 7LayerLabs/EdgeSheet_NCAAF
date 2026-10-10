@@ -145,5 +145,165 @@
    "favorite": "UCF",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 17.577142857142857
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 15.4
+  },
+  "capturedAt": "2026-10-10T23:38:27.476Z",
+  "score": {
+   "home": 42,
+   "away": 28
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "UCF on passing downs",
+    "b": "Oklahoma State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "UCF",
+    "why": "Oklahoma State is No. 11 of 138 on passing downs (20%). UCF ranks No. 79 in passing-downs success (30%). A clear edge, the kind that shapes a game plan. Oklahoma State gets off the field on long downs. Early-down efficiency is everything for UCF.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Oklahoma State deep passing",
+    "b": "UCF secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Oklahoma State",
+    "why": "UCF is No. 53 of 138 at limiting explosive passes (1.49). Oklahoma State ranks No. 83 in pass explosiveness (1.50). A real edge, not a lock. UCF keeps the lid on. Oklahoma State should expect to drive the long way.",
+    "verdict": "did not play out",
+    "actual": "304 pass yds, longest play 48"
+   },
+   {
+    "a": "Oklahoma State on passing downs",
+    "b": "UCF pressure",
+    "edge": "even",
+    "axis": "passing-downs",
+    "offTeam": "Oklahoma State",
+    "why": "Oklahoma State is No. 70 in passing-downs success (31%) and UCF is No. 45 on passing downs (25%). Strength on strength. Both sides are average on long downs. Early-down efficiency decides who sees more of them.",
+    "verdict": "unmeasured",
+    "actual": "110 rush yds on 32 carries (3.4 per)"
+   },
+   {
+    "a": "Oklahoma State offensive line",
+    "b": "UCF front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Oklahoma State",
+    "why": "Oklahoma State is No. 52 in line yards per carry (3.23) and UCF is No. 28 at the line of scrimmage (2.48). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.",
+    "verdict": "unmeasured",
+    "actual": "110 rush yds on 32 carries (3.4 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5258016",
+    "name": "Caleb Hawkins",
+    "team": "Oklahoma State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 80,
+    "verdict": "showed up",
+    "line": "23 car, 83 yds, 0 TD · 2 rec, 32 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   },
+   {
+    "id": "5160072",
+    "name": "Antione Jackson",
+    "team": "UCF",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "5136049",
+    "name": "Duke Watson",
+    "team": "UCF",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "showed up",
+    "line": "21 car, 79 yds, 0 TD · FUM 1, LOST 0, REC 0"
+   },
+   {
+    "id": "4941009",
+    "name": "Isaiah Nixon",
+    "team": "UCF",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "showed up",
+    "line": "FUM 0, LOST 0, REC 1 · 6 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4685514",
+    "name": "Jacob Sexton",
+    "team": "Oklahoma State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4685380",
+    "name": "Mo Horn",
+    "team": "Oklahoma State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 70,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5219834",
+    "name": "Drew Mestemaker",
+    "team": "Oklahoma State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 65,
+    "verdict": "showed up",
+    "line": "19/28, 304 yds, 2 TD, 0 INT · 2 car, 2 yds, 1 TD"
+   },
+   {
+    "id": "5148787",
+    "name": "Wyatt Young",
+    "team": "Oklahoma State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 64,
+    "verdict": "showed up",
+    "line": "1 car, 4 yds, 0 TD · 5 rec, 52 yds, 1 TD"
+   },
+   {
+    "id": "5141668",
+    "name": "Taevion Swint",
+    "team": "UCF",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 38,
+    "verdict": "quiet",
+    "line": "7 car, 27 yds, 0 TD · 1 rec, 3 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

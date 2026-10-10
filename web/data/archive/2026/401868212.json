@@ -49,5 +49,47 @@
    "modelSide": "BTLR",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 34
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 20
+  },
+  "capturedAt": "2026-10-10T23:38:30.419Z",
+  "score": {
+   "home": 41,
+   "away": 10
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5085508",
+    "name": "Desmin Jackson",
+    "team": "Butler",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 47,
+    "verdict": "showed up",
+    "line": "9 car, 44 yds, 1 TD"
+   },
+   {
+    "id": "5093363",
+    "name": "Adam Criter",
+    "team": "San Diego",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 45,
+    "verdict": "quiet",
+    "line": "7 car, 10 yds, 0 TD · 1 rec, 6 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

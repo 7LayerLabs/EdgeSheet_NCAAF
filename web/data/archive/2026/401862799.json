@@ -110,5 +110,121 @@
    "favorite": "NAVY",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 5.44142857142857
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 5.8
+  },
+  "capturedAt": "2026-10-10T23:38:32.947Z",
+  "score": {
+   "home": 34,
+   "away": 26
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Tulsa run game",
+    "b": "Navy run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Tulsa",
+    "why": "Navy is No. 29 of 138 against the run (34%). Tulsa ranks No. 78 in rush success rate (44%). A real edge, not a lock. Tulsa will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "played out",
+    "actual": "98 rush yds on 28 carries (3.5 per)"
+   },
+   {
+    "a": "Tulsa on passing downs",
+    "b": "Navy pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Tulsa",
+    "why": "Navy is No. 87 of 138 on passing downs (30%). Tulsa ranks No. 137 in passing-downs success (18%). A real edge, not a lock. Navy gets off the field on long downs. Early-down efficiency is everything for Tulsa.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Navy deep passing",
+    "b": "Tulsa secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Navy",
+    "why": "Navy is No. 14 of 138 in pass explosiveness (1.83). Tulsa ranks No. 59 at limiting explosive passes (1.51). A real edge, not a lock. Navy has the deep ball available. Watch whether Tulsa rolls a safety over after the first one.",
+    "verdict": "played out",
+    "actual": "95 pass yds, longest play 58"
+   },
+   {
+    "a": "Navy run game",
+    "b": "Tulsa run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Navy",
+    "why": "Navy is No. 9 of 138 in rush success rate (53%). Tulsa ranks No. 53 against the run (38%). A real edge, not a lock. Navy should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "played out",
+    "actual": "386 rush yds on 67 carries (5.8 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4685699",
+    "name": "Damari Alston",
+    "team": "Tulsa",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 80,
+    "verdict": "quiet",
+    "line": "11 car, 22 yds, 0 TD · 2 rec, 5 yds, 0 TD"
+   },
+   {
+    "id": "4714989",
+    "name": "Hunter Erb",
+    "team": "Tulsa",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5193111",
+    "name": "Brody Duffel",
+    "team": "Tulsa",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5147932",
+    "name": "Will Upshaw",
+    "team": "Tulsa",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 56,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5158387",
+    "name": "Griffen Willis",
+    "team": "Navy",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 48,
+    "verdict": "quiet",
+    "line": "5 tkl, 1 TFL, 0 sacks, 1 PD"
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

@@ -40,5 +40,36 @@
    "modelSide": "ELON",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 19.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 9.1
+  },
+  "capturedAt": "2026-10-10T23:38:30.828Z",
+  "score": {
+   "home": 0,
+   "away": 16
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5301989",
+    "name": "Gerald Modest Jr.",
+    "team": "Wofford",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 52,
+    "verdict": "showed up",
+    "line": "24 car, 107 yds, 0 TD · 3 rec, 30 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

@@ -11,6 +11,7 @@ import type { Game, Matchup } from "./types";
 import { scoutScore } from "./score";
 import { closingValue, type ClvRecord } from "./odds";
 import { gradePassingDowns } from "./situational";
+import { matchBoard, type SideRow } from "./matchboard";
 
 const DIR = path.join(process.cwd(), "data", "archive");
 
@@ -55,6 +56,41 @@ export interface Pregame {
   scoreComponents?: import("./types").ScoreComponents;
   /** Consensus of outside systems (SP+, FPI, SRS, Elo, CFBD pregame) plus ours: median home margin and the side most lean to against the number. */
   consensus?: { median: number; favorite: string; side?: string; sideCount?: number; of: number };
+  /** The matchup board as it stood before kickoff (src/lib/matchboard.ts), for the postgame recap. */
+  board?: BoardLock;
+}
+
+export interface BoardSideLock {
+  offense: string;
+  defense: string;
+  edge: "offense" | "defense" | "even";
+  strength: string;
+  /** Percentile gap, offense minus defense; the largest one is the pressure point. */
+  gap?: number;
+  offRank: number;
+  defRank: number;
+  of: number;
+  offOf?: number;
+  offRead: string;
+  defRead: string;
+  qb?: { id: string; name: string; type: string; rank: number; of: number; season: { ypa: number; comp: number; tdr: number; intr: number; attempts: number } };
+}
+
+export interface BoardLock {
+  pressurePoint: string;
+  rows: { key: string; title: string; offLabel: string; defLabel: string; away: BoardSideLock; home: BoardSideLock }[];
+}
+
+function boardLock(game: Game): BoardLock | undefined {
+  if (game.division !== "FBS") return undefined;
+  const b = matchBoard(game.away.short, game.home.short);
+  if (!b) return undefined;
+  const side = (x: SideRow): BoardSideLock => ({
+    offense: x.offense, defense: x.defense, edge: x.edge, strength: x.strength, gap: x.gap, offRank: x.offRank, defRank: x.defRank, of: x.of, offOf: x.offOf,
+    offRead: x.offRead, defRead: x.defRead,
+    qb: x.qb ? { id: x.qb.id, name: x.qb.name, type: x.qb.type, rank: x.qb.rank, of: x.qb.of, season: x.qb.season } : undefined,
+  });
+  return { pressurePoint: b.pressurePoint, rows: b.rows.map((r) => ({ key: r.key, title: r.title, offLabel: r.offLabel, defLabel: r.defLabel, away: side(r.away), home: side(r.home) })) };
 }
 
 export interface EdgeResult extends EdgeCall {
@@ -144,6 +180,14 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
       existing.pregame.consensus = consensusLock(game);
       writeEntry(existing);
     }
+    // Locks taken before the matchup board existed pick it up, still before kickoff.
+    if (!existing.postgame && !existing.pregame.board) {
+      const board = boardLock(game);
+      if (board) {
+        existing.pregame.board = board;
+        writeEntry(existing);
+      }
+    }
     return existing;
   }
   if (!game.matchups.length && !game.prospects.length) return undefined;
@@ -179,6 +223,7 @@ export function lockPregame(game: Game, season: number): ArchiveEntry | undefine
         ? { winner: game.projection.winner, winProb: game.projection.winProb, margin: game.projection.margin, home: game.projection.home, away: game.projection.away, modelSide: game.projection.modelSide, confidence: game.projection.confidence, modelTotal: game.projection.modelTotal, totalLean: game.projection.totalLean, eloMargin: game.projection.eloMargin, netEdge: game.projection.netEdge }
         : undefined,
       consensus: consensusLock(game),
+      board: boardLock(game),
     },
   };
   writeEntry(entry);
@@ -235,7 +280,7 @@ function gradeEdge(e: EdgeCall, off: TeamBox | undefined, gameId?: string): { ve
   }
 }
 
-function gradeProspect(p: ProspectCall, box: BoxScore): { verdict: ProspectResult["verdict"]; line: string } {
+export function gradeProspect(p: ProspectCall, box: BoxScore): { verdict: ProspectResult["verdict"]; line: string } {
   const lines = box.byPlayer.get(p.id) ?? [];
   if (p.group === "OL") return { verdict: "unmeasured", line: "Linemen have no box-score line." };
   if (!lines.length) return { verdict: "quiet", line: "No box-score line." };

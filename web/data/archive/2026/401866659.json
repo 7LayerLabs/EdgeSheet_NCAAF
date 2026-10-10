@@ -49,5 +49,47 @@
    "modelSide": "TOW",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 2.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 7.4
+  },
+  "capturedAt": "2026-10-10T23:38:33.955Z",
+  "score": {
+   "home": 24,
+   "away": 31
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4923282",
+    "name": "CJ Hester",
+    "team": "Stony Brook",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 52,
+    "verdict": "quiet",
+    "line": "15 car, 39 yds, 0 TD · 3 rec, 14 yds, 0 TD"
+   },
+   {
+    "id": "5078046",
+    "name": "Aidan Johnson",
+    "team": "Towson",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

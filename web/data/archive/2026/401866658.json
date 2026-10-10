@@ -31,5 +31,32 @@
    "favorite": "NCAT",
    "of": 1
   }
+ },
+ "postgame": {
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 2.1
+  },
+  "capturedAt": "2026-10-10T23:38:28.261Z",
+  "score": {
+   "home": 30,
+   "away": 27
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4685543",
+    "name": "Qae'Shon Sapp",
+    "team": "North Carolina A&T",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 51,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

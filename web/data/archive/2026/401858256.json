@@ -145,5 +145,165 @@
    "favorite": "PITT",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 16.924285714285713
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 16.9
+  },
+  "capturedAt": "2026-10-10T23:38:27.600Z",
+  "score": {
+   "home": 17,
+   "away": 21
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Pittsburgh offensive line",
+    "b": "North Carolina front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Pittsburgh",
+    "why": "Pittsburgh is No. 69 of 138 in line yards per carry (3.13). North Carolina ranks No. 119 at the line of scrimmage (3.26). A real edge, not a lock. Pittsburgh should win first contact more often than not, which makes every down shorter.",
+    "verdict": "mixed",
+    "actual": "150 rush yds on 41 carries (3.7 per)"
+   },
+   {
+    "a": "North Carolina run game",
+    "b": "Pittsburgh run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "North Carolina",
+    "why": "Pittsburgh is No. 7 of 138 against the run (28%). North Carolina ranks No. 49 in rush success rate (47%). A real edge, not a lock. North Carolina will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "played out",
+    "actual": "20 rush yds on 25 carries (0.8 per)"
+   },
+   {
+    "a": "Pittsburgh run game",
+    "b": "North Carolina run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Pittsburgh",
+    "why": "Pittsburgh is No. 77 of 138 in rush success rate (44%). North Carolina ranks No. 119 against the run (47%). A real edge, not a lock. Pittsburgh should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "mixed",
+    "actual": "150 rush yds on 41 carries (3.7 per)"
+   },
+   {
+    "a": "Pittsburgh deep passing",
+    "b": "North Carolina secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Pittsburgh",
+    "why": "North Carolina is No. 11 of 138 at limiting explosive passes (1.30). Pittsburgh ranks No. 47 in pass explosiveness (1.64). A real edge, not a lock. North Carolina keeps the lid on. Pittsburgh should expect to drive the long way.",
+    "verdict": "mixed",
+    "actual": "219 pass yds, longest play 40"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4871039",
+    "name": "Jelani Thurman",
+    "team": "North Carolina",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 84,
+    "verdict": "showed up",
+    "line": "6 rec, 29 yds, 1 TD"
+   },
+   {
+    "id": "5208095",
+    "name": "Mason Heintschel",
+    "team": "Pittsburgh",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 80,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5081328",
+    "name": "Nick James",
+    "team": "Pittsburgh",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 79,
+    "verdict": "quiet",
+    "line": "3 tkl, 1 TFL, 0 sacks"
+   },
+   {
+    "id": "5181309",
+    "name": "Greg Smith",
+    "team": "North Carolina",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 75,
+    "verdict": "showed up",
+    "line": "8 tkl, 0 TFL, 0 sacks · 1 INT, 25 yds"
+   },
+   {
+    "id": "5079687",
+    "name": "Jordan Shipp",
+    "team": "North Carolina",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 72,
+    "verdict": "showed up",
+    "line": "6 rec, 93 yds, 0 TD"
+   },
+   {
+    "id": "4819223",
+    "name": "Ryan Baer",
+    "team": "Pittsburgh",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5136504",
+    "name": "Jaiden Patterson",
+    "team": "North Carolina",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 70,
+    "verdict": "quiet",
+    "line": "5 tkl, 0 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "5079439",
+    "name": "Jaylen Harvey",
+    "team": "North Carolina",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 70,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5083030",
+    "name": "BJ Williams",
+    "team": "Pittsburgh",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "mixed"
  }
 }

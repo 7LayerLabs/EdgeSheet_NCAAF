@@ -31,5 +31,32 @@
    "favorite": "SHU",
    "of": 1
   }
+ },
+ "postgame": {
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 25.8
+  },
+  "capturedAt": "2026-10-10T23:38:28.385Z",
+  "score": {
+   "home": 7,
+   "away": 28
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5106897",
+    "name": "Jack O'Connell",
+    "team": "Stonehill",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 45,
+    "verdict": "showed up",
+    "line": "13/23, 134 yds, 1 TD, 1 INT · 5 car, 40 yds, 1 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

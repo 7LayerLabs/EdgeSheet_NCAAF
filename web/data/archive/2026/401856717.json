@@ -172,5 +172,192 @@
    "sideCount": 2,
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 10.377142857142857,
+   "modelSideCovered": true,
+   "totalLeanRight": false
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 12.6,
+   "sideCovered": true
+  },
+  "capturedAt": "2026-10-10T23:38:31.823Z",
+  "score": {
+   "home": 27,
+   "away": 24
+  },
+  "excitement": null,
+  "spreadResult": "underdog covered",
+  "totalResult": "over",
+  "edges": [
+   {
+    "a": "Oklahoma offensive line",
+    "b": "Texas front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Oklahoma",
+    "why": "Texas is No. 36 of 138 at the line of scrimmage (2.55). Oklahoma ranks No. 125 in line yards per carry (2.60). This is not a lean. It is a mismatch, and a prominent one. Texas wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "verdict": "played out",
+    "actual": "83 rush yds on 31 carries (2.7 per)"
+   },
+   {
+    "a": "Texas offensive line",
+    "b": "Oklahoma front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Texas",
+    "why": "Oklahoma is No. 19 of 138 at the line of scrimmage (2.36). Texas ranks No. 105 in line yards per carry (2.82). This is not a lean. It is a mismatch, and a prominent one. Oklahoma wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "verdict": "mixed",
+    "actual": "122 rush yds on 32 carries (3.8 per)"
+   },
+   {
+    "a": "Oklahoma run game",
+    "b": "Texas run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Oklahoma",
+    "why": "Texas is No. 39 of 138 against the run (37%). Oklahoma ranks No. 125 in rush success rate (36%). This is not a lean. It is a mismatch, and a prominent one. Texas erases the run. Oklahoma gets pushed into passing downs, and that is where this defense makes its money.",
+    "verdict": "played out",
+    "actual": "83 rush yds on 31 carries (2.7 per)"
+   },
+   {
+    "a": "Texas run game",
+    "b": "Oklahoma run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Texas",
+    "why": "Oklahoma is No. 10 of 138 against the run (29%). Texas ranks No. 63 in rush success rate (46%). A real edge, not a lock. Texas will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "mixed",
+    "actual": "122 rush yds on 32 carries (3.8 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079689",
+    "name": "Colin Simmons",
+    "team": "Texas",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 87,
+    "verdict": "showed up",
+    "line": "4 tkl, 3 TFL, 2 sacks"
+   },
+   {
+    "id": "5079376",
+    "name": "Cam Coleman",
+    "team": "Texas",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 84,
+    "verdict": "showed up",
+    "line": "5 rec, 110 yds, 1 TD"
+   },
+   {
+    "id": "5166881",
+    "name": "Kade Phillips",
+    "team": "Texas",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 80,
+    "verdict": "quiet",
+    "line": "2 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4868356",
+    "name": "Hero Kanu",
+    "team": "Texas",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 78,
+    "verdict": "quiet",
+    "line": "5 tkl, 0.5 TFL, 0 sacks"
+   },
+   {
+    "id": "5079314",
+    "name": "Brandon Baker",
+    "team": "Texas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 77,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5079711",
+    "name": "David Stone",
+    "team": "Oklahoma",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 77,
+    "verdict": "quiet",
+    "line": "5 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5198245",
+    "name": "Graceson Littleton",
+    "team": "Texas",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 74,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "4899363",
+    "name": "Adepoju Adebawore",
+    "team": "Oklahoma",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 74,
+    "verdict": "quiet",
+    "line": "2 tkl, 0.5 TFL, 0 sacks"
+   },
+   {
+    "id": "5143274",
+    "name": "Reggie Powers III",
+    "team": "Oklahoma",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 72,
+    "verdict": "showed up",
+    "line": "6 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5141654",
+    "name": "Omarion Robinson",
+    "team": "Oklahoma",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 69,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks, 1 PD"
+   },
+   {
+    "id": "5207928",
+    "name": "Courtland Guillory",
+    "team": "Oklahoma",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 65,
+    "verdict": "showed up",
+    "line": "6 tkl, 0 TFL, 0 sacks, 1 PD · 1 INT, 0 yds"
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

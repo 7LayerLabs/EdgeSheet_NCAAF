@@ -119,5 +119,132 @@
    "favorite": "EMU",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 5.9642857142857135
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 0.6000000000000001
+  },
+  "capturedAt": "2026-10-10T23:38:33.061Z",
+  "score": {
+   "home": 23,
+   "away": 25
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Akron deep passing",
+    "b": "Eastern Michigan secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Akron",
+    "why": "Eastern Michigan is No. 44 of 138 at limiting explosive passes (1.46). Akron ranks No. 134 in pass explosiveness (1.26). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Akron needs the underneath game and yards after catch.",
+    "verdict": "mixed",
+    "actual": "229 pass yds, longest play 40"
+   },
+   {
+    "a": "Akron offensive line",
+    "b": "Eastern Michigan front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Akron",
+    "why": "Akron is No. 11 of 138 in line yards per carry (3.62). Eastern Michigan ranks No. 90 at the line of scrimmage (2.97). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Akron. Second-level runs and play-action are live all afternoon.",
+    "verdict": "mixed",
+    "actual": "143 rush yds on 34 carries (4.2 per)"
+   },
+   {
+    "a": "Akron run game",
+    "b": "Eastern Michigan run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Akron",
+    "why": "Akron is No. 19 of 138 in rush success rate (51%). Eastern Michigan ranks No. 70 against the run (41%). A real edge, not a lock. Akron should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "mixed",
+    "actual": "143 rush yds on 34 carries (4.2 per)"
+   },
+   {
+    "a": "Eastern Michigan offensive line",
+    "b": "Akron front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Eastern Michigan",
+    "why": "Akron is No. 71 of 138 at the line of scrimmage (2.89). Eastern Michigan ranks No. 99 in line yards per carry (2.89). A real edge, not a lock. Akron should hold the line of scrimmage. Eastern Michigan's runs will need the second level to break.",
+    "verdict": "mixed",
+    "actual": "136 rush yds on 33 carries (4.1 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4685236",
+    "name": "Omari Abor",
+    "team": "Akron",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 68,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5138702",
+    "name": "Adham Abouraya",
+    "team": "Eastern Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4920144",
+    "name": "Elijha Payne",
+    "team": "Eastern Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4878442",
+    "name": "Joshua Anderson",
+    "team": "Eastern Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5209964",
+    "name": "Quincy Byas",
+    "team": "Eastern Michigan",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 62,
+    "verdict": "showed up",
+    "line": "7 tkl, 2.5 TFL, 2 sacks, 1 PD"
+   },
+   {
+    "id": "4685337",
+    "name": "Mehki Flowers",
+    "team": "Akron",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Sleeper",
+    "score": 61,
+    "verdict": "showed up",
+    "line": "FUM 0, LOST 0, REC 1 · 15 tkl, 0 TFL, 0 sacks, 1 PD"
+   }
+  ],
+  "pressurePointVerdict": "mixed"
  }
 }

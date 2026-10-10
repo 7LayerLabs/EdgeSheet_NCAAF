@@ -114,6 +114,8 @@ export interface QbProfile {
   games: { week: number; opponent: string; homeAway: "home" | "away"; coverRank: number | null; rushRank: number | null; note: string; weight: number; line: string; raw: number; adjusted: number }[];
   rawAvg: number | null;
   adjAvg: number | null;
+  /** Season rates before this game, for the postgame recap's "above or below his average". */
+  season: { ypa: number; comp: number; tdr: number; intr: number; attempts: number };
 }
 
 export interface TeamContext {
@@ -301,6 +303,7 @@ function qbProfile(school: string): QbProfile | undefined {
     })),
     rawAvg: adj ? Math.round(adj.rawAvg) : null,
     adjAvg: adj ? Math.round(adj.adjAvg) : null,
+    season: { ypa: +starter.ypa.toFixed(2), comp: +starter.comp.toFixed(3), tdr: +starter.tdr.toFixed(3), intr: +starter.intr.toFixed(3), attempts: s.pa ?? 0 },
   };
 }
 

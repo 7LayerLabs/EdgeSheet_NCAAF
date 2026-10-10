@@ -136,5 +136,154 @@
    "favorite": "NCSU",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 23.85
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 25.8
+  },
+  "capturedAt": "2026-10-10T23:38:27.884Z",
+  "score": {
+   "home": 14,
+   "away": 38
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "NC State deep passing",
+    "b": "Wake Forest secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "NC State",
+    "why": "Wake Forest is No. 4 of 138 at limiting explosive passes (1.14). NC State ranks No. 111 in pass explosiveness (1.41). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. NC State needs the underneath game and yards after catch.",
+    "verdict": "mixed",
+    "actual": "243 pass yds, longest play 24"
+   },
+   {
+    "a": "Wake Forest run game",
+    "b": "NC State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Wake Forest",
+    "why": "Wake Forest is No. 29 of 138 in rush success rate (49%). NC State ranks No. 105 against the run (45%). This is not a lean. It is a mismatch, and a prominent one. Expect Wake Forest to lean on the run early and often, and to keep leaning. Once NC State loads the box, play-action is the second punch.",
+    "verdict": "did not play out",
+    "actual": "84 rush yds on 36 carries (2.3 per)"
+   },
+   {
+    "a": "Wake Forest on passing downs",
+    "b": "NC State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Wake Forest",
+    "why": "Wake Forest is No. 10 of 138 in passing-downs success (42%). NC State ranks No. 51 on passing downs (26%). A real edge, not a lock. Wake Forest converts the long downs NC State needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Wake Forest deep passing",
+    "b": "NC State secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Wake Forest",
+    "why": "Wake Forest is No. 62 of 138 in pass explosiveness (1.58). NC State ranks No. 100 at limiting explosive passes (1.64). A real edge, not a lock. Wake Forest has the deep ball available. Watch whether NC State rolls a safety over after the first one.",
+    "verdict": "played out",
+    "actual": "303 pass yds, longest play 52"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5126513",
+    "name": "Jayden Scott",
+    "team": "NC State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 74,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "4920227",
+    "name": "Gio Lopez",
+    "team": "Wake Forest",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "showed up",
+    "line": "26/33, 303 yds, 3 TD, 0 INT · 8 car, 10 yds, 1 TD"
+   },
+   {
+    "id": "4870590",
+    "name": "Popo Aguirre",
+    "team": "NC State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 70,
+    "verdict": "showed up",
+    "line": "12 tkl, 1 TFL, 0 sacks"
+   },
+   {
+    "id": "5079301",
+    "name": "CJ Bailey",
+    "team": "NC State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 69,
+    "verdict": "showed up",
+    "line": "28/39, 241 yds, 1 TD, 0 INT · 13 car, 0 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   },
+   {
+    "id": "5165145",
+    "name": "Dallas Afalava",
+    "team": "Wake Forest",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 68,
+    "verdict": "quiet",
+    "line": "1 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5153074",
+    "name": "Carlos Hernandez",
+    "team": "Wake Forest",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 67,
+    "verdict": "showed up",
+    "line": "12 rec, 117 yds, 1 TD · FUM 1, LOST 0, REC 0"
+   },
+   {
+    "id": "5290781",
+    "name": "Somad Eaddy",
+    "team": "Wake Forest",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 58,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5211058",
+    "name": "TK Whitset",
+    "team": "NC State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Future",
+    "score": 56,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "mixed"
  }
 }

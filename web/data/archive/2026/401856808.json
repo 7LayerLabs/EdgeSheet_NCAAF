@@ -118,6 +118,181 @@
    "median": 16.7,
    "favorite": "ASU",
    "of": 5
+  },
+  "board": {
+   "pressurePoint": "Arizona State red zone defense (No. 23) against Hawai'i red zone offense (No. 110). Arizona State holds in the red zone. Count Hawai'i's field goals.",
+   "rows": [
+    {
+     "key": "trenches",
+     "title": "O-line vs D-line",
+     "offLabel": "O-line",
+     "defLabel": "D-line",
+     "away": {
+      "offense": "Hawai'i",
+      "defense": "Arizona State",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 90,
+      "defRank": 95,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Average. No stat stands out either way."
+     },
+     "home": {
+      "offense": "Arizona State",
+      "defense": "Hawai'i",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 116,
+      "defRank": 133,
+      "of": 138,
+      "offRead": "Below average. Worst number: line yards per carry (No. 120).",
+      "defRead": "Bad. Worst number: runs stuffed (No. 135)."
+     }
+    },
+    {
+     "key": "run",
+     "title": "Running back vs front seven",
+     "offLabel": "Run game",
+     "defLabel": "Front 7",
+     "away": {
+      "offense": "Hawai'i",
+      "defense": "Arizona State",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 56,
+      "defRank": 29,
+      "of": 138,
+      "offRead": "Average, but mixed: second-level yards per carry is No. 31, explosive runs is No. 97.",
+      "defRead": "Good. Best number: open-field yards allowed (No. 36)."
+     },
+     "home": {
+      "offense": "Arizona State",
+      "defense": "Hawai'i",
+      "edge": "offense",
+      "strength": "edge",
+      "offRank": 55,
+      "defRank": 117,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Below average. Worst number: second-level yards allowed (No. 129)."
+     }
+    },
+    {
+     "key": "pass",
+     "title": "Receivers vs secondary",
+     "offLabel": "Receivers",
+     "defLabel": "Secondary",
+     "away": {
+      "offense": "Hawai'i",
+      "defense": "Arizona State",
+      "edge": "defense",
+      "strength": "clear",
+      "offRank": 128,
+      "defRank": 38,
+      "of": 138,
+      "offRead": "Bad. Worst number: explosive passes (No. 132).",
+      "defRead": "Good, but mixed: pass success allowed is No. 20, explosive passes allowed is No. 90."
+     },
+     "home": {
+      "offense": "Arizona State",
+      "defense": "Hawai'i",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 50,
+      "defRank": 72,
+      "of": 138,
+      "offRead": "Average, but mixed: explosive passes is No. 25, picks and breakups allowed is No. 82.",
+      "defRead": "Average, but mixed: explosive passes allowed is No. 40, pass success allowed is No. 104."
+     }
+    },
+    {
+     "key": "qb",
+     "title": "Quarterback vs pass defense",
+     "offLabel": "QB",
+     "defLabel": "Pass D",
+     "away": {
+      "offense": "Hawai'i",
+      "defense": "Arizona State",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 86,
+      "defRank": 37,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Average among FBS QBs. Game manager: 61% completions, 6.3 yards per attempt, 4 TD and 3 INT, 6 rushing yards a game.",
+      "defRead": "Good, but mixed: pass success allowed is No. 20, explosive passes allowed is No. 90.",
+      "qb": {
+       "id": "5101124",
+       "name": "Micah Alejado",
+       "type": "Game manager",
+       "rank": 86,
+       "of": 162,
+       "season": {
+        "ypa": 6.3,
+        "comp": 0.611,
+        "tdr": 0.019,
+        "intr": 0.014,
+        "attempts": 216
+       }
+      }
+     },
+     "home": {
+      "offense": "Arizona State",
+      "defense": "Hawai'i",
+      "edge": "offense",
+      "strength": "clear",
+      "offRank": 35,
+      "defRank": 91,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Good among FBS QBs. Balanced passer: 61% completions, 8.2 yards per attempt, 10 TD and 3 INT, 11 rushing yards a game.",
+      "defRead": "Average, but mixed: explosive passes allowed is No. 40, havoc created (sacks, TOs, TFL) is No. 107.",
+      "qb": {
+       "id": "5141378",
+       "name": "Cutter Boley",
+       "type": "Balanced passer",
+       "rank": 35,
+       "of": 162,
+       "season": {
+        "ypa": 8.19,
+        "comp": 0.614,
+        "tdr": 0.079,
+        "intr": 0.024,
+        "attempts": 127
+       }
+      }
+     }
+    },
+    {
+     "key": "redzone",
+     "title": "Red zone",
+     "offLabel": "Red zone O",
+     "defLabel": "Red zone D",
+     "away": {
+      "offense": "Hawai'i",
+      "defense": "Arizona State",
+      "edge": "defense",
+      "strength": "mismatch",
+      "offRank": 110,
+      "defRank": 23,
+      "of": 138,
+      "offRead": "Below average.",
+      "defRead": "Good."
+     },
+     "home": {
+      "offense": "Arizona State",
+      "defense": "Hawai'i",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 88,
+      "defRank": 97,
+      "of": 138,
+      "offRead": "Average.",
+      "defRead": "Below average."
+     }
+    }
+   ]
   }
  }
 }

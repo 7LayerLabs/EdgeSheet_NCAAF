@@ -49,5 +49,47 @@
    "modelSide": "LAM",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 3.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 9.7
+  },
+  "capturedAt": "2026-10-10T23:38:34.159Z",
+  "score": {
+   "home": 38,
+   "away": 35
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5414973",
+    "name": "Davin Driskell",
+    "team": "Lamar",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Sleeper",
+    "score": 49,
+    "verdict": "showed up",
+    "line": "2 rec, 13 yds, 1 TD"
+   },
+   {
+    "id": "5075953",
+    "name": "Easton Fulton",
+    "team": "Incarnate Word",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

@@ -109,5 +109,121 @@
    "favorite": "ARMY",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 0.27857142857142847
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 0.2999999999999998
+  },
+  "capturedAt": "2026-10-10T23:38:28.023Z",
+  "score": {
+   "home": 20,
+   "away": 17
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Army offensive line",
+    "b": "Tulane front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Army",
+    "why": "Army is No. 4 of 138 in line yards per carry (3.83). Tulane ranks No. 105 at the line of scrimmage (3.09). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Army. Second-level runs and play-action are live all afternoon.",
+    "verdict": "played out",
+    "actual": "329 rush yds on 59 carries (5.6 per)"
+   },
+   {
+    "a": "Army deep passing",
+    "b": "Tulane secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Army",
+    "why": "Tulane is No. 68 of 138 at limiting explosive passes (1.55). Army ranks No. 137 in pass explosiveness (1.20). A clear edge, the kind that shapes a game plan. Tulane keeps the lid on. Army should expect to drive the long way.",
+    "verdict": "did not play out",
+    "actual": "19 pass yds, longest play 58"
+   },
+   {
+    "a": "Tulane deep passing",
+    "b": "Army secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Tulane",
+    "why": "Tulane is No. 31 of 138 in pass explosiveness (1.70). Army ranks No. 88 at limiting explosive passes (1.60). A clear edge, the kind that shapes a game plan. Tulane has the deep ball available. Watch whether Army rolls a safety over after the first one.",
+    "verdict": "played out",
+    "actual": "158 pass yds, longest play 41"
+   },
+   {
+    "a": "Army run game",
+    "b": "Tulane run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Army",
+    "why": "Army is No. 2 of 138 in rush success rate (58%). Tulane ranks No. 47 against the run (37%). A real edge, not a lock. Army should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "played out",
+    "actual": "329 rush yds on 59 carries (5.6 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4837391",
+    "name": "Maurice Turner",
+    "team": "Tulane",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 65,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5085346",
+    "name": "Darion Reed",
+    "team": "Tulane",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4912221",
+    "name": "John Bock II",
+    "team": "Tulane",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5302751",
+    "name": "Tylan George",
+    "team": "Tulane",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Future",
+    "score": 56,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5219446",
+    "name": "Ben Britton",
+    "team": "Army",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 55,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

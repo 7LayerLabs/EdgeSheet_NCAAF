@@ -26,5 +26,28 @@
     "score": 46
    }
   ]
+ },
+ "postgame": {
+  "capturedAt": "2026-10-10T23:38:31.018Z",
+  "score": {
+   "home": 62,
+   "away": 0
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4703031",
+    "name": "Ryan Nolan",
+    "team": "Norfolk State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

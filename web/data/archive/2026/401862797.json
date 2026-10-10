@@ -137,5 +137,154 @@
    "favorite": "ECU",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 4.698571428571428
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 3.6999999999999993
+  },
+  "capturedAt": "2026-10-10T23:38:29.706Z",
+  "score": {
+   "home": 28,
+   "away": 12
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "East Carolina offensive line",
+    "b": "Rice front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "East Carolina",
+    "why": "Rice is No. 58 of 138 at the line of scrimmage (2.77). East Carolina ranks No. 134 in line yards per carry (2.43). This is not a lean. It is a mismatch, and a prominent one. Rice wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "verdict": "did not play out",
+    "actual": "234 rush yds on 41 carries (5.7 per)"
+   },
+   {
+    "a": "East Carolina on passing downs",
+    "b": "Rice pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "East Carolina",
+    "why": "Rice is No. 98 of 138 on passing downs (31%). East Carolina ranks No. 135 in passing-downs success (20%). A real edge, not a lock. Rice gets off the field on long downs. Early-down efficiency is everything for East Carolina.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "East Carolina run game",
+    "b": "Rice run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "East Carolina",
+    "why": "Rice is No. 89 of 138 against the run (43%). East Carolina ranks No. 122 in rush success rate (37%). A real edge, not a lock. East Carolina will find the run hard going. Expect more second-and-long than usual.",
+    "verdict": "did not play out",
+    "actual": "234 rush yds on 41 carries (5.7 per)"
+   },
+   {
+    "a": "East Carolina deep passing",
+    "b": "Rice secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "East Carolina",
+    "why": "Rice is No. 57 of 138 at limiting explosive passes (1.50). East Carolina ranks No. 86 in pass explosiveness (1.50). A real edge, not a lock. Rice keeps the lid on. East Carolina should expect to drive the long way.",
+    "verdict": "mixed",
+    "actual": "142 pass yds, longest play 43"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5041974",
+    "name": "Luke Needham",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5091819",
+    "name": "Nate Bledsoe",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5054105",
+    "name": "Patrick Valent",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4839485",
+    "name": "Brandon Best",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5077961",
+    "name": "Bryce Weaver",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5125152",
+    "name": "Marleo Neolien",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5300619",
+    "name": "Tyler Lavallier",
+    "team": "Rice",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 58,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5290949",
+    "name": "Kelton Smith",
+    "team": "East Carolina",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 56,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "did not play out"
  }
 }

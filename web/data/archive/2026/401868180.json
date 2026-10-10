@@ -49,5 +49,47 @@
    "modelSide": "GWEB",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 27.5
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 39.4
+  },
+  "capturedAt": "2026-10-10T23:38:33.513Z",
+  "score": {
+   "home": 7,
+   "away": 21
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4917288",
+    "name": "Charles Kellom",
+    "team": "Eastern Illinois",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 51,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "4869817",
+    "name": "Cole Pennington",
+    "team": "Gardner-Webb",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 49,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

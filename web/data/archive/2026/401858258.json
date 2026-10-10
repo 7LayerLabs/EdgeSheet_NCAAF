@@ -145,6 +145,181 @@
    "median": 16.9,
    "favorite": "UVA",
    "of": 5
+  },
+  "board": {
+   "pressurePoint": "Virginia pass defense (No. 2) against Steve Angeli (No. 116 of 162 FBS QBs). Watch Steve Angeli on third-and-7 or longer. Punts there mean Virginia is winning.",
+   "rows": [
+    {
+     "key": "trenches",
+     "title": "O-line vs D-line",
+     "offLabel": "O-line",
+     "defLabel": "D-line",
+     "away": {
+      "offense": "Syracuse",
+      "defense": "Virginia",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 77,
+      "defRank": 73,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Average. No stat stands out either way."
+     },
+     "home": {
+      "offense": "Virginia",
+      "defense": "Syracuse",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 26,
+      "defRank": 34,
+      "of": 138,
+      "offRead": "Good. Best number: runs stuffed (No. 29).",
+      "defRead": "Good. Best number: backfield penetration (No. 24)."
+     }
+    },
+    {
+     "key": "run",
+     "title": "Running back vs front seven",
+     "offLabel": "Run game",
+     "defLabel": "Front 7",
+     "away": {
+      "offense": "Syracuse",
+      "defense": "Virginia",
+      "edge": "defense",
+      "strength": "clear",
+      "offRank": 87,
+      "defRank": 9,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Elite. Best number: explosive runs allowed (No. 9)."
+     },
+     "home": {
+      "offense": "Virginia",
+      "defense": "Syracuse",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 86,
+      "defRank": 114,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Below average, but mixed: explosive runs allowed is No. 74, open-field yards allowed is No. 124."
+     }
+    },
+    {
+     "key": "pass",
+     "title": "Receivers vs secondary",
+     "offLabel": "Receivers",
+     "defLabel": "Secondary",
+     "away": {
+      "offense": "Syracuse",
+      "defense": "Virginia",
+      "edge": "defense",
+      "strength": "edge",
+      "offRank": 46,
+      "defRank": 1,
+      "of": 138,
+      "offRead": "Average, but mixed: explosive passes is No. 27, pass success rate is No. 87.",
+      "defRead": "Elite. Best number: pass success allowed (No. 7)."
+     },
+     "home": {
+      "offense": "Virginia",
+      "defense": "Syracuse",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 6,
+      "defRank": 42,
+      "of": 138,
+      "offRead": "Elite, but mixed: picks and breakups allowed is No. 8, explosive passes is No. 59.",
+      "defRead": "Average, but mixed: pass success allowed is No. 16, picks and breakups (DBs) is No. 76."
+     }
+    },
+    {
+     "key": "qb",
+     "title": "Quarterback vs pass defense",
+     "offLabel": "QB",
+     "defLabel": "Pass D",
+     "away": {
+      "offense": "Syracuse",
+      "defense": "Virginia",
+      "edge": "defense",
+      "strength": "mismatch",
+      "offRank": 116,
+      "defRank": 2,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Below average among FBS QBs. Balanced passer: 55% completions, 7.0 yards per attempt, 4 TD and 5 INT, -6 rushing yards a game.",
+      "defRead": "Elite. Best number: pass success allowed (No. 7).",
+      "qb": {
+       "id": "4685694",
+       "name": "Steve Angeli",
+       "type": "Balanced passer",
+       "rank": 116,
+       "of": 162,
+       "season": {
+        "ypa": 7.03,
+        "comp": 0.548,
+        "tdr": 0.038,
+        "intr": 0.048,
+        "attempts": 104
+       }
+      }
+     },
+     "home": {
+      "offense": "Virginia",
+      "defense": "Syracuse",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 45,
+      "defRank": 18,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Good among FBS QBs. Efficient pocket passer: 68% completions, 8.1 yards per attempt, 12 TD and 1 INT, 13 rushing yards a game.",
+      "defRead": "Good, but mixed: pass success allowed is No. 16, explosive passes allowed is No. 67.",
+      "qb": {
+       "id": "4685696",
+       "name": "Beau Pribula",
+       "type": "Efficient pocket passer",
+       "rank": 45,
+       "of": 162,
+       "season": {
+        "ypa": 8.14,
+        "comp": 0.678,
+        "tdr": 0.102,
+        "intr": 0.008,
+        "attempts": 118
+       }
+      }
+     }
+    },
+    {
+     "key": "redzone",
+     "title": "Red zone",
+     "offLabel": "Red zone O",
+     "defLabel": "Red zone D",
+     "away": {
+      "offense": "Syracuse",
+      "defense": "Virginia",
+      "edge": "defense",
+      "strength": "edge",
+      "offRank": 84,
+      "defRank": 56,
+      "of": 138,
+      "offRead": "Average.",
+      "defRead": "Average."
+     },
+     "home": {
+      "offense": "Virginia",
+      "defense": "Syracuse",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 27,
+      "defRank": 43,
+      "of": 138,
+      "offRead": "Good.",
+      "defRead": "Average."
+     }
+    }
+   ]
   }
  }
 }

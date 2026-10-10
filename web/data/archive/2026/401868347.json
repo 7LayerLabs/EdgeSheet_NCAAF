@@ -49,5 +49,54 @@
    "favorite": "ETSU",
    "of": 1
   }
+ },
+ "postgame": {
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 8.7
+  },
+  "capturedAt": "2026-10-10T23:38:29.375Z",
+  "score": {
+   "home": 16,
+   "away": 34
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5216698",
+    "name": "TJ Peyton",
+    "team": "East Tennessee State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 57,
+    "verdict": "showed up",
+    "line": "9 car, 110 yds, 1 TD"
+   },
+   {
+    "id": "4832849",
+    "name": "Gavin Garcia",
+    "team": "The Citadel",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 49,
+    "verdict": "showed up",
+    "line": "19 car, 70 yds, 0 TD · 2 rec, 12 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   },
+   {
+    "id": "4684279",
+    "name": "Charlie Browder",
+    "team": "East Tennessee State",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "quiet",
+    "line": "2 rec, 12 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

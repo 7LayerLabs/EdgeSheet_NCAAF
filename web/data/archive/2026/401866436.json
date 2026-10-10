@@ -109,5 +109,121 @@
    "favorite": "BGSU",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 28.504285714285714
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 26.7
+  },
+  "capturedAt": "2026-10-10T23:38:28.145Z",
+  "score": {
+   "home": 38,
+   "away": 10
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Bowling Green on passing downs",
+    "b": "Sacramento State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Bowling Green",
+    "why": "Sacramento State is No. 13 of 138 on passing downs (21%). Bowling Green ranks No. 138 in passing-downs success (15%). This is not a lean. It is a mismatch, and a prominent one. Sacramento State gets off the field on long downs. Early-down efficiency is everything for Bowling Green.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Bowling Green run game",
+    "b": "Sacramento State run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Bowling Green",
+    "why": "Sacramento State is No. 19 of 138 against the run (32%). Bowling Green ranks No. 138 in rush success rate (30%). This is not a lean. It is a mismatch, and a prominent one. Sacramento State erases the run. Bowling Green gets pushed into passing downs, and that is where this defense makes its money.",
+    "verdict": "did not play out",
+    "actual": "218 rush yds on 41 carries (5.3 per)"
+   },
+   {
+    "a": "Sacramento State run game",
+    "b": "Bowling Green run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Sacramento State",
+    "why": "Sacramento State is No. 42 of 138 in rush success rate (48%). Bowling Green ranks No. 136 against the run (52%). This is not a lean. It is a mismatch, and a prominent one. Expect Sacramento State to lean on the run early and often, and to keep leaning. Once Bowling Green loads the box, play-action is the second punch.",
+    "verdict": "did not play out",
+    "actual": "70 rush yds on 35 carries (2.0 per)"
+   },
+   {
+    "a": "Sacramento State deep passing",
+    "b": "Bowling Green secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Sacramento State",
+    "why": "Bowling Green is No. 38 of 138 at limiting explosive passes (1.44). Sacramento State ranks No. 131 in pass explosiveness (1.27). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Sacramento State needs the underneath game and yards after catch.",
+    "verdict": "did not play out",
+    "actual": "145 pass yds, longest play 55"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "4870233",
+    "name": "Vae Soifua",
+    "team": "Sacramento State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5078215",
+    "name": "Brody Bolyn",
+    "team": "Bowling Green",
+    "pos": "C",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4685288",
+    "name": "Selah Brown",
+    "team": "Bowling Green",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 62,
+    "verdict": "quiet",
+    "line": "4 tkl, 1 TFL, 0.5 sacks"
+   },
+   {
+    "id": "5083543",
+    "name": "Brandon Sousa",
+    "team": "Sacramento State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 58,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5141685",
+    "name": "Amari Wallace",
+    "team": "Sacramento State",
+    "pos": "S",
+    "group": "S",
+    "tier": "Future",
+    "score": 57,
+    "verdict": "quiet",
+    "line": "3 tkl, 0 TFL, 0 sacks"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

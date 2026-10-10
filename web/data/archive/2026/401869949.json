@@ -127,6 +127,181 @@
    "median": -13.8,
    "favorite": "JMU",
    "of": 5
+  },
+  "board": {
+   "pressurePoint": "James Madison front seven (No. 33) against Georgia Southern run game (No. 121). James Madison tackles well in space. Terrance Gibbs needs the line to win first, or it is a long day.",
+   "rows": [
+    {
+     "key": "trenches",
+     "title": "O-line vs D-line",
+     "offLabel": "O-line",
+     "defLabel": "D-line",
+     "away": {
+      "offense": "James Madison",
+      "defense": "Georgia Southern",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 35,
+      "defRank": 18,
+      "of": 138,
+      "offRead": "Good. Best number: backfield penetration allowed (No. 24).",
+      "defRead": "Good. Best number: runs stuffed (No. 15)."
+     },
+     "home": {
+      "offense": "Georgia Southern",
+      "defense": "James Madison",
+      "edge": "defense",
+      "strength": "edge",
+      "offRank": 71,
+      "defRank": 36,
+      "of": 138,
+      "offRead": "Average, but mixed: runs stuffed is No. 32, backfield penetration allowed is No. 105.",
+      "defRead": "Good. Best number: line yards allowed per carry (No. 21)."
+     }
+    },
+    {
+     "key": "run",
+     "title": "Running back vs front seven",
+     "offLabel": "Run game",
+     "defLabel": "Front 7",
+     "away": {
+      "offense": "James Madison",
+      "defense": "Georgia Southern",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 49,
+      "defRank": 36,
+      "of": 138,
+      "offRead": "Average. No stat stands out either way.",
+      "defRead": "Good, but mixed: explosive runs allowed is No. 26, second-level yards allowed is No. 83."
+     },
+     "home": {
+      "offense": "Georgia Southern",
+      "defense": "James Madison",
+      "edge": "defense",
+      "strength": "clear",
+      "offRank": 121,
+      "defRank": 33,
+      "of": 138,
+      "offRead": "Below average. Worst number: explosive runs (No. 121).",
+      "defRead": "Good, but mixed: second-level yards allowed is No. 10, explosive runs allowed is No. 109."
+     }
+    },
+    {
+     "key": "pass",
+     "title": "Receivers vs secondary",
+     "offLabel": "Receivers",
+     "defLabel": "Secondary",
+     "away": {
+      "offense": "James Madison",
+      "defense": "Georgia Southern",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 40,
+      "defRank": 78,
+      "of": 138,
+      "offRead": "Good, but mixed: picks and breakups allowed is No. 23, explosive passes is No. 75.",
+      "defRead": "Average. No stat stands out either way."
+     },
+     "home": {
+      "offense": "Georgia Southern",
+      "defense": "James Madison",
+      "edge": "defense",
+      "strength": "edge",
+      "offRank": 123,
+      "defRank": 52,
+      "of": 138,
+      "offRead": "Below average. Worst number: picks and breakups allowed (No. 113).",
+      "defRead": "Average, but mixed: pass success allowed is No. 3, explosive passes allowed is No. 108."
+     }
+    },
+    {
+     "key": "qb",
+     "title": "Quarterback vs pass defense",
+     "offLabel": "QB",
+     "defLabel": "Pass D",
+     "away": {
+      "offense": "James Madison",
+      "defense": "Georgia Southern",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 67,
+      "defRank": 62,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Average among FBS QBs. Balanced passer: 63% completions, 7.7 yards per attempt, 10 TD and 1 INT, 19 rushing yards a game.",
+      "defRead": "Average, but mixed: havoc created (sacks, TOs, TFL) is No. 29, third-and-long success allowed is No. 87.",
+      "qb": {
+       "id": "5153978",
+       "name": "Camden Coleman",
+       "type": "Balanced passer",
+       "rank": 67,
+       "of": 162,
+       "season": {
+        "ypa": 7.71,
+        "comp": 0.63,
+        "tdr": 0.079,
+        "intr": 0.008,
+        "attempts": 127
+       }
+      }
+     },
+     "home": {
+      "offense": "Georgia Southern",
+      "defense": "James Madison",
+      "edge": "even",
+      "strength": "even",
+      "offRank": 64,
+      "defRank": 29,
+      "of": 138,
+      "offOf": 162,
+      "offRead": "Average among FBS QBs. Game manager: 66% completions, 6.6 yards per attempt, 8 TD and 1 INT, 3 rushing yards a game.",
+      "defRead": "Good, but mixed: pass success allowed is No. 3, explosive passes allowed is No. 108.",
+      "qb": {
+       "id": "4685740",
+       "name": "Max Johnson",
+       "type": "Game manager",
+       "rank": 64,
+       "of": 162,
+       "season": {
+        "ypa": 6.61,
+        "comp": 0.656,
+        "tdr": 0.043,
+        "intr": 0.005,
+        "attempts": 186
+       }
+      }
+     }
+    },
+    {
+     "key": "redzone",
+     "title": "Red zone",
+     "offLabel": "Red zone O",
+     "defLabel": "Red zone D",
+     "away": {
+      "offense": "James Madison",
+      "defense": "Georgia Southern",
+      "edge": "offense",
+      "strength": "clear",
+      "offRank": 31,
+      "defRank": 90,
+      "of": 138,
+      "offRead": "Good.",
+      "defRead": "Average."
+     },
+     "home": {
+      "offense": "Georgia Southern",
+      "defense": "James Madison",
+      "edge": "defense",
+      "strength": "clear",
+      "offRank": 78,
+      "defRank": 13,
+      "of": 138,
+      "offRead": "Average.",
+      "defRead": "Elite."
+     }
+    }
+   ]
   }
  }
 }

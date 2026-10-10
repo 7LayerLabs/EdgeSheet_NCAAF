@@ -40,5 +40,36 @@
    "modelSide": "UTC",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 4.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 6
+  },
+  "capturedAt": "2026-10-10T23:38:30.643Z",
+  "score": {
+   "home": 19,
+   "away": 3
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5426001",
+    "name": "Kevin Lalin",
+    "team": "Chattanooga",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 47,
+    "verdict": "showed up",
+    "line": "28 car, 156 yds, 0 TD · 1 rec, 10 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

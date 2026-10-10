@@ -49,5 +49,47 @@
    "modelSide": "LIN",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 6.5
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 2.4000000000000004
+  },
+  "capturedAt": "2026-10-10T23:38:31.352Z",
+  "score": {
+   "home": 27,
+   "away": 38
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5091881",
+    "name": "Chris Farrell",
+    "team": "Southeast Missouri State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5078069",
+    "name": "Trenton VanBoening",
+    "team": "Lindenwood",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

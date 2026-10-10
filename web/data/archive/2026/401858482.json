@@ -128,5 +128,143 @@
    "favorite": "NU",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 3.5685714285714276
+  },
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 2.1000000000000014
+  },
+  "capturedAt": "2026-10-10T23:38:29.485Z",
+  "score": {
+   "home": 45,
+   "away": 14
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "Northwestern on passing downs",
+    "b": "Ball State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Northwestern",
+    "why": "Northwestern is No. 21 of 138 in passing-downs success (38%). Ball State ranks No. 124 on passing downs (35%). This is not a lean. It is a mismatch, and a prominent one. Northwestern converts the long downs Ball State needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Ball State on passing downs",
+    "b": "Northwestern pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Ball State",
+    "why": "Northwestern is No. 35 of 138 on passing downs (25%). Ball State ranks No. 113 in passing-downs success (25%). This is not a lean. It is a mismatch, and a prominent one. Northwestern gets off the field on long downs. Early-down efficiency is everything for Ball State.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Ball State deep passing",
+    "b": "Northwestern secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Ball State",
+    "why": "Northwestern is No. 15 of 138 at limiting explosive passes (1.32). Ball State ranks No. 55 in pass explosiveness (1.60). A real edge, not a lock. Northwestern keeps the lid on. Ball State should expect to drive the long way.",
+    "verdict": "did not play out",
+    "actual": "270 pass yds, longest play 46"
+   },
+   {
+    "a": "Northwestern run game",
+    "b": "Ball State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Northwestern",
+    "why": "Northwestern is No. 51 of 138 in rush success rate (47%). Ball State ranks No. 85 against the run (42%). A real edge, not a lock. Northwestern should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "played out",
+    "actual": "164 rush yds on 31 carries (5.3 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5075805",
+    "name": "Aidan Chiles",
+    "team": "Northwestern",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 82,
+    "verdict": "showed up",
+    "line": "17/23, 272 yds, 3 TD, 0 INT · 8 car, 32 yds, 1 TD · FUM 2, LOST 0, REC 0"
+   },
+   {
+    "id": "4685448",
+    "name": "Kobie McKinzie",
+    "team": "Northwestern",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 74,
+    "verdict": "quiet",
+    "line": "4 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5078244",
+    "name": "Caleb Komolafe",
+    "team": "Northwestern",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "showed up",
+    "line": "8 car, 44 yds, 1 TD"
+   },
+   {
+    "id": "4558733",
+    "name": "Chris Hood",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4356017",
+    "name": "Luke Dalton",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5078424",
+    "name": "Misael Sandoval",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "5328488",
+    "name": "Luke Dehnicke",
+    "team": "Northwestern",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Future",
+    "score": 63,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

@@ -40,5 +40,36 @@
    "modelSide": "CHSO",
    "confidence": "low"
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 16.5
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 17.5
+  },
+  "capturedAt": "2026-10-10T23:38:29.912Z",
+  "score": {
+   "home": 49,
+   "away": 39
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5231371",
+    "name": "Ka Von Chisolm",
+    "team": "South Carolina State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Sleeper",
+    "score": 47,
+    "verdict": "quiet",
+    "line": "1 tkl, 0 TFL, 0 sacks"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

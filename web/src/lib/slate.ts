@@ -46,6 +46,7 @@ import { cfbdQuotaExhausted, CfbdQuotaError } from "./cfbd";
 import { derivedWeek, espnCalendar, espnFallbackNote, espnWeek, type EspnWeekBundle } from "./espn-schedule";
 import { liveGame, liveSummary } from "./espn";
 import { gradePostgame, lockPregame, readEntry } from "./archive";
+import { espnBox } from "./espn-final";
 import { gameOdds } from "./odds";
 import { evaluateWeather } from "./weather";
 import { arrivalNote, portalStorylines } from "./portal";
@@ -901,7 +902,8 @@ async function buildSlate(requested: string): Promise<Slate> {
       if (cls !== "fbs" && cls !== "fcs") continue;
       if (g.status === "upcoming") lockPregame(g, raw.season);
       else if (g.status === "final" && readEntry(raw.season, g.id) && !readEntry(raw.season, g.id)?.postgame) {
-        const bs = await boxScore(g.id, raw.season, raw.week, raw.seasonType, cls);
+        // CFBD box score first; ESPN's when the CFBD quota is gone (src/lib/espn-final.ts).
+        const bs = (await boxScore(g.id, raw.season, raw.week, raw.seasonType, cls)) ?? (await espnBox(g.id, g.home.short, g.away.short));
         if (bs) gradePostgame(g, raw.season, bs, raw.excitementIndex);
       }
     }
@@ -960,8 +962,8 @@ async function buildGameById(id: string): Promise<Game | undefined> {
   game.excitement = raw.excitementIndex;
   try {
     if (game.status === "upcoming") game.archive = lockPregame(game, raw.season);
-    else if (game.status === "final" && game.box) {
-      const bs = await boxScore(game.id, raw.season, raw.week, raw.seasonType, raw.homeClassification ?? "fbs");
+    else if (game.status === "final") {
+      const bs = (await boxScore(game.id, raw.season, raw.week, raw.seasonType, raw.homeClassification ?? "fbs")) ?? (await espnBox(game.id, game.home.short, game.away.short));
       game.archive = bs ? gradePostgame(game, raw.season, bs, raw.excitementIndex) : readEntry(raw.season, game.id);
     } else game.archive = readEntry(raw.season, game.id);
   } catch {}

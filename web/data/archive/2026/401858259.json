@@ -155,5 +155,176 @@
    "favorite": "VT",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": false,
+   "marginError": 10.791428571428572
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 10.8
+  },
+  "capturedAt": "2026-10-10T23:38:32.432Z",
+  "score": {
+   "home": 25,
+   "away": 20
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "California run game",
+    "b": "Virginia Tech run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "California",
+    "why": "Virginia Tech is No. 9 of 138 against the run (28%). California ranks No. 119 in rush success rate (38%). This is not a lean. It is a mismatch, and a prominent one. Virginia Tech erases the run. California gets pushed into passing downs, and that is where this defense makes its money.",
+    "verdict": "played out",
+    "actual": "82 rush yds on 26 carries (3.2 per)"
+   },
+   {
+    "a": "California offensive line",
+    "b": "Virginia Tech front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "California",
+    "why": "Virginia Tech is No. 1 of 138 at the line of scrimmage (1.24). California ranks No. 104 in line yards per carry (2.82). This is not a lean. It is a mismatch, and a prominent one. Virginia Tech wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "verdict": "played out",
+    "actual": "82 rush yds on 26 carries (3.2 per)"
+   },
+   {
+    "a": "California on passing downs",
+    "b": "Virginia Tech pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "California",
+    "why": "Virginia Tech is No. 12 of 138 on passing downs (20%). California ranks No. 90 in passing-downs success (29%). This is not a lean. It is a mismatch, and a prominent one. Virginia Tech gets off the field on long downs. Early-down efficiency is everything for California.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "California deep passing",
+    "b": "Virginia Tech secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "California",
+    "why": "Virginia Tech is No. 46 of 138 at limiting explosive passes (1.46). California ranks No. 94 in pass explosiveness (1.47). A real edge, not a lock. Virginia Tech keeps the lid on. California should expect to drive the long way.",
+    "verdict": "did not play out",
+    "actual": "321 pass yds, longest play 42"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5138451",
+    "name": "Luke Reynolds",
+    "team": "Virginia Tech",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 85,
+    "verdict": "showed up",
+    "line": "4 rec, 58 yds, 0 TD"
+   },
+   {
+    "id": "5144078",
+    "name": "Ethan Grunkemeyer",
+    "team": "Virginia Tech",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 84,
+    "verdict": "showed up",
+    "line": "21/31, 288 yds, 1 TD, 0 INT · 8 car, -5 yds, 1 TD"
+   },
+   {
+    "id": "5214409",
+    "name": "Jeffrey Overton Jr.",
+    "team": "Virginia Tech",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 80,
+    "verdict": "showed up",
+    "line": "12 car, 73 yds, 0 TD · 4 rec, 40 yds, 0 TD"
+   },
+   {
+    "id": "5087950",
+    "name": "Kingston Lopa",
+    "team": "California",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 75,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "5147861",
+    "name": "Adam Mohammed",
+    "team": "California",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 73,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "4923269",
+    "name": "Layth Ghannam",
+    "team": "Virginia Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4923284",
+    "name": "Logan Howland",
+    "team": "Virginia Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4870753",
+    "name": "Daniel Harris",
+    "team": "California",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "showed up",
+    "line": "8 tkl, 1 TFL, 0 sacks"
+   },
+   {
+    "id": "5126998",
+    "name": "Jericho Johnson",
+    "team": "California",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 66,
+    "verdict": "showed up",
+    "line": "5 tkl, 2 TFL, 1 sacks"
+   },
+   {
+    "id": "4871030",
+    "name": "Jayden Wayne",
+    "team": "California",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 65,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }

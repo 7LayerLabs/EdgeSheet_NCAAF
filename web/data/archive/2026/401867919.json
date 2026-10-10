@@ -31,5 +31,32 @@
    "favorite": "MORG",
    "of": 1
   }
+ },
+ "postgame": {
+  "consensusResult": {
+   "winnerRight": true,
+   "marginError": 0.7
+  },
+  "capturedAt": "2026-10-10T23:38:28.739Z",
+  "score": {
+   "home": 28,
+   "away": 27
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "4870712",
+    "name": "Cameron Edge",
+    "team": "Morgan State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 58,
+    "verdict": "showed up",
+    "line": "18/29, 181 yds, 1 TD, 0 INT · 7 car, 61 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

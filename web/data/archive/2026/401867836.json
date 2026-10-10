@@ -31,5 +31,32 @@
    "favorite": "DART",
    "of": 1
   }
+ },
+ "postgame": {
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 26.7
+  },
+  "capturedAt": "2026-10-10T23:38:28.609Z",
+  "score": {
+   "home": 28,
+   "away": 7
+  },
+  "excitement": null,
+  "edges": [],
+  "prospects": [
+   {
+    "id": "5079683",
+    "name": "Dante Reno",
+    "team": "Yale",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 57,
+    "verdict": "showed up",
+    "line": "28/37, 325 yds, 2 TD, 0 INT · 2 car, -4 yds, 0 TD"
+   }
+  ],
+  "pressurePointVerdict": "unmeasured"
  }
 }

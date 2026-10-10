@@ -146,5 +146,165 @@
    "favorite": "TEM",
    "of": 5
   }
+ },
+ "postgame": {
+  "projectionResult": {
+   "winnerRight": true,
+   "marginError": 10.635714285714286
+  },
+  "consensusResult": {
+   "winnerRight": false,
+   "marginError": 14.1
+  },
+  "capturedAt": "2026-10-10T23:38:33.861Z",
+  "score": {
+   "home": 20,
+   "away": 34
+  },
+  "excitement": null,
+  "edges": [
+   {
+    "a": "UConn deep passing",
+    "b": "Temple secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "UConn",
+    "why": "UConn is No. 6 of 138 in pass explosiveness (1.91). Temple ranks No. 81 at limiting explosive passes (1.58). A clear edge, the kind that shapes a game plan. UConn has the deep ball available. Watch whether Temple rolls a safety over after the first one.",
+    "verdict": "played out",
+    "actual": "257 pass yds, longest play 51"
+   },
+   {
+    "a": "UConn on passing downs",
+    "b": "Temple pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "UConn",
+    "why": "UConn is No. 55 of 138 in passing-downs success (34%). Temple ranks No. 121 on passing downs (35%). A clear edge, the kind that shapes a game plan. UConn converts the long downs Temple needs to win. A third-and-8 is not a stop here.",
+    "verdict": "unmeasured",
+    "actual": "Third-down detail is not in the box score. Play-by-play for this game is not ingested yet (npm run ingest:plays)."
+   },
+   {
+    "a": "Temple deep passing",
+    "b": "UConn secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Temple",
+    "why": "Temple is No. 13 of 138 in pass explosiveness (1.83). UConn ranks No. 78 at limiting explosive passes (1.57). A clear edge, the kind that shapes a game plan. Temple has the deep ball available. Watch whether UConn rolls a safety over after the first one.",
+    "verdict": "played out",
+    "actual": "289 pass yds, longest play 79"
+   },
+   {
+    "a": "UConn run game",
+    "b": "Temple run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "UConn",
+    "why": "UConn is No. 64 of 138 in rush success rate (46%). Temple ranks No. 111 against the run (46%). A real edge, not a lock. UConn should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "verdict": "played out",
+    "actual": "248 rush yds on 39 carries (6.4 per)"
+   }
+  ],
+  "prospects": [
+   {
+    "id": "5079619",
+    "name": "Kalieb Osborne",
+    "team": "UConn",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 77,
+    "verdict": "showed up",
+    "line": "17/23, 257 yds, 0 TD, 0 INT · 13 car, 11 yds, 1 TD · FUM 1, LOST 0, REC 0"
+   },
+   {
+    "id": "4921112",
+    "name": "Braedyn Moore",
+    "team": "UConn",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 72,
+    "verdict": "quiet",
+    "line": "FUM 0, LOST 0, REC 1 · 4 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "4685711",
+    "name": "Ty Chan",
+    "team": "UConn",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   },
+   {
+    "id": "4685695",
+    "name": "Samuel Brown V",
+    "team": "Temple",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 71,
+    "verdict": "quiet",
+    "line": "No box-score line."
+   },
+   {
+    "id": "4870938",
+    "name": "Joshua Mickens",
+    "team": "UConn",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 67,
+    "verdict": "quiet",
+    "line": "2 tkl, 0.5 TFL, 0.5 sacks"
+   },
+   {
+    "id": "4870959",
+    "name": "Shamar Porter",
+    "team": "UConn",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 67,
+    "verdict": "quiet",
+    "line": "2 rec, 39 yds, 0 TD"
+   },
+   {
+    "id": "4924137",
+    "name": "Saboor Karriem",
+    "team": "Temple",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 64,
+    "verdict": "quiet",
+    "line": "4 tkl, 0 TFL, 0 sacks"
+   },
+   {
+    "id": "5296364",
+    "name": "Keveun Mason",
+    "team": "Temple",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 64,
+    "verdict": "showed up",
+    "line": "13 car, 88 yds, 0 TD · 1 rec, 4 yds, 0 TD · FUM 1, LOST 1, REC 0"
+   },
+   {
+    "id": "4921254",
+    "name": "Eric King",
+    "team": "Temple",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63,
+    "verdict": "unmeasured",
+    "line": "Linemen have no box-score line."
+   }
+  ],
+  "pressurePointVerdict": "played out"
  }
 }
