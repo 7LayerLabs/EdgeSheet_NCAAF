@@ -31,6 +31,8 @@ import { GameHeader } from "@/components/GameHeader";
 import { GradeCard } from "@/components/GradeCard";
 import { PregameScorecard } from "@/components/PregameScorecard";
 import * as S from "@/lib/summaries";
+import { boardSummary, matchBoard } from "@/lib/matchboard";
+import { MatchBoard } from "@/components/MatchBoard";
 
 export const dynamic = "force-dynamic";
 
@@ -46,13 +48,14 @@ export async function generateMetadata({ params }: PageProps<"/game/[id]">): Pro
 }
 
 /**
- * The four primary sections per state, in order; they start open. Everything
- * else goes into the collapsed "More on this game" group, in MORE order.
+ * The primary sections per state, in order; they start open. The matchup board
+ * ("decided") is primary in every state. Everything else goes into the collapsed
+ * "More on this game" group, in MORE order.
  */
 const PRIMARY: Record<GameStatus, string[]> = {
   upcoming: ["why", "decided", "radar", "market"],
-  live: ["live", "radar", "why", "market"],
-  final: ["grade", "radar", "why", "market"],
+  live: ["live", "decided", "radar", "why", "market"],
+  final: ["grade", "decided", "radar", "why", "market"],
 };
 
 export default async function GamePage({ params }: PageProps<"/game/[id]">) {
@@ -113,68 +116,51 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
     </Section>
   );
 
+  const board = game.division === "FBS" ? matchBoard(game.away.short, game.home.short) : undefined;
   const decided = (
     <Section
       key="decided"
       n={status === "final" ? "What we called" : "Matchups"}
       id="decided"
       title={game.matchups.length ? (status === "final" ? "Where we said the game would be decided" : "Where the game gets decided") : "Not charted for this division"}
-      summary={S.decidedSummary(game)}
+      summary={board ? [boardSummary(board), S.decidedSummary(game).split("; ").slice(1).join("; ")].filter(Boolean).join("; ") : S.decidedSummary(game)}
       defaultOpen={isOpen("decided")}
     >
       {game.matchups.length > 0 ? (
         <>
           <div className="card mt-3 border-l-4 border-l-navy p-5">
             <div className="flex flex-wrap items-center gap-3">
-              <TeamMark team={game.away} state={game.matchups[0]?.edge === "even" ? "even" : (game.matchups[0]?.a.startsWith(game.away.short) ? game.matchups[0]?.edge === "offense" : game.matchups[0]?.edge === "defense") ? "win" : "lose"} />
-              <TeamMark team={game.home} state={game.matchups[0]?.edge === "even" ? "even" : (game.matchups[0]?.a.startsWith(game.home.short) ? game.matchups[0]?.edge === "offense" : game.matchups[0]?.edge === "defense") ? "win" : "lose"} />
               <p className="eyebrow">Pressure point</p>
               {post && <VerdictPill v={post.pressurePointVerdict} />}
             </div>
-            <p className="mt-2 text-lg leading-relaxed text-chalk">{game.pressurePoint}</p>
+            {/* A graded game keeps the sentence its verdict was graded against. */}
+            <p className="mt-2 text-lg leading-relaxed text-chalk">{post || !board ? game.pressurePoint : board.pressurePoint}</p>
           </div>
-          <p className="mt-4 max-w-3xl text-sm text-chalk-3">
-            Each offense against the opposing defense on the four axes that decide games. Ranks are inside the division. The gap is in percentile points; 40 or more is a clear edge, 55 or more is a mismatch.
-          </p>
-          <div className="mt-3 grid gap-3">
-            {game.matchups.map((m, i) => {
-              const tone = m.edge === "offense" ? "border-l-4 border-l-turf" : m.edge === "defense" ? "border-l-4 border-l-sky" : "border-l-4 border-l-line-2";
-              const label = m.strength === "dominant" ? "Mismatch" : m.strength === "clear" ? "Clear edge" : m.strength === "real" ? "Edge" : "Even";
-              const labelTone = m.strength === "dominant" ? "bg-brick text-white" : m.strength === "clear" ? "bg-navy text-white" : m.strength === "real" ? "bg-ink-2 text-chalk" : "bg-ink-2 text-chalk-3";
-              const offTeam = m.a.startsWith(game.home.short) ? game.home : game.away;
-              const defTeam = offTeam === game.home ? game.away : game.home;
-              const winner = m.edge === "offense" ? offTeam : m.edge === "defense" ? defTeam : undefined;
-              const result = post?.edges.find((e) => e.a === m.a && e.b === m.b);
-              return (
-                <div key={i} className={`card p-5 ${tone}`}>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <span className={`rounded px-2 py-0.5 text-xs font-bold uppercase tracking-wider ${labelTone}`}>{label}</span>
-                    <TeamMark team={offTeam} state={winner ? (winner === offTeam ? "win" : "lose") : "even"} />
-                    <span className="display text-2xl font-bold text-chalk">{m.a}</span>
-                    <span className="text-chalk-3">vs</span>
-                    <TeamMark team={defTeam} state={winner ? (winner === defTeam ? "win" : "lose") : "even"} />
-                    <span className="display text-2xl font-bold text-chalk">{m.b}</span>
-                    {winner && (
-                      <span className={`ml-auto flex items-center gap-2 text-sm font-semibold ${m.edge === "offense" ? "text-turf" : "text-sky"}`}>
-                        Advantage {winner.short}
-                      </span>
+          {board && <MatchBoard board={board} away={game.away} home={game.home} />}
+          <Fold label={post ? "The locked calls and how they graded" : "Model inputs: the four largest unit gaps"} className="mt-3">
+            <div className="mt-2 grid gap-2">
+              {game.matchups.map((m, i) => {
+                const result = post?.edges.find((e) => e.a === m.a && e.b === m.b);
+                const label = m.strength === "dominant" ? "Mismatch" : m.strength === "clear" ? "Clear edge" : m.strength === "real" ? "Edge" : "Even";
+                return (
+                  <div key={i} className="rounded border border-line bg-panel p-3 text-sm">
+                    <p className="font-semibold text-chalk">
+                      <span className="eyebrow mr-2">{label}</span>
+                      {m.a} vs {m.b}
+                    </p>
+                    <p className="mono mt-1 text-[11px] text-chalk-3">{m.evidence}</p>
+                    {result && (
+                      <p className="mt-2 flex flex-wrap items-center gap-2">
+                        <VerdictPill v={result.verdict} />
+                        <span className="text-chalk-2">{result.actual}</span>
+                      </p>
                     )}
                   </div>
-                  <p className="mt-3 text-lg leading-relaxed text-chalk">{m.why}</p>
-                  {m.watch && <p className="mt-2 text-base text-chalk-2"><span className="eyebrow mr-1">Watch for</span>{m.watch}</p>}
-                  {result && (
-                    <p className="mt-3 flex flex-wrap items-center gap-2 rounded border border-line bg-panel-2 px-3 py-2 text-sm">
-                      <VerdictPill v={result.verdict} />
-                      <span className="text-chalk"><span className="eyebrow mr-1">Actual</span>{result.actual}</span>
-                    </p>
-                  )}
-                  <Fold label="Evidence" className="mt-2">
-                    <p className="mono text-xs text-chalk-3">{m.evidence}</p>
-                  </Fold>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+              <p className="text-xs text-chalk-3">The projection reads these four gaps. The board above is the cleaner read of the same team stats, by position group.</p>
+            </div>
+          </Fold>
           {game.situations && <SituationalCues cues={game.situations.cues} />}
           {game.projection && <ProjectionBox game={game} />}
         </>
@@ -464,7 +450,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
   const LABELS: Record<string, string> = {
     why: "Why watch",
     report: "Report",
-    decided: status === "final" ? "What we called" : "Decided by",
+    decided: status === "final" ? "What we called" : "Matchups",
     radar: "Draft radar",
     eye: "Eye on",
     live: "Live",
