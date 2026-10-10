@@ -1,0 +1,182 @@
+{
+ "gameId": "401856720",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.149Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Mississippi State",
+  "home": "LSU",
+  "abbr": {
+   "home": "LSU",
+   "away": "MSST"
+  },
+  "scoutScore": 87,
+  "whyWatch": "Kamario Taylor (MSST QB, So): 1450 pass yds, 17 TD, 4 INT, 9.4 Y/A. Ball placement outside the numbers, how he resets his feet when the first read is covered, and whether he throws on time against pressure.",
+  "pressurePoint": "Mississippi State offensive line vs LSU front. LSU is No. 10 of 138 at the line of scrimmage (2.20). Mississippi State ranks No. 84 in line yards per carry (3.03). A clear edge, the kind that shapes a game plan. LSU should hold the line of scrimmage. Mississippi State's runs will need the second level to break. Watch tackles for loss. LSU living in the backfield early is the tell.",
+  "edges": [
+   {
+    "a": "Mississippi State offensive line",
+    "b": "LSU front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Mississippi State",
+    "why": "LSU is No. 10 of 138 at the line of scrimmage (2.20). Mississippi State ranks No. 84 in line yards per carry (3.03). A clear edge, the kind that shapes a game plan. LSU should hold the line of scrimmage. Mississippi State's runs will need the second level to break.",
+    "gap": -54
+   },
+   {
+    "a": "LSU deep passing",
+    "b": "Mississippi State secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "LSU",
+    "why": "LSU is No. 29 of 138 in pass explosiveness (1.72). Mississippi State ranks No. 63 at limiting explosive passes (1.54). A real edge, not a lock. LSU has the deep ball available. Watch whether Mississippi State rolls a safety over after the first one.",
+    "gap": 25
+   },
+   {
+    "a": "LSU offensive line",
+    "b": "Mississippi State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "LSU",
+    "why": "LSU is No. 81 of 138 in line yards per carry (3.05). Mississippi State ranks No. 110 at the line of scrimmage (3.17). A real edge, not a lock. LSU should win first contact more often than not, which makes every down shorter.",
+    "gap": 22
+   },
+   {
+    "a": "LSU on passing downs",
+    "b": "Mississippi State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "LSU",
+    "why": "LSU is No. 13 of 138 in passing-downs success (40%). Mississippi State ranks No. 44 on passing downs (25%). A real edge, not a lock. LSU converts the long downs Mississippi State needs to win. A third-and-8 is not a stop here.",
+    "gap": 22
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 100,
+   "competitive": 51,
+   "styleContrast": 27,
+   "storylines": 100,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "5177084",
+    "name": "Kamario Taylor",
+    "team": "Mississippi State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 90
+   },
+   {
+    "id": "5079482",
+    "name": "Dilin Jones",
+    "team": "LSU",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 85
+   },
+   {
+    "id": "5112647",
+    "name": "Jordan Ross",
+    "team": "LSU",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "5220197",
+    "name": "Fluff Bothwell",
+    "team": "Mississippi State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "5141632",
+    "name": "DJ Pickett",
+    "team": "LSU",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 78
+   },
+   {
+    "id": "5079682",
+    "name": "Jordan Seaton",
+    "team": "LSU",
+    "pos": "OT",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "4717429",
+    "name": "Jaray Bledsoe",
+    "team": "Mississippi State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 76
+   },
+   {
+    "id": "5078810",
+    "name": "Sam Leavitt",
+    "team": "LSU",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 76
+   },
+   {
+    "id": "5127935",
+    "name": "Dominick McKinley",
+    "team": "LSU",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5079430",
+    "name": "Dealyn Evans",
+    "team": "Mississippi State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 74
+   },
+   {
+    "id": "5076950",
+    "name": "Kelley Jones",
+    "team": "Mississippi State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   }
+  ],
+  "projection": {
+   "winner": "LSU",
+   "winProb": 0.7803286936844284,
+   "margin": 12.372857142857143,
+   "home": 32,
+   "away": 21,
+   "confidence": "high",
+   "modelTotal": 52.5,
+   "eloMargin": 11.14,
+   "netEdge": 123
+  },
+  "consensus": {
+   "median": 11.8,
+   "favorite": "LSU",
+   "of": 2
+  }
+ }
+}

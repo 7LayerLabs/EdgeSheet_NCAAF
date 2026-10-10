@@ -1,0 +1,146 @@
+{
+ "gameId": "401858267",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.151Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Pittsburgh",
+  "home": "Boston College",
+  "abbr": {
+   "home": "BC",
+   "away": "PITT"
+  },
+  "scoutScore": 77,
+  "whyWatch": "Boston College offensive line against Pittsburgh front: line yards per carry: offense 2.14 (No. 137/138), defense 1.75 (No. 2/138), gap 98 percentile points. Watch tackles for loss. Pittsburgh living in the backfield early is the tell.",
+  "pressurePoint": "Pittsburgh on passing downs vs Boston College pressure. Pittsburgh is No. 39 of 138 in passing-downs success (36%). Boston College ranks No. 123 on passing downs (35%). This is not a lean. It is a mismatch, and a prominent one. Pittsburgh converts the long downs Boston College needs to win. A third-and-8 is not a stop here. Watch Pittsburgh's third-and-long conversions. Two in the first half breaks Boston College's plan.",
+  "edges": [
+   {
+    "a": "Boston College offensive line",
+    "b": "Pittsburgh front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Boston College",
+    "why": "Pittsburgh is No. 2 of 138 at the line of scrimmage (1.75). Boston College ranks No. 137 in line yards per carry (2.14). This is not a lean. It is a mismatch, and a prominent one. Pittsburgh wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "gap": -98
+   },
+   {
+    "a": "Boston College on passing downs",
+    "b": "Pittsburgh pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Boston College",
+    "why": "Pittsburgh is No. 17 of 138 on passing downs (21%). Boston College ranks No. 108 in passing-downs success (26%). This is not a lean. It is a mismatch, and a prominent one. Pittsburgh gets off the field on long downs. Early-down efficiency is everything for Boston College.",
+    "gap": -66
+   },
+   {
+    "a": "Pittsburgh on passing downs",
+    "b": "Boston College pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Pittsburgh",
+    "why": "Pittsburgh is No. 39 of 138 in passing-downs success (36%). Boston College ranks No. 123 on passing downs (35%). This is not a lean. It is a mismatch, and a prominent one. Pittsburgh converts the long downs Boston College needs to win. A third-and-8 is not a stop here.",
+    "gap": 61
+   },
+   {
+    "a": "Boston College run game",
+    "b": "Pittsburgh run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Boston College",
+    "why": "Pittsburgh is No. 7 of 138 against the run (28%). Boston College ranks No. 75 in rush success rate (44%). A clear edge, the kind that shapes a game plan. Boston College will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -50
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 82,
+   "directMatchups": 100,
+   "futureTalent": 74,
+   "competitive": 45,
+   "styleContrast": 16,
+   "storylines": 65,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5081328",
+    "name": "Nick James",
+    "team": "Pittsburgh",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "5148602",
+    "name": "Christian Hudson",
+    "team": "Boston College",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 74
+   },
+   {
+    "id": "4819223",
+    "name": "Ryan Baer",
+    "team": "Pittsburgh",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5208095",
+    "name": "Mason Heintschel",
+    "team": "Pittsburgh",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 67
+   },
+   {
+    "id": "5083030",
+    "name": "BJ Williams",
+    "team": "Pittsburgh",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4702728",
+    "name": "Kristian Phillips",
+    "team": "Boston College",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4910229",
+    "name": "Michael Crounse",
+    "team": "Boston College",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   }
+  ],
+  "projection": {
+   "winner": "PITT",
+   "winProb": 0.7391168837703764,
+   "margin": 10.25,
+   "home": 17,
+   "away": 28,
+   "confidence": "high",
+   "modelTotal": 44.5,
+   "eloMargin": -7.5,
+   "netEdge": -275
+  },
+  "consensus": {
+   "median": -8.8,
+   "favorite": "PITT",
+   "of": 2
+  }
+ }
+}

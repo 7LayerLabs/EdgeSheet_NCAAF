@@ -1,0 +1,39 @@
+{
+ "gameId": "401866668",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.157Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Chicago State",
+  "home": "North Carolina A&T",
+  "abbr": {
+   "home": "NCAT",
+   "away": "CHST"
+  },
+  "scoutScore": 20,
+  "whyWatch": "Qae'Shon Sapp (NCAT OL, Jr): No box-score stats for linemen. See unit evidence.. Pass-set depth against speed off the edge, hand placement on first contact, and whether he climbs cleanly to linebackers.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 10,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 20,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4685543",
+    "name": "Qae'Shon Sapp",
+    "team": "North Carolina A&T",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 51
+   }
+  ]
+ }
+}

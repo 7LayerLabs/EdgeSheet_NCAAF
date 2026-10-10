@@ -1,0 +1,146 @@
+{
+ "gameId": "401866442",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.160Z",
+  "kickoff": "2026-10-17T17:00Z",
+  "away": "Massachusetts",
+  "home": "Buffalo",
+  "abbr": {
+   "home": "BUFF",
+   "away": "MASS"
+  },
+  "scoutScore": 59,
+  "whyWatch": "Buffalo run game against Massachusetts run defense: rush success rate: offense 36% (No. 124/138), defense 35% (No. 33/138), gap 67 percentile points. Watch Buffalo's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "pressurePoint": "Massachusetts deep passing vs Buffalo secondary. Massachusetts is No. 36 of 138 in pass explosiveness (1.67). Buffalo ranks No. 121 at limiting explosive passes (1.78). This is not a lean. It is a mismatch, and a prominent one. Buffalo does not keep the lid on. Massachusetts will take shots, and the market total may be underpriced if they land. Watch the first deep shot. If it connects, Buffalo changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "Buffalo run game",
+    "b": "Massachusetts run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Buffalo",
+    "why": "Massachusetts is No. 33 of 138 against the run (35%). Buffalo ranks No. 124 in rush success rate (36%). This is not a lean. It is a mismatch, and a prominent one. Massachusetts erases the run. Buffalo gets pushed into passing downs, and that is where this defense makes its money.",
+    "gap": -67
+   },
+   {
+    "a": "Massachusetts deep passing",
+    "b": "Buffalo secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Massachusetts",
+    "why": "Massachusetts is No. 36 of 138 in pass explosiveness (1.67). Buffalo ranks No. 121 at limiting explosive passes (1.78). This is not a lean. It is a mismatch, and a prominent one. Buffalo does not keep the lid on. Massachusetts will take shots, and the market total may be underpriced if they land.",
+    "gap": 62
+   },
+   {
+    "a": "Massachusetts offensive line",
+    "b": "Buffalo front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Massachusetts",
+    "why": "Massachusetts is No. 20 of 138 in line yards per carry (3.52). Buffalo ranks No. 103 at the line of scrimmage (3.08). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Massachusetts. Second-level runs and play-action are live all afternoon.",
+    "gap": 60
+   },
+   {
+    "a": "Buffalo offensive line",
+    "b": "Massachusetts front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Buffalo",
+    "why": "Massachusetts is No. 37 of 138 at the line of scrimmage (2.57). Buffalo ranks No. 115 in line yards per carry (2.75). This is not a lean. It is a mismatch, and a prominent one. Massachusetts wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "gap": -57
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 54,
+   "directMatchups": 100,
+   "futureTalent": 22,
+   "competitive": 53,
+   "styleContrast": 22,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4869601",
+    "name": "Chance Morrow",
+    "team": "Buffalo",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "5078461",
+    "name": "Aitor Urionabarrenechea",
+    "team": "Massachusetts",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5148843",
+    "name": "Brock Taylor",
+    "team": "Massachusetts",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5086376",
+    "name": "Peyton Miller",
+    "team": "Massachusetts",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5184012",
+    "name": "Jackson Bellamy",
+    "team": "Buffalo",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4870678",
+    "name": "Joe Crocker",
+    "team": "Buffalo",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5213301",
+    "name": "Aubrey Melvin",
+    "team": "Massachusetts",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 62
+   }
+  ],
+  "projection": {
+   "winner": "BUFF",
+   "winProb": 0.6970353883213289,
+   "margin": 8.254285714285713,
+   "home": 28,
+   "away": 19,
+   "confidence": "high",
+   "modelTotal": 47,
+   "eloMargin": 10.71,
+   "netEdge": -246
+  },
+  "consensus": {
+   "median": 9.5,
+   "favorite": "BUFF",
+   "of": 2
+  }
+ }
+}

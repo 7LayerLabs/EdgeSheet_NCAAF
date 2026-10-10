@@ -1,0 +1,39 @@
+{
+ "gameId": "401867968",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.189Z",
+  "kickoff": "2026-10-17T22:30Z",
+  "away": "Morgan State",
+  "home": "Tennessee State",
+  "abbr": {
+   "home": "TNST",
+   "away": "MORG"
+  },
+  "scoutScore": 20,
+  "whyWatch": "Cameron Edge (MORG QB, Sr): 1337 pass yds, 11 TD, 2 INT, 9.2 Y/A. Ball placement outside the numbers, how he resets his feet when the first read is covered, and whether he throws on time against pressure.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 10,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 20,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4870712",
+    "name": "Cameron Edge",
+    "team": "Morgan State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 56
+   }
+  ]
+ }
+}

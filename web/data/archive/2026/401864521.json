@@ -1,0 +1,137 @@
+{
+ "gameId": "401864521",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.207Z",
+  "kickoff": "2026-10-18T02:30Z",
+  "away": "New Mexico",
+  "home": "Hawai'i",
+  "abbr": {
+   "home": "HAW",
+   "away": "UNM"
+  },
+  "scoutScore": 53,
+  "whyWatch": "New Mexico offensive line against Hawai'i front: line yards per carry: offense 3.28 (No. 43/138), defense 3.44 (No. 134/138), gap 66 percentile points. Watch yards before contact on New Mexico's first ten carries.",
+  "pressurePoint": "New Mexico offensive line vs Hawai'i front. New Mexico is No. 43 of 138 in line yards per carry (3.28). Hawai'i ranks No. 134 at the line of scrimmage (3.44). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to New Mexico. Second-level runs and play-action are live all afternoon. Watch yards before contact on New Mexico's first ten carries.",
+  "edges": [
+   {
+    "a": "New Mexico offensive line",
+    "b": "Hawai'i front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "New Mexico",
+    "why": "New Mexico is No. 43 of 138 in line yards per carry (3.28). Hawai'i ranks No. 134 at the line of scrimmage (3.44). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to New Mexico. Second-level runs and play-action are live all afternoon.",
+    "gap": 66
+   },
+   {
+    "a": "New Mexico run game",
+    "b": "Hawai'i run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "New Mexico",
+    "why": "New Mexico is No. 60 of 138 in rush success rate (46%). Hawai'i ranks No. 130 against the run (49%). A clear edge, the kind that shapes a game plan. New Mexico should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 51
+   },
+   {
+    "a": "Hawai'i run game",
+    "b": "New Mexico run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Hawai'i",
+    "why": "New Mexico is No. 14 of 138 against the run (31%). Hawai'i ranks No. 82 in rush success rate (43%). A clear edge, the kind that shapes a game plan. Hawai'i will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -50
+   },
+   {
+    "a": "Hawai'i offensive line",
+    "b": "New Mexico front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Hawai'i",
+    "why": "New Mexico is No. 3 of 138 at the line of scrimmage (1.92). Hawai'i ranks No. 65 in line yards per carry (3.14). A clear edge, the kind that shapes a game plan. New Mexico should hold the line of scrimmage. Hawai'i's runs will need the second level to break.",
+    "gap": -46
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 49,
+   "directMatchups": 100,
+   "futureTalent": 11,
+   "competitive": 35,
+   "styleContrast": 90,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5166161",
+    "name": "Scottre Humphrey",
+    "team": "New Mexico",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "5219572",
+    "name": "Cade Keith",
+    "team": "New Mexico",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4873903",
+    "name": "Tevin Shaw",
+    "team": "New Mexico",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4917319",
+    "name": "Dean Briski",
+    "team": "Hawai'i",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5158459",
+    "name": "Lipe Moala",
+    "team": "Hawai'i",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5326947",
+    "name": "Bailen George",
+    "team": "New Mexico",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 56
+   }
+  ],
+  "projection": {
+   "winner": "UNM",
+   "winProb": 0.762226339778885,
+   "margin": 11.415714285714287,
+   "home": 18,
+   "away": 29,
+   "confidence": "high",
+   "modelTotal": 47,
+   "eloMargin": -9.29,
+   "netEdge": -213
+  },
+  "consensus": {
+   "median": -10.4,
+   "favorite": "UNM",
+   "of": 2
+  }
+ }
+}

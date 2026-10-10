@@ -1,0 +1,128 @@
+{
+ "gameId": "401864520",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.193Z",
+  "kickoff": "2026-10-17T23:00Z",
+  "away": "Nevada",
+  "home": "North Dakota State",
+  "abbr": {
+   "home": "NDSU",
+   "away": "NEV"
+  },
+  "scoutScore": 59,
+  "whyWatch": "Nevada on passing downs against North Dakota State pressure: passing-downs success: offense 30% (No. 76/138), defense 18% (No. 3/138), gap 54 percentile points. Watch Nevada on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "Nevada on passing downs vs North Dakota State pressure. North Dakota State is No. 3 of 138 on passing downs (18%). Nevada ranks No. 76 in passing-downs success (30%). A clear edge, the kind that shapes a game plan. North Dakota State gets off the field on long downs. Early-down efficiency is everything for Nevada. Watch Nevada on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "Nevada on passing downs",
+    "b": "North Dakota State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Nevada",
+    "why": "North Dakota State is No. 3 of 138 on passing downs (18%). Nevada ranks No. 76 in passing-downs success (30%). A clear edge, the kind that shapes a game plan. North Dakota State gets off the field on long downs. Early-down efficiency is everything for Nevada.",
+    "gap": -54
+   },
+   {
+    "a": "North Dakota State deep passing",
+    "b": "Nevada secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "North Dakota State",
+    "why": "North Dakota State is No. 17 of 138 in pass explosiveness (1.79). Nevada ranks No. 62 at limiting explosive passes (1.53). A real edge, not a lock. North Dakota State has the deep ball available. Watch whether Nevada rolls a safety over after the first one.",
+    "gap": 33
+   },
+   {
+    "a": "Nevada run game",
+    "b": "North Dakota State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Nevada",
+    "why": "Nevada is No. 31 of 138 in rush success rate (49%). North Dakota State ranks No. 60 against the run (40%). A real edge, not a lock. Nevada should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 21
+   },
+   {
+    "a": "North Dakota State run game",
+    "b": "Nevada run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "North Dakota State",
+    "why": "Nevada is No. 102 of 138 against the run (44%). North Dakota State ranks No. 131 in rush success rate (35%). A real edge, not a lock. North Dakota State will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -21
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 27,
+   "directMatchups": 100,
+   "futureTalent": 71,
+   "competitive": 58,
+   "styleContrast": 27,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5265178",
+    "name": "Dominic Kelley",
+    "team": "Nevada",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 76
+   },
+   {
+    "id": "4685591",
+    "name": "Larry Turner-Gooden",
+    "team": "Nevada",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "5081208",
+    "name": "Snoop Leota-Amaama",
+    "team": "Nevada",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5154224",
+    "name": "DJ Scott",
+    "team": "North Dakota State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 60
+   },
+   {
+    "id": "5297938",
+    "name": "Marion Moore",
+    "team": "North Dakota State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 58
+   }
+  ],
+  "projection": {
+   "winner": "NDSU",
+   "winProb": 0.738100454447639,
+   "margin": 10.2,
+   "home": 28,
+   "away": 19,
+   "confidence": "high",
+   "modelTotal": 46.5,
+   "eloMargin": 9.75,
+   "netEdge": 45
+  },
+  "consensus": {
+   "median": 10,
+   "favorite": "NDSU",
+   "of": 2
+  }
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "gameId": "401867878",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.167Z",
+  "kickoff": "2026-10-17T18:00Z",
+  "away": "South Dakota State",
+  "home": "North Dakota",
+  "abbr": {
+   "home": "UND",
+   "away": "SDST"
+  },
+  "scoutScore": 25,
+  "whyWatch": "Jerry Kaminski (UND QB, Sr): 1474 pass yds, 19 TD, 2 INT, 8.7 Y/A. Adds 44 rushing yards a game. Watch whether he escapes to keep the play alive downfield or tucks it at the first sign of pressure.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 20,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 65,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5155528",
+    "name": "Jerry Kaminski",
+    "team": "North Dakota",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 54
+   },
+   {
+    "id": "5076128",
+    "name": "Cooper Starks",
+    "team": "South Dakota State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ]
+ }
+}

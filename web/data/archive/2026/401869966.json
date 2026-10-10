@@ -1,0 +1,128 @@
+{
+ "gameId": "401869966",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.187Z",
+  "kickoff": "2026-10-17T21:00Z",
+  "away": "Troy",
+  "home": "Louisiana",
+  "abbr": {
+   "home": "UL",
+   "away": "TROY"
+  },
+  "scoutScore": 61,
+  "whyWatch": "Louisiana deep passing against Troy secondary: pass explosiveness: offense 1.26 (No. 135/138), defense 1.50 (No. 58/138), gap 56 percentile points. Watch Louisiana's longest completion. If it is under 25 yards at the half, Troy has won the matchup.",
+  "pressurePoint": "Troy offensive line vs Louisiana front. Louisiana is No. 49 of 138 at the line of scrimmage (2.65). Troy ranks No. 121 in line yards per carry (2.67). A clear edge, the kind that shapes a game plan. Louisiana should hold the line of scrimmage. Troy's runs will need the second level to break. Watch tackles for loss. Louisiana living in the backfield early is the tell.",
+  "edges": [
+   {
+    "a": "Louisiana deep passing",
+    "b": "Troy secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Louisiana",
+    "why": "Troy is No. 58 of 138 at limiting explosive passes (1.50). Louisiana ranks No. 135 in pass explosiveness (1.26). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Louisiana needs the underneath game and yards after catch.",
+    "gap": -56
+   },
+   {
+    "a": "Troy offensive line",
+    "b": "Louisiana front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Troy",
+    "why": "Louisiana is No. 49 of 138 at the line of scrimmage (2.65). Troy ranks No. 121 in line yards per carry (2.67). A clear edge, the kind that shapes a game plan. Louisiana should hold the line of scrimmage. Troy's runs will need the second level to break.",
+    "gap": -53
+   },
+   {
+    "a": "Louisiana offensive line",
+    "b": "Troy front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Louisiana",
+    "why": "Troy is No. 18 of 138 at the line of scrimmage (2.34). Louisiana ranks No. 80 in line yards per carry (3.06). A clear edge, the kind that shapes a game plan. Troy should hold the line of scrimmage. Louisiana's runs will need the second level to break.",
+    "gap": -46
+   },
+   {
+    "a": "Louisiana run game",
+    "b": "Troy run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Louisiana",
+    "why": "Troy is No. 43 of 138 against the run (37%). Louisiana ranks No. 92 in rush success rate (42%). A real edge, not a lock. Louisiana will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -35
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 34,
+   "directMatchups": 100,
+   "futureTalent": 20,
+   "competitive": 99,
+   "styleContrast": 22,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4956740",
+    "name": "Darion Rivers",
+    "team": "Troy",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4871018",
+    "name": "Patrick Screws Jr.",
+    "team": "Troy",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5077212",
+    "name": "Matthew Broussard",
+    "team": "Louisiana",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5122094",
+    "name": "Xzavier Brown",
+    "team": "Louisiana",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5222655",
+    "name": "Brent Gordon Jr.",
+    "team": "Louisiana",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 61
+   }
+  ],
+  "projection": {
+   "winner": "UL",
+   "winProb": 0.5395443472006456,
+   "margin": 1.5885714285714283,
+   "home": 20,
+   "away": 18,
+   "confidence": "high",
+   "modelTotal": 38,
+   "eloMargin": 2.43,
+   "netEdge": -84
+  },
+  "consensus": {
+   "median": 2,
+   "favorite": "UL",
+   "of": 2
+  }
+ }
+}

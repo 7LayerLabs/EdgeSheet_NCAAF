@@ -1,0 +1,191 @@
+{
+ "gameId": "401858263",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.190Z",
+  "kickoff": "2026-10-17T23:00Z",
+  "away": "Florida State",
+  "home": "Miami",
+  "abbr": {
+   "home": "MIA",
+   "away": "FSU"
+  },
+  "scoutScore": 81,
+  "whyWatch": "Ousmane Kromah (FSU RB, So): 565 rush yds on 100 carries, 5 TD, 97 rec yds. The goal-line back with 5 rushing TDs. Watch his pad level and patience in short yardage.",
+  "pressurePoint": "Florida State run game vs Miami run defense. Miami is No. 1 of 138 against the run (26%). Florida State ranks No. 73 in rush success rate (44%). A clear edge, the kind that shapes a game plan. Florida State will find the run hard going. Expect more second-and-long than usual. Watch Florida State's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Miami offensive line",
+    "b": "Florida State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Miami",
+    "why": "Miami is No. 3 of 138 in line yards per carry (3.89). Florida State ranks No. 94 at the line of scrimmage (3.01). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Miami. Second-level runs and play-action are live all afternoon.",
+    "gap": 67
+   },
+   {
+    "a": "Miami on passing downs",
+    "b": "Florida State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Miami",
+    "why": "Miami is No. 25 of 138 in passing-downs success (38%). Florida State ranks No. 103 on passing downs (32%). This is not a lean. It is a mismatch, and a prominent one. Miami converts the long downs Florida State needs to win. A third-and-8 is not a stop here.",
+    "gap": 56
+   },
+   {
+    "a": "Florida State run game",
+    "b": "Miami run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Florida State",
+    "why": "Miami is No. 1 of 138 against the run (26%). Florida State ranks No. 73 in rush success rate (44%). A clear edge, the kind that shapes a game plan. Florida State will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -53
+   },
+   {
+    "a": "Miami run game",
+    "b": "Florida State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Miami",
+    "why": "Miami is No. 20 of 138 in rush success rate (51%). Florida State ranks No. 77 against the run (41%). A clear edge, the kind that shapes a game plan. Miami should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 41
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 100,
+   "competitive": 12,
+   "styleContrast": 10,
+   "storylines": 65,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5141560",
+    "name": "Ousmane Kromah",
+    "team": "Florida State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 89
+   },
+   {
+    "id": "4870922",
+    "name": "Duce Robinson",
+    "team": "Florida State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "5126999",
+    "name": "Marquise Lightfoot",
+    "team": "Miami",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "4870875",
+    "name": "Samson Okunlola",
+    "team": "Miami",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "4871089",
+    "name": "Damon Wilson II",
+    "team": "Miami",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5121169",
+    "name": "Darian Mensah",
+    "team": "Miami",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4838679",
+    "name": "Ashton Daniels",
+    "team": "Florida State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5088153",
+    "name": "Micahi Danzy",
+    "team": "Florida State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 70
+   },
+   {
+    "id": "5159175",
+    "name": "Malachi Toney",
+    "team": "Miami",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 70
+   },
+   {
+    "id": "5259295",
+    "name": "JJ Dunnigan",
+    "team": "Miami",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 69
+   },
+   {
+    "id": "4837247",
+    "name": "Deante McCray",
+    "team": "Florida State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 66
+   }
+  ],
+  "spread": {
+   "team": "MIA",
+   "line": -21
+  },
+  "total": 56.5,
+  "projection": {
+   "winner": "MIA",
+   "winProb": 0.8880040712353031,
+   "margin": 19.455714285714286,
+   "home": 38,
+   "away": 19,
+   "modelSide": "FSU",
+   "confidence": "high",
+   "modelTotal": 66.5,
+   "totalLean": "over",
+   "eloMargin": 17.29,
+   "netEdge": 217
+  },
+  "consensus": {
+   "median": 18.4,
+   "favorite": "MIA",
+   "side": "FSU",
+   "sideCount": 2,
+   "of": 2
+  }
+ }
+}

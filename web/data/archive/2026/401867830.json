@@ -1,0 +1,39 @@
+{
+ "gameId": "401867830",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.166Z",
+  "kickoff": "2026-10-17T18:00Z",
+  "away": "Lehigh",
+  "home": "Cornell",
+  "abbr": {
+   "home": "COR",
+   "away": "LEH"
+  },
+  "scoutScore": 20,
+  "whyWatch": "Luke Yoder (LEH RB, Sr): 814 rush yds on 127 carries, 12 TD, 50 rec yds. A workhorse at 21.2 carries a game. Watch his burst and ball security in the fourth quarter.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 10,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 20,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5152699",
+    "name": "Luke Yoder",
+    "team": "Lehigh",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 56
+   }
+  ]
+ }
+}

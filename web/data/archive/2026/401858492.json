@@ -1,0 +1,182 @@
+{
+ "gameId": "401858492",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.144Z",
+  "kickoff": "2026-10-17T04:00Z",
+  "away": "Nebraska",
+  "home": "Oregon",
+  "abbr": {
+   "home": "ORE",
+   "away": "NEB"
+  },
+  "scoutScore": 90,
+  "whyWatch": "Evan Stewart (ORE WR, Sr): 27 rec, 352 yds, 4 TD, 13.0 Y/R. Release against press, separation at the top of the route, and hands away from his frame in traffic.",
+  "pressurePoint": "Nebraska on passing downs vs Oregon pressure. Nebraska is No. 4 of 138 in passing-downs success (45%). Oregon ranks No. 81 on passing downs (29%). This is not a lean. It is a mismatch, and a prominent one. Nebraska converts the long downs Oregon needs to win. A third-and-8 is not a stop here. Watch Nebraska's third-and-long conversions. Two in the first half breaks Oregon's plan.",
+  "edges": [
+   {
+    "a": "Nebraska on passing downs",
+    "b": "Oregon pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 4 of 138 in passing-downs success (45%). Oregon ranks No. 81 on passing downs (29%). This is not a lean. It is a mismatch, and a prominent one. Nebraska converts the long downs Oregon needs to win. A third-and-8 is not a stop here.",
+    "gap": 56
+   },
+   {
+    "a": "Oregon offensive line",
+    "b": "Nebraska front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Oregon",
+    "why": "Oregon is No. 32 of 138 in line yards per carry (3.36). Nebraska ranks No. 73 at the line of scrimmage (2.90). A real edge, not a lock. Oregon should win first contact more often than not, which makes every down shorter.",
+    "gap": 30
+   },
+   {
+    "a": "Nebraska offensive line",
+    "b": "Oregon front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 28 in line yards per carry (3.41) and Oregon is No. 53 at the line of scrimmage (2.68). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.",
+    "gap": 18
+   },
+   {
+    "a": "Nebraska run game",
+    "b": "Oregon run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Nebraska",
+    "why": "Nebraska is No. 29 in rush success rate (49%) and Oregon is No. 51 against the run (38%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.",
+    "gap": 16
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 80,
+   "futureTalent": 100,
+   "competitive": 93,
+   "styleContrast": 38,
+   "storylines": 65,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "4685565",
+    "name": "Evan Stewart",
+    "team": "Oregon",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 88
+   },
+   {
+    "id": "5079639",
+    "name": "Williams Nwaneri",
+    "team": "Nebraska",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 81
+   },
+   {
+    "id": "5141617",
+    "name": "Na'eem Offord",
+    "team": "Oregon",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 81
+   },
+   {
+    "id": "4685244",
+    "name": "Bear Alexander",
+    "team": "Oregon",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 79
+   },
+   {
+    "id": "5141423",
+    "name": "Jordon Davison",
+    "team": "Oregon",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 79
+   },
+   {
+    "id": "4954452",
+    "name": "Riley Van Poppel",
+    "team": "Nebraska",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5142588",
+    "name": "Koi Perich",
+    "team": "Oregon",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4871052",
+    "name": "Matayo Uiagalelei",
+    "team": "Oregon",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5127885",
+    "name": "Kwazi Gilmer",
+    "team": "Nebraska",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5083370",
+    "name": "Jacory Barney Jr.",
+    "team": "Nebraska",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "5290565",
+    "name": "Jamal Rule",
+    "team": "Nebraska",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 70
+   }
+  ],
+  "projection": {
+   "winner": "ORE",
+   "winProb": 0.5837235350160467,
+   "margin": 3.3828571428571426,
+   "home": 33,
+   "away": 30,
+   "confidence": "high",
+   "modelTotal": 62.5,
+   "eloMargin": 3.64,
+   "netEdge": -26
+  },
+  "consensus": {
+   "median": 3.5,
+   "favorite": "ORE",
+   "of": 2
+  }
+ }
+}

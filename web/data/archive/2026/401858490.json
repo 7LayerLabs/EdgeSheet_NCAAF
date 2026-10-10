@@ -1,0 +1,173 @@
+{
+ "gameId": "401858490",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.146Z",
+  "kickoff": "2026-10-17T04:00Z",
+  "away": "Penn State",
+  "home": "Michigan",
+  "abbr": {
+   "home": "MICH",
+   "away": "PSU"
+  },
+  "scoutScore": 90,
+  "whyWatch": "Penn State on passing downs against Michigan pressure: passing-downs success: offense 28% (No. 97/138), defense 19% (No. 8/138), gap 65 percentile points. Watch Penn State on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "Penn State on passing downs vs Michigan pressure. Michigan is No. 8 of 138 on passing downs (19%). Penn State ranks No. 97 in passing-downs success (28%). This is not a lean. It is a mismatch, and a prominent one. Michigan gets off the field on long downs. Early-down efficiency is everything for Penn State. Watch Penn State on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "Penn State on passing downs",
+    "b": "Michigan pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Penn State",
+    "why": "Michigan is No. 8 of 138 on passing downs (19%). Penn State ranks No. 97 in passing-downs success (28%). This is not a lean. It is a mismatch, and a prominent one. Michigan gets off the field on long downs. Early-down efficiency is everything for Penn State.",
+    "gap": -65
+   },
+   {
+    "a": "Penn State offensive line",
+    "b": "Michigan front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Penn State",
+    "why": "Michigan is No. 29 of 138 at the line of scrimmage (2.48). Penn State ranks No. 112 in line yards per carry (2.77). This is not a lean. It is a mismatch, and a prominent one. Michigan wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "gap": -61
+   },
+   {
+    "a": "Penn State run game",
+    "b": "Michigan run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Penn State",
+    "why": "Michigan is No. 19 of 138 against the run (32%). Penn State ranks No. 100 in rush success rate (41%). This is not a lean. It is a mismatch, and a prominent one. Michigan erases the run. Penn State gets pushed into passing downs, and that is where this defense makes its money.",
+    "gap": -59
+   },
+   {
+    "a": "Michigan deep passing",
+    "b": "Penn State secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Michigan",
+    "why": "Penn State is No. 2 of 138 at limiting explosive passes (1.13). Michigan ranks No. 71 in pass explosiveness (1.54). A clear edge, the kind that shapes a game plan. Penn State keeps the lid on. Michigan should expect to drive the long way.",
+    "gap": -50
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 100,
+   "competitive": 78,
+   "styleContrast": 12,
+   "storylines": 50,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "4918098",
+    "name": "Tony Rojas",
+    "team": "Penn State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5141572",
+    "name": "Andrew Marsh",
+    "team": "Michigan",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 73
+   },
+   {
+    "id": "4870632",
+    "name": "Troy Bowles",
+    "team": "Michigan",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "5141741",
+    "name": "Bryce Underwood",
+    "team": "Michigan",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 72
+   },
+   {
+    "id": "4916884",
+    "name": "Anthony Donkoh",
+    "team": "Penn State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5097970",
+    "name": "Chimdy Onoh",
+    "team": "Penn State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5079729",
+    "name": "Andrew Sprague",
+    "team": "Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4899479",
+    "name": "Evan Link",
+    "team": "Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5289311",
+    "name": "Josiah Zayas",
+    "team": "Penn State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 69
+   },
+   {
+    "id": "5213238",
+    "name": "Yvan Kemajou",
+    "team": "Penn State",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 68
+   }
+  ],
+  "projection": {
+   "winner": "PSU",
+   "winProb": 0.505520930299902,
+   "margin": 0.2214285714285713,
+   "home": 21,
+   "away": 22,
+   "confidence": "high",
+   "modelTotal": 43,
+   "eloMargin": -1.57,
+   "netEdge": 135
+  },
+  "consensus": {
+   "median": -0.9,
+   "favorite": "PSU",
+   "of": 2
+  }
+ }
+}

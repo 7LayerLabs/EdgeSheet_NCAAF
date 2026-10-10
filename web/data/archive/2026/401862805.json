@@ -1,0 +1,146 @@
+{
+ "gameId": "401862805",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.186Z",
+  "kickoff": "2026-10-17T20:30Z",
+  "away": "Tulsa",
+  "home": "Rice",
+  "abbr": {
+   "home": "RICE",
+   "away": "TLSA"
+  },
+  "scoutScore": 70,
+  "whyWatch": "Tulsa deep passing against Rice secondary: pass explosiveness: offense 1.28 (No. 130/138), defense 1.50 (No. 57/138), gap 53 percentile points. Watch Tulsa's longest completion. If it is under 25 yards at the half, Rice has won the matchup.",
+  "pressurePoint": "Tulsa deep passing vs Rice secondary. Rice is No. 57 of 138 at limiting explosive passes (1.50). Tulsa ranks No. 130 in pass explosiveness (1.28). A clear edge, the kind that shapes a game plan. Rice keeps the lid on. Tulsa should expect to drive the long way. Watch Tulsa's longest completion. If it is under 25 yards at the half, Rice has won the matchup.",
+  "edges": [
+   {
+    "a": "Tulsa deep passing",
+    "b": "Rice secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Tulsa",
+    "why": "Rice is No. 57 of 138 at limiting explosive passes (1.50). Tulsa ranks No. 130 in pass explosiveness (1.28). A clear edge, the kind that shapes a game plan. Rice keeps the lid on. Tulsa should expect to drive the long way.",
+    "gap": -53
+   },
+   {
+    "a": "Tulsa on passing downs",
+    "b": "Rice pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Tulsa",
+    "why": "Rice is No. 98 of 138 on passing downs (31%). Tulsa ranks No. 137 in passing-downs success (18%). A real edge, not a lock. Rice gets off the field on long downs. Early-down efficiency is everything for Tulsa.",
+    "gap": -28
+   },
+   {
+    "a": "Tulsa offensive line",
+    "b": "Rice front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Tulsa",
+    "why": "Tulsa is No. 37 in line yards per carry (3.32) and Rice is No. 58 at the line of scrimmage (2.77). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.",
+    "gap": 16
+   },
+   {
+    "a": "Rice run game",
+    "b": "Tulsa run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Rice",
+    "why": "Rice is No. 34 in rush success rate (49%) and Tulsa is No. 53 against the run (38%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.",
+    "gap": 14
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 85,
+   "directMatchups": 80,
+   "futureTalent": 9,
+   "competitive": 85,
+   "styleContrast": 52,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4685699",
+    "name": "Damari Alston",
+    "team": "Tulsa",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4714989",
+    "name": "Hunter Erb",
+    "team": "Tulsa",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5193111",
+    "name": "Brody Duffel",
+    "team": "Tulsa",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5041974",
+    "name": "Luke Needham",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5091819",
+    "name": "Nate Bledsoe",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5054105",
+    "name": "Patrick Valent",
+    "team": "Rice",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5207925",
+    "name": "Tyvonn Byars",
+    "team": "Rice",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 55
+   }
+  ],
+  "projection": {
+   "winner": "RICE",
+   "winProb": 0.511290035258231,
+   "margin": 0.4528571428571429,
+   "home": 24,
+   "away": 25,
+   "confidence": "high",
+   "modelTotal": 48.5,
+   "eloMargin": -0.36,
+   "netEdge": 81
+  },
+  "consensus": {
+   "median": 0,
+   "favorite": "RICE",
+   "of": 2
+  }
+ }
+}

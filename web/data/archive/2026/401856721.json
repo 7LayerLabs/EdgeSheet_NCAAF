@@ -1,0 +1,164 @@
+{
+ "gameId": "401856721",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.176Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "Missouri",
+  "home": "Ole Miss",
+  "abbr": {
+   "home": "MISS",
+   "away": "MIZ"
+  },
+  "scoutScore": 90,
+  "whyWatch": "Jamal Roberts (MIZ RB, Sr): 828 rush yds on 147 carries, 8 TD, 84 rec yds. A workhorse at 24.5 carries a game. Watch his burst and ball security in the fourth quarter.",
+  "pressurePoint": "No unit has a clear edge. The closest thing to a swing: missouri run game vs ole miss run defense. Missouri is No. 103 in rush success rate (40%) and Ole Miss is No. 126 against the run (48%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks. First quarter: who wins first contact.",
+  "edges": [
+   {
+    "a": "Ole Miss offensive line",
+    "b": "Missouri front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Ole Miss",
+    "why": "Missouri is No. 30 of 138 at the line of scrimmage (2.48). Ole Miss ranks No. 97 in line yards per carry (2.94). A clear edge, the kind that shapes a game plan. Missouri should hold the line of scrimmage. Ole Miss's runs will need the second level to break.",
+    "gap": -49
+   },
+   {
+    "a": "Ole Miss on passing downs",
+    "b": "Missouri pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Ole Miss",
+    "why": "Ole Miss is No. 27 of 138 in passing-downs success (37%). Missouri ranks No. 70 on passing downs (28%). A real edge, not a lock. Ole Miss converts the long downs Missouri needs to win. A third-and-8 is not a stop here.",
+    "gap": 31
+   },
+   {
+    "a": "Missouri run game",
+    "b": "Ole Miss run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Missouri",
+    "why": "Missouri is No. 103 in rush success rate (40%) and Ole Miss is No. 126 against the run (48%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.",
+    "gap": 17
+   },
+   {
+    "a": "Ole Miss run game",
+    "b": "Missouri run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Ole Miss",
+    "why": "Ole Miss is No. 18 in rush success rate (52%) and Missouri is No. 38 against the run (36%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.",
+    "gap": 15
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 80,
+   "futureTalent": 100,
+   "competitive": 87,
+   "styleContrast": 45,
+   "storylines": 100,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "4921116",
+    "name": "Jamal Roberts",
+    "team": "Missouri",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 86
+   },
+   {
+    "id": "5141684",
+    "name": "Austin Simmons",
+    "team": "Missouri",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "5079647",
+    "name": "Caleb Odom",
+    "team": "Ole Miss",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 80
+   },
+   {
+    "id": "5141582",
+    "name": "Donovan Olugbode",
+    "team": "Missouri",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 77
+   },
+   {
+    "id": "5201870",
+    "name": "Daeden Hopkins",
+    "team": "Missouri",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 75
+   },
+   {
+    "id": "4870961",
+    "name": "Blake Purchase",
+    "team": "Ole Miss",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "4685604",
+    "name": "Robert Woodyard Jr.",
+    "team": "Missouri",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4918093",
+    "name": "Jaylon Braxton",
+    "team": "Ole Miss",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "5224178",
+    "name": "Caleb Cunningham",
+    "team": "Ole Miss",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 67
+   }
+  ],
+  "projection": {
+   "winner": "MISS",
+   "winProb": 0.6098501144354196,
+   "margin": 4.4628571428571435,
+   "home": 32,
+   "away": 29,
+   "confidence": "high",
+   "modelTotal": 60.5,
+   "eloMargin": 4.64,
+   "netEdge": -18
+  },
+  "consensus": {
+   "median": 4.6,
+   "favorite": "MISS",
+   "of": 2
+  }
+ }
+}

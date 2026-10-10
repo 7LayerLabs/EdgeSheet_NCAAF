@@ -1,0 +1,146 @@
+{
+ "gameId": "401862803",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.160Z",
+  "kickoff": "2026-10-17T17:00Z",
+  "away": "Charlotte",
+  "home": "Temple",
+  "abbr": {
+   "home": "TEM",
+   "away": "CLT"
+  },
+  "scoutScore": 59,
+  "whyWatch": "Temple on passing downs against Charlotte pressure: passing-downs success: offense 33% (No. 59/138), defense 44% (No. 138/138), gap 58 percentile points. Watch Temple's third-and-long conversions. Two in the first half breaks Charlotte's plan.",
+  "pressurePoint": "Charlotte offensive line vs Temple front. Temple is No. 70 of 138 at the line of scrimmage (2.88). Charlotte ranks No. 136 in line yards per carry (2.28). A clear edge, the kind that shapes a game plan. Temple should hold the line of scrimmage. Charlotte's runs will need the second level to break. Watch tackles for loss. Temple living in the backfield early is the tell.",
+  "edges": [
+   {
+    "a": "Temple on passing downs",
+    "b": "Charlotte pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Temple",
+    "why": "Temple is No. 59 of 138 in passing-downs success (33%). Charlotte ranks No. 138 on passing downs (44%). This is not a lean. It is a mismatch, and a prominent one. Temple converts the long downs Charlotte needs to win. A third-and-8 is not a stop here.",
+    "gap": 58
+   },
+   {
+    "a": "Charlotte offensive line",
+    "b": "Temple front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Charlotte",
+    "why": "Temple is No. 70 of 138 at the line of scrimmage (2.88). Charlotte ranks No. 136 in line yards per carry (2.28). A clear edge, the kind that shapes a game plan. Temple should hold the line of scrimmage. Charlotte's runs will need the second level to break.",
+    "gap": -49
+   },
+   {
+    "a": "Temple offensive line",
+    "b": "Charlotte front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Temple",
+    "why": "Temple is No. 35 of 138 in line yards per carry (3.33). Charlotte ranks No. 99 at the line of scrimmage (3.04). A clear edge, the kind that shapes a game plan. Temple should win first contact more often than not, which makes every down shorter.",
+    "gap": 47
+   },
+   {
+    "a": "Temple run game",
+    "b": "Charlotte run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Temple",
+    "why": "Temple is No. 61 of 138 in rush success rate (46%). Charlotte ranks No. 121 against the run (47%). A clear edge, the kind that shapes a game plan. Temple should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 44
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 61,
+   "directMatchups": 100,
+   "futureTalent": 46,
+   "competitive": 26,
+   "styleContrast": 48,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5151012",
+    "name": "J'ven Williams",
+    "team": "Charlotte",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4924137",
+    "name": "Saboor Karriem",
+    "team": "Temple",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4921254",
+    "name": "Eric King",
+    "team": "Temple",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4705515",
+    "name": "Grayson Mains",
+    "team": "Temple",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5296364",
+    "name": "Keveun Mason",
+    "team": "Temple",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 63
+   },
+   {
+    "id": "4921434",
+    "name": "Collin Gill",
+    "team": "Charlotte",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Sleeper",
+    "score": 60
+   },
+   {
+    "id": "5210130",
+    "name": "Devin Ancrum",
+    "team": "Charlotte",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 57
+   }
+  ],
+  "projection": {
+   "winner": "TEM",
+   "winProb": 0.8641587578575806,
+   "margin": 17.587142857142858,
+   "home": 37,
+   "away": 20,
+   "confidence": "high",
+   "modelTotal": 56.5,
+   "eloMargin": 15.61,
+   "netEdge": 198
+  },
+  "consensus": {
+   "median": 16.6,
+   "favorite": "TEM",
+   "of": 2
+  }
+ }
+}

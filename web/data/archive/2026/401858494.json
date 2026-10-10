@@ -1,0 +1,164 @@
+{
+ "gameId": "401858494",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.145Z",
+  "kickoff": "2026-10-17T04:00Z",
+  "away": "Wisconsin",
+  "home": "UCLA",
+  "abbr": {
+   "home": "UCLA",
+   "away": "WIS"
+  },
+  "scoutScore": 94,
+  "whyWatch": "Wisconsin run game against UCLA run defense: rush success rate: offense 35% (No. 132/138), defense 33% (No. 25/138), gap 78 percentile points. Watch Wisconsin's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "pressurePoint": "Wisconsin run game vs UCLA run defense. UCLA is No. 25 of 138 against the run (33%). Wisconsin ranks No. 132 in rush success rate (35%). This is not a lean. It is a mismatch, and a prominent one. UCLA erases the run. Wisconsin gets pushed into passing downs, and that is where this defense makes its money. Watch Wisconsin's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Wisconsin run game",
+    "b": "UCLA run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Wisconsin",
+    "why": "UCLA is No. 25 of 138 against the run (33%). Wisconsin ranks No. 132 in rush success rate (35%). This is not a lean. It is a mismatch, and a prominent one. UCLA erases the run. Wisconsin gets pushed into passing downs, and that is where this defense makes its money.",
+    "gap": -78
+   },
+   {
+    "a": "UCLA offensive line",
+    "b": "Wisconsin front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "UCLA",
+    "why": "UCLA is No. 1 of 138 in line yards per carry (3.97). Wisconsin ranks No. 77 at the line of scrimmage (2.91). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to UCLA. Second-level runs and play-action are live all afternoon.",
+    "gap": 55
+   },
+   {
+    "a": "Wisconsin deep passing",
+    "b": "UCLA secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Wisconsin",
+    "why": "Wisconsin is No. 57 of 138 in pass explosiveness (1.59). UCLA ranks No. 130 at limiting explosive passes (1.84). A clear edge, the kind that shapes a game plan. Wisconsin has the deep ball available. Watch whether UCLA rolls a safety over after the first one.",
+    "gap": 53
+   },
+   {
+    "a": "Wisconsin on passing downs",
+    "b": "UCLA pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Wisconsin",
+    "why": "UCLA is No. 18 of 138 on passing downs (22%). Wisconsin ranks No. 80 in passing-downs success (30%). A clear edge, the kind that shapes a game plan. UCLA gets off the field on long downs. Early-down efficiency is everything for Wisconsin.",
+    "gap": -46
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 94,
+   "competitive": 98,
+   "styleContrast": 26,
+   "storylines": 80,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "4899483",
+    "name": "Sammy Omosigho",
+    "team": "UCLA",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5125715",
+    "name": "Colton Joseph",
+    "team": "Wisconsin",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4870952",
+    "name": "Lucas Simmons-Johansson",
+    "team": "Wisconsin",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5195298",
+    "name": "Mason Posa",
+    "team": "Wisconsin",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 71
+   },
+   {
+    "id": "4685242",
+    "name": "Julian Armella",
+    "team": "UCLA",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5079737",
+    "name": "Bryce West",
+    "team": "Wisconsin",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 70
+   },
+   {
+    "id": "4685314",
+    "name": "Sebastian Cheeks",
+    "team": "Wisconsin",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "4917948",
+    "name": "Malik Hartford",
+    "team": "UCLA",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "5141658",
+    "name": "Anthony Sacca",
+    "team": "UCLA",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 61
+   }
+  ],
+  "projection": {
+   "winner": "UCLA",
+   "winProb": 0.5789803490242473,
+   "margin": 3.1885714285714286,
+   "home": 24,
+   "away": 22,
+   "confidence": "high",
+   "modelTotal": 45.5,
+   "eloMargin": 1.93,
+   "netEdge": 126
+  },
+  "consensus": {
+   "median": 2.6,
+   "favorite": "UCLA",
+   "of": 2
+  }
+ }
+}

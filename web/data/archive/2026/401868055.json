@@ -1,0 +1,48 @@
+{
+ "gameId": "401868055",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.194Z",
+  "kickoff": "2026-10-17T23:00Z",
+  "away": "Abilene Christian",
+  "home": "North Alabama",
+  "abbr": {
+   "home": "UNA",
+   "away": "ACU"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Destin Wade (UNA QB, Jr): 1199 pass yds, 6 TD, 2 INT, 8.0 Y/A. Completing 55% of his throws. Accuracy is the question, especially outside the numbers and on the move.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 20,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4685698",
+    "name": "Destin Wade",
+    "team": "North Alabama",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 58
+   },
+   {
+    "id": "4915981",
+    "name": "Javeon Wilcox",
+    "team": "Abilene Christian",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Sleeper",
+    "score": 53
+   }
+  ]
+ }
+}

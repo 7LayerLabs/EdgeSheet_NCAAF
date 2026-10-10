@@ -1,0 +1,119 @@
+{
+ "gameId": "401864523",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.205Z",
+  "kickoff": "2026-10-18T01:00Z",
+  "away": "San José State",
+  "home": "UTEP",
+  "abbr": {
+   "home": "UTEP",
+   "away": "SJSU"
+  },
+  "scoutScore": 47,
+  "whyWatch": "UTEP deep passing against San José State secondary: pass explosiveness: offense 1.37 (No. 119/138), defense 1.28 (No. 7/138), gap 82 percentile points. Watch UTEP's longest completion. If it is under 25 yards at the half, San José State has won the matchup.",
+  "pressurePoint": "San José State on passing downs vs UTEP pressure. San José State is No. 101 of 138 in passing-downs success (27%). UTEP ranks No. 130 on passing downs (37%). A real edge, not a lock. San José State converts the long downs UTEP needs to win. A third-and-8 is not a stop here. Watch San José State's third-and-long conversions. Two in the first half breaks UTEP's plan.",
+  "edges": [
+   {
+    "a": "UTEP deep passing",
+    "b": "San José State secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "UTEP",
+    "why": "San José State is No. 7 of 138 at limiting explosive passes (1.28). UTEP ranks No. 119 in pass explosiveness (1.37). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. UTEP needs the underneath game and yards after catch.",
+    "gap": -82
+   },
+   {
+    "a": "UTEP on passing downs",
+    "b": "San José State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "UTEP",
+    "why": "San José State is No. 55 of 138 on passing downs (27%). UTEP ranks No. 135 in passing-downs success (20%). This is not a lean. It is a mismatch, and a prominent one. San José State gets off the field on long downs. Early-down efficiency is everything for UTEP.",
+    "gap": -59
+   },
+   {
+    "a": "UTEP offensive line",
+    "b": "San José State front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "UTEP",
+    "why": "San José State is No. 82 of 138 at the line of scrimmage (2.93). UTEP ranks No. 132 in line yards per carry (2.52). A real edge, not a lock. San José State should hold the line of scrimmage. UTEP's runs will need the second level to break.",
+    "gap": -37
+   },
+   {
+    "a": "San José State on passing downs",
+    "b": "UTEP pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "San José State",
+    "why": "San José State is No. 101 of 138 in passing-downs success (27%). UTEP ranks No. 130 on passing downs (37%). A real edge, not a lock. San José State converts the long downs UTEP needs to win. A third-and-8 is not a stop here.",
+    "gap": 21
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 24,
+   "directMatchups": 100,
+   "futureTalent": 33,
+   "competitive": 40,
+   "styleContrast": 28,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4920229",
+    "name": "Jerry McClure",
+    "team": "San José State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4685254",
+    "name": "Jabari Bates",
+    "team": "San José State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 64
+   },
+   {
+    "id": "5238038",
+    "name": "Jeremiah Tuiileila",
+    "team": "San José State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 63
+   },
+   {
+    "id": "4685418",
+    "name": "Tavorus Jones",
+    "team": "UTEP",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 58
+   }
+  ],
+  "projection": {
+   "winner": "SJSU",
+   "winProb": 0.7432485417454054,
+   "margin": 10.454285714285714,
+   "home": 18,
+   "away": 28,
+   "confidence": "high",
+   "modelTotal": 45.5,
+   "eloMargin": -8.46,
+   "netEdge": -199
+  },
+  "consensus": {
+   "median": -9.5,
+   "favorite": "SJSU",
+   "of": 2
+  }
+ }
+}

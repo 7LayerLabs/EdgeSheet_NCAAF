@@ -1,0 +1,48 @@
+{
+ "gameId": "401866669",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.157Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Rhode Island",
+  "home": "Yale",
+  "abbr": {
+   "home": "YALE",
+   "away": "URI"
+  },
+  "scoutScore": 22,
+  "whyWatch": "Dante Reno (YALE QB, Jr): 1077 pass yds, 11 TD, 1 INT, 9.1 Y/A. Ball placement outside the numbers, how he resets his feet when the first read is covered, and whether he throws on time against pressure.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 20,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 20,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5079683",
+    "name": "Dante Reno",
+    "team": "Yale",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 56
+   },
+   {
+    "id": "5147860",
+    "name": "Felix Doege",
+    "team": "Rhode Island",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ]
+ }
+}

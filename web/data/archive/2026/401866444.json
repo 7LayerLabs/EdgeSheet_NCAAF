@@ -1,0 +1,155 @@
+{
+ "gameId": "401866444",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.180Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "Toledo",
+  "home": "Eastern Michigan",
+  "abbr": {
+   "home": "EMU",
+   "away": "TOL"
+  },
+  "scoutScore": 63,
+  "whyWatch": "Eastern Michigan on passing downs against Toledo pressure: passing-downs success: offense 24% (No. 120/138), defense 21% (No. 15/138), gap 77 percentile points. Watch Eastern Michigan on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "Toledo deep passing vs Eastern Michigan secondary. Toledo is No. 5 of 138 in pass explosiveness (1.93). Eastern Michigan ranks No. 44 at limiting explosive passes (1.46). A real edge, not a lock. Toledo has the deep ball available. Watch whether Eastern Michigan rolls a safety over after the first one. Watch the first deep shot. If it connects, Eastern Michigan changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "Eastern Michigan on passing downs",
+    "b": "Toledo pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Eastern Michigan",
+    "why": "Toledo is No. 15 of 138 on passing downs (21%). Eastern Michigan ranks No. 120 in passing-downs success (24%). This is not a lean. It is a mismatch, and a prominent one. Toledo gets off the field on long downs. Early-down efficiency is everything for Eastern Michigan.",
+    "gap": -77
+   },
+   {
+    "a": "Eastern Michigan run game",
+    "b": "Toledo run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Eastern Michigan",
+    "why": "Toledo is No. 8 of 138 against the run (28%). Eastern Michigan ranks No. 110 in rush success rate (39%). This is not a lean. It is a mismatch, and a prominent one. Toledo erases the run. Eastern Michigan gets pushed into passing downs, and that is where this defense makes its money.",
+    "gap": -75
+   },
+   {
+    "a": "Eastern Michigan offensive line",
+    "b": "Toledo front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Eastern Michigan",
+    "why": "Toledo is No. 44 of 138 at the line of scrimmage (2.62). Eastern Michigan ranks No. 99 in line yards per carry (2.89). A clear edge, the kind that shapes a game plan. Toledo should hold the line of scrimmage. Eastern Michigan's runs will need the second level to break.",
+    "gap": -41
+   },
+   {
+    "a": "Eastern Michigan deep passing",
+    "b": "Toledo secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Eastern Michigan",
+    "why": "Toledo is No. 83 of 138 at limiting explosive passes (1.58). Eastern Michigan ranks No. 127 in pass explosiveness (1.31). A real edge, not a lock. Toledo keeps the lid on. Eastern Michigan should expect to drive the long way.",
+    "gap": -32
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 73,
+   "directMatchups": 100,
+   "futureTalent": 23,
+   "competitive": 42,
+   "styleContrast": 21,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5078063",
+    "name": "Connor Walendzak",
+    "team": "Toledo",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "5082330",
+    "name": "John Alan Richter",
+    "team": "Toledo",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "4833021",
+    "name": "Jonathan Harder",
+    "team": "Toledo",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5138702",
+    "name": "Adham Abouraya",
+    "team": "Eastern Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4920144",
+    "name": "Elijha Payne",
+    "team": "Eastern Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4878442",
+    "name": "Joshua Anderson",
+    "team": "Eastern Michigan",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5209964",
+    "name": "Quincy Byas",
+    "team": "Eastern Michigan",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 63
+   },
+   {
+    "id": "5079699",
+    "name": "Corey Smith",
+    "team": "Toledo",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 19
+   }
+  ],
+  "projection": {
+   "winner": "TOL",
+   "winProb": 0.7405653978690824,
+   "margin": 10.321428571428571,
+   "home": 20,
+   "away": 30,
+   "confidence": "high",
+   "modelTotal": 49.5,
+   "eloMargin": -8.07,
+   "netEdge": -225
+  },
+  "consensus": {
+   "median": -9.2,
+   "favorite": "TOL",
+   "of": 2
+  }
+ }
+}

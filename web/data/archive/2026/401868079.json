@@ -1,0 +1,48 @@
+{
+ "gameId": "401868079",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.204Z",
+  "kickoff": "2026-10-18T00:00Z",
+  "away": "Cal Poly",
+  "home": "Northern Colorado",
+  "abbr": {
+   "home": "UNCO",
+   "away": "CP"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Jaden Green (CP RB, Jr): 782 rush yds on 114 carries, 5 TD, 55 rec yds. 6.9 yards a carry. Watch how much of that is him making defenders miss versus the holes his line opens.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 20,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5225901",
+    "name": "Jaden Green",
+    "team": "Cal Poly",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 52
+   },
+   {
+    "id": "5146792",
+    "name": "AJ Burton",
+    "team": "Northern Colorado",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ]
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "id": "401858263",
+ "season": 2026,
+ "week": 7,
+ "kickoff": "2026-10-17T23:00Z",
+ "home": {
+  "id": "2390",
+  "name": "Miami",
+  "abbr": "MIA"
+ },
+ "away": {
+  "id": "52",
+  "name": "Florida State",
+  "abbr": "FSU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 16.5,
+  "total": 53.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T23:20:06.088Z",
+   "spread": 21,
+   "total": 56.5
+  }
+ ]
+}

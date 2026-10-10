@@ -1,0 +1,48 @@
+{
+ "gameId": "401869132",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.164Z",
+  "kickoff": "2026-10-17T17:00Z",
+  "away": "McNeese",
+  "home": "Northwestern State",
+  "abbr": {
+   "home": "NWST",
+   "away": "MCN"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Curtis Deville (MCN WR, Jr): 16 rec, 295 yds, 4 TD, 18.4 Y/R. 18.4 yards a catch says vertical threat. Watch whether he also wins underneath and makes people miss after the catch.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 20,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4870077",
+    "name": "Curtis Deville",
+    "team": "McNeese",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Sleeper",
+    "score": 53
+   },
+   {
+    "id": "4918435",
+    "name": "Tyrone McDuffie III",
+    "team": "Northwestern State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ]
+ }
+}

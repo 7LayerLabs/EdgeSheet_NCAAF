@@ -1,0 +1,84 @@
+{
+ "gameId": "401858261",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.153Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Charleston Southern",
+  "home": "Clemson",
+  "abbr": {
+   "home": "CLEM",
+   "away": "CHSO"
+  },
+  "scoutScore": 78,
+  "whyWatch": "Sammy Brown (CLEM LB, Jr): 40 tkl, 2 TFL, 1 sacks, 1 hurries. Piles up 8 tackles a game. Watch how many come near the line versus five yards downfield after a gain.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": null,
+   "futureTalent": 74,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 20,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5079342",
+    "name": "Sammy Brown",
+    "team": "Clemson",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 85
+   },
+   {
+    "id": "5218753",
+    "name": "T.J. Moore",
+    "team": "Clemson",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 84
+   },
+   {
+    "id": "4685243",
+    "name": "Jeremiah Alexander",
+    "team": "Clemson",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 83
+   },
+   {
+    "id": "5112674",
+    "name": "Bryant Wesco Jr.",
+    "team": "Clemson",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5141422",
+    "name": "Gideon Davidson",
+    "team": "Clemson",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 71
+   },
+   {
+    "id": "5141592",
+    "name": "London Merritt",
+    "team": "Clemson",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 70
+   }
+  ]
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "gameId": "401856831",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.199Z",
+  "kickoff": "2026-10-17T23:30Z",
+  "away": "Oklahoma State",
+  "home": "Houston",
+  "abbr": {
+   "home": "HOU",
+   "away": "OKST"
+  },
+  "scoutScore": 90,
+  "whyWatch": "Conner Weigman (HOU QB, Sr): 1428 pass yds, 15 TD, 1 INT, 8.7 Y/A. Ball placement outside the numbers, how he resets his feet when the first read is covered, and whether he throws on time against pressure.",
+  "pressurePoint": "Oklahoma State offensive line vs Houston front. Houston is No. 15 of 138 at the line of scrimmage (2.32). Oklahoma State ranks No. 52 in line yards per carry (3.23). A real edge, not a lock. Houston should hold the line of scrimmage. Oklahoma State's runs will need the second level to break. Watch tackles for loss. Houston living in the backfield early is the tell.",
+  "edges": [
+   {
+    "a": "Houston offensive line",
+    "b": "Oklahoma State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Houston",
+    "why": "Houston is No. 6 of 138 in line yards per carry (3.73). Oklahoma State ranks No. 104 at the line of scrimmage (3.08). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Houston. Second-level runs and play-action are live all afternoon.",
+    "gap": 71
+   },
+   {
+    "a": "Houston run game",
+    "b": "Oklahoma State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Houston",
+    "why": "Houston is No. 5 of 138 in rush success rate (56%). Oklahoma State ranks No. 87 against the run (42%). This is not a lean. It is a mismatch, and a prominent one. Expect Houston to lean on the run early and often, and to keep leaning. Once Oklahoma State loads the box, play-action is the second punch.",
+    "gap": 60
+   },
+   {
+    "a": "Oklahoma State offensive line",
+    "b": "Houston front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Oklahoma State",
+    "why": "Houston is No. 15 of 138 at the line of scrimmage (2.32). Oklahoma State ranks No. 52 in line yards per carry (3.23). A real edge, not a lock. Houston should hold the line of scrimmage. Oklahoma State's runs will need the second level to break.",
+    "gap": -27
+   },
+   {
+    "a": "Oklahoma State deep passing",
+    "b": "Houston secondary",
+    "edge": "even",
+    "axis": "pass",
+    "offTeam": "Oklahoma State",
+    "why": "Oklahoma State is No. 83 in pass explosiveness (1.50) and Houston is No. 106 at limiting explosive passes (1.68). Strength on strength. Oklahoma State takes shots and Houston gives up few. Whoever wins the first deep ball changes the other side's call sheet.",
+    "gap": 17
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 96,
+   "futureTalent": 100,
+   "competitive": 53,
+   "styleContrast": 24,
+   "storylines": 100,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "4685574",
+    "name": "Conner Weigman",
+    "team": "Houston",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 95
+   },
+   {
+    "id": "5258016",
+    "name": "Caleb Hawkins",
+    "team": "Oklahoma State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 83
+   },
+   {
+    "id": "5120299",
+    "name": "Patrick Overmyer",
+    "team": "Houston",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5118341",
+    "name": "Khalil Laufau",
+    "team": "Houston",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "4685514",
+    "name": "Jacob Sexton",
+    "team": "Oklahoma State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5219834",
+    "name": "Drew Mestemaker",
+    "team": "Oklahoma State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 68
+   },
+   {
+    "id": "4685380",
+    "name": "Mo Horn",
+    "team": "Oklahoma State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4757958",
+    "name": "Ashton Lepo",
+    "team": "Oklahoma State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5142615",
+    "name": "Demetris Dean II",
+    "team": "Houston",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Future",
+    "score": 56
+   }
+  ],
+  "projection": {
+   "winner": "HOU",
+   "winProb": 0.7775451614038384,
+   "margin": 12.222857142857142,
+   "home": 35,
+   "away": 23,
+   "confidence": "high",
+   "modelTotal": 58,
+   "eloMargin": 10.64,
+   "netEdge": 158
+  },
+  "consensus": {
+   "median": 11.4,
+   "favorite": "HOU",
+   "of": 2
+  }
+ }
+}

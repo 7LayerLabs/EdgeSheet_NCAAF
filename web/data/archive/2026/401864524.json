@@ -1,0 +1,128 @@
+{
+ "gameId": "401864524",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.180Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "UNLV",
+  "home": "Air Force",
+  "abbr": {
+   "home": "AFA",
+   "away": "UNLV"
+  },
+  "scoutScore": 83,
+  "whyWatch": "Jackson Arnold (UNLV QB, Sr): 1063 pass yds, 8 TD, 0 INT, 8.0 Y/A. Adds 54 rushing yards a game. Watch whether he escapes to keep the play alive downfield or tucks it at the first sign of pressure.",
+  "pressurePoint": "UNLV on passing downs vs Air Force pressure. Air Force is No. 5 of 138 on passing downs (19%). UNLV ranks No. 126 in passing-downs success (23%). This is not a lean. It is a mismatch, and a prominent one. Air Force gets off the field on long downs. Early-down efficiency is everything for UNLV. Watch UNLV on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "UNLV on passing downs",
+    "b": "Air Force pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "UNLV",
+    "why": "Air Force is No. 5 of 138 on passing downs (19%). UNLV ranks No. 126 in passing-downs success (23%). This is not a lean. It is a mismatch, and a prominent one. Air Force gets off the field on long downs. Early-down efficiency is everything for UNLV.",
+    "gap": -88
+   },
+   {
+    "a": "Air Force offensive line",
+    "b": "UNLV front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Air Force",
+    "why": "Air Force is No. 19 of 138 in line yards per carry (3.53). UNLV ranks No. 138 at the line of scrimmage (3.61). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Air Force. Second-level runs and play-action are live all afternoon.",
+    "gap": 87
+   },
+   {
+    "a": "Air Force deep passing",
+    "b": "UNLV secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Air Force",
+    "why": "Air Force is No. 7 of 138 in pass explosiveness (1.88). UNLV ranks No. 110 at limiting explosive passes (1.70). This is not a lean. It is a mismatch, and a prominent one. UNLV does not keep the lid on. Air Force will take shots, and the market total may be underpriced if they land.",
+    "gap": 76
+   },
+   {
+    "a": "Air Force run game",
+    "b": "UNLV run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Air Force",
+    "why": "Air Force is No. 43 of 138 in rush success rate (47%). UNLV ranks No. 125 against the run (48%). This is not a lean. It is a mismatch, and a prominent one. Expect Air Force to lean on the run early and often, and to keep leaning. Once UNLV loads the box, play-action is the second punch.",
+    "gap": 60
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 30,
+   "competitive": 82,
+   "styleContrast": 67,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "4870607",
+    "name": "Jackson Arnold",
+    "team": "UNLV",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 85
+   },
+   {
+    "id": "4685388",
+    "name": "Denver Harris",
+    "team": "UNLV",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 83
+   },
+   {
+    "id": "4837473",
+    "name": "Jake Pope",
+    "team": "UNLV",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "5219882",
+    "name": "Kal-El Togafau",
+    "team": "UNLV",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 61
+   },
+   {
+    "id": "5223130",
+    "name": "Blake Fletcher",
+    "team": "Air Force",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Sleeper",
+    "score": 61
+   }
+  ],
+  "projection": {
+   "winner": "AFA",
+   "winProb": 0.5559874645500553,
+   "margin": 2.252857142857143,
+   "home": 25,
+   "away": 24,
+   "confidence": "high",
+   "modelTotal": 48.5,
+   "eloMargin": -0.86,
+   "netEdge": 311
+  },
+  "consensus": {
+   "median": 0.7,
+   "favorite": "AFA",
+   "of": 2
+  }
+ }
+}

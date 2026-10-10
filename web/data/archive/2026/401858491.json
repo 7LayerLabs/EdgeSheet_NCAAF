@@ -1,0 +1,155 @@
+{
+ "gameId": "401858491",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.154Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Northwestern",
+  "home": "Michigan State",
+  "abbr": {
+   "home": "MSU",
+   "away": "NU"
+  },
+  "scoutScore": 79,
+  "whyWatch": "Aidan Chiles (NU QB, Sr): 1172 pass yds, 9 TD, 0 INT, 10.5 Y/A. Big plays with almost no turnovers. The test is whether he still pushes the ball when the first read is covered and the pocket gets muddy.",
+  "pressurePoint": "Northwestern on passing downs vs Michigan State pressure. Northwestern is No. 21 of 138 in passing-downs success (38%). Michigan State ranks No. 91 on passing downs (30%). A clear edge, the kind that shapes a game plan. Northwestern converts the long downs Michigan State needs to win. A third-and-8 is not a stop here. Watch Northwestern's third-and-long conversions. Two in the first half breaks Michigan State's plan.",
+  "edges": [
+   {
+    "a": "Michigan State deep passing",
+    "b": "Northwestern secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Michigan State",
+    "why": "Northwestern is No. 15 of 138 at limiting explosive passes (1.32). Michigan State ranks No. 129 in pass explosiveness (1.28). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Michigan State needs the underneath game and yards after catch.",
+    "gap": -83
+   },
+   {
+    "a": "Michigan State on passing downs",
+    "b": "Northwestern pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Michigan State",
+    "why": "Northwestern is No. 35 of 138 on passing downs (25%). Michigan State ranks No. 107 in passing-downs success (26%). A clear edge, the kind that shapes a game plan. Northwestern gets off the field on long downs. Early-down efficiency is everything for Michigan State.",
+    "gap": -52
+   },
+   {
+    "a": "Northwestern on passing downs",
+    "b": "Michigan State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Northwestern",
+    "why": "Northwestern is No. 21 of 138 in passing-downs success (38%). Michigan State ranks No. 91 on passing downs (30%). A clear edge, the kind that shapes a game plan. Northwestern converts the long downs Michigan State needs to win. A third-and-8 is not a stop here.",
+    "gap": 51
+   },
+   {
+    "a": "Northwestern deep passing",
+    "b": "Michigan State secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Northwestern",
+    "why": "Northwestern is No. 76 of 138 in pass explosiveness (1.52). Michigan State ranks No. 125 at limiting explosive passes (1.81). A real edge, not a lock. Northwestern has the deep ball available. Watch whether Michigan State rolls a safety over after the first one.",
+    "gap": 36
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 49,
+   "competitive": 44,
+   "styleContrast": 31,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5075805",
+    "name": "Aidan Chiles",
+    "team": "Northwestern",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 86
+   },
+   {
+    "id": "4685448",
+    "name": "Kobie McKinzie",
+    "team": "Northwestern",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "5078244",
+    "name": "Caleb Komolafe",
+    "team": "Northwestern",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5214448",
+    "name": "Jayden Savoury",
+    "team": "Michigan State",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Future",
+    "score": 68
+   },
+   {
+    "id": "4870737",
+    "name": "Jordan Hall",
+    "team": "Michigan State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "4685460",
+    "name": "Nikai Martinez",
+    "team": "Michigan State",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4832828",
+    "name": "Luka Vincic",
+    "team": "Michigan State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5328488",
+    "name": "Luke Dehnicke",
+    "team": "Northwestern",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Future",
+    "score": 59
+   }
+  ],
+  "projection": {
+   "winner": "NU",
+   "winProb": 0.7333988643562532,
+   "margin": 9.97,
+   "home": 22,
+   "away": 32,
+   "confidence": "high",
+   "modelTotal": 54,
+   "eloMargin": -7.75,
+   "netEdge": -222
+  },
+  "consensus": {
+   "median": -8.8,
+   "favorite": "NU",
+   "of": 2
+  }
+ }
+}

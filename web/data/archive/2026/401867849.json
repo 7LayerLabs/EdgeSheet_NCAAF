@@ -1,0 +1,39 @@
+{
+ "gameId": "401867849",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.184Z",
+  "kickoff": "2026-10-17T20:00Z",
+  "away": "Illinois State",
+  "home": "Southern Illinois",
+  "abbr": {
+   "home": "SIU",
+   "away": "ILST"
+  },
+  "scoutScore": 24,
+  "whyWatch": "Logan Brasfield (ILST OL, Jr): No box-score stats for linemen. See unit evidence.. 6-3, 320 lb. Power is not the question; watch his feet against speed off the edge.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 10,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5147107",
+    "name": "Logan Brasfield",
+    "team": "Illinois State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ]
+ }
+}

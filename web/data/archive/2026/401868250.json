@@ -1,0 +1,39 @@
+{
+ "gameId": "401868250",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.197Z",
+  "kickoff": "2026-10-17T23:00Z",
+  "away": "UT Rio Grande Valley",
+  "home": "Incarnate Word",
+  "abbr": {
+   "home": "UIW",
+   "away": "RGV"
+  },
+  "scoutScore": 22,
+  "whyWatch": "Easton Fulton (UIW OL, Sr): No box-score stats for linemen. See unit evidence.. 6-4, 327 lb. Power is not the question; watch his feet against speed off the edge.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 10,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5075953",
+    "name": "Easton Fulton",
+    "team": "Incarnate Word",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 46
+   }
+  ]
+ }
+}

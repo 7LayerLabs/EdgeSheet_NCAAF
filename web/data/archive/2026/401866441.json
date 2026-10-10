@@ -1,0 +1,137 @@
+{
+ "gameId": "401866441",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.155Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Ball State",
+  "home": "Bowling Green",
+  "abbr": {
+   "home": "BGSU",
+   "away": "BALL"
+  },
+  "scoutScore": 56,
+  "whyWatch": "Selah Brown (BGSU DL, Sr): 18 tkl, 1.5 TFL, 1 sacks, 1 hurries. First-step quickness, anchor against double teams, and whether his pass-rush plan has a counter when the first move fails.",
+  "pressurePoint": "No unit has a clear edge. The closest thing to a swing: ball state on passing downs vs bowling green pressure. Ball State is No. 113 in passing-downs success (25%) and Bowling Green is No. 96 on passing downs (31%). Strength on strength. Both sides are average on long downs. Early-down efficiency decides who sees more of them. First quarter: who wins first contact.",
+  "edges": [
+   {
+    "a": "Bowling Green run game",
+    "b": "Ball State run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Bowling Green",
+    "why": "Ball State is No. 85 of 138 against the run (42%). Bowling Green ranks No. 138 in rush success rate (30%). A real edge, not a lock. Bowling Green will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -39
+   },
+   {
+    "a": "Bowling Green offensive line",
+    "b": "Ball State front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Bowling Green",
+    "why": "Ball State is No. 93 of 138 at the line of scrimmage (3.01). Bowling Green ranks No. 133 in line yards per carry (2.43). A real edge, not a lock. Ball State should hold the line of scrimmage. Bowling Green's runs will need the second level to break.",
+    "gap": -29
+   },
+   {
+    "a": "Bowling Green deep passing",
+    "b": "Ball State secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Bowling Green",
+    "why": "Ball State is No. 71 of 138 at limiting explosive passes (1.56). Bowling Green ranks No. 102 in pass explosiveness (1.45). A real edge, not a lock. Ball State keeps the lid on. Bowling Green should expect to drive the long way.",
+    "gap": -23
+   },
+   {
+    "a": "Ball State on passing downs",
+    "b": "Bowling Green pressure",
+    "edge": "even",
+    "axis": "passing-downs",
+    "offTeam": "Ball State",
+    "why": "Ball State is No. 113 in passing-downs success (25%) and Bowling Green is No. 96 on passing downs (31%). Strength on strength. Both sides are average on long downs. Early-down efficiency decides who sees more of them.",
+    "gap": 13
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 53,
+   "directMatchups": 96,
+   "futureTalent": 13,
+   "competitive": 54,
+   "styleContrast": 16,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "4685288",
+    "name": "Selah Brown",
+    "team": "Bowling Green",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "4558733",
+    "name": "Chris Hood",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4356017",
+    "name": "Luke Dalton",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5078424",
+    "name": "Misael Sandoval",
+    "team": "Ball State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5078215",
+    "name": "Brody Bolyn",
+    "team": "Bowling Green",
+    "pos": "C",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5207804",
+    "name": "Jeremiah Scoby",
+    "team": "Bowling Green",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Future",
+    "score": 57
+   }
+  ],
+  "projection": {
+   "winner": "BGSU",
+   "winProb": 0.7277663887994946,
+   "margin": 9.697142857142858,
+   "home": 32,
+   "away": 22,
+   "confidence": "high",
+   "modelTotal": 54,
+   "eloMargin": 10.61,
+   "netEdge": -91
+  },
+  "consensus": {
+   "median": 10.1,
+   "favorite": "BGSU",
+   "of": 2
+  }
+ }
+}

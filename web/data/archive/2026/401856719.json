@@ -1,0 +1,173 @@
+{
+ "gameId": "401856719",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.175Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "Auburn",
+  "home": "Georgia",
+  "abbr": {
+   "home": "UGA",
+   "away": "AUB"
+  },
+  "scoutScore": 75,
+  "whyWatch": "Da'Shawn Womack (AUB EDGE, Sr): 10 tkl, 4 TFL, 2 sacks. Get-off at the snap, bend around the arc, and whether he sets the edge against the run instead of only chasing sacks.",
+  "pressurePoint": "Auburn run game vs Georgia run defense. Georgia is No. 6 of 138 against the run (28%). Auburn ranks No. 58 in rush success rate (46%). A real edge, not a lock. Auburn will find the run hard going. Expect more second-and-long than usual. Watch Auburn's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Auburn run game",
+    "b": "Georgia run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Auburn",
+    "why": "Georgia is No. 6 of 138 against the run (28%). Auburn ranks No. 58 in rush success rate (46%). A real edge, not a lock. Auburn will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -38
+   },
+   {
+    "a": "Auburn offensive line",
+    "b": "Georgia front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Auburn",
+    "why": "Georgia is No. 9 of 138 at the line of scrimmage (2.19). Auburn ranks No. 45 in line yards per carry (3.28). A real edge, not a lock. Georgia should hold the line of scrimmage. Auburn's runs will need the second level to break.",
+    "gap": -26
+   },
+   {
+    "a": "Georgia offensive line",
+    "b": "Auburn front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Georgia",
+    "why": "Georgia is No. 12 in line yards per carry (3.60) and Auburn is No. 38 at the line of scrimmage (2.57). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.",
+    "gap": 19
+   },
+   {
+    "a": "Georgia run game",
+    "b": "Auburn run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Georgia",
+    "why": "Georgia is No. 14 in rush success rate (52%) and Auburn is No. 36 against the run (36%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.",
+    "gap": 17
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 80,
+   "futureTalent": 100,
+   "competitive": 22,
+   "styleContrast": 28,
+   "storylines": 65,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "4880967",
+    "name": "Da'Shawn Womack",
+    "team": "Auburn",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 84
+   },
+   {
+    "id": "4685578",
+    "name": "Gunner Stockton",
+    "team": "Georgia",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "4871074",
+    "name": "Raylen Wilson",
+    "team": "Georgia",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "5145410",
+    "name": "Chris Cole",
+    "team": "Georgia",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 81
+   },
+   {
+    "id": "5079698",
+    "name": "Ellis Robinson IV",
+    "team": "Georgia",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 81
+   },
+   {
+    "id": "5141671",
+    "name": "Talyn Taylor",
+    "team": "Georgia",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 80
+   },
+   {
+    "id": "5167752",
+    "name": "Walter Mathis Jr.",
+    "team": "Auburn",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 76
+   },
+   {
+    "id": "5143922",
+    "name": "Elijah Melendez",
+    "team": "Auburn",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 75
+   },
+   {
+    "id": "4918443",
+    "name": "Stanton Ramil",
+    "team": "Auburn",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4870642",
+    "name": "Jeremiah Cobb",
+    "team": "Auburn",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 70
+   }
+  ],
+  "projection": {
+   "winner": "UGA",
+   "winProb": 0.8534075797495774,
+   "margin": 16.818571428571428,
+   "home": 35,
+   "away": 18,
+   "confidence": "high",
+   "modelTotal": 53,
+   "eloMargin": 16.18,
+   "netEdge": 64
+  },
+  "consensus": {
+   "median": 16.5,
+   "favorite": "UGA",
+   "of": 2
+  }
+ }
+}

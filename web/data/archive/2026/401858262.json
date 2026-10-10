@@ -1,0 +1,66 @@
+{
+ "gameId": "401858262",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.201Z",
+  "kickoff": "2026-10-17T23:30Z",
+  "away": "Elon",
+  "home": "Stanford",
+  "abbr": {
+   "home": "STAN",
+   "away": "ELON"
+  },
+  "scoutScore": 50,
+  "whyWatch": "Micah Ford (STAN RB, Jr): 350 rush yds on 95 carries, 4 TD, 66 rec yds. Only 3.7 a carry. Is that him or the blocking? Watch his yards after first contact.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 68,
+   "directMatchups": null,
+   "futureTalent": 14,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 20,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5143191",
+    "name": "Micah Ford",
+    "team": "Stanford",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "4685251",
+    "name": "Fisher Anderson",
+    "team": "Stanford",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5078531",
+    "name": "Nick Fattig",
+    "team": "Stanford",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5217152",
+    "name": "Zion Robinson",
+    "team": "Stanford",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 58
+   }
+  ]
+ }
+}

@@ -1,0 +1,155 @@
+{
+ "gameId": "401869957",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.156Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Georgia State",
+  "home": "James Madison",
+  "abbr": {
+   "home": "JMU",
+   "away": "GAST"
+  },
+  "scoutScore": 68,
+  "whyWatch": "Georgia State run game against James Madison run defense: rush success rate: offense 44% (No. 68/138), defense 26% (No. 3/138), gap 48 percentile points. Watch Georgia State's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "pressurePoint": "Georgia State run game vs James Madison run defense. James Madison is No. 3 of 138 against the run (26%). Georgia State ranks No. 68 in rush success rate (44%). A clear edge, the kind that shapes a game plan. Georgia State will find the run hard going. Expect more second-and-long than usual. Watch Georgia State's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Georgia State run game",
+    "b": "James Madison run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Georgia State",
+    "why": "James Madison is No. 3 of 138 against the run (26%). Georgia State ranks No. 68 in rush success rate (44%). A clear edge, the kind that shapes a game plan. Georgia State will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -48
+   },
+   {
+    "a": "James Madison offensive line",
+    "b": "Georgia State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "James Madison",
+    "why": "James Madison is No. 51 of 138 in line yards per carry (3.23). Georgia State ranks No. 106 at the line of scrimmage (3.09). A clear edge, the kind that shapes a game plan. James Madison should win first contact more often than not, which makes every down shorter.",
+    "gap": 41
+   },
+   {
+    "a": "James Madison deep passing",
+    "b": "Georgia State secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "James Madison",
+    "why": "Georgia State is No. 24 of 138 at limiting explosive passes (1.38). James Madison ranks No. 75 in pass explosiveness (1.53). A real edge, not a lock. Georgia State keeps the lid on. James Madison should expect to drive the long way.",
+    "gap": -37
+   },
+   {
+    "a": "James Madison run game",
+    "b": "Georgia State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "James Madison",
+    "why": "James Madison is No. 26 of 138 in rush success rate (50%). Georgia State ranks No. 72 against the run (41%). A real edge, not a lock. James Madison should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 34
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 92,
+   "directMatchups": 100,
+   "futureTalent": 32,
+   "competitive": 16,
+   "styleContrast": 6,
+   "storylines": 65,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "4685494",
+    "name": "George Pettaway",
+    "team": "James Madison",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "4871004",
+    "name": "Kelton Smith",
+    "team": "Georgia State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5193926",
+    "name": "Cameran Brown",
+    "team": "Georgia State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 64
+   },
+   {
+    "id": "4870684",
+    "name": "Deandre Duffus",
+    "team": "Georgia State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5085342",
+    "name": "Daniel Michel",
+    "team": "James Madison",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5027433",
+    "name": "Frankie Tinilau",
+    "team": "James Madison",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5244023",
+    "name": "Qwantavius Wiggins",
+    "team": "Georgia State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 59
+   },
+   {
+    "id": "5295448",
+    "name": "DJ Kelly",
+    "team": "James Madison",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 59
+   }
+  ],
+  "projection": {
+   "winner": "JMU",
+   "winProb": 0.872092648830438,
+   "margin": 18.181428571428572,
+   "home": 34,
+   "away": 17,
+   "confidence": "high",
+   "modelTotal": 50.5,
+   "eloMargin": 17.32,
+   "netEdge": 86
+  },
+  "consensus": {
+   "median": 17.8,
+   "favorite": "JMU",
+   "of": 2
+  }
+ }
+}

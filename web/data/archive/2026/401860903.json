@@ -1,0 +1,155 @@
+{
+ "gameId": "401860903",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.188Z",
+  "kickoff": "2026-10-17T22:00Z",
+  "away": "Washington State",
+  "home": "Oregon State",
+  "abbr": {
+   "home": "ORST",
+   "away": "WSU"
+  },
+  "scoutScore": 78,
+  "whyWatch": "Washington State deep passing against Oregon State secondary: pass explosiveness: offense 1.33 (No. 123/138), defense 1.40 (No. 28/138), gap 69 percentile points. Watch Washington State's longest completion. If it is under 25 yards at the half, Oregon State has won the matchup.",
+  "pressurePoint": "Washington State deep passing vs Oregon State secondary. Oregon State is No. 28 of 138 at limiting explosive passes (1.40). Washington State ranks No. 123 in pass explosiveness (1.33). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Washington State needs the underneath game and yards after catch. Watch Washington State's longest completion. If it is under 25 yards at the half, Oregon State has won the matchup.",
+  "edges": [
+   {
+    "a": "Washington State deep passing",
+    "b": "Oregon State secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Washington State",
+    "why": "Oregon State is No. 28 of 138 at limiting explosive passes (1.40). Washington State ranks No. 123 in pass explosiveness (1.33). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. Washington State needs the underneath game and yards after catch.",
+    "gap": -69
+   },
+   {
+    "a": "Oregon State deep passing",
+    "b": "Washington State secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Oregon State",
+    "why": "Oregon State is No. 24 of 138 in pass explosiveness (1.75). Washington State ranks No. 96 at limiting explosive passes (1.62). A clear edge, the kind that shapes a game plan. Oregon State has the deep ball available. Watch whether Washington State rolls a safety over after the first one.",
+    "gap": 52
+   },
+   {
+    "a": "Washington State run game",
+    "b": "Oregon State run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Washington State",
+    "why": "Oregon State is No. 59 of 138 against the run (40%). Washington State ranks No. 129 in rush success rate (35%). A clear edge, the kind that shapes a game plan. Washington State will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -51
+   },
+   {
+    "a": "Washington State on passing downs",
+    "b": "Oregon State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Washington State",
+    "why": "Oregon State is No. 89 of 138 on passing downs (30%). Washington State ranks No. 117 in passing-downs success (24%). A real edge, not a lock. Oregon State gets off the field on long downs. Early-down efficiency is everything for Washington State.",
+    "gap": -21
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 68,
+   "directMatchups": 100,
+   "futureTalent": 59,
+   "competitive": 96,
+   "styleContrast": 42,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5212654",
+    "name": "Braden Atkinson",
+    "team": "Oregon State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 77
+   },
+   {
+    "id": "4911919",
+    "name": "Khamari Terrell",
+    "team": "Washington State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 68
+   },
+   {
+    "id": "5149495",
+    "name": "DJ Warner",
+    "team": "Washington State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4685297",
+    "name": "Darrius Clemons",
+    "team": "Washington State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 64
+   },
+   {
+    "id": "5088952",
+    "name": "Eric Olsen",
+    "team": "Oregon State",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 64
+   },
+   {
+    "id": "5157305",
+    "name": "Jacob Anderson",
+    "team": "Oregon State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5075593",
+    "name": "Josiah Timoteo",
+    "team": "Oregon State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5215567",
+    "name": "Jamarey Smith",
+    "team": "Washington State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 56
+   }
+  ],
+  "projection": {
+   "winner": "ORST",
+   "winProb": 0.5883503352462187,
+   "margin": 3.572857142857143,
+   "home": 26,
+   "away": 23,
+   "confidence": "high",
+   "modelTotal": 49,
+   "eloMargin": 1.64,
+   "netEdge": 193
+  },
+  "consensus": {
+   "median": 2.6,
+   "favorite": "ORST",
+   "of": 2
+  }
+ }
+}

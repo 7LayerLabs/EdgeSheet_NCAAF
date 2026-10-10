@@ -1,0 +1,155 @@
+{
+ "gameId": "401856833",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.143Z",
+  "kickoff": "2026-10-17T04:00Z",
+  "away": "Utah",
+  "home": "Colorado",
+  "abbr": {
+   "home": "COLO",
+   "away": "UTAH"
+  },
+  "scoutScore": 69,
+  "whyWatch": "Wayshawn Parker (UTAH RB, Jr): 328 rush yds on 50 carries, 5 TD, 154 rec yds. Catches 3.8 balls a game. Watch his routes out of the backfield and whether he stays in to block on third down.",
+  "pressurePoint": "Utah on passing downs vs Colorado pressure. Utah is No. 8 of 138 in passing-downs success (42%). Colorado ranks No. 109 on passing downs (32%). This is not a lean. It is a mismatch, and a prominent one. Utah converts the long downs Colorado needs to win. A third-and-8 is not a stop here. Watch Utah's third-and-long conversions. Two in the first half breaks Colorado's plan.",
+  "edges": [
+   {
+    "a": "Utah on passing downs",
+    "b": "Colorado pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Utah",
+    "why": "Utah is No. 8 of 138 in passing-downs success (42%). Colorado ranks No. 109 on passing downs (32%). This is not a lean. It is a mismatch, and a prominent one. Utah converts the long downs Colorado needs to win. A third-and-8 is not a stop here.",
+    "gap": 74
+   },
+   {
+    "a": "Colorado run game",
+    "b": "Utah run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Colorado",
+    "why": "Utah is No. 22 of 138 against the run (32%). Colorado ranks No. 101 in rush success rate (40%). This is not a lean. It is a mismatch, and a prominent one. Utah erases the run. Colorado gets pushed into passing downs, and that is where this defense makes its money.",
+    "gap": -58
+   },
+   {
+    "a": "Utah deep passing",
+    "b": "Colorado secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Utah",
+    "why": "Utah is No. 78 of 138 in pass explosiveness (1.52). Colorado ranks No. 129 at limiting explosive passes (1.83). A real edge, not a lock. Utah has the deep ball available. Watch whether Colorado rolls a safety over after the first one.",
+    "gap": 37
+   },
+   {
+    "a": "Utah run game",
+    "b": "Colorado run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Utah",
+    "why": "Utah is No. 32 of 138 in rush success rate (49%). Colorado ranks No. 74 against the run (41%). A real edge, not a lock. Utah should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 30
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 52,
+   "competitive": 5,
+   "styleContrast": 7,
+   "storylines": 65,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "5173431",
+    "name": "Wayshawn Parker",
+    "team": "Utah",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 81
+   },
+   {
+    "id": "4922985",
+    "name": "Randon Fontenette",
+    "team": "Colorado",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5079464",
+    "name": "Isaiah Garcia",
+    "team": "Utah",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5079381",
+    "name": "Boo Carter",
+    "team": "Colorado",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "4870860",
+    "name": "DeAndre Moore Jr.",
+    "team": "Colorado",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "5167750",
+    "name": "Karson Kaufusi",
+    "team": "Utah",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Future",
+    "score": 68
+   },
+   {
+    "id": "5105849",
+    "name": "Devon Dampier",
+    "team": "Utah",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "5141445",
+    "name": "Quanell Farrakhan Jr.",
+    "team": "Colorado",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 61
+   }
+  ],
+  "projection": {
+   "winner": "UTAH",
+   "winProb": 0.9089301902030766,
+   "margin": 21.347142857142856,
+   "home": 14,
+   "away": 35,
+   "confidence": "high",
+   "modelTotal": 48.5,
+   "eloMargin": -19.36,
+   "netEdge": -199
+  },
+  "consensus": {
+   "median": -20.3,
+   "favorite": "UTAH",
+   "of": 2
+  }
+ }
+}

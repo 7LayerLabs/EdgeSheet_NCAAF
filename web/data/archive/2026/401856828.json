@@ -1,0 +1,146 @@
+{
+ "gameId": "401856828",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.177Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "Arizona State",
+  "home": "Texas Tech",
+  "abbr": {
+   "home": "TTU",
+   "away": "ASU"
+  },
+  "scoutScore": 68,
+  "whyWatch": "Arizona State run game against Texas Tech run defense: rush success rate: offense 40% (No. 106/138), defense 36% (No. 37/138), gap 51 percentile points. Watch Arizona State's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "pressurePoint": "Arizona State run game vs Texas Tech run defense. Texas Tech is No. 37 of 138 against the run (36%). Arizona State ranks No. 106 in rush success rate (40%). A clear edge, the kind that shapes a game plan. Arizona State will find the run hard going. Expect more second-and-long than usual. Watch Arizona State's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Arizona State run game",
+    "b": "Texas Tech run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Arizona State",
+    "why": "Texas Tech is No. 37 of 138 against the run (36%). Arizona State ranks No. 106 in rush success rate (40%). A clear edge, the kind that shapes a game plan. Arizona State will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -51
+   },
+   {
+    "a": "Arizona State deep passing",
+    "b": "Texas Tech secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Arizona State",
+    "why": "Arizona State is No. 25 of 138 in pass explosiveness (1.74). Texas Tech ranks No. 95 at limiting explosive passes (1.62). A clear edge, the kind that shapes a game plan. Arizona State has the deep ball available. Watch whether Texas Tech rolls a safety over after the first one.",
+    "gap": 51
+   },
+   {
+    "a": "Texas Tech run game",
+    "b": "Arizona State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Texas Tech",
+    "why": "Texas Tech is No. 12 of 138 in rush success rate (52%). Arizona State ranks No. 56 against the run (39%). A real edge, not a lock. Texas Tech should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 32
+   },
+   {
+    "a": "Texas Tech offensive line",
+    "b": "Arizona State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Texas Tech",
+    "why": "Texas Tech is No. 42 of 138 in line yards per carry (3.29). Arizona State ranks No. 79 at the line of scrimmage (2.91). A real edge, not a lock. Texas Tech should win first contact more often than not, which makes every down shorter.",
+    "gap": 27
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 11,
+   "competitive": 17,
+   "styleContrast": 15,
+   "storylines": 65,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5141378",
+    "name": "Cutter Boley",
+    "team": "Arizona State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "4870850",
+    "name": "Omarion Miller",
+    "team": "Arizona State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "4702828",
+    "name": "A.J. Holmes Jr.",
+    "team": "Texas Tech",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5139098",
+    "name": "Ellis Davis",
+    "team": "Texas Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5144440",
+    "name": "Jacob Ponton",
+    "team": "Texas Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4923268",
+    "name": "C.J. Fite",
+    "team": "Arizona State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 70
+   },
+   {
+    "id": "5205094",
+    "name": "Connor Carty",
+    "team": "Texas Tech",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Future",
+    "score": 56
+   }
+  ],
+  "projection": {
+   "winner": "TTU",
+   "winProb": 0.866134586615837,
+   "margin": 17.732857142857142,
+   "home": 34,
+   "away": 16,
+   "confidence": "high",
+   "modelTotal": 50,
+   "eloMargin": 17.14,
+   "netEdge": 59
+  },
+  "consensus": {
+   "median": 17.4,
+   "favorite": "TTU",
+   "of": 2
+  }
+ }
+}

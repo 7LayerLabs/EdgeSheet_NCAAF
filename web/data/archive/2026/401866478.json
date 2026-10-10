@@ -1,0 +1,146 @@
+{
+ "gameId": "401866478",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.181Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "Akron",
+  "home": "Miami (OH)",
+  "abbr": {
+   "home": "M-OH",
+   "away": "AKR"
+  },
+  "scoutScore": 66,
+  "whyWatch": "Miami (OH) deep passing against Akron secondary: pass explosiveness: offense 1.87 (No. 10/138), defense 1.91 (No. 135/138), gap 91 percentile points. Watch the first deep shot. If it connects, Akron changes shells and the run game opens.",
+  "pressurePoint": "Akron deep passing vs Miami (OH) secondary. Miami (OH) is No. 60 of 138 at limiting explosive passes (1.53). Akron ranks No. 134 in pass explosiveness (1.26). A clear edge, the kind that shapes a game plan. Miami (OH) keeps the lid on. Akron should expect to drive the long way. Watch Akron's longest completion. If it is under 25 yards at the half, Miami (OH) has won the matchup.",
+  "edges": [
+   {
+    "a": "Miami (OH) deep passing",
+    "b": "Akron secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Miami (OH)",
+    "why": "Miami (OH) is No. 10 of 138 in pass explosiveness (1.87). Akron ranks No. 135 at limiting explosive passes (1.91). This is not a lean. It is a mismatch, and a prominent one. Akron does not keep the lid on. Miami (OH) will take shots, and the market total may be underpriced if they land.",
+    "gap": 91
+   },
+   {
+    "a": "Akron deep passing",
+    "b": "Miami (OH) secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Akron",
+    "why": "Miami (OH) is No. 60 of 138 at limiting explosive passes (1.53). Akron ranks No. 134 in pass explosiveness (1.26). A clear edge, the kind that shapes a game plan. Miami (OH) keeps the lid on. Akron should expect to drive the long way.",
+    "gap": -54
+   },
+   {
+    "a": "Akron run game",
+    "b": "Miami (OH) run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Akron",
+    "why": "Akron is No. 19 of 138 in rush success rate (51%). Miami (OH) ranks No. 88 against the run (42%). A clear edge, the kind that shapes a game plan. Akron should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 51
+   },
+   {
+    "a": "Akron offensive line",
+    "b": "Miami (OH) front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Akron",
+    "why": "Akron is No. 11 of 138 in line yards per carry (3.62). Miami (OH) ranks No. 68 at the line of scrimmage (2.86). A clear edge, the kind that shapes a game plan. Akron should win first contact more often than not, which makes every down shorter.",
+    "gap": 42
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 68,
+   "directMatchups": 100,
+   "futureTalent": 36,
+   "competitive": 52,
+   "styleContrast": 19,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5079772",
+    "name": "Damarion Witten",
+    "team": "Miami (OH)",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "4685337",
+    "name": "Mehki Flowers",
+    "team": "Akron",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "4685236",
+    "name": "Omari Abor",
+    "team": "Akron",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4685592",
+    "name": "Dillon Tatum",
+    "team": "Miami (OH)",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "5091884",
+    "name": "Andrew Lowry",
+    "team": "Miami (OH)",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5141549",
+    "name": "David McComb",
+    "team": "Miami (OH)",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 62
+   },
+   {
+    "id": "5209574",
+    "name": "Tairan Davis Jr.",
+    "team": "Akron",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 58
+   }
+  ],
+  "projection": {
+   "winner": "M-OH",
+   "winProb": 0.762861029102951,
+   "margin": 11.448571428571428,
+   "home": 36,
+   "away": 24,
+   "confidence": "high",
+   "modelTotal": 60,
+   "eloMargin": 10.93,
+   "netEdge": 52
+  },
+  "consensus": {
+   "median": 11.2,
+   "favorite": "M-OH",
+   "of": 2
+  }
+ }
+}

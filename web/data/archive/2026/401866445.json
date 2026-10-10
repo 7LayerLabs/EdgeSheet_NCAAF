@@ -1,0 +1,137 @@
+{
+ "gameId": "401866445",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.205Z",
+  "kickoff": "2026-10-18T02:00Z",
+  "away": "Ohio",
+  "home": "Sacramento State",
+  "abbr": {
+   "home": "SAC",
+   "away": "OHIO"
+  },
+  "scoutScore": 45,
+  "whyWatch": "Ohio on passing downs against Sacramento State pressure: passing-downs success: offense 27% (No. 103/138), defense 21% (No. 13/138), gap 65 percentile points. Watch Ohio on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "Ohio on passing downs vs Sacramento State pressure. Sacramento State is No. 13 of 138 on passing downs (21%). Ohio ranks No. 103 in passing-downs success (27%). This is not a lean. It is a mismatch, and a prominent one. Sacramento State gets off the field on long downs. Early-down efficiency is everything for Ohio. Watch Ohio on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "Ohio on passing downs",
+    "b": "Sacramento State pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Ohio",
+    "why": "Sacramento State is No. 13 of 138 on passing downs (21%). Ohio ranks No. 103 in passing-downs success (27%). This is not a lean. It is a mismatch, and a prominent one. Sacramento State gets off the field on long downs. Early-down efficiency is everything for Ohio.",
+    "gap": -65
+   },
+   {
+    "a": "Ohio offensive line",
+    "b": "Sacramento State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Ohio",
+    "why": "Ohio is No. 14 of 138 in line yards per carry (3.57). Sacramento State ranks No. 80 at the line of scrimmage (2.91). A clear edge, the kind that shapes a game plan. Ohio should win first contact more often than not, which makes every down shorter.",
+    "gap": 49
+   },
+   {
+    "a": "Sacramento State offensive line",
+    "b": "Ohio front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Sacramento State",
+    "why": "Ohio is No. 67 of 138 at the line of scrimmage (2.83). Sacramento State ranks No. 119 in line yards per carry (2.69). A real edge, not a lock. Ohio should hold the line of scrimmage. Sacramento State's runs will need the second level to break.",
+    "gap": -38
+   },
+   {
+    "a": "Ohio run game",
+    "b": "Sacramento State run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Ohio",
+    "why": "Sacramento State is No. 19 of 138 against the run (32%). Ohio ranks No. 59 in rush success rate (46%). A real edge, not a lock. Ohio will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -29
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 17,
+   "directMatchups": 100,
+   "futureTalent": 47,
+   "competitive": 30,
+   "styleContrast": 39,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5083191",
+    "name": "Tigana Cisse",
+    "team": "Ohio",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4870233",
+    "name": "Vae Soifua",
+    "team": "Sacramento State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5254876",
+    "name": "Ike Ackerman",
+    "team": "Ohio",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 60
+   },
+   {
+    "id": "5125829",
+    "name": "DJ Walker",
+    "team": "Ohio",
+    "pos": "S",
+    "group": "S",
+    "tier": "Sleeper",
+    "score": 58
+   },
+   {
+    "id": "5083543",
+    "name": "Brandon Sousa",
+    "team": "Sacramento State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Sleeper",
+    "score": 58
+   },
+   {
+    "id": "5141685",
+    "name": "Amari Wallace",
+    "team": "Sacramento State",
+    "pos": "S",
+    "group": "S",
+    "tier": "Future",
+    "score": 55
+   }
+  ],
+  "projection": {
+   "winner": "OHIO",
+   "winProb": 0.7347757768670946,
+   "margin": 10.037142857142857,
+   "home": 23,
+   "away": 34,
+   "confidence": "high",
+   "modelTotal": 57,
+   "eloMargin": -10.11,
+   "netEdge": 7
+  },
+  "consensus": {
+   "median": -10,
+   "favorite": "OHIO",
+   "of": 2
+  }
+ }
+}

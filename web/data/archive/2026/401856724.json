@@ -1,0 +1,182 @@
+{
+ "gameId": "401856724",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.148Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Florida",
+  "home": "Texas",
+  "abbr": {
+   "home": "TEX",
+   "away": "FLA"
+  },
+  "scoutScore": 82,
+  "whyWatch": "Jadan Baugh (FLA RB, Jr): 672 rush yds on 110 carries, 12 TD, 46 rec yds. The goal-line back with 12 rushing TDs. Watch his pad level and patience in short yardage.",
+  "pressurePoint": "Florida deep passing vs Texas secondary. Texas is No. 34 of 138 at limiting explosive passes (1.43). Florida ranks No. 67 in pass explosiveness (1.56). A real edge, not a lock. Texas keeps the lid on. Florida should expect to drive the long way. Watch Florida's longest completion. If it is under 25 yards at the half, Texas has won the matchup.",
+  "edges": [
+   {
+    "a": "Texas on passing downs",
+    "b": "Florida pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Texas",
+    "why": "Texas is No. 36 of 138 in passing-downs success (36%). Florida ranks No. 101 on passing downs (31%). A clear edge, the kind that shapes a game plan. Texas converts the long downs Florida needs to win. A third-and-8 is not a stop here.",
+    "gap": 47
+   },
+   {
+    "a": "Texas deep passing",
+    "b": "Florida secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Texas",
+    "why": "Florida is No. 14 of 138 at limiting explosive passes (1.31). Texas ranks No. 65 in pass explosiveness (1.56). A real edge, not a lock. Florida keeps the lid on. Texas should expect to drive the long way.",
+    "gap": -38
+   },
+   {
+    "a": "Florida deep passing",
+    "b": "Texas secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Florida",
+    "why": "Texas is No. 34 of 138 at limiting explosive passes (1.43). Florida ranks No. 67 in pass explosiveness (1.56). A real edge, not a lock. Texas keeps the lid on. Florida should expect to drive the long way.",
+    "gap": -24
+   },
+   {
+    "a": "Florida offensive line",
+    "b": "Texas front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Florida",
+    "why": "Florida is No. 50 in line yards per carry (3.23) and Texas is No. 36 at the line of scrimmage (2.55). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.",
+    "gap": 10
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 96,
+   "futureTalent": 100,
+   "competitive": 36,
+   "styleContrast": 18,
+   "storylines": 85,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "5079322",
+    "name": "Jadan Baugh",
+    "team": "Florida",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 91
+   },
+   {
+    "id": "5079689",
+    "name": "Colin Simmons",
+    "team": "Texas",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 87
+   },
+   {
+    "id": "5079376",
+    "name": "Cam Coleman",
+    "team": "Texas",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 85
+   },
+   {
+    "id": "4870920",
+    "name": "Cormani McClain",
+    "team": "Florida",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 82
+   },
+   {
+    "id": "5166881",
+    "name": "Kade Phillips",
+    "team": "Texas",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 81
+   },
+   {
+    "id": "4870906",
+    "name": "Arch Manning",
+    "team": "Texas",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 79
+   },
+   {
+    "id": "5079314",
+    "name": "Brandon Baker",
+    "team": "Texas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5293823",
+    "name": "Lance Jackson",
+    "team": "Texas",
+    "pos": "EDGE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 75
+   },
+   {
+    "id": "5195951",
+    "name": "Jeramiah McCloud",
+    "team": "Florida",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 74
+   },
+   {
+    "id": "5079480",
+    "name": "Myles Graham",
+    "team": "Florida",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "5141723",
+    "name": "Dallas Wilson",
+    "team": "Florida",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 73
+   }
+  ],
+  "projection": {
+   "winner": "TEX",
+   "winProb": 0.809358794800931,
+   "margin": 14.008571428571429,
+   "home": 33,
+   "away": 20,
+   "confidence": "high",
+   "modelTotal": 52.5,
+   "eloMargin": 13.68,
+   "netEdge": 33
+  },
+  "consensus": {
+   "median": 13.9,
+   "favorite": "TEX",
+   "of": 2
+  }
+ }
+}

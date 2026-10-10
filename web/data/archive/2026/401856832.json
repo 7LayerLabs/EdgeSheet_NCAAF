@@ -1,0 +1,155 @@
+{
+ "gameId": "401856832",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.192Z",
+  "kickoff": "2026-10-17T23:00Z",
+  "away": "TCU",
+  "home": "Baylor",
+  "abbr": {
+   "home": "BAY",
+   "away": "TCU"
+  },
+  "scoutScore": 92,
+  "whyWatch": "TCU on passing downs against Baylor pressure: passing-downs success: offense 22% (No. 130/138), defense 25% (No. 43/138), gap 63 percentile points. Watch TCU on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "TCU on passing downs vs Baylor pressure. Baylor is No. 43 of 138 on passing downs (25%). TCU ranks No. 130 in passing-downs success (22%). This is not a lean. It is a mismatch, and a prominent one. Baylor gets off the field on long downs. Early-down efficiency is everything for TCU. Watch TCU on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "TCU on passing downs",
+    "b": "Baylor pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "TCU",
+    "why": "Baylor is No. 43 of 138 on passing downs (25%). TCU ranks No. 130 in passing-downs success (22%). This is not a lean. It is a mismatch, and a prominent one. Baylor gets off the field on long downs. Early-down efficiency is everything for TCU.",
+    "gap": -63
+   },
+   {
+    "a": "Baylor offensive line",
+    "b": "TCU front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Baylor",
+    "why": "TCU is No. 34 of 138 at the line of scrimmage (2.54). Baylor ranks No. 96 in line yards per carry (2.94). A clear edge, the kind that shapes a game plan. TCU should hold the line of scrimmage. Baylor's runs will need the second level to break.",
+    "gap": -45
+   },
+   {
+    "a": "Baylor run game",
+    "b": "TCU run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Baylor",
+    "why": "TCU is No. 15 of 138 against the run (32%). Baylor ranks No. 69 in rush success rate (44%). A clear edge, the kind that shapes a game plan. Baylor will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -40
+   },
+   {
+    "a": "TCU offensive line",
+    "b": "Baylor front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "TCU",
+    "why": "Baylor is No. 32 of 138 at the line of scrimmage (2.50). TCU ranks No. 85 in line yards per carry (3.03). A real edge, not a lock. Baylor should hold the line of scrimmage. TCU's runs will need the second level to break.",
+    "gap": -38
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 77,
+   "competitive": 90,
+   "styleContrast": 10,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5079663",
+    "name": "Jeremy Payne",
+    "team": "TCU",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5200482",
+    "name": "Ed Small",
+    "team": "TCU",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 77
+   },
+   {
+    "id": "5147178",
+    "name": "Devon Jordan",
+    "team": "Baylor",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "5101112",
+    "name": "Ansel Din-Mbuh",
+    "team": "TCU",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5144963",
+    "name": "Tobias Steppes",
+    "team": "TCU",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5079553",
+    "name": "Nate Kibble",
+    "team": "Baylor",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5078158",
+    "name": "LeVar Thornton Jr.",
+    "team": "Baylor",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "5295723",
+    "name": "Caden Knighten",
+    "team": "Baylor",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 66
+   }
+  ],
+  "projection": {
+   "winner": "BAY",
+   "winProb": 0.6051484866554957,
+   "margin": 4.267142857142857,
+   "home": 21,
+   "away": 16,
+   "confidence": "high",
+   "modelTotal": 37,
+   "eloMargin": 4.11,
+   "netEdge": 16
+  },
+  "consensus": {
+   "median": 4.2,
+   "favorite": "BAY",
+   "of": 2
+  }
+ }
+}

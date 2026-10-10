@@ -1,0 +1,173 @@
+{
+ "gameId": "401858266",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.178Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "North Carolina",
+  "home": "Duke",
+  "abbr": {
+   "home": "DUKE",
+   "away": "UNC"
+  },
+  "scoutScore": 90,
+  "whyWatch": "Nate Sheppard (DUKE RB, So): 743 rush yds on 118 carries, 8 TD, 161 rec yds. A workhorse at 23.6 carries a game. Watch his burst and ball security in the fourth quarter.",
+  "pressurePoint": "North Carolina deep passing vs Duke secondary. Duke is No. 43 of 138 at limiting explosive passes (1.45). North Carolina ranks No. 92 in pass explosiveness (1.48). A real edge, not a lock. Duke keeps the lid on. North Carolina should expect to drive the long way. Watch North Carolina's longest completion. If it is under 25 yards at the half, Duke has won the matchup.",
+  "edges": [
+   {
+    "a": "Duke offensive line",
+    "b": "North Carolina front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Duke",
+    "why": "Duke is No. 36 of 138 in line yards per carry (3.32). North Carolina ranks No. 119 at the line of scrimmage (3.26). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Duke. Second-level runs and play-action are live all afternoon.",
+    "gap": 60
+   },
+   {
+    "a": "North Carolina deep passing",
+    "b": "Duke secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "North Carolina",
+    "why": "Duke is No. 43 of 138 at limiting explosive passes (1.45). North Carolina ranks No. 92 in pass explosiveness (1.48). A real edge, not a lock. Duke keeps the lid on. North Carolina should expect to drive the long way.",
+    "gap": -35
+   },
+   {
+    "a": "North Carolina offensive line",
+    "b": "Duke front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "North Carolina",
+    "why": "North Carolina is No. 8 of 138 in line yards per carry (3.72). Duke ranks No. 45 at the line of scrimmage (2.62). A real edge, not a lock. North Carolina should win first contact more often than not, which makes every down shorter.",
+    "gap": 27
+   },
+   {
+    "a": "Duke deep passing",
+    "b": "North Carolina secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Duke",
+    "why": "North Carolina is No. 11 of 138 at limiting explosive passes (1.30). Duke ranks No. 41 in pass explosiveness (1.66). A real edge, not a lock. North Carolina keeps the lid on. Duke should expect to drive the long way.",
+    "gap": -22
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 100,
+   "competitive": 64,
+   "styleContrast": 34,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5164332",
+    "name": "Nate Sheppard",
+    "team": "Duke",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 94
+   },
+   {
+    "id": "4871039",
+    "name": "Jelani Thurman",
+    "team": "North Carolina",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Eligible",
+    "score": 85
+   },
+   {
+    "id": "5079687",
+    "name": "Jordan Shipp",
+    "team": "North Carolina",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 76
+   },
+   {
+    "id": "5181309",
+    "name": "Greg Smith",
+    "team": "North Carolina",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 75
+   },
+   {
+    "id": "5136504",
+    "name": "Jaiden Patterson",
+    "team": "North Carolina",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5141404",
+    "name": "Bryce Davis",
+    "team": "Duke",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 71
+   },
+   {
+    "id": "5079439",
+    "name": "Jaylen Harvey",
+    "team": "North Carolina",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 68
+   },
+   {
+    "id": "4816326",
+    "name": "Braden Miller",
+    "team": "Duke",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5078065",
+    "name": "Caleb Dorris",
+    "team": "Duke",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4702899",
+    "name": "Matt Craycraft",
+    "team": "Duke",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   }
+  ],
+  "projection": {
+   "winner": "DUKE",
+   "winProb": 0.7168106747808395,
+   "margin": 9.174285714285713,
+   "home": 31,
+   "away": 21,
+   "confidence": "high",
+   "modelTotal": 52,
+   "eloMargin": 8.71,
+   "netEdge": 46
+  },
+  "consensus": {
+   "median": 9,
+   "favorite": "DUKE",
+   "of": 2
+  }
+ }
+}

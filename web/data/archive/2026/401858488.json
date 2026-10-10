@@ -1,0 +1,164 @@
+{
+ "gameId": "401858488",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.148Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Ohio State",
+  "home": "Indiana",
+  "abbr": {
+   "home": "IU",
+   "away": "OSU"
+  },
+  "scoutScore": 99,
+  "whyWatch": "Julian Sayin (OSU QB, Jr): 1530 pass yds, 13 TD, 1 INT, 10.8 Y/A. Big plays with almost no turnovers. The test is whether he still pushes the ball when the first read is covered and the pocket gets muddy.",
+  "pressurePoint": "Ohio State run game vs Indiana run defense. Indiana is No. 4 of 138 against the run (26%). Ohio State ranks No. 67 in rush success rate (45%). A clear edge, the kind that shapes a game plan. Ohio State will find the run hard going. Expect more second-and-long than usual. Watch Ohio State's yards per carry through the first quarter. Under 3 and the game plan has to change.",
+  "edges": [
+   {
+    "a": "Indiana deep passing",
+    "b": "Ohio State secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Indiana",
+    "why": "Indiana is No. 8 of 138 in pass explosiveness (1.88). Ohio State ranks No. 85 at limiting explosive passes (1.59). This is not a lean. It is a mismatch, and a prominent one. Ohio State does not keep the lid on. Indiana will take shots, and the market total may be underpriced if they land.",
+    "gap": 56
+   },
+   {
+    "a": "Ohio State run game",
+    "b": "Indiana run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Ohio State",
+    "why": "Indiana is No. 4 of 138 against the run (26%). Ohio State ranks No. 67 in rush success rate (45%). A clear edge, the kind that shapes a game plan. Ohio State will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -46
+   },
+   {
+    "a": "Indiana run game",
+    "b": "Ohio State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Indiana",
+    "why": "Indiana is No. 45 of 138 in rush success rate (47%). Ohio State ranks No. 98 against the run (44%). A real edge, not a lock. Indiana should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 39
+   },
+   {
+    "a": "Indiana on passing downs",
+    "b": "Ohio State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Indiana",
+    "why": "Indiana is No. 23 of 138 in passing-downs success (38%). Ohio State ranks No. 68 on passing downs (28%). A real edge, not a lock. Indiana converts the long downs Ohio State needs to win. A third-and-8 is not a stop here.",
+    "gap": 33
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 100,
+   "competitive": 95,
+   "styleContrast": 27,
+   "storylines": 100,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5079712",
+    "name": "Julian Sayin",
+    "team": "Ohio State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 96
+   },
+   {
+    "id": "5079720",
+    "name": "Jeremiah Smith",
+    "team": "Ohio State",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 94
+   },
+   {
+    "id": "5141635",
+    "name": "Devin Sanchez",
+    "team": "Ohio State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 85
+   },
+   {
+    "id": "5141517",
+    "name": "Bo Jackson",
+    "team": "Ohio State",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Future",
+    "score": 81
+   },
+   {
+    "id": "5079600",
+    "name": "Nick Marsh",
+    "team": "Indiana",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "4685401",
+    "name": "Josh Hoover",
+    "team": "Indiana",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 77
+   },
+   {
+    "id": "5079518",
+    "name": "Jaylen McClain",
+    "team": "Ohio State",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4685276",
+    "name": "Joe Brunner",
+    "team": "Indiana",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5210001",
+    "name": "Byron Baldwin Jr.",
+    "team": "Indiana",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 68
+   }
+  ],
+  "projection": {
+   "winner": "IU",
+   "winProb": 0.6224321697454637,
+   "margin": 4.99,
+   "home": 32,
+   "away": 27,
+   "confidence": "high",
+   "modelTotal": 58.5,
+   "eloMargin": 3.25,
+   "netEdge": 174
+  },
+  "consensus": {
+   "median": 4.2,
+   "favorite": "IU",
+   "of": 2
+  }
+ }
+}

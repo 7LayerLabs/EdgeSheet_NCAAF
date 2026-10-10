@@ -1,0 +1,146 @@
+{
+ "gameId": "401856829",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.151Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Cincinnati",
+  "home": "West Virginia",
+  "abbr": {
+   "home": "WVU",
+   "away": "CIN"
+  },
+  "scoutScore": 87,
+  "whyWatch": "Michael Hawkins Jr. (WVU QB, So): 1055 pass yds, 7 TD, 1 INT, 9.5 Y/A. Adds 112 rushing yards a game. Watch whether he escapes to keep the play alive downfield or tucks it at the first sign of pressure.",
+  "pressurePoint": "Cincinnati offensive line vs West Virginia front. Cincinnati is No. 10 of 138 in line yards per carry (3.68). West Virginia ranks No. 86 at the line of scrimmage (2.96). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Cincinnati. Second-level runs and play-action are live all afternoon. Watch yards before contact on Cincinnati's first ten carries.",
+  "edges": [
+   {
+    "a": "West Virginia run game",
+    "b": "Cincinnati run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "West Virginia",
+    "why": "West Virginia is No. 47 of 138 in rush success rate (47%). Cincinnati ranks No. 127 against the run (48%). This is not a lean. It is a mismatch, and a prominent one. Expect West Virginia to lean on the run early and often, and to keep leaning. Once Cincinnati loads the box, play-action is the second punch.",
+    "gap": 58
+   },
+   {
+    "a": "Cincinnati offensive line",
+    "b": "West Virginia front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Cincinnati",
+    "why": "Cincinnati is No. 10 of 138 in line yards per carry (3.68). West Virginia ranks No. 86 at the line of scrimmage (2.96). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Cincinnati. Second-level runs and play-action are live all afternoon.",
+    "gap": 55
+   },
+   {
+    "a": "West Virginia deep passing",
+    "b": "Cincinnati secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "West Virginia",
+    "why": "West Virginia is No. 1 of 138 in pass explosiveness (2.32). Cincinnati ranks No. 75 at limiting explosive passes (1.56). A clear edge, the kind that shapes a game plan. West Virginia has the deep ball available. Watch whether Cincinnati rolls a safety over after the first one.",
+    "gap": 54
+   },
+   {
+    "a": "West Virginia offensive line",
+    "b": "Cincinnati front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "West Virginia",
+    "why": "West Virginia is No. 41 of 138 in line yards per carry (3.29). Cincinnati ranks No. 114 at the line of scrimmage (3.22). A clear edge, the kind that shapes a game plan. West Virginia should win first contact more often than not, which makes every down shorter.",
+    "gap": 53
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 65,
+   "competitive": 76,
+   "styleContrast": 30,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5079465",
+    "name": "Michael Hawkins Jr.",
+    "team": "West Virginia",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 86
+   },
+   {
+    "id": "4918103",
+    "name": "Cam Cook",
+    "team": "West Virginia",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 83
+   },
+   {
+    "id": "4685509",
+    "name": "Gi'Bran Payne",
+    "team": "Cincinnati",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 81
+   },
+   {
+    "id": "4685625",
+    "name": "Kamari Wilson",
+    "team": "West Virginia",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "4685628",
+    "name": "Deshawn Woods",
+    "team": "West Virginia",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4685345",
+    "name": "JC French IV",
+    "team": "Cincinnati",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "5107875",
+    "name": "Cole Tabb",
+    "team": "Cincinnati",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 66
+   }
+  ],
+  "projection": {
+   "winner": "CIN",
+   "winProb": 0.5197609941676222,
+   "margin": 0.7928571428571427,
+   "home": 33,
+   "away": 34,
+   "confidence": "high",
+   "modelTotal": 67,
+   "eloMargin": -1.89,
+   "netEdge": 110
+  },
+  "consensus": {
+   "median": -1.3,
+   "favorite": "CIN",
+   "of": 2
+  }
+ }
+}

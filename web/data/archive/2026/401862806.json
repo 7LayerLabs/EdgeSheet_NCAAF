@@ -1,0 +1,137 @@
+{
+ "gameId": "401862806",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.192Z",
+  "kickoff": "2026-10-17T23:00Z",
+  "away": "Kent State",
+  "home": "South Florida",
+  "abbr": {
+   "home": "USF",
+   "away": "KENT"
+  },
+  "scoutScore": 56,
+  "whyWatch": "Kent State on passing downs against South Florida pressure: passing-downs success: offense 22% (No. 127/138), defense 23% (No. 29/138), gap 72 percentile points. Watch Kent State on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "Kent State on passing downs vs South Florida pressure. South Florida is No. 29 of 138 on passing downs (23%). Kent State ranks No. 127 in passing-downs success (22%). This is not a lean. It is a mismatch, and a prominent one. South Florida gets off the field on long downs. Early-down efficiency is everything for Kent State. Watch Kent State on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "Kent State on passing downs",
+    "b": "South Florida pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Kent State",
+    "why": "South Florida is No. 29 of 138 on passing downs (23%). Kent State ranks No. 127 in passing-downs success (22%). This is not a lean. It is a mismatch, and a prominent one. South Florida gets off the field on long downs. Early-down efficiency is everything for Kent State.",
+    "gap": -72
+   },
+   {
+    "a": "Kent State offensive line",
+    "b": "South Florida front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Kent State",
+    "why": "South Florida is No. 25 of 138 at the line of scrimmage (2.43). Kent State ranks No. 110 in line yards per carry (2.78). This is not a lean. It is a mismatch, and a prominent one. South Florida wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "gap": -62
+   },
+   {
+    "a": "South Florida run game",
+    "b": "Kent State run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "South Florida",
+    "why": "South Florida is No. 13 of 138 in rush success rate (52%). Kent State ranks No. 97 against the run (43%). This is not a lean. It is a mismatch, and a prominent one. Expect South Florida to lean on the run early and often, and to keep leaning. Once Kent State loads the box, play-action is the second punch.",
+    "gap": 61
+   },
+   {
+    "a": "Kent State run game",
+    "b": "South Florida run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "Kent State",
+    "why": "South Florida is No. 57 of 138 against the run (40%). Kent State ranks No. 135 in rush success rate (33%). This is not a lean. It is a mismatch, and a prominent one. South Florida erases the run. Kent State gets pushed into passing downs, and that is where this defense makes its money.",
+    "gap": -57
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 73,
+   "directMatchups": 100,
+   "futureTalent": 32,
+   "competitive": 5,
+   "styleContrast": 14,
+   "storylines": 20,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5085507",
+    "name": "D.J. Crowther",
+    "team": "South Florida",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 74
+   },
+   {
+    "id": "4870927",
+    "name": "Bryson Rodgers",
+    "team": "South Florida",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "4685372",
+    "name": "C.J. Hicks",
+    "team": "South Florida",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5082969",
+    "name": "Rocco Nicholl",
+    "team": "Kent State",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Sleeper",
+    "score": 58
+   },
+   {
+    "id": "5222397",
+    "name": "Jaihien Roy",
+    "team": "Kent State",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 57
+   },
+   {
+    "id": "5079491",
+    "name": "Zavier Hamilton",
+    "team": "South Florida",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 55
+   }
+  ],
+  "projection": {
+   "winner": "USF",
+   "winProb": 0.9478140089437903,
+   "margin": 25.984285714285715,
+   "home": 38,
+   "away": 13,
+   "confidence": "high",
+   "modelTotal": 51,
+   "eloMargin": 23.46,
+   "netEdge": 252
+  },
+  "consensus": {
+   "median": 24.8,
+   "favorite": "USF",
+   "of": 2
+  }
+ }
+}

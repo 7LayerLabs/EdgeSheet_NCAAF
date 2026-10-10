@@ -1,0 +1,164 @@
+{
+ "gameId": "401858269",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.146Z",
+  "kickoff": "2026-10-17T04:00Z",
+  "away": "Wake Forest",
+  "home": "California",
+  "abbr": {
+   "home": "CAL",
+   "away": "WAKE"
+  },
+  "scoutScore": 78,
+  "whyWatch": "California deep passing against Wake Forest secondary: pass explosiveness: offense 1.47 (No. 94/138), defense 1.14 (No. 4/138), gap 66 percentile points. Watch California's longest completion. If it is under 25 yards at the half, Wake Forest has won the matchup.",
+  "pressurePoint": "Wake Forest offensive line vs California front. Wake Forest is No. 34 of 138 in line yards per carry (3.34). California ranks No. 107 at the line of scrimmage (3.16). A clear edge, the kind that shapes a game plan. Wake Forest should win first contact more often than not, which makes every down shorter. Watch yards before contact on Wake Forest's first ten carries.",
+  "edges": [
+   {
+    "a": "California deep passing",
+    "b": "Wake Forest secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "California",
+    "why": "Wake Forest is No. 4 of 138 at limiting explosive passes (1.14). California ranks No. 94 in pass explosiveness (1.47). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. California needs the underneath game and yards after catch.",
+    "gap": -66
+   },
+   {
+    "a": "Wake Forest offensive line",
+    "b": "California front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Wake Forest",
+    "why": "Wake Forest is No. 34 of 138 in line yards per carry (3.34). California ranks No. 107 at the line of scrimmage (3.16). A clear edge, the kind that shapes a game plan. Wake Forest should win first contact more often than not, which makes every down shorter.",
+    "gap": 53
+   },
+   {
+    "a": "Wake Forest run game",
+    "b": "California run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Wake Forest",
+    "why": "Wake Forest is No. 29 of 138 in rush success rate (49%). California ranks No. 84 against the run (42%). A clear edge, the kind that shapes a game plan. Wake Forest should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 41
+   },
+   {
+    "a": "California run game",
+    "b": "Wake Forest run defense",
+    "edge": "defense",
+    "axis": "rush",
+    "offTeam": "California",
+    "why": "Wake Forest is No. 67 of 138 against the run (40%). California ranks No. 119 in rush success rate (38%). A real edge, not a lock. California will find the run hard going. Expect more second-and-long than usual.",
+    "gap": -38
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 95,
+   "directMatchups": 100,
+   "futureTalent": 100,
+   "competitive": 29,
+   "styleContrast": 13,
+   "storylines": 50,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "5087950",
+    "name": "Kingston Lopa",
+    "team": "California",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 75
+   },
+   {
+    "id": "5126998",
+    "name": "Jericho Johnson",
+    "team": "California",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 74
+   },
+   {
+    "id": "4870753",
+    "name": "Daniel Harris",
+    "team": "California",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4920227",
+    "name": "Gio Lopez",
+    "team": "Wake Forest",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 69
+   },
+   {
+    "id": "5153074",
+    "name": "Carlos Hernandez",
+    "team": "Wake Forest",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "5165145",
+    "name": "Dallas Afalava",
+    "team": "Wake Forest",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "5147861",
+    "name": "Adam Mohammed",
+    "team": "California",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 65
+   },
+   {
+    "id": "5119842",
+    "name": "Frederick Williams III",
+    "team": "California",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5239156",
+    "name": "Jack Foley",
+    "team": "Wake Forest",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 58
+   }
+  ],
+  "projection": {
+   "winner": "WAKE",
+   "winProb": 0.7796677679852679,
+   "margin": 12.337142857142858,
+   "home": 20,
+   "away": 33,
+   "confidence": "high",
+   "modelTotal": 53,
+   "eloMargin": -10.36,
+   "netEdge": -198
+  },
+  "consensus": {
+   "median": -11.4,
+   "favorite": "WAKE",
+   "of": 2
+  }
+ }
+}

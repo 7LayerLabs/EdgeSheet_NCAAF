@@ -1,0 +1,155 @@
+{
+ "gameId": "401858268",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.150Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Virginia",
+  "home": "SMU",
+  "abbr": {
+   "home": "SMU",
+   "away": "UVA"
+  },
+  "scoutScore": 87,
+  "whyWatch": "Virginia on passing downs against SMU pressure: passing-downs success: offense 26% (No. 109/138), defense 23% (No. 21/138), gap 64 percentile points. Watch Virginia on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "Virginia on passing downs vs SMU pressure. SMU is No. 21 of 138 on passing downs (23%). Virginia ranks No. 109 in passing-downs success (26%). This is not a lean. It is a mismatch, and a prominent one. SMU gets off the field on long downs. Early-down efficiency is everything for Virginia. Watch Virginia on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "Virginia on passing downs",
+    "b": "SMU pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Virginia",
+    "why": "SMU is No. 21 of 138 on passing downs (23%). Virginia ranks No. 109 in passing-downs success (26%). This is not a lean. It is a mismatch, and a prominent one. SMU gets off the field on long downs. Early-down efficiency is everything for Virginia.",
+    "gap": -64
+   },
+   {
+    "a": "Virginia deep passing",
+    "b": "SMU secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Virginia",
+    "why": "Virginia is No. 59 of 138 in pass explosiveness (1.58). SMU ranks No. 119 at limiting explosive passes (1.77). A clear edge, the kind that shapes a game plan. Virginia has the deep ball available. Watch whether SMU rolls a safety over after the first one.",
+    "gap": 44
+   },
+   {
+    "a": "SMU offensive line",
+    "b": "Virginia front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "SMU",
+    "why": "Virginia is No. 72 of 138 at the line of scrimmage (2.89). SMU ranks No. 116 in line yards per carry (2.75). A real edge, not a lock. Virginia should hold the line of scrimmage. SMU's runs will need the second level to break.",
+    "gap": -32
+   },
+   {
+    "a": "Virginia run game",
+    "b": "SMU run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Virginia",
+    "why": "Virginia is No. 56 of 138 in rush success rate (47%). SMU ranks No. 92 against the run (43%). A real edge, not a lock. Virginia should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 26
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 97,
+   "directMatchups": 100,
+   "futureTalent": 52,
+   "competitive": 83,
+   "styleContrast": 25,
+   "storylines": 65,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "4685485",
+    "name": "Addison Nichols",
+    "team": "SMU",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4685312",
+    "name": "Andrew Chamblee",
+    "team": "SMU",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4880599",
+    "name": "Joshua Bates",
+    "team": "SMU",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5207842",
+    "name": "Jalen Cooper",
+    "team": "SMU",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Future",
+    "score": 70
+   },
+   {
+    "id": "4685696",
+    "name": "Beau Pribula",
+    "team": "Virginia",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "5140228",
+    "name": "Ben York",
+    "team": "Virginia",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5103804",
+    "name": "Brandyn Hillman",
+    "team": "Virginia",
+    "pos": "S",
+    "group": "S",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5216634",
+    "name": "Sichan John",
+    "team": "Virginia",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Future",
+    "score": 59
+   }
+  ],
+  "projection": {
+   "winner": "SMU",
+   "winProb": 0.6238224616307797,
+   "margin": 5.048571428571429,
+   "home": 28,
+   "away": 23,
+   "confidence": "high",
+   "modelTotal": 51,
+   "eloMargin": 5.43,
+   "netEdge": -38
+  },
+  "consensus": {
+   "median": 5.2,
+   "favorite": "SMU",
+   "of": 2
+  }
+ }
+}

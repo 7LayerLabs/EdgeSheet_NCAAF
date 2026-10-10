@@ -1,0 +1,182 @@
+{
+ "gameId": "401856723",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.175Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "Alabama",
+  "home": "Tennessee",
+  "abbr": {
+   "home": "TENN",
+   "away": "ALA"
+  },
+  "scoutScore": 89,
+  "whyWatch": "Keelon Russell (ALA QB, So): 1414 pass yds, 11 TD, 2 INT, 10.7 Y/A. Big plays with almost no turnovers. The test is whether he still pushes the ball when the first read is covered and the pocket gets muddy.",
+  "pressurePoint": "Alabama offensive line vs Tennessee front. Alabama is No. 59 of 138 in line yards per carry (3.19). Tennessee ranks No. 98 at the line of scrimmage (3.03). A real edge, not a lock. Alabama should win first contact more often than not, which makes every down shorter. Watch yards before contact on Alabama's first ten carries.",
+  "edges": [
+   {
+    "a": "Tennessee on passing downs",
+    "b": "Alabama pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Tennessee",
+    "why": "Alabama is No. 39 of 138 on passing downs (25%). Tennessee ranks No. 86 in passing-downs success (30%). A real edge, not a lock. Alabama gets off the field on long downs. Early-down efficiency is everything for Tennessee.",
+    "gap": -34
+   },
+   {
+    "a": "Alabama offensive line",
+    "b": "Tennessee front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Alabama",
+    "why": "Alabama is No. 59 of 138 in line yards per carry (3.19). Tennessee ranks No. 98 at the line of scrimmage (3.03). A real edge, not a lock. Alabama should win first contact more often than not, which makes every down shorter.",
+    "gap": 29
+   },
+   {
+    "a": "Alabama on passing downs",
+    "b": "Tennessee pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Alabama",
+    "why": "Alabama is No. 20 of 138 in passing-downs success (38%). Tennessee ranks No. 56 on passing downs (27%). A real edge, not a lock. Alabama converts the long downs Tennessee needs to win. A third-and-8 is not a stop here.",
+    "gap": 26
+   },
+   {
+    "a": "Alabama deep passing",
+    "b": "Tennessee secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Alabama",
+    "why": "Tennessee is No. 1 of 138 at limiting explosive passes (1.10). Alabama ranks No. 32 in pass explosiveness (1.69). A real edge, not a lock. Tennessee keeps the lid on. Alabama should expect to drive the long way.",
+    "gap": -23
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 100,
+   "futureTalent": 100,
+   "competitive": 59,
+   "styleContrast": 14,
+   "storylines": 100,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "5141629",
+    "name": "Keelon Russell",
+    "team": "Alabama",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 96
+   },
+   {
+    "id": "5141711",
+    "name": "Ryan Coleman-Williams",
+    "team": "Alabama",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 88
+   },
+   {
+    "id": "5079580",
+    "name": "Mike Matthews",
+    "team": "Tennessee",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 87
+   },
+   {
+    "id": "5141562",
+    "name": "Dijon Lee Jr.",
+    "team": "Alabama",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 84
+   },
+   {
+    "id": "4870970",
+    "name": "Yhonzae Pierre",
+    "team": "Alabama",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Eligible",
+    "score": 83
+   },
+   {
+    "id": "5079344",
+    "name": "Zabien Brown",
+    "team": "Alabama",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 80
+   },
+   {
+    "id": "4921108",
+    "name": "DeSean Bishop",
+    "team": "Tennessee",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 79
+   },
+   {
+    "id": "5158471",
+    "name": "Terrance Green",
+    "team": "Alabama",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 78
+   },
+   {
+    "id": "5079483",
+    "name": "Dejuan Lane",
+    "team": "Tennessee",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "5146422",
+    "name": "Xavier Gilliam",
+    "team": "Tennessee",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 73
+   },
+   {
+    "id": "5167702",
+    "name": "Mariyon Dye",
+    "team": "Tennessee",
+    "pos": "DL",
+    "group": "DL",
+    "tier": "Future",
+    "score": 69
+   }
+  ],
+  "projection": {
+   "winner": "ALA",
+   "winProb": 0.6399084580875103,
+   "margin": 5.731428571428571,
+   "home": 22,
+   "away": 29,
+   "confidence": "high",
+   "modelTotal": 50.5,
+   "eloMargin": -5.07,
+   "netEdge": -66
+  },
+  "consensus": {
+   "median": -5.4,
+   "favorite": "ALA",
+   "of": 2
+  }
+ }
+}

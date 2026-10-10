@@ -1,0 +1,84 @@
+{
+ "gameId": "401856725",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.159Z",
+  "kickoff": "2026-10-17T17:00Z",
+  "away": "The Citadel",
+  "home": "Texas A&M",
+  "abbr": {
+   "home": "TA&M",
+   "away": "CIT"
+  },
+  "scoutScore": 64,
+  "whyWatch": "DJ Hicks (TA&M DT, Sr): 12 tkl, 1.5 TFL, 0.5 sacks, 3 hurries. First-step quickness, anchor against double teams, and whether his pass-rush plan has a counter when the first move fails.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 75,
+   "directMatchups": null,
+   "futureTalent": 71,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 20,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5160111",
+    "name": "DJ Hicks",
+    "team": "Texas A&M",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4685383",
+    "name": "Isaiah Horton",
+    "team": "Texas A&M",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 72
+   },
+   {
+    "id": "5113181",
+    "name": "Ashton Funk",
+    "team": "Texas A&M",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5141540",
+    "name": "Marco Jones",
+    "team": "Texas A&M",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 68
+   },
+   {
+    "id": "5141596",
+    "name": "Noah Mikhail",
+    "team": "Texas A&M",
+    "pos": "LB",
+    "group": "LB",
+    "tier": "Future",
+    "score": 66
+   },
+   {
+    "id": "4832849",
+    "name": "Gavin Garcia",
+    "team": "The Citadel",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 51
+   }
+  ]
+ }
+}

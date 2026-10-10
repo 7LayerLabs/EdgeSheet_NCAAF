@@ -1,0 +1,57 @@
+{
+ "gameId": "401868161",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.204Z",
+  "kickoff": "2026-10-18T00:00Z",
+  "away": "UC Davis",
+  "home": "Southern Utah",
+  "abbr": {
+   "home": "SUU",
+   "away": "UCD"
+  },
+  "scoutScore": 27,
+  "whyWatch": "Floyd Chalk (SUU RB, Sr): 819 rush yds on 130 carries, 8 TD, 91 rec yds. A workhorse at 21.7 carries a game. Watch his burst and ball security in the fourth quarter.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 7,
+   "directMatchups": null,
+   "futureTalent": 20,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 50,
+   "availability": 70
+  },
+  "prospects": [
+   {
+    "id": "5089859",
+    "name": "Floyd Chalk",
+    "team": "Southern Utah",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 62
+   },
+   {
+    "id": "5152826",
+    "name": "Jordan Fisher",
+    "team": "UC Davis",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Sleeper",
+    "score": 52
+   },
+   {
+    "id": "5151171",
+    "name": "Will Burns",
+    "team": "Southern Utah",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Sleeper",
+    "score": 48
+   }
+  ]
+ }
+}

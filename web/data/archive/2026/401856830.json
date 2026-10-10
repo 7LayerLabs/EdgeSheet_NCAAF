@@ -1,0 +1,146 @@
+{
+ "gameId": "401856830",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.152Z",
+  "kickoff": "2026-10-17T16:00Z",
+  "away": "Kansas",
+  "home": "Kansas State",
+  "abbr": {
+   "home": "KSU",
+   "away": "KU"
+  },
+  "scoutScore": 82,
+  "whyWatch": "Kansas deep passing against Kansas State secondary: pass explosiveness: offense 1.88 (No. 9/138), defense 1.64 (No. 99/138), gap 66 percentile points. Watch the first deep shot. If it connects, Kansas State changes shells and the run game opens.",
+  "pressurePoint": "Kansas deep passing vs Kansas State secondary. Kansas is No. 9 of 138 in pass explosiveness (1.88). Kansas State ranks No. 99 at limiting explosive passes (1.64). This is not a lean. It is a mismatch, and a prominent one. Kansas State does not keep the lid on. Kansas will take shots, and the market total may be underpriced if they land. Watch the first deep shot. If it connects, Kansas State changes shells and the run game opens.",
+  "edges": [
+   {
+    "a": "Kansas deep passing",
+    "b": "Kansas State secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Kansas",
+    "why": "Kansas is No. 9 of 138 in pass explosiveness (1.88). Kansas State ranks No. 99 at limiting explosive passes (1.64). This is not a lean. It is a mismatch, and a prominent one. Kansas State does not keep the lid on. Kansas will take shots, and the market total may be underpriced if they land.",
+    "gap": 66
+   },
+   {
+    "a": "Kansas offensive line",
+    "b": "Kansas State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Kansas",
+    "why": "Kansas is No. 5 of 138 in line yards per carry (3.74). Kansas State ranks No. 33 at the line of scrimmage (2.51). A real edge, not a lock. Kansas should win first contact more often than not, which makes every down shorter.",
+    "gap": 20
+   },
+   {
+    "a": "Kansas run game",
+    "b": "Kansas State run defense",
+    "edge": "even",
+    "axis": "rush",
+    "offTeam": "Kansas",
+    "why": "Kansas is No. 7 in rush success rate (54%) and Kansas State is No. 28 against the run (34%). Strength on strength. Neither side has shown it can impose the run on a unit this good. The first stuffed series tells you who blinks.",
+    "gap": 16
+   },
+   {
+    "a": "Kansas State offensive line",
+    "b": "Kansas front",
+    "edge": "even",
+    "axis": "line",
+    "offTeam": "Kansas State",
+    "why": "Kansas State is No. 29 in line yards per carry (3.40) and Kansas is No. 7 at the line of scrimmage (2.06). Strength on strength. The line of scrimmage is a coin flip by the numbers. Watch first contact on the first two drives.",
+    "gap": 16
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 100,
+   "directMatchups": 80,
+   "futureTalent": 27,
+   "competitive": 97,
+   "styleContrast": 21,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5079426",
+    "name": "Wendell Gregory",
+    "team": "Kansas State",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4870857",
+    "name": "Avery Johnson",
+    "team": "Kansas State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Eligible",
+    "score": 73
+   },
+   {
+    "id": "4870775",
+    "name": "Amir Herring",
+    "team": "Kansas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4918414",
+    "name": "Dylan Edwards",
+    "team": "Kansas",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "4702557",
+    "name": "George Fitzpatrick",
+    "team": "Kansas State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5079346",
+    "name": "Dakyus Brinkley",
+    "team": "Kansas",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 65
+   },
+   {
+    "id": "4921453",
+    "name": "Brandon Solis",
+    "team": "Kansas",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   }
+  ],
+  "projection": {
+   "winner": "KSU",
+   "winProb": 0.5239578078642535,
+   "margin": 0.9614285714285714,
+   "home": 26,
+   "away": 26,
+   "confidence": "high",
+   "modelTotal": 52,
+   "eloMargin": 1.82,
+   "netEdge": -86
+  },
+  "consensus": {
+   "median": 1.4,
+   "favorite": "KSU",
+   "of": 2
+  }
+ }
+}

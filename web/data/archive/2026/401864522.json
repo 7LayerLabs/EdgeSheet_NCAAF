@@ -1,0 +1,155 @@
+{
+ "gameId": "401864522",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.179Z",
+  "kickoff": "2026-10-17T19:30Z",
+  "away": "Northern Illinois",
+  "home": "Wyoming",
+  "abbr": {
+   "home": "WYO",
+   "away": "NIU"
+  },
+  "scoutScore": 73,
+  "whyWatch": "Wyoming on passing downs against Northern Illinois pressure: passing-downs success: offense 36% (No. 33/138), defense 37% (No. 131/138), gap 72 percentile points. Watch Wyoming's third-and-long conversions. Two in the first half breaks Northern Illinois's plan.",
+  "pressurePoint": "Northern Illinois deep passing vs Wyoming secondary. Wyoming is No. 41 of 138 at limiting explosive passes (1.45). Northern Illinois ranks No. 108 in pass explosiveness (1.41). A clear edge, the kind that shapes a game plan. Wyoming keeps the lid on. Northern Illinois should expect to drive the long way. Watch Northern Illinois's longest completion. If it is under 25 yards at the half, Wyoming has won the matchup.",
+  "edges": [
+   {
+    "a": "Wyoming on passing downs",
+    "b": "Northern Illinois pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Wyoming",
+    "why": "Wyoming is No. 33 of 138 in passing-downs success (36%). Northern Illinois ranks No. 131 on passing downs (37%). This is not a lean. It is a mismatch, and a prominent one. Wyoming converts the long downs Northern Illinois needs to win. A third-and-8 is not a stop here.",
+    "gap": 72
+   },
+   {
+    "a": "Wyoming deep passing",
+    "b": "Northern Illinois secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Wyoming",
+    "why": "Northern Illinois is No. 52 of 138 at limiting explosive passes (1.49). Wyoming ranks No. 124 in pass explosiveness (1.33). A clear edge, the kind that shapes a game plan. Northern Illinois keeps the lid on. Wyoming should expect to drive the long way.",
+    "gap": -53
+   },
+   {
+    "a": "Northern Illinois deep passing",
+    "b": "Wyoming secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "Northern Illinois",
+    "why": "Wyoming is No. 41 of 138 at limiting explosive passes (1.45). Northern Illinois ranks No. 108 in pass explosiveness (1.41). A clear edge, the kind that shapes a game plan. Wyoming keeps the lid on. Northern Illinois should expect to drive the long way.",
+    "gap": -49
+   },
+   {
+    "a": "Wyoming offensive line",
+    "b": "Northern Illinois front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Wyoming",
+    "why": "Wyoming is No. 15 of 138 in line yards per carry (3.56). Northern Illinois ranks No. 76 at the line of scrimmage (2.90). A clear edge, the kind that shapes a game plan. Wyoming should win first contact more often than not, which makes every down shorter.",
+    "gap": 45
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 65,
+   "directMatchups": 100,
+   "futureTalent": 45,
+   "competitive": 81,
+   "styleContrast": 32,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5193302",
+    "name": "Telly Johnson Jr.",
+    "team": "Northern Illinois",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "5092276",
+    "name": "Dante Drake",
+    "team": "Wyoming",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Eligible",
+    "score": 67
+   },
+   {
+    "id": "5193325",
+    "name": "Jake Wilson",
+    "team": "Wyoming",
+    "pos": "TE",
+    "group": "TE",
+    "tier": "Future",
+    "score": 65
+   },
+   {
+    "id": "4921415",
+    "name": "Jacob Welch",
+    "team": "Northern Illinois",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5121469",
+    "name": "Landon Hron",
+    "team": "Northern Illinois",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5125783",
+    "name": "Brandt Rice",
+    "team": "Wyoming",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5121534",
+    "name": "Jason Maciejczak",
+    "team": "Wyoming",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5258463",
+    "name": "Jordan Bellamy",
+    "team": "Northern Illinois",
+    "pos": "DT",
+    "group": "DL",
+    "tier": "Future",
+    "score": 60
+   }
+  ],
+  "projection": {
+   "winner": "WYO",
+   "winProb": 0.664776866141789,
+   "margin": 6.808571428571429,
+   "home": 28,
+   "away": 21,
+   "confidence": "high",
+   "modelTotal": 49,
+   "eloMargin": 5.68,
+   "netEdge": 113
+  },
+  "consensus": {
+   "median": 6.3,
+   "favorite": "WYO",
+   "of": 2
+  }
+ }
+}

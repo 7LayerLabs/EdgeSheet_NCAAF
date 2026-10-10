@@ -1,0 +1,39 @@
+{
+ "gameId": "401868943",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T23:20:34.174Z",
+  "kickoff": "2026-10-17T19:00Z",
+  "away": "Bethune-Cookman",
+  "home": "Mississippi Valley State",
+  "abbr": {
+   "home": "MVSU",
+   "away": "BCU"
+  },
+  "scoutScore": 20,
+  "whyWatch": "Samuel McCall (BCU CB, Sr): 1 INT, 4 PD, 13 tkl. A long corner at 6-1. Watch his press at the line and whether he can turn and run with speed.",
+  "pressurePoint": "Not charted for this division. The report does not guess a scheme.",
+  "edges": [],
+  "scoreComponents": {
+   "draftTalent": 0,
+   "directMatchups": null,
+   "futureTalent": 10,
+   "competitive": 50,
+   "styleContrast": null,
+   "storylines": 50,
+   "availability": 35
+  },
+  "prospects": [
+   {
+    "id": "4685471",
+    "name": "Samuel McCall",
+    "team": "Bethune-Cookman",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Sleeper",
+    "score": 52
+   }
+  ]
+ }
+}
