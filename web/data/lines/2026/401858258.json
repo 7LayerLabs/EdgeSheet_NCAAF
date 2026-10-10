@@ -1,0 +1,29 @@
+{
+ "id": "401858258",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T23:30Z",
+ "home": {
+  "id": "258",
+  "name": "Virginia",
+  "abbr": "UVA"
+ },
+ "away": {
+  "id": "183",
+  "name": "Syracuse",
+  "abbr": "SYR"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 8.5,
+  "total": 50.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 13.5,
+   "total": 49.5
+  }
+ ]
+}

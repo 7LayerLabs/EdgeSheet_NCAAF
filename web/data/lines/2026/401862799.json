@@ -1,0 +1,29 @@
+{
+ "id": "401862799",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "2426",
+  "name": "Navy",
+  "abbr": "NAVY"
+ },
+ "away": {
+  "id": "202",
+  "name": "Tulsa",
+  "abbr": "TLSA"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 3,
+  "total": 52.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 3,
+   "total": 47.5
+  }
+ ]
+}

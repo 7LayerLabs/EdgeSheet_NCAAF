@@ -33,6 +33,7 @@ import { forecastAtKickoff, forecastMany } from "./nws";
 import { prospectFileLoaded, prospectRowById, prospectsForTeam } from "./prospects";
 import { generatedLoaded, genMeta } from "./generated";
 import { radarForGame, radarForTeam, radarPlayer, type RadarPlayer } from "./radar";
+import { ourPregameElo } from "./elo";
 import { leagueMeans, pressurePoint, styleContrast, styleFor, unitEdges } from "./tendencies";
 import { gameCues, situationsFor } from "./situational";
 import { bandFor } from "./forecast";
@@ -373,10 +374,6 @@ function toProfiles(school: string, abbr: string): { off: OffenseProfile; def: D
   };
 }
 
-function shortStyle(label: string) {
-  return label.split(",")[0].trim();
-}
-
 /* ------------------------------------------------------- derived fields */
 
 function deriveComponents(g: {
@@ -545,6 +542,10 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
   const division = DIVISION[cls] ?? "FBS";
   const home = mkTeam(raw.homeTeam, raw.homeId, raw.homeConference, b);
   const away = mkTeam(raw.awayTeam, raw.awayId, raw.awayConference, b);
+  // CFBD pregame Elo when it came with the schedule; our fitted Elo (src/lib/elo.ts) when it did not.
+  const ours = raw.homePregameElo == null || raw.awayPregameElo == null ? ourPregameElo(String(raw.id), { id: raw.homeId, school: raw.homeTeam }, { id: raw.awayId, school: raw.awayTeam }) : undefined;
+  const homeElo = raw.homePregameElo ?? ours?.home ?? null;
+  const awayElo = raw.awayPregameElo ?? ours?.away ?? null;
   const now = Date.now();
   const started = new Date(raw.startDate).getTime() <= now;
   let status: Game["status"] = raw.completed ? "final" : started ? "live" : "upcoming";
@@ -635,13 +636,33 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
       const [a, bb] = e.title.split(" vs ");
       return { a, b: bb, why: e.text, evidence: e.evidence, edge: e.edge, strength: e.strength, watch: e.watch };
     });
+  // The card's one-line style note only appears for a real mismatch: a top-20 unit in the division
+  // against a bottom-20 unit on the same axis (about one game in five), and it names the units.
+  const extreme = (e: { offRank?: number; defRank?: number; of?: number }) => {
+    if (!e.offRank || !e.defRank || !e.of) return false;
+    const bottom = e.of - 20;
+    return (e.offRank <= 20 && e.defRank > bottom) || (e.defRank <= 20 && e.offRank > bottom);
+  };
+  const mismatch = charted
+    ? [
+        ...unitEdges(raw.awayTeam, raw.homeTeam).map((e) => ({ e, o: away, d: home })),
+        ...unitEdges(raw.homeTeam, raw.awayTeam).map((e) => ({ e, o: home, d: away })),
+      ]
+        .filter((x) => x.e.edge !== "even" && extreme(x.e))
+        .sort((x, y) => Math.abs(y.e.gap) - Math.abs(x.e.gap))[0]
+    : undefined;
+  const styleLine = mismatch
+    ? mismatch.e.edge === "offense"
+      ? `Mismatch: ${mismatch.o.short} ${mismatch.e.offUnit} (No. ${mismatch.e.offRank}) vs ${mismatch.d.short} ${mismatch.e.defUnit} (No. ${mismatch.e.defRank})`
+      : `Mismatch: ${mismatch.d.short} ${mismatch.e.defUnit} (No. ${mismatch.e.defRank}) vs ${mismatch.o.short} ${mismatch.e.offUnit} (No. ${mismatch.e.offRank})`
+    : undefined;
   const contrast = charted ? styleContrast(raw.awayTeam, raw.homeTeam) : null;
   const pp = charted ? pressurePoint(raw.awayTeam, raw.homeTeam) : undefined;
   const projection = projectGame({
     home,
     away,
-    homeElo: raw.homePregameElo,
-    awayElo: raw.awayPregameElo,
+    homeElo,
+    awayElo,
     neutral: raw.neutralSite,
     market,
     matchups,
@@ -657,7 +678,7 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
   // Outside projection systems next to ours (SP+, FPI, SRS, Elo, CFBD pregame). Division I only; never throws.
   const consensus =
     division === "FBS" || division === "FCS"
-      ? await buildConsensus({ gameId: String(raw.id), season: raw.season, week: raw.week, seasonType: raw.seasonType, home, away, homeSchool: raw.homeTeam, awaySchool: raw.awayTeam, neutral: raw.neutralSite, homeElo: raw.homePregameElo, awayElo: raw.awayPregameElo, market, projection }).catch(() => undefined)
+      ? await buildConsensus({ gameId: String(raw.id), season: raw.season, week: raw.week, seasonType: raw.seasonType, home, away, homeSchool: raw.homeTeam, awaySchool: raw.awayTeam, neutral: raw.neutralSite, homeElo, awayElo, market, projection }).catch(() => undefined)
       : undefined;
 
   // Keep an eye on: young or unproven names the radar flags that did not make the main list.
@@ -685,8 +706,8 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
     conferenceGame: raw.conferenceGame,
     neutralSite: raw.neutralSite,
     notes: raw.notes,
-    homeElo: raw.homePregameElo,
-    awayElo: raw.awayPregameElo,
+    homeElo,
+    awayElo,
     network,
     status,
     division,
@@ -759,7 +780,7 @@ async function buildGame(raw: CfbdGame, b: Bundle, withWeather: boolean, withBox
     coverage,
     whyWatch: publishedGuide({ id: String(raw.id), kickoff: raw.startDate, division })?.cardLine ?? why.headline,
     whyWatchReasons: why.reasons,
-    styleLine: charted ? `${shortStyle(profAway.off.label)} O vs ${shortStyle(profHome.def.label)} D` : undefined,
+    styleLine,
     weather,
     market,
     prospects,

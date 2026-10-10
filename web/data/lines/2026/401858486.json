@@ -1,0 +1,29 @@
+{
+ "id": "401858486",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-11T00:00Z",
+ "home": {
+  "id": "2509",
+  "name": "Purdue",
+  "abbr": "PUR"
+ },
+ "away": {
+  "id": "135",
+  "name": "Minnesota",
+  "abbr": "MINN"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -4.5,
+  "total": 49.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -2.5,
+   "total": 49.5
+  }
+ ]
+}

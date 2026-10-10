@@ -1,0 +1,29 @@
+{
+ "id": "401856808",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-11T02:30Z",
+ "home": {
+  "id": "9",
+  "name": "Arizona State",
+  "abbr": "ASU"
+ },
+ "away": {
+  "id": "62",
+  "name": "Hawai'i",
+  "abbr": "HAW"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 20.5,
+  "total": 51.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 21,
+   "total": 50.5
+  }
+ ]
+}

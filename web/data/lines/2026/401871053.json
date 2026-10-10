@@ -1,0 +1,29 @@
+{
+ "id": "401871053",
+ "season": 2026,
+ "week": 7,
+ "kickoff": "2026-10-14T00:00Z",
+ "home": {
+  "id": "55",
+  "name": "Jacksonville State",
+  "abbr": "JXST"
+ },
+ "away": {
+  "id": "2229",
+  "name": "Florida International",
+  "abbr": "FIU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 3,
+  "total": 45.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 3,
+   "total": 45.5
+  }
+ ]
+}

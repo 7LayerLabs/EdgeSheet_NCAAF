@@ -39,6 +39,15 @@
    "median": -2.7,
    "favorite": "JKST",
    "of": 1
+  },
+  "projection": {
+   "winner": "JKST",
+   "winProb": 0.7023772434440809,
+   "margin": 8.5,
+   "home": 24,
+   "away": 32,
+   "modelSide": "GRAM",
+   "confidence": "low"
   }
  }
 }

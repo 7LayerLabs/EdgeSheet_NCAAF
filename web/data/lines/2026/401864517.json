@@ -1,0 +1,29 @@
+{
+ "id": "401864517",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T23:00Z",
+ "home": {
+  "id": "2638",
+  "name": "UTEP",
+  "abbr": "UTEP"
+ },
+ "away": {
+  "id": "2440",
+  "name": "Nevada",
+  "abbr": "NEV"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -9.5,
+  "total": 52.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -10,
+   "total": 47.5
+  }
+ ]
+}

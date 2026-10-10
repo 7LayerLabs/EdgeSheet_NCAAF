@@ -39,6 +39,15 @@
    "median": 22.7,
    "favorite": "TNTC",
    "of": 1
+  },
+  "projection": {
+   "winner": "TNTC",
+   "winProb": 0.80059548799892,
+   "margin": 13.5,
+   "home": 30,
+   "away": 16,
+   "modelSide": "TNTC",
+   "confidence": "low"
   }
  }
 }

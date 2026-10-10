@@ -30,6 +30,15 @@
    "median": -8.6,
    "favorite": "YSU",
    "of": 1
+  },
+  "projection": {
+   "winner": "YSU",
+   "winProb": 0.8885303861789341,
+   "margin": 19.5,
+   "home": 23,
+   "away": 42,
+   "modelSide": "INST",
+   "confidence": "low"
   }
  }
 }

@@ -1,0 +1,29 @@
+{
+ "id": "401856718",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "238",
+  "name": "Vanderbilt",
+  "abbr": "VAN"
+ },
+ "away": {
+  "id": "145",
+  "name": "Ole Miss",
+  "abbr": "MISS"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -10.5,
+  "total": 57.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -9.5,
+   "total": 54.5
+  }
+ ]
+}

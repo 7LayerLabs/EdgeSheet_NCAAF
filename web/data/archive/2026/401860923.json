@@ -1,0 +1,164 @@
+{
+ "gameId": "401860923",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T17:43:33.116Z",
+  "kickoff": "2026-10-16T00:00Z",
+  "away": "Colorado State",
+  "home": "Texas State",
+  "abbr": {
+   "home": "TXST",
+   "away": "CSU"
+  },
+  "scoutScore": 70,
+  "whyWatch": "Texas State on passing downs against Colorado State pressure: passing-downs success: offense 53% (No. 1/138), defense 31% (No. 97/138), gap 70 percentile points. Watch Texas State's third-and-long conversions. Two in the first half breaks Colorado State's plan.",
+  "pressurePoint": "Colorado State offensive line vs Texas State front. Texas State is No. 31 of 138 at the line of scrimmage (2.50). Colorado State ranks No. 124 in line yards per carry (2.62). This is not a lean. It is a mismatch, and a prominent one. Texas State wins first contact. Backs get met in the backfield; screens and the quick game are the counter. Watch tackles for loss. Texas State living in the backfield early is the tell.",
+  "edges": [
+   {
+    "a": "Texas State on passing downs",
+    "b": "Colorado State pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "Texas State",
+    "why": "Texas State is No. 1 of 138 in passing-downs success (53%). Colorado State ranks No. 97 on passing downs (31%). This is not a lean. It is a mismatch, and a prominent one. Texas State converts the long downs Colorado State needs to win. A third-and-8 is not a stop here.",
+    "gap": 70
+   },
+   {
+    "a": "Colorado State offensive line",
+    "b": "Texas State front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "Colorado State",
+    "why": "Texas State is No. 31 of 138 at the line of scrimmage (2.50). Colorado State ranks No. 124 in line yards per carry (2.62). This is not a lean. It is a mismatch, and a prominent one. Texas State wins first contact. Backs get met in the backfield; screens and the quick game are the counter.",
+    "gap": -68
+   },
+   {
+    "a": "Texas State deep passing",
+    "b": "Colorado State secondary",
+    "edge": "offense",
+    "axis": "pass",
+    "offTeam": "Texas State",
+    "why": "Texas State is No. 12 of 138 in pass explosiveness (1.85). Colorado State ranks No. 104 at limiting explosive passes (1.66). This is not a lean. It is a mismatch, and a prominent one. Colorado State does not keep the lid on. Texas State will take shots, and the market total may be underpriced if they land.",
+    "gap": 67
+   },
+   {
+    "a": "Texas State offensive line",
+    "b": "Colorado State front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Texas State",
+    "why": "Texas State is No. 46 of 138 in line yards per carry (3.27). Colorado State ranks No. 128 at the line of scrimmage (3.40). This is not a lean. It is a mismatch, and a prominent one. The line of scrimmage belongs to Texas State. Second-level runs and play-action are live all afternoon.",
+    "gap": 60
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 85,
+   "directMatchups": 100,
+   "futureTalent": 20,
+   "competitive": 48,
+   "styleContrast": 48,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "5078214",
+    "name": "CJ Blocker",
+    "team": "Colorado State",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Eligible",
+    "score": 75
+   },
+   {
+    "id": "4685338",
+    "name": "Jaylen Early",
+    "team": "Texas State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 71
+   },
+   {
+    "id": "5147341",
+    "name": "Berlin Lillard",
+    "team": "Colorado State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5145293",
+    "name": "Payton Stewart",
+    "team": "Colorado State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5120413",
+    "name": "Amari Smith",
+    "team": "Texas State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5121467",
+    "name": "Bamidele Badusi",
+    "team": "Texas State",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5148803",
+    "name": "Brad Jackson",
+    "team": "Texas State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 61
+   },
+   {
+    "id": "5079443",
+    "name": "Hauss Hejny",
+    "team": "Colorado State",
+    "pos": "QB",
+    "group": "QB",
+    "tier": "Future",
+    "score": 47
+   }
+  ],
+  "spread": {
+   "team": "TXST",
+   "line": -12.5
+  },
+  "total": 67.5,
+  "projection": {
+   "winner": "TXST",
+   "winProb": 0.8093345146452637,
+   "margin": 14.007142857142858,
+   "home": 41,
+   "away": 27,
+   "modelSide": "TXST",
+   "confidence": "high",
+   "modelTotal": 68.5,
+   "totalLean": "none",
+   "eloMargin": 11.36,
+   "netEdge": 265
+  },
+  "consensus": {
+   "median": 12.7,
+   "favorite": "TXST",
+   "side": "TXST",
+   "sideCount": 1,
+   "of": 2
+  }
+ }
+}

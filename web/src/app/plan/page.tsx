@@ -3,6 +3,7 @@ import { getPlan } from "@/lib/plan-load";
 import { asOf } from "@/lib/format";
 import { longDate } from "@/lib/plan";
 import { telegramReady } from "@/lib/telegram";
+import { isOwner } from "@/lib/owner";
 import { LivePoller } from "@/components/LivePoller";
 import { SendToTelegram } from "@/components/SendToTelegram";
 
@@ -38,7 +39,7 @@ export default async function PlanPage({ searchParams }: PageProps<"/plan">) {
         <div className="flex flex-wrap items-center gap-2">
           {prev && <Link href={`/plan?date=${prev.date}`} className="chip">← {prev.date}</Link>}
           {next && <Link href={`/plan?date=${next.date}`} className="chip">{next.date} →</Link>}
-          <SendToTelegram type="plan" date={plan.date} enabled={telegramReady()} size="md" />
+          {(await isOwner()) && <SendToTelegram type="plan" date={plan.date} enabled={telegramReady()} size="md" />}
         </div>
       </div>
 

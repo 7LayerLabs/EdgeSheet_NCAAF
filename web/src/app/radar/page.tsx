@@ -2,7 +2,7 @@ import Link from "next/link";
 import { radarBoard, radarIndex, GROUP_LABEL, type PosGroup } from "@/lib/radar";
 import { generatedLoaded, genMeta } from "@/lib/generated";
 import { gameIndexForWeek, radarToProspect } from "@/lib/slate";
-import { asOf, kickoffTime } from "@/lib/format";
+import { asOf, kickoffWhen } from "@/lib/format";
 import { ProspectCard } from "@/components/ProspectCard";
 import type { Team } from "@/lib/types";
 import { biggestMoves } from "@/lib/movement";
@@ -123,7 +123,7 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
             g && g.home.short === r.team ? g.home : g && g.away.short === r.team ? g.away : { id: r.team, name: r.team, short: r.team, abbr: r.team.slice(0, 4).toUpperCase(), record: "", conference: r.conference ?? "", color: "#3a4957" };
           const p = radarToProspect(r, team.abbr);
           const label = g
-            ? `${i + 1}. ${g.home.short === r.team ? "vs" : "at"} ${g.home.short === r.team ? g.away.short : g.home.short} · ${kickoffTime(g.kickoff)} ET${g.status === "final" ? " · Final" : ""}`
+            ? `${i + 1}. ${g.home.short === r.team ? "vs" : "at"} ${g.home.short === r.team ? g.away.short : g.home.short} · ${g.status === "final" ? `Final, ${kickoffWhen(g.kickoff)} ET` : `${kickoffWhen(g.kickoff)} ET`}`
             : `${i + 1}. idle this week`;
           return (
             <li key={r.id}>

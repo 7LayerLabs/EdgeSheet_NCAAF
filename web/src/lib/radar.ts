@@ -181,6 +181,104 @@ const WATCH: Record<PosGroup, string> = {
   ST: "Leg strength on long attempts, operation time, and consistency in wind.",
 };
 
+/**
+ * What to watch for this player, picked from his own numbers so two quarterbacks
+ * on the same slate never read the same. Each rule cites a real stat and asks the
+ * question a scout would ask of that profile; WATCH[group] is the fallback when
+ * nothing in the line stands out.
+ */
+function watchFor(p: GenPlayer, group: PosGroup, prodPct: number): string {
+  const s = p.s ?? {};
+  const g = Math.max(1, p.g ?? 1);
+  const per = (n?: number) => (n ?? 0) / g;
+  const f1 = (n: number) => (Math.round(n * 10) / 10).toString();
+  const stars = p.r?.st ?? 0;
+  const ht = p.h ? `${Math.floor(p.h / 12)}-${p.h % 12}` : null;
+  const blue = stars >= 4 && prodPct < 40;
+  const pl = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+
+  switch (group) {
+    case "QB": {
+      const pa = s.pa ?? 0;
+      const comp = pa ? Math.round((100 * (s.pc ?? 0)) / pa) : 0;
+      const ypa = s.ypa ?? (pa ? (s.py ?? 0) / pa : 0);
+      if (pa < 40) return `Only ${pl(pa, "throw")} so far. Watch how much the staff trusts him on third down and in two-minute.`;
+      if ((s.pint ?? 0) / pa >= 0.03) return `${pl(s.pint ?? 0, "pick")} in ${pa} throws. Watch whether the turnovers come from forcing it into coverage or from pressure in his face.`;
+      if (per(s.ry) >= 40) return `Adds ${Math.round(per(s.ry))} rushing yards a game. Watch whether he escapes to keep the play alive downfield or tucks it at the first sign of pressure.`;
+      if (blue) return `A ${stars}-star still waiting on the production to match. Watch his timing and whether he throws receivers open or waits for them to come free.`;
+      if (comp < 58) return `Completing ${comp}% of his throws. Accuracy is the question, especially outside the numbers and on the move.`;
+      if (ypa >= 9.5 && (s.pint ?? 0) <= 2) return `Big plays with almost no turnovers. The test is whether he still pushes the ball when the first read is covered and the pocket gets muddy.`;
+      if (comp >= 70) return `Completing ${comp}%. Watch how much is quick game and screens versus throws into tight windows past the sticks.`;
+      return WATCH.QB;
+    }
+    case "RB": {
+      const ypc = s.ypc ?? ((s.ry ?? 0) / Math.max(1, s.ra ?? 1));
+      if (per(s.ra) >= 20) return `A workhorse at ${f1(per(s.ra))} carries a game. Watch his burst and ball security in the fourth quarter.`;
+      if ((s.ra ?? 0) >= 40 && ypc < 4) return `Only ${f1(ypc)} a carry. Is that him or the blocking? Watch his yards after first contact.`;
+      if (per(s.rec) >= 2.5) return `Catches ${f1(per(s.rec))} balls a game. Watch his routes out of the backfield and whether he stays in to block on third down.`;
+      if (ypc >= 6.5) return `${f1(ypc)} yards a carry. Watch how much of that is him making defenders miss versus the holes his line opens.`;
+      if ((s.rtd ?? 0) >= 5) return `The goal-line back with ${pl(s.rtd ?? 0, "rushing TD")}. Watch his pad level and patience in short yardage.`;
+      if (blue) return `A ${stars}-star who has not found volume yet. Watch whether he gets the ball in the second half or loses snaps to the rotation.`;
+      return WATCH.RB;
+    }
+    case "WR": {
+      const ypr = s.ypr ?? ((s.rcy ?? 0) / Math.max(1, s.rec ?? 1));
+      if (per(s.rec) >= 6) return `The go-to target at ${f1(per(s.rec))} catches a game. Watch his release against press and who the defense rolls coverage toward.`;
+      if ((s.rec ?? 0) >= 8 && ypr >= 17) return `${f1(ypr)} yards a catch says vertical threat. Watch whether he also wins underneath and makes people miss after the catch.`;
+      if ((s.rctd ?? 0) >= 4 && (s.rctd ?? 0) / Math.max(1, s.rec ?? 1) >= 0.2) return `${pl(s.rctd ?? 0, "TD")} on ${s.rec} catches. Watch him in the red zone: body control and hands on contested balls.`;
+      if (p.h && p.h >= 75) return `At ${ht}, watch him on 50-50 balls and back-shoulder throws, and whether he can sink his hips on short routes.`;
+      if (blue) return `A ${stars}-star with only ${pl(s.rec ?? 0, "catch", "catches")}. Watch whether he is getting open and missed, or lost in the rotation.`;
+      if (p.h && p.h <= 70) return `A smaller receiver at ${ht}. Watch his quickness out of breaks and whether he holds up against physical corners.`;
+      return WATCH.WR;
+    }
+    case "TE": {
+      if (per(s.rec) >= 4) return `A real receiving weapon at ${f1(per(s.rec))} catches a game. Watch his seam routes and whether he still stays in to block on early downs.`;
+      if ((s.rec ?? 0) <= 6) return `Mostly a blocker so far (${pl(s.rec ?? 0, "catch", "catches")}). Watch his hand placement in the run game and whether he gets a target on third down.`;
+      return WATCH.TE;
+    }
+    case "EDGE":
+    case "DL": {
+      const sk = s.sk ?? 0;
+      const tfl = s.tfl ?? 0;
+      const hur = s.hur ?? 0;
+      if (sk >= 5) return group === "DL"
+        ? `${f1(sk)} sacks from the interior. Watch whether he wins with power or quickness, and how he handles the double team.`
+        : `${f1(sk)} sacks already. Watch whether he wins with a counter move or only with speed around the edge.`;
+      if (hur >= 5 && hur >= 2 * sk) return `${pl(hur, "hurry", "hurries")} but ${f1(sk)} sacks. He gets home; watch whether he finishes.`;
+      if (tfl >= 5 && tfl >= 2 * sk + 2) return `${f1(tfl)} tackles for loss, mostly against the run. Watch whether the pass rush catches up to the run defense.`;
+      if (blue) return `A ${stars}-star with ${f1(sk)} sacks. Watch whether he is drawing chips and double teams or getting stonewalled one-on-one.`;
+      if (p.w && p.w >= 300) return `${p.w} pounds in the middle. Watch his anchor against the run and whether he can collapse the pocket on passing downs.`;
+      return WATCH[group];
+    }
+    case "LB": {
+      if (per(s.tk) >= 8) return `Piles up ${f1(per(s.tk))} tackles a game. Watch how many come near the line versus five yards downfield after a gain.`;
+      if ((s.pd ?? 0) + (s.int ?? 0) >= 4) return `${pl((s.pd ?? 0) + (s.int ?? 0), "ball", "balls")} defended from linebacker. Watch him matched up on backs and tight ends.`;
+      if ((s.sk ?? 0) >= 3) return `${f1(s.sk ?? 0)} sacks from linebacker. Watch his timing on blitzes and whether he can still drop into coverage.`;
+      if (blue) return `A ${stars}-star still growing into the job. Watch how fast he reads run or pass and fills his gap.`;
+      return WATCH.LB;
+    }
+    case "CB": {
+      if ((s.int ?? 0) >= 3) return `${pl(s.int ?? 0, "interception")}. Watch whether quarterbacks still test him or start throwing the other way.`;
+      if ((s.pd ?? 0) >= 6) return `${s.pd} passes defended. The ball skills are there; watch his hips when receivers break.`;
+      if (per(s.tk) >= 5) return `${f1(per(s.tk))} tackles a game is a lot for a corner, which usually means he is being thrown at. Watch his coverage on early downs.`;
+      if (p.h && p.h >= 73) return `A long corner at ${ht}. Watch his press at the line and whether he can turn and run with speed.`;
+      return WATCH.CB;
+    }
+    case "S": {
+      if (per(s.tk) >= 7) return `Lives near the line at ${f1(per(s.tk))} tackles a game. Watch his angles in space and whether he can also play deep.`;
+      if ((s.int ?? 0) + (s.pd ?? 0) >= 5) return `A ball hawk with ${pl((s.int ?? 0) + (s.pd ?? 0), "ball", "balls")} defended. Watch his range from the middle of the field.`;
+      return WATCH.S;
+    }
+    case "OL": {
+      if (p.w && p.w >= 320) return `${ht ?? ""}${ht ? ", " : ""}${p.w} lb. Power is not the question; watch his feet against speed off the edge.`;
+      if (p.w && p.w < 300) return `Light for the position at ${p.w} lb. Watch whether he holds up against bull rushes and anchors on the move.`;
+      return WATCH.OL;
+    }
+    case "ST":
+      return WATCH.ST;
+  }
+}
+
 function pct(sorted: number[], v: number): number {
   if (!sorted.length) return 0;
   let lo = 0;
@@ -303,7 +401,7 @@ function buildIndex(): RadarIndex {
       evidence,
       stat: sl.line,
       statLine: sl.table,
-      watch: WATCH[group],
+      watch: watchFor(p, group, prodPct),
       stars,
       recruitRank: p.r?.rk ?? null,
       hometown: p.home,

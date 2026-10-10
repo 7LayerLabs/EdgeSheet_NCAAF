@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isOwner } from "@/lib/owner";
 import { getGame, getSlate } from "@/lib/slate";
 import { scoutScore } from "@/lib/score";
 import { buildCandidates, evidenceVersion, generateWatchGuide, readGuide } from "@/lib/watchguide";
@@ -37,6 +38,7 @@ export async function GET(req: Request) {
 
 /** POST { id, force? }: write (or rewrite) the watch guide for one game, validate it, cache it. */
 export async function POST(req: Request) {
+  if (!(await isOwner())) return NextResponse.json({ error: "owner only" }, { status: 403 });
   const body = (await req.json().catch(() => null)) as { id?: string; force?: boolean } | null;
   if (!body?.id || !/^\d+$/.test(body.id)) return NextResponse.json({ error: "bad id" }, { status: 400 });
   const game = await getGame(body.id);

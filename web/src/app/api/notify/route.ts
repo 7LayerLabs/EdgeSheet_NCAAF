@@ -6,6 +6,7 @@ import { etDate, getSlate } from "@/lib/slate";
 import { sendMessage, sendPhoto, telegramMissing, telegramReady } from "@/lib/telegram";
 import { getPlan } from "@/lib/plan-load";
 import { planText } from "@/lib/plan";
+import { isOwner } from "@/lib/owner";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,7 @@ type Kind = "slate" | "leans" | "grades" | "sheet" | "plan";
  * Used by the "Send to Telegram" buttons. Responds 503 with the missing key when Telegram is not configured.
  */
 export async function POST(req: Request) {
+  if (!(await isOwner())) return NextResponse.json({ error: "owner only" }, { status: 403 });
   const body = (await req.json().catch(() => null)) as { type?: Kind; date?: string } | null;
   const type = body?.type;
   if (!type || !["slate", "leans", "grades", "sheet", "plan"].includes(type)) return NextResponse.json({ error: "type must be slate, leans, grades, sheet, or plan" }, { status: 400 });

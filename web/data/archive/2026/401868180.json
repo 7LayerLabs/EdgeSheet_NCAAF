@@ -39,6 +39,15 @@
    "median": 25.4,
    "favorite": "GWEB",
    "of": 1
+  },
+  "projection": {
+   "winner": "GWEB",
+   "winProb": 0.80059548799892,
+   "margin": 13.5,
+   "home": 29,
+   "away": 16,
+   "modelSide": "GWEB",
+   "confidence": "low"
   }
  }
 }

@@ -39,6 +39,15 @@
    "median": 18.4,
    "favorite": "IDST",
    "of": 1
+  },
+  "projection": {
+   "winner": "IDST",
+   "winProb": 0.817598255030035,
+   "margin": 14.5,
+   "home": 39,
+   "away": 25,
+   "modelSide": "IDST",
+   "confidence": "low"
   }
  }
 }

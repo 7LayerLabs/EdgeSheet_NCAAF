@@ -206,6 +206,12 @@ export interface UnitEdge {
   meaning: string;
   watch: string;
   strength: "dominant" | "clear" | "real" | "slight" | "even";
+  /** Short axis names and ranks for one-line labels ("run game", "run D"). */
+  offUnit: string;
+  defUnit: string;
+  offRank?: number;
+  defRank?: number;
+  of?: number;
 }
 
 /** Compare one offense against one defense on the four axes that decide games. */
@@ -215,11 +221,11 @@ export function unitEdges(offTeam: string, defTeam: string): UnitEdge[] {
   if (!o || !d) return [];
   const om = (k: string) => o.offense.metrics.find((m) => m.key === k);
   const dm = (k: string) => d.defense.metrics.find((m) => m.key === k);
-  const axes: { key: string; axis: Axis; title: string; what: string; against: string }[] = [
-    { key: "rushSr", axis: "rush", title: `${offTeam} run game vs ${defTeam} run defense`, what: "rush success rate", against: "against the run" },
-    { key: "passEx", axis: "pass", title: `${offTeam} deep passing vs ${defTeam} secondary`, what: "pass explosiveness", against: "at limiting explosive passes" },
-    { key: "ly", axis: "line", title: `${offTeam} offensive line vs ${defTeam} front`, what: "line yards per carry", against: "at the line of scrimmage" },
-    { key: "pdSr", axis: "pd", title: `${offTeam} on passing downs vs ${defTeam} pressure`, what: "passing-downs success", against: "on passing downs" },
+  const axes: { key: string; axis: Axis; title: string; what: string; against: string; offUnit: string; defUnit: string }[] = [
+    { key: "rushSr", axis: "rush", title: `${offTeam} run game vs ${defTeam} run defense`, what: "rush success rate", against: "against the run", offUnit: "run game", defUnit: "run D" },
+    { key: "passEx", axis: "pass", title: `${offTeam} deep passing vs ${defTeam} secondary`, what: "pass explosiveness", against: "at limiting explosive passes", offUnit: "deep passing", defUnit: "secondary" },
+    { key: "ly", axis: "line", title: `${offTeam} offensive line vs ${defTeam} front`, what: "line yards per carry", against: "at the line of scrimmage", offUnit: "O-line", defUnit: "front" },
+    { key: "pdSr", axis: "pd", title: `${offTeam} on passing downs vs ${defTeam} pressure`, what: "passing-downs success", against: "on passing downs", offUnit: "third-and-long offense", defUnit: "third-down D" },
   ];
   const out: UnitEdge[] = [];
   for (const a of axes) {
@@ -248,6 +254,11 @@ export function unitEdges(offTeam: string, defTeam: string): UnitEdge[] {
       meaning: mn.meaning,
       watch: mn.watch,
       strength,
+      offUnit: a.offUnit,
+      defUnit: a.defUnit,
+      offRank: x.rank,
+      defRank: y.rank,
+      of: x.of,
     });
   }
   return out.sort((p, q) => Math.abs(q.gap) - Math.abs(p.gap));

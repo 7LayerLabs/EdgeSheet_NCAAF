@@ -39,6 +39,15 @@
    "median": -13.4,
    "favorite": "SEMO",
    "of": 1
+  },
+  "projection": {
+   "winner": "SEMO",
+   "winProb": 0.6107406060595146,
+   "margin": 4.5,
+   "home": 21,
+   "away": 25,
+   "modelSide": "LIN",
+   "confidence": "low"
   }
  }
 }

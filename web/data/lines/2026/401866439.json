@@ -1,0 +1,29 @@
+{
+ "id": "401866439",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "2711",
+  "name": "Western Michigan",
+  "abbr": "WMU"
+ },
+ "away": {
+  "id": "2309",
+  "name": "Kent State",
+  "abbr": "KENT"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 15.5,
+  "total": 48.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 14,
+   "total": 43.5
+  }
+ ]
+}

@@ -39,6 +39,15 @@
    "median": 10.3,
    "favorite": "SDAK",
    "of": 1
+  },
+  "projection": {
+   "winner": "SDAK",
+   "winProb": 0.7441684222108845,
+   "margin": 10.5,
+   "home": 35,
+   "away": 24,
+   "modelSide": "SDAK",
+   "confidence": "low"
   }
  }
 }

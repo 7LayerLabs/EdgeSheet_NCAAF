@@ -1,0 +1,29 @@
+{
+ "id": "401869943",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T23:00Z",
+ "home": {
+  "id": "276",
+  "name": "Marshall",
+  "abbr": "MRSH"
+ },
+ "away": {
+  "id": "324",
+  "name": "Coastal Carolina",
+  "abbr": "CCU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 2.5,
+  "total": 55.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 4.5,
+   "total": 57.5
+  }
+ ]
+}

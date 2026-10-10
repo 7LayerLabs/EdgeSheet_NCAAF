@@ -39,6 +39,15 @@
    "median": -11.3,
    "favorite": "UND",
    "of": 1
+  },
+  "projection": {
+   "winner": "UND",
+   "winProb": 0.8092130853987176,
+   "margin": 14,
+   "home": 22,
+   "away": 37,
+   "modelSide": "UNI",
+   "confidence": "low"
   }
  }
 }

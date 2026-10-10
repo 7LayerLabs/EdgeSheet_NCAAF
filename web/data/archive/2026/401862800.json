@@ -1,0 +1,146 @@
+{
+ "gameId": "401862800",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T17:43:33.113Z",
+  "kickoff": "2026-10-15T23:30Z",
+  "away": "East Carolina",
+  "home": "UAB",
+  "abbr": {
+   "home": "UAB",
+   "away": "ECU"
+  },
+  "scoutScore": 64,
+  "whyWatch": "East Carolina on passing downs against UAB pressure: passing-downs success: offense 20% (No. 135/138), defense 25% (No. 40/138), gap 70 percentile points. Watch East Carolina on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "East Carolina on passing downs vs UAB pressure. UAB is No. 40 of 138 on passing downs (25%). East Carolina ranks No. 135 in passing-downs success (20%). This is not a lean. It is a mismatch, and a prominent one. UAB gets off the field on long downs. Early-down efficiency is everything for East Carolina. Watch East Carolina on third-and-7 or longer. Punts there mean the defense is winning.",
+  "edges": [
+   {
+    "a": "East Carolina on passing downs",
+    "b": "UAB pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "East Carolina",
+    "why": "UAB is No. 40 of 138 on passing downs (25%). East Carolina ranks No. 135 in passing-downs success (20%). This is not a lean. It is a mismatch, and a prominent one. UAB gets off the field on long downs. Early-down efficiency is everything for East Carolina.",
+    "gap": -70
+   },
+   {
+    "a": "UAB on passing downs",
+    "b": "East Carolina pressure",
+    "edge": "offense",
+    "axis": "passing-downs",
+    "offTeam": "UAB",
+    "why": "UAB is No. 22 of 138 in passing-downs success (38%). East Carolina ranks No. 111 on passing downs (33%). This is not a lean. It is a mismatch, and a prominent one. UAB converts the long downs East Carolina needs to win. A third-and-8 is not a stop here.",
+    "gap": 65
+   },
+   {
+    "a": "East Carolina deep passing",
+    "b": "UAB secondary",
+    "edge": "defense",
+    "axis": "pass",
+    "offTeam": "East Carolina",
+    "why": "UAB is No. 6 of 138 at limiting explosive passes (1.27). East Carolina ranks No. 86 in pass explosiveness (1.50). This is not a lean. It is a mismatch, and a prominent one. Deep balls are the lowest-percentage play in this game. East Carolina needs the underneath game and yards after catch.",
+    "gap": -58
+   },
+   {
+    "a": "UAB offensive line",
+    "b": "East Carolina front",
+    "edge": "defense",
+    "axis": "line",
+    "offTeam": "UAB",
+    "why": "East Carolina is No. 12 of 138 at the line of scrimmage (2.25). UAB ranks No. 66 in line yards per carry (3.14). A real edge, not a lock. East Carolina should hold the line of scrimmage. UAB's runs will need the second level to break.",
+    "gap": -39
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 61,
+   "directMatchups": 100,
+   "futureTalent": 14,
+   "competitive": 64,
+   "styleContrast": 43,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "4711421",
+    "name": "CJ Smith",
+    "team": "UAB",
+    "pos": "WR",
+    "group": "WR",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4918110",
+    "name": "Roderick Robinson II",
+    "team": "UAB",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "4839485",
+    "name": "Brandon Best",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5077961",
+    "name": "Bryce Weaver",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5125152",
+    "name": "Marleo Neolien",
+    "team": "East Carolina",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5119262",
+    "name": "Barrett Maddox",
+    "team": "UAB",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5195616",
+    "name": "Jo Pierce",
+    "team": "UAB",
+    "pos": "DB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 58
+   }
+  ],
+  "projection": {
+   "winner": "ECU",
+   "winProb": 0.5654928745306369,
+   "margin": 2.638571428571429,
+   "home": 20,
+   "away": 23,
+   "confidence": "high",
+   "modelTotal": 43,
+   "eloMargin": -4.18,
+   "netEdge": 154
+  },
+  "consensus": {
+   "median": -3.4,
+   "favorite": "ECU",
+   "of": 2
+  }
+ }
+}

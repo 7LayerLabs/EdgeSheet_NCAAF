@@ -39,6 +39,15 @@
    "median": 0.7,
    "favorite": "EWU",
    "of": 1
+  },
+  "projection": {
+   "winner": "EWU",
+   "winProb": 0.657720493705185,
+   "margin": 6.5,
+   "home": 33,
+   "away": 26,
+   "modelSide": "EWU",
+   "confidence": "low"
   }
  }
 }

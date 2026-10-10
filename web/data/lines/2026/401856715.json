@@ -1,0 +1,29 @@
+{
+ "id": "401856715",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T23:00Z",
+ "home": {
+  "id": "96",
+  "name": "Kentucky",
+  "abbr": "UK"
+ },
+ "away": {
+  "id": "99",
+  "name": "LSU",
+  "abbr": "LSU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -10.5,
+  "total": 49.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -9.5,
+   "total": 50.5
+  }
+ ]
+}

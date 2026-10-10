@@ -1,0 +1,146 @@
+{
+ "gameId": "401871067",
+ "season": 2026,
+ "week": 7,
+ "pregame": {
+  "capturedAt": "2026-10-10T17:43:34.786Z",
+  "kickoff": "2026-10-13T23:00Z",
+  "away": "Delaware",
+  "home": "Middle Tennessee",
+  "abbr": {
+   "home": "MTSU",
+   "away": "DEL"
+  },
+  "scoutScore": 65,
+  "whyWatch": "Middle Tennessee on passing downs against Delaware pressure: passing-downs success: offense 23% (No. 122/138), defense 24% (No. 33/138), gap 65 percentile points. Watch Middle Tennessee on third-and-7 or longer. Punts there mean the defense is winning.",
+  "pressurePoint": "Delaware run game vs Middle Tennessee run defense. Delaware is No. 97 of 138 in rush success rate (41%). Middle Tennessee ranks No. 138 against the run (55%). A real edge, not a lock. Delaware should stay on schedule on the ground, which keeps third downs short and the clock moving. Watch Delaware's rushing attempts by halftime. North of 20 means the plan is working.",
+  "edges": [
+   {
+    "a": "Middle Tennessee on passing downs",
+    "b": "Delaware pressure",
+    "edge": "defense",
+    "axis": "passing-downs",
+    "offTeam": "Middle Tennessee",
+    "why": "Delaware is No. 33 of 138 on passing downs (24%). Middle Tennessee ranks No. 122 in passing-downs success (23%). This is not a lean. It is a mismatch, and a prominent one. Delaware gets off the field on long downs. Early-down efficiency is everything for Middle Tennessee.",
+    "gap": -65
+   },
+   {
+    "a": "Delaware run game",
+    "b": "Middle Tennessee run defense",
+    "edge": "offense",
+    "axis": "rush",
+    "offTeam": "Delaware",
+    "why": "Delaware is No. 97 of 138 in rush success rate (41%). Middle Tennessee ranks No. 138 against the run (55%). A real edge, not a lock. Delaware should stay on schedule on the ground, which keeps third downs short and the clock moving.",
+    "gap": 30
+   },
+   {
+    "a": "Middle Tennessee offensive line",
+    "b": "Delaware front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Middle Tennessee",
+    "why": "Middle Tennessee is No. 48 of 138 in line yards per carry (3.25). Delaware ranks No. 88 at the line of scrimmage (2.96). A real edge, not a lock. Middle Tennessee should win first contact more often than not, which makes every down shorter.",
+    "gap": 30
+   },
+   {
+    "a": "Delaware offensive line",
+    "b": "Middle Tennessee front",
+    "edge": "offense",
+    "axis": "line",
+    "offTeam": "Delaware",
+    "why": "Delaware is No. 109 of 138 in line yards per carry (2.78). Middle Tennessee ranks No. 137 at the line of scrimmage (3.58). A real edge, not a lock. Delaware should win first contact more often than not, which makes every down shorter.",
+    "gap": 20
+   }
+  ],
+  "scoreComponents": {
+   "draftTalent": 39,
+   "directMatchups": 100,
+   "futureTalent": 32,
+   "competitive": 94,
+   "styleContrast": 24,
+   "storylines": 50,
+   "availability": 100
+  },
+  "prospects": [
+   {
+    "id": "4685436",
+    "name": "Antonio Martin",
+    "team": "Middle Tennessee",
+    "pos": "RB",
+    "group": "RB",
+    "tier": "Eligible",
+    "score": 66
+   },
+   {
+    "id": "5146790",
+    "name": "Jack Small",
+    "team": "Delaware",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5140722",
+    "name": "Noah Rosahac",
+    "team": "Delaware",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "4917058",
+    "name": "Reese Tripp",
+    "team": "Middle Tennessee",
+    "pos": "OL",
+    "group": "OL",
+    "tier": "Eligible",
+    "score": 63
+   },
+   {
+    "id": "5296324",
+    "name": "Brandon Gorham",
+    "team": "Delaware",
+    "pos": "DE",
+    "group": "EDGE",
+    "tier": "Future",
+    "score": 59
+   },
+   {
+    "id": "5193223",
+    "name": "Jackson Lowe",
+    "team": "Middle Tennessee",
+    "pos": "CB",
+    "group": "CB",
+    "tier": "Future",
+    "score": 59
+   }
+  ],
+  "spread": {
+   "team": "DEL",
+   "line": -1.5
+  },
+  "total": 48.5,
+  "projection": {
+   "winner": "DEL",
+   "winProb": 0.6028435164057038,
+   "margin": 4.171428571428572,
+   "home": 22,
+   "away": 27,
+   "modelSide": "DEL",
+   "confidence": "high",
+   "modelTotal": 51.5,
+   "totalLean": "over",
+   "eloMargin": -3.32,
+   "netEdge": -85
+  },
+  "consensus": {
+   "median": -3.7,
+   "favorite": "DEL",
+   "side": "DEL",
+   "sideCount": 2,
+   "of": 2
+  }
+ }
+}

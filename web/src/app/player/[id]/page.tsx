@@ -9,6 +9,7 @@ import { FollowButton } from "@/components/FollowButton";
 import { Avatar } from "@/components/Avatar";
 import { RadarScore } from "@/components/ProspectCard";
 import { DecisionButtons } from "@/components/DecisionButtons";
+import { isOwner } from "@/lib/owner";
 import { entryFor, pickText } from "@/lib/forecast";
 import { decisionFor } from "@/lib/declarations";
 import { Suspense } from "react";
@@ -37,6 +38,7 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
   const upper = r?.classYear === 3 || r?.classYear === 4;
   const fc = r && upper ? entryFor(r.id) : undefined;
   const decision = r ? decisionFor(r.id) : "undecided";
+  const owner = await isOwner();
 
   return (
     <article className="rise">
@@ -117,7 +119,11 @@ export default async function PlayerPage({ params }: PageProps<"/player/[id]">) 
             <div className="text-right">
               <p className="eyebrow">{r.classYear === 4 ? "Senior" : "Junior"} decision</p>
               <div className="mt-1">
-                <DecisionButtons id={r.id} current={decision} senior={r.classYear === 4} />
+                {owner ? (
+                  <DecisionButtons id={r.id} current={decision} senior={r.classYear === 4} />
+                ) : (
+                  <span className="mono text-sm capitalize text-chalk-2">{decision}</span>
+                )}
               </div>
               <p className="mt-1 max-w-xs text-[11px] text-chalk-3">
                 {r.classYear === 4 ? "Seniors are eligible by default." : "Juniors stay on the board until they announce they are returning."}

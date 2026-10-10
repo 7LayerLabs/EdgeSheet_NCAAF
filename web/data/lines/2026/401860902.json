@@ -1,0 +1,29 @@
+{
+ "id": "401860902",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T22:00Z",
+ "home": {
+  "id": "204",
+  "name": "Oregon State",
+  "abbr": "ORST"
+ },
+ "away": {
+  "id": "21",
+  "name": "San Diego State",
+  "abbr": "SDSU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 13.5,
+  "total": 57.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 16.5,
+   "total": 52.5
+  }
+ ]
+}

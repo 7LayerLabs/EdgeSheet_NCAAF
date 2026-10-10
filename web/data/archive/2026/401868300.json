@@ -39,6 +39,15 @@
    "median": 8.4,
    "favorite": "AAMU",
    "of": 1
+  },
+  "projection": {
+   "winner": "AAMU",
+   "winProb": 0.5987062706841138,
+   "margin": 4,
+   "home": 25,
+   "away": 21,
+   "modelSide": "AAMU",
+   "confidence": "low"
   }
  }
 }

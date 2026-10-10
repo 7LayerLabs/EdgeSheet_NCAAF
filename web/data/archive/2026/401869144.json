@@ -39,6 +39,15 @@
    "median": 12.7,
    "favorite": "LAM",
    "of": 1
+  },
+  "projection": {
+   "winner": "LAM",
+   "winProb": 0.657720493705185,
+   "margin": 6.5,
+   "home": 28,
+   "away": 22,
+   "modelSide": "LAM",
+   "confidence": "low"
   }
  }
 }

@@ -2,10 +2,12 @@ import Link from "next/link";
 import { getSlate, shiftDate, type Slate as SlateData } from "@/lib/slate";
 import { scoutScore, scoreTag } from "@/lib/score";
 import { Slate } from "@/components/Slate";
-import { LiveTicker } from "@/components/LiveTicker";
+import { Suspense } from "react";
+import { RightNow } from "@/components/RightNow";
 import type { Game } from "@/lib/types";
 import { SendToTelegram } from "@/components/SendToTelegram";
 import { telegramReady } from "@/lib/telegram";
+import { isOwner } from "@/lib/owner";
 import { withFlipJev } from "@/lib/flip-jev";
 import { ModelUpdatedNote } from "@/components/ModelUpdates";
 
@@ -21,6 +23,7 @@ export default async function Today({ searchParams }: PageProps<"/">) {
   const slate = await getSlate(dateParam);
   // Jev "worth flipping to" per live game (one request, 60s cache); falls back to the numeric flip score when absent.
   const games = await withFlipJev(slate.games);
+  const owner = await isOwner();
 
   const live = games.filter((g) => g.status === "live").length;
   const upcoming = games.filter((g) => g.status === "upcoming").length;
@@ -45,7 +48,7 @@ export default async function Today({ searchParams }: PageProps<"/">) {
           <div>{live ? `${live} in progress` : upcoming ? `${upcoming} still to kick off` : "all final"}</div>
           <div className="mt-1"><Link href="/ask" className="text-sky hover:underline">Ask the slate</Link></div>
           <div><ModelUpdatedNote /></div>
-          {slate.source === "live" && (
+          {owner && slate.source === "live" && (
             <div className="mt-1.5 flex justify-end gap-1.5">
               <SendToTelegram type="slate" date={slate.date} enabled={telegramReady()} />
               <SendToTelegram type="leans" date={slate.date} enabled={telegramReady()} />
@@ -56,7 +59,9 @@ export default async function Today({ searchParams }: PageProps<"/">) {
 
       <DayStrip slate={slate} />
 
-      <LiveTicker games={games} />
+      <Suspense fallback={null}>
+        <RightNow games={games} />
+      </Suspense>
 
       {games.length > 0 && (
         <div className="mt-5 grid gap-2.5 sm:grid-cols-2">

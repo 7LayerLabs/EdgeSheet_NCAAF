@@ -39,6 +39,15 @@
    "median": 5.4,
    "favorite": "FOR",
    "of": 1
+  },
+  "projection": {
+   "winner": "RICH",
+   "winProb": 0.7023772434440809,
+   "margin": 8.5,
+   "home": 19,
+   "away": 27,
+   "modelSide": "FOR",
+   "confidence": "low"
   }
  }
 }

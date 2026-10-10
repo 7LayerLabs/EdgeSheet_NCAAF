@@ -1,0 +1,29 @@
+{
+ "id": "401864516",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T23:30Z",
+ "home": {
+  "id": "2459",
+  "name": "Northern Illinois",
+  "abbr": "NIU"
+ },
+ "away": {
+  "id": "2005",
+  "name": "Air Force",
+  "abbr": "AFA"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -12.5,
+  "total": 47.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -7,
+   "total": 48.5
+  }
+ ]
+}

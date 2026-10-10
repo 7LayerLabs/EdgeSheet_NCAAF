@@ -30,6 +30,15 @@
    "median": -7.5,
    "favorite": "SCST",
    "of": 1
+  },
+  "projection": {
+   "winner": "SCST",
+   "winProb": 0.657720493705185,
+   "margin": 6.5,
+   "home": 16,
+   "away": 22,
+   "modelSide": "CHSO",
+   "confidence": "low"
   }
  }
 }

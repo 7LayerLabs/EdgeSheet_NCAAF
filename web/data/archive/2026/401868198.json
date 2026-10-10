@@ -39,6 +39,15 @@
    "median": -7.2,
    "favorite": "UTM",
    "of": 1
+  },
+  "projection": {
+   "winner": "UTM",
+   "winProb": 0.7023772434440809,
+   "margin": 8.5,
+   "home": 19,
+   "away": 28,
+   "modelSide": "TNST",
+   "confidence": "low"
   }
  }
 }

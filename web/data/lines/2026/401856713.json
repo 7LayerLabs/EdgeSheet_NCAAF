@@ -1,0 +1,29 @@
+{
+ "id": "401856713",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T20:15Z",
+ "home": {
+  "id": "8",
+  "name": "Arkansas",
+  "abbr": "ARK"
+ },
+ "away": {
+  "id": "2633",
+  "name": "Tennessee",
+  "abbr": "TENN"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -14,
+  "total": 49.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -13.5,
+   "total": 51.5
+  }
+ ]
+}

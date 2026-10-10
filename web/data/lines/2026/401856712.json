@@ -1,0 +1,29 @@
+{
+ "id": "401856712",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T23:30Z",
+ "home": {
+  "id": "333",
+  "name": "Alabama",
+  "abbr": "ALA"
+ },
+ "away": {
+  "id": "61",
+  "name": "Georgia",
+  "abbr": "UGA"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -3,
+  "total": 51.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 2.5,
+   "total": 51.5
+  }
+ ]
+}

@@ -30,6 +30,15 @@
    "median": -6.9,
    "favorite": "WOF",
    "of": 1
+  },
+  "projection": {
+   "winner": "ELON",
+   "winProb": 0.5865775631899086,
+   "margin": 3.5,
+   "home": 25,
+   "away": 22,
+   "modelSide": "ELON",
+   "confidence": "low"
   }
  }
 }

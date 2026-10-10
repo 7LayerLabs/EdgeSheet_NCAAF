@@ -1,0 +1,29 @@
+{
+ "id": "401864518",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T23:00Z",
+ "home": {
+  "id": "2439",
+  "name": "UNLV",
+  "abbr": "UNLV"
+ },
+ "away": {
+  "id": "2449",
+  "name": "North Dakota State",
+  "abbr": "NDSU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -4,
+  "total": 49.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -2.5,
+   "total": 47.5
+  }
+ ]
+}

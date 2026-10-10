@@ -1,0 +1,29 @@
+{
+ "id": "401866437",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "2649",
+  "name": "Toledo",
+  "abbr": "TOL"
+ },
+ "away": {
+  "id": "2084",
+  "name": "Buffalo",
+  "abbr": "BUFF"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 19.5,
+  "total": 55.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 18.5,
+   "total": 55.5
+  }
+ ]
+}

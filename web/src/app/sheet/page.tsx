@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { buildSheet, type Sheet } from "@/lib/sheet";
 import { telegramReady } from "@/lib/telegram";
+import { isOwner } from "@/lib/owner";
 import { SheetActions } from "@/components/SheetActions";
 
 export const dynamic = "force-dynamic";
@@ -28,7 +29,7 @@ export default async function SheetPage({ searchParams }: PageProps<"/sheet">) {
       {!chromeless && (
         <div className="sheet-actions mb-3 flex flex-wrap items-center justify-between gap-2">
           <Link href={`/?date=${sheet.date}`} className="mono text-xs text-chalk-3 hover:text-chalk">← Slate</Link>
-          <SheetActions date={sheet.date} telegramEnabled={telegramReady()} />
+          <SheetActions date={sheet.date} telegramEnabled={(await isOwner()) && telegramReady()} />
         </div>
       )}
       <article className="sheet">

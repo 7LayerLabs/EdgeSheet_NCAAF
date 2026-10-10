@@ -39,6 +39,15 @@
    "median": 3.8,
    "favorite": "ACU",
    "of": 1
+  },
+  "projection": {
+   "winner": "ACU",
+   "winProb": 0.7236603779262396,
+   "margin": 9.5,
+   "home": 31,
+   "away": 21,
+   "modelSide": "ACU",
+   "confidence": "low"
   }
  }
 }

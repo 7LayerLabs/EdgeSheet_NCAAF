@@ -1,0 +1,29 @@
+{
+ "id": "401871067",
+ "season": 2026,
+ "week": 7,
+ "kickoff": "2026-10-13T23:00Z",
+ "home": {
+  "id": "2393",
+  "name": "Middle Tennessee",
+  "abbr": "MTSU"
+ },
+ "away": {
+  "id": "48",
+  "name": "Delaware",
+  "abbr": "DEL"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -1.5,
+  "total": 48.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -1.5,
+   "total": 48.5
+  }
+ ]
+}

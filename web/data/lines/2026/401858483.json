@@ -1,0 +1,29 @@
+{
+ "id": "401858483",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T20:15Z",
+ "home": {
+  "id": "194",
+  "name": "Ohio State",
+  "abbr": "OSU"
+ },
+ "away": {
+  "id": "120",
+  "name": "Maryland",
+  "abbr": "MD"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 37.5,
+  "total": 54.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 31.5,
+   "total": 56.5
+  }
+ ]
+}

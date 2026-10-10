@@ -30,6 +30,15 @@
    "median": 11.4,
    "favorite": "PENN",
    "of": 1
+  },
+  "projection": {
+   "winner": "PENN",
+   "winProb": 0.763852584447274,
+   "margin": 11.5,
+   "home": 27,
+   "away": 16,
+   "modelSide": "PENN",
+   "confidence": "low"
   }
  }
 }

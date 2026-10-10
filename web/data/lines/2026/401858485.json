@@ -1,0 +1,29 @@
+{
+ "id": "401858485",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T23:30Z",
+ "home": {
+  "id": "213",
+  "name": "Penn State",
+  "abbr": "PSU"
+ },
+ "away": {
+  "id": "30",
+  "name": "USC",
+  "abbr": "USC"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -1.5,
+  "total": 56.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 1.5,
+   "total": 54.5
+  }
+ ]
+}

@@ -186,7 +186,7 @@ export async function buildConsensus(i: ConsensusInput): Promise<Consensus> {
     const a = i.awayElo ?? eloTable?.get(i.awaySchool);
     if (h != null && a != null) {
       const m = (h + (i.neutral ? 0 : HOME_ELO) - a) / ELO_PER_POINT;
-      systems.push(line("elo", "Elo", "CFBD Elo", false, m, undefined, `${i.home.abbr} ${h}, ${i.away.abbr} ${a}${i.neutral ? ", neutral" : `, +${HOME_ELO} home`}`));
+      systems.push(line("elo", "Elo", "Elo (CFBD, or EdgeSheet's fitted copy when CFBD is out)", false, m, undefined, `${i.home.abbr} ${h}, ${i.away.abbr} ${a}${i.neutral ? ", neutral" : `, +${HOME_ELO} home`}`));
     } else systems.push(line("elo", "Elo", "CFBD Elo", false, undefined, undefined, undefined, "No Elo rating for one side."));
   }
 

@@ -1,0 +1,29 @@
+{
+ "id": "401860901",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-11T02:30Z",
+ "home": {
+  "id": "278",
+  "name": "Fresno State",
+  "abbr": "FRES"
+ },
+ "away": {
+  "id": "68",
+  "name": "Boise State",
+  "abbr": "BOIS"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -7.5,
+  "total": 48.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -7.5,
+   "total": 48.5
+  }
+ ]
+}

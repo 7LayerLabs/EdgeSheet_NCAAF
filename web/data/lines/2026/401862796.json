@@ -1,0 +1,29 @@
+{
+ "id": "401862796",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "249",
+  "name": "North Texas",
+  "abbr": "UNT"
+ },
+ "away": {
+  "id": "2429",
+  "name": "Charlotte",
+  "abbr": "CLT"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 23.5,
+  "total": 62.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 27.5,
+   "total": 57.5
+  }
+ ]
+}

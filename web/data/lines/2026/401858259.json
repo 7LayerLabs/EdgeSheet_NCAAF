@@ -1,0 +1,29 @@
+{
+ "id": "401858259",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "25",
+  "name": "California",
+  "abbr": "CAL"
+ },
+ "away": {
+  "id": "259",
+  "name": "Virginia Tech",
+  "abbr": "VT"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -10.5,
+  "total": 52.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -10,
+   "total": 53.5
+  }
+ ]
+}

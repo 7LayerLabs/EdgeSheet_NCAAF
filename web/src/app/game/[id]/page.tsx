@@ -26,6 +26,7 @@ import { WatchGuide } from "@/components/WatchGuide";
 import { publishedGuide } from "@/lib/watchguide";
 import { Section, Fold } from "@/components/Section";
 import { JumpOpener } from "@/components/JumpOpener";
+import { GameMore } from "@/components/GameMore";
 import { GameHeader } from "@/components/GameHeader";
 import { GradeCard } from "@/components/GradeCard";
 import { PregameScorecard } from "@/components/PregameScorecard";
@@ -44,11 +45,14 @@ export async function generateMetadata({ params }: PageProps<"/game/[id]">): Pro
   return { title, description, openGraph: { title, description, type: "article" }, twitter: { card: "summary_large_image", title, description } };
 }
 
-/** Which sections start open in each state. Everything else starts collapsed with its one-line summary showing. */
-const OPEN: Record<GameStatus, string[]> = {
-  upcoming: ["why", "report", "decided", "radar"],
-  live: ["live", "scorecard", "radar"],
-  final: ["grade", "report", "showed"],
+/**
+ * The four primary sections per state, in order; they start open. Everything
+ * else goes into the collapsed "More on this game" group, in MORE order.
+ */
+const PRIMARY: Record<GameStatus, string[]> = {
+  upcoming: ["why", "decided", "radar", "market"],
+  live: ["live", "radar", "why", "market"],
+  final: ["grade", "radar", "why", "market"],
 };
 
 export default async function GamePage({ params }: PageProps<"/game/[id]">) {
@@ -58,7 +62,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
   const guide = publishedGuide(game);
 
   const status = game.status;
-  const isOpen = (key: string) => OPEN[status].includes(key);
+  const isOpen = (key: string) => PRIMARY[status].includes(key);
   const score = scoutScore(game.scoreComponents);
   const tag = scoreTag(game);
   const flags = game.weather ? evaluateWeather(game.weather) : [];
@@ -446,12 +450,16 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
 
   /* ------------------------------------------------------------ order per state */
 
-  const order =
+  const all =
     status === "live"
       ? [live, scorecard, radar, why, report, decided, eye, style, conditions, market, storylines, feed, scoreSec]
       : status === "final"
         ? [grade, report, showed, decided, radar, why, eye, style, conditions, market, storylines, feed, scoreSec]
         : [why, report, decided, radar, eye, showed, style, conditions, market, storylines, feed, scoreSec];
+  const present = all.filter((s): s is React.ReactElement => Boolean(s));
+  const byKey = new Map(present.map((s) => [String(s.key), s]));
+  const primary = PRIMARY[status].map((k) => byKey.get(k)).filter((s): s is React.ReactElement => Boolean(s));
+  const rest = present.filter((s) => !PRIMARY[status].includes(String(s.key)));
 
   const LABELS: Record<string, string> = {
     why: "Why watch",
@@ -470,7 +478,7 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
     feed: "Feed",
     score: "Score",
   };
-  const jumps = order.filter((s): s is React.ReactElement => Boolean(s)).map((s) => String(s.key));
+  const jumps = primary.map((s) => String(s.key));
 
   return (
     <article className="rise">
@@ -493,9 +501,12 @@ export default async function GamePage({ params }: PageProps<"/game/[id]">) {
         {jumps.map((k) => (
           <a key={k} href={`#${k}`}>{LABELS[k] ?? k}</a>
         ))}
+        {rest.length > 0 && <a href="#more">More ({rest.length})</a>}
       </nav>
 
-      {order}
+      {primary}
+
+      {rest.length > 0 && <GameMore labels={rest.map((s) => LABELS[String(s.key)] ?? String(s.key))}>{rest}</GameMore>}
     </article>
   );
 }

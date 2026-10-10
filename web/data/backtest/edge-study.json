@@ -1,0 +1,624 @@
+{
+  "generatedAt": "2026-10-10T17:39:07.252Z",
+  "seasons": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "breakEven": 52.38,
+  "games": 2998,
+  "tests": {
+    "T1_modelVsOpen": {
+      "lean3": {
+        "vsOpen": {
+          "n": 1122,
+          "wins": 599,
+          "rate": 53.4,
+          "lo": 50.5,
+          "hi": 56.3,
+          "zVsBreakEven": 0.68
+        },
+        "vsClose": {
+          "n": 1115,
+          "wins": 578,
+          "rate": 51.8,
+          "lo": 48.9,
+          "hi": 54.8,
+          "zVsBreakEven": -0.36
+        },
+        "bySeason": {
+          "2022": {
+            "n": 274,
+            "wins": 146,
+            "rate": 53.3,
+            "lo": 47.4,
+            "hi": 59.2,
+            "zVsBreakEven": 0.3
+          },
+          "2023": {
+            "n": 280,
+            "wins": 163,
+            "rate": 58.2,
+            "lo": 52.4,
+            "hi": 64,
+            "zVsBreakEven": 1.95
+          },
+          "2024": {
+            "n": 262,
+            "wins": 136,
+            "rate": 51.9,
+            "lo": 45.9,
+            "hi": 58,
+            "zVsBreakEven": -0.15
+          },
+          "2025": {
+            "n": 306,
+            "wins": 154,
+            "rate": 50.3,
+            "lo": 44.7,
+            "hi": 55.9,
+            "zVsBreakEven": -0.72
+          }
+        }
+      },
+      "lean5": {
+        "vsOpen": {
+          "n": 576,
+          "wins": 322,
+          "rate": 55.9,
+          "lo": 51.8,
+          "hi": 60,
+          "zVsBreakEven": 1.69
+        },
+        "vsClose": {
+          "n": 573,
+          "wins": 308,
+          "rate": 53.8,
+          "lo": 49.7,
+          "hi": 57.8,
+          "zVsBreakEven": 0.66
+        },
+        "bySeason": {
+          "2022": {
+            "n": 132,
+            "wins": 72,
+            "rate": 54.5,
+            "lo": 46.1,
+            "hi": 63,
+            "zVsBreakEven": 0.5
+          },
+          "2023": {
+            "n": 142,
+            "wins": 82,
+            "rate": 57.7,
+            "lo": 49.6,
+            "hi": 65.9,
+            "zVsBreakEven": 1.28
+          },
+          "2024": {
+            "n": 144,
+            "wins": 78,
+            "rate": 54.2,
+            "lo": 46,
+            "hi": 62.3,
+            "zVsBreakEven": 0.43
+          },
+          "2025": {
+            "n": 158,
+            "wins": 90,
+            "rate": 57,
+            "lo": 49.2,
+            "hi": 64.7,
+            "zVsBreakEven": 1.15
+          }
+        }
+      },
+      "lean7": {
+        "vsOpen": {
+          "n": 281,
+          "wins": 155,
+          "rate": 55.2,
+          "lo": 49.3,
+          "hi": 61,
+          "zVsBreakEven": 0.93
+        },
+        "vsClose": {
+          "n": 274,
+          "wins": 143,
+          "rate": 52.2,
+          "lo": 46.3,
+          "hi": 58.1,
+          "zVsBreakEven": -0.06
+        },
+        "bySeason": {
+          "2022": {
+            "n": 74,
+            "wins": 39,
+            "rate": 52.7,
+            "lo": 41.3,
+            "hi": 64.1,
+            "zVsBreakEven": 0.06
+          },
+          "2023": {
+            "n": 67,
+            "wins": 39,
+            "rate": 58.2,
+            "lo": 46.4,
+            "hi": 70,
+            "zVsBreakEven": 0.96
+          },
+          "2024": {
+            "n": 66,
+            "wins": 34,
+            "rate": 51.5,
+            "lo": 39.5,
+            "hi": 63.6,
+            "zVsBreakEven": -0.14
+          },
+          "2025": {
+            "n": 74,
+            "wins": 43,
+            "rate": 58.1,
+            "lo": 46.9,
+            "hi": 69.3,
+            "zVsBreakEven": 0.99
+          }
+        }
+      }
+    },
+    "T2_closingLineValue": {
+      "lean3": {
+        "lineMovedTowardModel": {
+          "n": 983,
+          "wins": 548,
+          "rate": 55.7,
+          "lo": 52.6,
+          "hi": 58.9,
+          "zVsBreakEven": 2.11
+        },
+        "avgClvPoints": 0.43
+      },
+      "lean5": {
+        "lineMovedTowardModel": {
+          "n": 513,
+          "wins": 279,
+          "rate": 54.4,
+          "lo": 50.1,
+          "hi": 58.7,
+          "zVsBreakEven": 0.91
+        },
+        "avgClvPoints": 0.53
+      },
+      "lean7": {
+        "lineMovedTowardModel": {
+          "n": 257,
+          "wins": 142,
+          "rate": 55.3,
+          "lo": 49.2,
+          "hi": 61.3,
+          "zVsBreakEven": 0.92
+        },
+        "avgClvPoints": 0.68
+      }
+    },
+    "T6_splits": {
+      "lean3": {
+        "byTier": {
+          "g5": {
+            "n": 478,
+            "wins": 252,
+            "rate": 52.7,
+            "lo": 48.2,
+            "hi": 57.2,
+            "zVsBreakEven": 0.15
+          },
+          "power": {
+            "n": 519,
+            "wins": 281,
+            "rate": 54.1,
+            "lo": 49.9,
+            "hi": 58.4,
+            "zVsBreakEven": 0.8
+          },
+          "mixed": {
+            "n": 125,
+            "wins": 66,
+            "rate": 52.8,
+            "lo": 44,
+            "hi": 61.6,
+            "zVsBreakEven": 0.09
+          }
+        },
+        "byWeek": {
+          "wk4-7": {
+            "n": 452,
+            "wins": 246,
+            "rate": 54.4,
+            "lo": 49.8,
+            "hi": 59,
+            "zVsBreakEven": 0.87
+          },
+          "wk8-10": {
+            "n": 312,
+            "wins": 160,
+            "rate": 51.3,
+            "lo": 45.7,
+            "hi": 56.8,
+            "zVsBreakEven": -0.39
+          },
+          "wk11+": {
+            "n": 358,
+            "wins": 193,
+            "rate": 53.9,
+            "lo": 48.7,
+            "hi": 59.1,
+            "zVsBreakEven": 0.58
+          }
+        }
+      },
+      "lean5": {
+        "byTier": {
+          "power": {
+            "n": 239,
+            "wins": 138,
+            "rate": 57.7,
+            "lo": 51.5,
+            "hi": 64,
+            "zVsBreakEven": 1.66
+          },
+          "g5": {
+            "n": 230,
+            "wins": 126,
+            "rate": 54.8,
+            "lo": 48.4,
+            "hi": 61.2,
+            "zVsBreakEven": 0.73
+          },
+          "mixed": {
+            "n": 107,
+            "wins": 58,
+            "rate": 54.2,
+            "lo": 44.8,
+            "hi": 63.6,
+            "zVsBreakEven": 0.38
+          }
+        },
+        "byWeek": {
+          "wk4-7": {
+            "n": 254,
+            "wins": 144,
+            "rate": 56.7,
+            "lo": 50.6,
+            "hi": 62.8,
+            "zVsBreakEven": 1.38
+          },
+          "wk8-10": {
+            "n": 158,
+            "wins": 82,
+            "rate": 51.9,
+            "lo": 44.1,
+            "hi": 59.7,
+            "zVsBreakEven": -0.12
+          },
+          "wk11+": {
+            "n": 164,
+            "wins": 96,
+            "rate": 58.5,
+            "lo": 51,
+            "hi": 66.1,
+            "zVsBreakEven": 1.58
+          }
+        }
+      },
+      "lean7": {
+        "byTier": {
+          "g5": {
+            "n": 104,
+            "wins": 58,
+            "rate": 55.8,
+            "lo": 46.2,
+            "hi": 65.3,
+            "zVsBreakEven": 0.69
+          },
+          "mixed": {
+            "n": 77,
+            "wins": 41,
+            "rate": 53.2,
+            "lo": 42.1,
+            "hi": 64.4,
+            "zVsBreakEven": 0.15
+          },
+          "power": {
+            "n": 100,
+            "wins": 56,
+            "rate": 56,
+            "lo": 46.3,
+            "hi": 65.7,
+            "zVsBreakEven": 0.72
+          }
+        },
+        "byWeek": {
+          "wk4-7": {
+            "n": 135,
+            "wins": 74,
+            "rate": 54.8,
+            "lo": 46.4,
+            "hi": 63.2,
+            "zVsBreakEven": 0.57
+          },
+          "wk8-10": {
+            "n": 66,
+            "wins": 33,
+            "rate": 50,
+            "lo": 37.9,
+            "hi": 62.1,
+            "zVsBreakEven": -0.39
+          },
+          "wk11+": {
+            "n": 80,
+            "wins": 48,
+            "rate": 60,
+            "lo": 49.3,
+            "hi": 70.7,
+            "zVsBreakEven": 1.36
+          }
+        }
+      }
+    },
+    "T3_totalsVsOpen": {
+      "lean3": {
+        "all": {
+          "n": 1509,
+          "wins": 801,
+          "rate": 53.1,
+          "lo": 50.6,
+          "hi": 55.6,
+          "zVsBreakEven": 0.55
+        },
+        "overs": {
+          "n": 830,
+          "wins": 437,
+          "rate": 52.7,
+          "lo": 49.3,
+          "hi": 56,
+          "zVsBreakEven": 0.16
+        },
+        "unders": {
+          "n": 679,
+          "wins": 364,
+          "rate": 53.6,
+          "lo": 49.9,
+          "hi": 57.4,
+          "zVsBreakEven": 0.64
+        },
+        "oversVsClose": {
+          "n": 828,
+          "wins": 450,
+          "rate": 54.3,
+          "lo": 51,
+          "hi": 57.7,
+          "zVsBreakEven": 1.13
+        },
+        "undersVsClose": {
+          "n": 681,
+          "wins": 343,
+          "rate": 50.4,
+          "lo": 46.6,
+          "hi": 54.1,
+          "zVsBreakEven": -1.05
+        },
+        "avgClvPoints": 0.25
+      },
+      "lean5": {
+        "all": {
+          "n": 985,
+          "wins": 520,
+          "rate": 52.8,
+          "lo": 49.7,
+          "hi": 55.9,
+          "zVsBreakEven": 0.26
+        },
+        "overs": {
+          "n": 528,
+          "wins": 276,
+          "rate": 52.3,
+          "lo": 48,
+          "hi": 56.5,
+          "zVsBreakEven": -0.05
+        },
+        "unders": {
+          "n": 457,
+          "wins": 244,
+          "rate": 53.4,
+          "lo": 48.8,
+          "hi": 58,
+          "zVsBreakEven": 0.43
+        },
+        "oversVsClose": {
+          "n": 525,
+          "wins": 285,
+          "rate": 54.3,
+          "lo": 50,
+          "hi": 58.5,
+          "zVsBreakEven": 0.87
+        },
+        "undersVsClose": {
+          "n": 458,
+          "wins": 234,
+          "rate": 51.1,
+          "lo": 46.5,
+          "hi": 55.7,
+          "zVsBreakEven": -0.55
+        },
+        "avgClvPoints": 0.31
+      },
+      "lean7": {
+        "all": {
+          "n": 587,
+          "wins": 307,
+          "rate": 52.3,
+          "lo": 48.3,
+          "hi": 56.3,
+          "zVsBreakEven": -0.04
+        },
+        "overs": {
+          "n": 314,
+          "wins": 161,
+          "rate": 51.3,
+          "lo": 45.7,
+          "hi": 56.8,
+          "zVsBreakEven": -0.39
+        },
+        "unders": {
+          "n": 273,
+          "wins": 146,
+          "rate": 53.5,
+          "lo": 47.6,
+          "hi": 59.4,
+          "zVsBreakEven": 0.36
+        },
+        "oversVsClose": {
+          "n": 313,
+          "wins": 168,
+          "rate": 53.7,
+          "lo": 48.1,
+          "hi": 59.2,
+          "zVsBreakEven": 0.46
+        },
+        "undersVsClose": {
+          "n": 274,
+          "wins": 138,
+          "rate": 50.4,
+          "lo": 44.4,
+          "hi": 56.3,
+          "zVsBreakEven": -0.67
+        },
+        "avgClvPoints": 0.33
+      }
+    },
+    "T4_wind": {
+      "under 10 mph": {
+        "underVsClose": {
+          "n": 2273,
+          "wins": 1127,
+          "rate": 49.6,
+          "lo": 47.5,
+          "hi": 51.6,
+          "zVsBreakEven": -2.67
+        },
+        "underVsOpen": {
+          "n": 2280,
+          "wins": 1167,
+          "rate": 51.2,
+          "lo": 49.1,
+          "hi": 53.2,
+          "zVsBreakEven": -1.14
+        },
+        "avgActualMinusClose": 0.57,
+        "avgTotalMoveOpenToClose": -0.45
+      },
+      "10 to 15": {
+        "underVsClose": {
+          "n": 417,
+          "wins": 206,
+          "rate": 49.4,
+          "lo": 44.6,
+          "hi": 54.2,
+          "zVsBreakEven": -1.22
+        },
+        "underVsOpen": {
+          "n": 414,
+          "wins": 217,
+          "rate": 52.4,
+          "lo": 47.6,
+          "hi": 57.2,
+          "zVsBreakEven": 0.01
+        },
+        "avgActualMinusClose": 1.24,
+        "avgTotalMoveOpenToClose": -1.12
+      },
+      "15 to 20": {
+        "underVsClose": {
+          "n": 74,
+          "wins": 37,
+          "rate": 50,
+          "lo": 38.6,
+          "hi": 61.4,
+          "zVsBreakEven": -0.41
+        },
+        "underVsOpen": {
+          "n": 77,
+          "wins": 44,
+          "rate": 57.1,
+          "lo": 46.1,
+          "hi": 68.2,
+          "zVsBreakEven": 0.84
+        },
+        "avgActualMinusClose": 0.71,
+        "avgTotalMoveOpenToClose": -2.28
+      },
+      "20 plus": {
+        "underVsClose": {
+          "n": 10,
+          "wins": 8,
+          "rate": 80,
+          "lo": 55.2,
+          "hi": 104.8,
+          "zVsBreakEven": 1.75
+        },
+        "underVsOpen": {
+          "n": 10,
+          "wins": 9,
+          "rate": 90,
+          "lo": 71.4,
+          "hi": 108.6,
+          "zVsBreakEven": 2.38
+        },
+        "avgActualMinusClose": -8.1,
+        "avgTotalMoveOpenToClose": -4.05
+      }
+    },
+    "T5_marketRules": {
+      "bigUnderdog21plus": {
+        "n": 423,
+        "wins": 216,
+        "rate": 51.1,
+        "lo": 46.3,
+        "hi": 55.8,
+        "zVsBreakEven": -0.54
+      },
+      "homeUnderdog": {
+        "n": 1043,
+        "wins": 533,
+        "rate": 51.1,
+        "lo": 48.1,
+        "hi": 54.1,
+        "zVsBreakEven": -0.83
+      },
+      "followSpreadMove2plusAtClose": {
+        "n": 839,
+        "wins": 424,
+        "rate": 50.5,
+        "lo": 47.2,
+        "hi": 53.9,
+        "zVsBreakEven": -1.07
+      },
+      "followTotalMove3plusAtClose": {
+        "n": 558,
+        "wins": 281,
+        "rate": 50.4,
+        "lo": 46.2,
+        "hi": 54.5,
+        "zVsBreakEven": -0.96
+      }
+    }
+  },
+  "market": {
+    "gamesWithOpen": 2991,
+    "openerMae": 12.12,
+    "closerMae": 12,
+    "shareMoved": 84.8
+  },
+  "eloSource": "cfbd"
+}

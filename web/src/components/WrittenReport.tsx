@@ -3,13 +3,15 @@ import { isUnavailable } from "@/lib/llm";
 import { readReport, reportProvider, seasonOf } from "@/lib/report";
 import type { Game } from "@/lib/types";
 import { WriteReportButton } from "./WriteReportButton";
+import { isOwner } from "@/lib/owner";
 
-/** Server component. Reads the cached report from disk; never calls a model on page load. */
-export function WrittenReport({ game, embedded = false }: { game: Game; embedded?: boolean }) {
+/** Server component. Reads the cached report from disk; never calls a model on page load. Write and Rewrite are owner-only (src/lib/owner.ts). */
+export async function WrittenReport({ game, embedded = false }: { game: Game; embedded?: boolean }) {
   const d1 = game.division === "FBS" || game.division === "FCS";
   const cached = d1 ? readReport(seasonOf(game.kickoff), game.id) : undefined;
   const provider = reportProvider();
   const stale = cached?.report && cached.pregame && game.status !== "upcoming";
+  const owner = await isOwner();
 
   // Embedded: the page's collapsible Section already carries the eyebrow and headline.
   const Wrap = embedded ? "div" : "section";
@@ -41,9 +43,9 @@ export function WrittenReport({ game, embedded = false }: { game: Game; embedded
             <span className="mono text-xs text-chalk-3">
               Written by {cached.model} {asOf(cached.generatedAt)} from evidence as of {asOf(cached.evidenceAsOf)}{cached.pregame ? ", pregame" : ""}. Every name and number checked against the evidence packet ({cached.factCount} facts{cached.attempts > 1 ? `, ${cached.attempts} attempts` : ""}).
             </span>
-            {!isUnavailable(provider) && <WriteReportButton id={game.id} label={stale ? "Rewrite with the final" : "Rewrite"} force />}
+            {owner && !isUnavailable(provider) && <WriteReportButton id={game.id} label={stale ? "Rewrite with the final" : "Rewrite"} force />}
           </div>
-          {stale && <p className="mt-1 text-xs text-warn">This report was written before kickoff. The game has moved on; rewrite it to include what the evidence shows now.</p>}
+          {owner && stale && <p className="mt-1 text-xs text-warn">This report was written before kickoff. The game has moved on; rewrite it to include what the evidence shows now.</p>}
           {cached.verified && (
             cached.flags && cached.flags.length > 0 ? (
               <details className="mt-1 text-xs text-chalk-3">
@@ -68,7 +70,9 @@ export function WrittenReport({ game, embedded = false }: { game: Game; embedded
           {!embedded && <h2 className="display mt-1 text-3xl font-bold leading-tight text-chalk sm:text-4xl">{d1 ? "No report written yet" : "Reports are written for Division I games"}</h2>}
           {d1 && (
             <div className="card mt-3 p-5">
-              {isUnavailable(provider) ? (
+              {!owner ? (
+                <p className="text-base text-chalk-2">No written report for this game yet. Reports are written on purpose, not for every game, and only from the evidence on this page.</p>
+              ) : isUnavailable(provider) ? (
                 <p className="text-sm text-chalk-3">Reports need a model key. Add ANTHROPIC_API_KEY (or OPENAI_API_KEY as a fallback) to .env.local.</p>
               ) : (
                 <>

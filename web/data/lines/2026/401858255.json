@@ -1,0 +1,29 @@
+{
+ "id": "401858255",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "59",
+  "name": "Georgia Tech",
+  "abbr": "GT"
+ },
+ "away": {
+  "id": "150",
+  "name": "Duke",
+  "abbr": "DUKE"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -6.5,
+  "total": 50.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -4.5,
+   "total": 45.5
+  }
+ ]
+}

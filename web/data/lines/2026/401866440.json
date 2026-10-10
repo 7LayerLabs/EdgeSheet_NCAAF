@@ -1,0 +1,29 @@
+{
+ "id": "401866440",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T18:00Z",
+ "home": {
+  "id": "113",
+  "name": "Massachusetts",
+  "abbr": "MASS"
+ },
+ "away": {
+  "id": "193",
+  "name": "Miami (OH)",
+  "abbr": "M-OH"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -2.5,
+  "total": 49.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -6,
+   "total": 44.5
+  }
+ ]
+}

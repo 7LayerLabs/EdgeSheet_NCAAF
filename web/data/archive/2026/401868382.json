@@ -39,6 +39,15 @@
    "median": 8,
    "favorite": "MER",
    "of": 1
+  },
+  "projection": {
+   "winner": "MER",
+   "winProb": 0.66912558011915,
+   "margin": 7,
+   "home": 34,
+   "away": 27,
+   "modelSide": "MER",
+   "confidence": "low"
   }
  }
 }

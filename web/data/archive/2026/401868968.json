@@ -39,6 +39,15 @@
    "median": 21.1,
    "favorite": "PV",
    "of": 1
+  },
+  "projection": {
+   "winner": "PV",
+   "winProb": 0.833665032879588,
+   "margin": 15.5,
+   "home": 33,
+   "away": 18,
+   "modelSide": "PV",
+   "confidence": "low"
   }
  }
 }

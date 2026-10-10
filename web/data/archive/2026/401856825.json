@@ -129,7 +129,8 @@
    "home": 35,
    "away": 28,
    "confidence": "high",
-   "modelTotal": 63
+   "modelTotal": 63,
+   "totalLean": "over"
   },
   "consensus": {
    "median": 4.4,

@@ -39,6 +39,15 @@
    "median": 2.4,
    "favorite": "WEB",
    "of": 1
+  },
+  "projection": {
+   "winner": "IDHO",
+   "winProb": 0.5865775631899086,
+   "margin": 3.5,
+   "home": 33,
+   "away": 37,
+   "modelSide": "WEB",
+   "confidence": "low"
   }
  }
 }

@@ -30,6 +30,15 @@
    "median": 4.5,
    "favorite": "EKU",
    "of": 1
+  },
+  "projection": {
+   "winner": "EKU",
+   "winProb": 0.634482780961531,
+   "margin": 5.5,
+   "home": 26,
+   "away": 20,
+   "modelSide": "EKU",
+   "confidence": "low"
   }
  }
 }

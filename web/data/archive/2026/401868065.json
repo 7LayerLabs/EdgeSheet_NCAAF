@@ -39,6 +39,15 @@
    "median": 12.9,
    "favorite": "APSU",
    "of": 1
+  },
+  "projection": {
+   "winner": "APSU",
+   "winProb": 0.5373461853176209,
+   "margin": 1.5,
+   "home": 31,
+   "away": 30,
+   "modelSide": "APSU",
+   "confidence": "low"
   }
  }
 }

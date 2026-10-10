@@ -1,0 +1,29 @@
+{
+ "id": "401856717",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "201",
+  "name": "Oklahoma",
+  "abbr": "OU"
+ },
+ "away": {
+  "id": "251",
+  "name": "Texas",
+  "abbr": "TEX"
+ },
+ "neutral": true,
+ "book": "DraftKings",
+ "open": {
+  "spread": -6,
+  "total": 48.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -7.5,
+   "total": 41.5
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "id": "401860923",
+ "season": 2026,
+ "week": 7,
+ "kickoff": "2026-10-16T00:00Z",
+ "home": {
+  "id": "326",
+  "name": "Texas State",
+  "abbr": "TXST"
+ },
+ "away": {
+  "id": "36",
+  "name": "Colorado State",
+  "abbr": "CSU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 12.5,
+  "total": 67.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 12.5,
+   "total": 67.5
+  }
+ ]
+}

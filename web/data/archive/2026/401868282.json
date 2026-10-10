@@ -30,6 +30,15 @@
    "median": 26.5,
    "favorite": "STMN",
    "of": 1
+  },
+  "projection": {
+   "winner": "STMN",
+   "winProb": 0.9201749958883427,
+   "margin": 22.5,
+   "home": 38,
+   "away": 15,
+   "modelSide": "STMN",
+   "confidence": "low"
   }
  }
 }

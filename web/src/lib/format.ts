@@ -6,6 +6,14 @@ export function kickoffTime(iso: string) {
   });
 }
 
+/** Kickoff with the weekday when it is not today in ET: "Fri 7:00 PM" or "3:30 PM". */
+export function kickoffWhen(iso: string) {
+  const et = (d: Date) => d.toLocaleDateString("en-US", { timeZone: "America/New_York" });
+  const d = new Date(iso);
+  const day = et(d) === et(new Date()) ? "" : `${d.toLocaleDateString("en-US", { weekday: "short", timeZone: "America/New_York" })} `;
+  return `${day}${kickoffTime(iso)}`;
+}
+
 export function asOf(iso: string) {
   return new Date(iso).toLocaleString("en-US", {
     month: "short",

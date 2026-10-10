@@ -1,0 +1,29 @@
+{
+ "id": "401856827",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-11T00:00Z",
+ "home": {
+  "id": "254",
+  "name": "Utah",
+  "abbr": "UTAH"
+ },
+ "away": {
+  "id": "2305",
+  "name": "Kansas",
+  "abbr": "KU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 16.5,
+  "total": 52.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 15.5,
+   "total": 49.5
+  }
+ ]
+}

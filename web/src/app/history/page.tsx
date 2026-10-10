@@ -4,6 +4,7 @@ import { asOf, kickoffTime } from "@/lib/format";
 import { LedgerSection } from "@/components/Ledger";
 import { SendToTelegram } from "@/components/SendToTelegram";
 import { telegramReady } from "@/lib/telegram";
+import { isOwner } from "@/lib/owner";
 import { ModelUpdates } from "@/components/ModelUpdates";
 import { BUCKET_MIN, RATE_MIN, gated, type GatedValue } from "@/lib/gate";
 import { Gated } from "@/components/Gated";
@@ -14,7 +15,8 @@ const pct = (a: number, b: number) => (b ? `${Math.round((a / b) * 100)}%` : "â€
 /** A hit rate as a percentage, or "too early" until the sample reaches RATE_MIN graded games. */
 const rate = (a: number, b: number) => gated(b, RATE_MIN, pct(a, b));
 
-export default function HistoryPage() {
+export default async function HistoryPage() {
+  const owner = await isOwner();
   const entries = listEntries();
   const stats = historyStats(entries);
   const graded = entries.filter((e) => e.postgame);
@@ -25,7 +27,7 @@ export default function HistoryPage() {
       <p className="eyebrow">The record</p>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <h1 className="display mt-1 text-5xl font-extrabold text-chalk sm:text-6xl">Did it play out?</h1>
-        <SendToTelegram type="grades" enabled={telegramReady()} />
+        {owner && <SendToTelegram type="grades" enabled={telegramReady()} />}
       </div>
       <p className="mt-2 max-w-3xl text-base text-chalk-3">
         Every Division I game gets its pregame call locked before kickoff: the matchup edges, the pressure point, the radar names, the Scout Score, the line.

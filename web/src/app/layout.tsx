@@ -59,6 +59,7 @@ const NAV = [
 const MORE = [
   { href: "/ask", label: "Ask", icon: I.ask },
   { href: "/feed", label: "Feed", icon: I.feed },
+  { href: "/edges", label: "Opener edges", icon: I.track },
   { href: "/backtest", label: "Track record", icon: I.track },
   { href: "/sheet", label: "Sheet", icon: I.sheet },
   { href: "/plan", label: "Plan", icon: I.plan },
@@ -83,7 +84,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-28 pt-5 sm:pb-24">{children}</main>
         <NavLinks items={NAV} more={MORE} variant="tabs" />
         <footer className="border-t border-line px-4 py-6 text-center text-xs text-chalk-3">
-          Schedules, scores, records, and lines from CollegeFootballData. Forecasts from the National Weather Service. Prospects from a curated file. Nothing is invented; gaps are labeled.
+          Schedules, scores, records, and lines from CollegeFootballData and ESPN. Forecasts from the National Weather Service. Prospects from a curated file. Nothing is invented; gaps are labeled.
         </footer>
       </body>
     </html>

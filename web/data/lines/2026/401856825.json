@@ -1,0 +1,29 @@
+{
+ "id": "401856825",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "2306",
+  "name": "Kansas State",
+  "abbr": "KSU"
+ },
+ "away": {
+  "id": "248",
+  "name": "Houston",
+  "abbr": "HOU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": 2.5,
+  "total": 54.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": 2.5,
+   "total": 54.5
+  }
+ ]
+}

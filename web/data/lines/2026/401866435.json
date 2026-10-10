@@ -1,0 +1,29 @@
+{
+ "id": "401866435",
+ "season": 2026,
+ "week": 6,
+ "kickoff": "2026-10-10T19:30Z",
+ "home": {
+  "id": "2006",
+  "name": "Akron",
+  "abbr": "AKR"
+ },
+ "away": {
+  "id": "2199",
+  "name": "Eastern Michigan",
+  "abbr": "EMU"
+ },
+ "neutral": false,
+ "book": "DraftKings",
+ "open": {
+  "spread": -3.5,
+  "total": 50.5
+ },
+ "snapshots": [
+  {
+   "at": "2026-10-10T17:41:46.627Z",
+   "spread": -5.5,
+   "total": 51.5
+  }
+ ]
+}
